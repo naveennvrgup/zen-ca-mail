@@ -5,25 +5,35 @@ from rest_framework.viewsets import ModelViewSet
 from .models import *
 
 import json
-from aws_engine.send_otp import *
+from decouple import config
+
+
+def save_subscriber(data):
+    data['verified'] = True
+    serializer = SubcriberSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors)
 
 
 class SubscribeViewset(ModelViewSet):
     queryset = Subscriber.objects.all()
     serializer_class = SubscriberSerializer
 
-    def create(self,req):
+    def create(self, req):
         data = json.loads(req.body)
         try:
             sub = Subcriber.objects.get(email=data['email'])
-            return Response({
-                'id':sub.id,
-                'email':sub.email,
-                'verified':sub.verified
-            })
+
+            # for testing purpose option of duplicate sub is given
+            if bool(config('duplicate_subs')):
+                save_subscriber(data)
+            else:
+                return Response({
+                    'id': sub.id,
+                    'email': sub.email,
+                    'verified': sub.verified
+                })
         except:
-            serializer = SubcriberSerializer(data=data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data)
-            return Response(serializer.errors)
+            save_subscriber(data)

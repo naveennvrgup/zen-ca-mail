@@ -4,9 +4,14 @@ from django.contrib import admin
 from django.urls import path, include
 
 from subscribe.views import *
+from draft.views import *
+from outbox.views import *
+from sent.views import *
 
 router = DefaultRouter()
 router.register('subscribe', SubscribeViewset)
+router.register('draft', DraftViewset)
+router.register('attachment', AttachmentViewset)
 
 
 urlpatterns = [

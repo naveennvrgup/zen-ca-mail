@@ -3,7 +3,7 @@ from rest_framework.serializers import ModelSerializer
 
 class Subscriber(Model):
     name = CharField(max_length=200)
-    email = EmailField(unique=True)
+    email = EmailField()
     mobile = CharField(max_length=100)
     verified = BooleanField(default=False)
     bounces = IntegerField(default=0)
@@ -14,7 +14,21 @@ class Subscriber(Model):
     def __str__(self):
         return self.name
 
+class Group(Model):
+    name = CharField(max_length=200)
+    subs = ManyToManyField(Subscriber,related_name='groups')
+    flag = BooleanField(default=False)
+    created_on = DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
 class SubscriberSerializer(ModelSerializer):
     class Meta:
         model = Subscriber
+        fields = '__all__'
+
+class GroupSerializer(ModelSerializer):
+    class Meta:
+        model = Group
         fields = '__all__'
