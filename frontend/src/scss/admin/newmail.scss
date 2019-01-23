@@ -1,0 +1,20 @@
+.newMail {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+
+    .rdw-editor-main {
+        border-radius: 4px;
+        border: 2px solid $border;
+        padding: 20px;
+        height: 350px;
+
+        p {
+            margin: 0 !important;
+        }
+    }
+
+    input,
+    textarea {
+        background: white;
+    }
+}

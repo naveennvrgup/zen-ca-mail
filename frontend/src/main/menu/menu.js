@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch, withRouter } from 'react-router-dom'
+import '../scss/big.scss'
 
-export default class big extends Component {
+export default class menu extends Component {
     render() {
         let Before = () => (
             <div className="links d-flex">
