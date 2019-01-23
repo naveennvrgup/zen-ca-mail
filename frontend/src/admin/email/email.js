@@ -15,15 +15,9 @@ export default class email extends Component {
             .catch(e => console.error(e))
     }
 
-    newMailHandler = (event) => {
-        event.preventDefault()
-        axios.post('api/draft/', {
-            subject: 'new draft',
-            body: '<p>email body goes here</p>'
-        })
-            .then(d => {
-                this.props.history.push('/admin/newMail/' + d.data.id)
-            })
+    newMailHandler = (e) => {
+        e.preventDefault()
+        this.props.history.push('/admin/email/0/')
     }
 
     deleteDraftHandler = (e, draftId) => {
@@ -75,7 +69,7 @@ export default class email extends Component {
         drafts = drafts.map((draft, i) => this.createDraftView(draft, i))
 
         return (
-            <div id='drafts' className='p-5'>
+            <div className='emails p-5'>
                 <div className="d-flex align-items-center justify-content-between">
                     <h1 className=''>E-mail</h1>
                     <div>

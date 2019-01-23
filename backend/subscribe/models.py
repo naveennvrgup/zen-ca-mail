@@ -32,3 +32,12 @@ class GroupSerializer(ModelSerializer):
     class Meta:
         model = Group
         fields = '__all__'
+
+# create group = all is not exists
+try:
+    all = Group.objects.get(name='all')
+    if all:
+        print('group all exists')
+except:
+    all = Group.objects.create(name='all')
+    print('created group all')

@@ -13,6 +13,6 @@ class DraftViewset(ModelViewSet):
     serializer_class=DraftSerializer
 
 class AttachmentViewset(ModelViewSet):
-    queryset=DraftAttachments.objects.all()
-    serializer_class=DraftAttachmentsSerializer
+    queryset=Attachment.objects.all()
+    serializer_class=AttachmentSerializer
     parser_classes = (MultiPartParser,)

@@ -10,7 +10,7 @@ from decouple import config
 
 def save_subscriber(data):
     data['verified'] = True
-    serializer = SubcriberSerializer(data=data)
+    serializer = SubscriberSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
@@ -28,7 +28,7 @@ class SubscribeViewset(ModelViewSet):
 
             # for testing purpose option of duplicate sub is given
             if bool(config('duplicate_subs')):
-                save_subscriber(data)
+                return save_subscriber(data)
             else:
                 return Response({
                     'id': sub.id,
@@ -36,4 +36,8 @@ class SubscribeViewset(ModelViewSet):
                     'verified': sub.verified
                 })
         except:
-            save_subscriber(data)
+            return save_subscriber(data)
+
+class GroupViewset(ModelViewSet):
+    queryset = Group.objects.all().filter(flag=False)
+    serializer_class = GroupSerializer
