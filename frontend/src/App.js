@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import './bootstrap/bootstrap.scss'
 
 import Admin from './admin/panel'
-import Home from './main/home'
+import Indexp from './main/index'
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
       <div id='app'>
         <Switch>
           <Route path='/admin' component={Admin} />
-          <Route path='/' component={Home} />
+          <Route path='/' component={Indexp} />
         </Switch>
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous"></link>

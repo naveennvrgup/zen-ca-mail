@@ -1,0 +1,38 @@
+@import './color.scss';
+@import './metrics.scss';
+
+.big_menubar {
+    height: $big-menubar-height;
+    box-shadow: 0px -10px 25px black;
+    z-index: $big-menubar-zindex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+
+    .brand_logo img {
+        height: 55px;
+    }
+
+    .brand_name {
+        font-weight: bold;
+        font-size: 1.25em;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        padding: 10px 20px;
+        // transition: all 0.2s ease;
+        border: 2px solid white;
+
+    }
+    
+    .active {
+        border: 2px solid $active-menu-link;
+        color: $active-menu-link;
+        border-radius: 50px;
+    }
+}

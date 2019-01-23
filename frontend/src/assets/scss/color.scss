@@ -1,0 +1,33 @@
+// sidebar
+$sidebg: #2e2736;
+$icons: #a5a4bf;
+$activelink: #393241;
+// subscribers
+$bg: #f9f9f9;
+$pcircle : #21e113;
+$theadcolor: yellowgreen;
+
+$green:#2fb400;
+$lgreen:#54d1276b;
+
+$red: #ff0000;
+$lred: #e289898f;
+
+$blue: blue;
+$lblue: rgba(135, 207, 235, 0.616);
+
+$yellow: rgb(255, 0, 242);
+$lyellow: rgba(255, 174, 0, 0.096);
+
+.blue:hover {
+    color: $blue;
+    background: $lblue;
+}
+.green:hover {
+    color: $green;
+    background: $lgreen;
+}
+.red:hover {
+    color: $red;
+    background: $lred;
+}
