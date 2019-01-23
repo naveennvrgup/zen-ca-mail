@@ -3,15 +3,15 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 
-from server.settings import emailFrom, send_rate, domain
-from apanel.models import *
+from subscribe.models import *
+from decouple import config
 
 def verfication_mail(id):
     sub = Subcriber.objects.get(pk=int(id))
 
     # create email
     message = MIMEMultipart()
-    message['From'] = emailFrom
+    message['From'] = config('from')
     message['To'] = sub.email
     message['Subject'] = 'ca client verification otp'
 

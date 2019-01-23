@@ -30,7 +30,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
 
-    'subscribe'
+    'subscribe',
+    'draft',
+    'outbox',
+    'sent'
 ]
 
 MIDDLEWARE = [

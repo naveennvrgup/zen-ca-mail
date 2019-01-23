@@ -1,17 +1,16 @@
-from .models import *
-
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
+from .models import *
 
 import json
-from engine.sub_verification import *
+from aws_engine.send_otp import *
 
 
 class SubscribeViewset(ModelViewSet):
-    queryset = Subcriber.objects.all()
-    serializer_class = SubcriberSerializer
+    queryset = Subscriber.objects.all()
+    serializer_class = SubscriberSerializer
 
     def create(self,req):
         data = json.loads(req.body)
