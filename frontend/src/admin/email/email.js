@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
+import axios, { burl } from '../../axios'
 
 export default class email extends Component {
     state = {
@@ -10,14 +10,26 @@ export default class email extends Component {
         axios.get('api/draft/')
             .then(d => {
                 d = d.data
-                this.setState({ drafts: d.filter(ele=>ele.status===0) })
+                console.log(d)
+                this.setState({ drafts: d.filter(ele => ele.status === 0) })
             })
             .catch(e => console.error(e))
     }
 
     newMailHandler = (e) => {
         e.preventDefault()
-        this.props.history.push('/admin/email/0/')
+        fetch(burl + 'api/draft/',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify()
+        }).then(d => d.json())
+            .then(d => {
+                console.log(d)
+                this.props.history.push('/admin/email/'+d.id)
+            })
+            .catch(e => console.error(e))
     }
 
     deleteDraftHandler = (e, draftId) => {
@@ -61,7 +73,7 @@ export default class email extends Component {
 
     send2EditHandler = (e, id) => {
         e.preventDefault()
-        this.props.history.push(`/admin/newMail/${id}/`)
+        this.props.history.push(`/admin/email/${id}/`)
     }
 
     render() {

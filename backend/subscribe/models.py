@@ -33,6 +33,12 @@ class GroupSerializer(ModelSerializer):
         model = Group
         fields = '__all__'
 
+from django.dispatch import receiver
+# save all new subscribers in group all
+@receiver(signals.post_save, sender=Subscriber)
+def pre_save_outbox(sender, instance, **kwargs):
+    Group.objects.get(name='all').subs.add(instance)
+
 # create group = all is not exists
 try:
     all = Group.objects.get(name='all')

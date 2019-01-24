@@ -28,7 +28,7 @@ export default class NewMail extends Component {
     componentDidMount = () => {
         this.subject = document.querySelector('#subject');
         this.files = document.querySelector('.files');
-        this.draftId = this.props.match.params.draftId
+        this.draftId = this.props.match.params.id
         localStorage.setItem('currDraft', this.draftId)
 
         axios.get('api/draft/' + this.draftId + '/')

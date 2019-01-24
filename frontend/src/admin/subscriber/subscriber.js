@@ -3,73 +3,77 @@ import axios from '../../axios'
 
 export default class subscriber extends Component {
     state = {
-        subs: [],
+        groups: [],
 
     }
 
     componentDidMount = () => {
-        axios.get('api/subscriber/')
+        axios.get('api/group/')
             .then(d => {
                 d = d.data
-                this.setState({ subs: d })
+                this.setState({ groups: d })
             })
             .catch(e => console.error(e))
     }
 
-    flagSubHandler = (e) => {
+    delete = (e, id) => {
         e.preventDefault()
-        // debugger
-        let id = e.target.dataset.id
-        
-        axios.post('api/flagSub/',{id})
-            .then(d=>{
-                let subs = this.state.subs.map(ele=>{
-                    if(ele.id===d.data.id){
-                        ele.flag=d.data.flag
-                    }
-                    return ele
-                })
-                
-                this.setState({
-                    ...this.state,
-                    subs
-                })
+        axios.delete(`api/group/${id}`)
+            .then(d => {
+                d = d.data
+                this.setState({ groups: this.state.groups.filter(ele => ele.id !== id) })
             })
+            .catch(e => console.error(e))
     }
 
-    createSub = (p, i) => (
-        <div className={'d-flex sub align-items-center ' + (p.flag ? 'inactive-sub' : 'active-sub')} key={i}>
-            <div className='face'><i className="fa fa-circle"></i></div>
-            <div className='name'>{p.name}</div>
-            <div className='mobile'>{p.mobile}</div>
-            <div className='email'>{p.email}</div>
-            <div className='cross align-self-stretch'>
-                <button onClick={this.flagSubHandler} data-id={p.id}>
-                    {p.flag ?
-                        <i className="fas fa-check" data-id={p.id}></i> :
-                        <i className="fas fa-times" data-id={p.id}></i>}
-                </button>
-            </div>
-        </div>
-    )
-
     render() {
-        let subs = this.state.subs.map((sub, i) => this.createSub(sub, i))
+        let groups = this.state.groups.map((group, i) =>
+            <div className={'d-flex tab align-items-center '} key={i}>
+                <div className='sno px-2 font-weight-bold'>{i + 1}</div>
+                <div className='name px-2 flex-grow-1'>{group.name}</div>
+                <div className='view px-2'>
+                    <button
+                        onClick={() => this.props.history.push(`/admin/group/${group.id}/`)}
+                        className="btn nbtn blue">
+                        <i className="fa fa-glasses"></i>
+                    </button>
+                </div>
+                <div className='delete px-2'>
+                    <button
+                        onClick={(e) => this.delete(e, group.id)}
+                        className="btn nbtn red">
+                        <i className="fa fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        )
 
         return (
             <div className='subscribers p-5'>
                 <div className="d-flex">
-                <h1 className=''>Subscribers</h1>
+                    <h1 className=''>Subscribers</h1>
                 </div>
                 <div className="d-flex text-muted">
-                    <div className='p-3'><span className="font-weight-bold">Active:</span> {this.state.subs.filter(ele=>!ele.flag).length}</div>
-                    <div className='p-3'><span className="font-weight-bold">Unactive:</span> {this.state.subs.filter(ele=>ele.flag).length}</div>
-                    <div className='p-3'><span className="font-weight-bold">Total:</span> {this.state.subs.length}</div>
+                    <div className='p-3'><span className="font-weight-bold">Total:</span> {this.state.groups.length}</div>
                 </div>
                 <div className="subs mt-5">
-                    {subs}
+                    {groups}
                 </div>
             </div >
         )
     }
 }
+
+{/* <div className={'d-flex sub align-items-center ' + (p.flag ? 'inactive-sub' : 'active-sub')} key={i}>
+    <div className='face'><i className="fa fa-circle"></i></div>
+    <div className='name'>{p.name}</div>
+    <div className='mobile'>{p.mobile}</div>
+    <div className='email'>{p.email}</div>
+    <div className='cross align-self-stretch'>
+        <button onClick={this.flagSubHandler} data-id={p.id}>
+            {p.flag ?
+                <i className="fas fa-check" data-id={p.id}></i> :
+                <i className="fas fa-times" data-id={p.id}></i>}
+        </button>
+    </div>
+</div> */}

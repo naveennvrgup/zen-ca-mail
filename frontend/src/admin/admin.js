@@ -18,7 +18,7 @@ export default class admin extends Component {
             <div className='admin'>
                 <Sidebar />
                 <Switch>
-                    <Route path='/admin/subscriber/' component={Subscriber} />
+                    <Route path='/admin/subscribers/' component={Subscriber} />
                     <Route path='/admin/email/:id/' component={New_mail} />
                     <Route path='/admin/email/' component={Email} />
                     {/* <Route path='/admin/news/:id/' component={New_news} /> */}

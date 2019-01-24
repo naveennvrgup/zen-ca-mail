@@ -1,0 +1,23 @@
+.tab {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px 15px -5px black;
+    border-radius: 10px;
+}
+
+.nbtn {
+    padding: 3px 5px;
+    box-shadow: none;
+    border-radius: 45%;
+    border: none;
+    display: flex;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    outline: none;
+    box-shadow: none;
+}
