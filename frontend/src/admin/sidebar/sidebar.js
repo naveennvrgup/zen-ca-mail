@@ -39,7 +39,7 @@ class sidebar extends Component {
                 </div>
                 <div className='link w-100'>
                     <i className="fa fa-users"></i>
-                    <Link to='/admin/subscribers'>Subscribers</Link>
+                    <Link to='/admin/group'>Subscribers</Link>
                 </div>
                 <div className='link w-100'>
                     <i className="far fa-newspaper"></i>

@@ -8,7 +8,7 @@
 
 .nbtn {
     padding: 3px 5px;
-    box-shadow: none;
+    box-shadow: none !important;
     border-radius: 45%;
     border: none;
     display: flex;
@@ -20,4 +20,14 @@
     align-content: center;
     outline: none;
     box-shadow: none;
+}
+
+.tab_input{
+    border: none;
+    width: 100%;
+    outline: none;
+    // border-bottom: 2px solid rgb(224, 224, 224);
+    // &:focus{
+    //     border-bottom: 2px solid blue;
+    // }
 }

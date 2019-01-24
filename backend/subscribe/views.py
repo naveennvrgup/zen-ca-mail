@@ -38,6 +38,28 @@ class SubscribeViewset(ModelViewSet):
         except:
             return save_subscriber(data)
 
+
 class GroupViewset(ModelViewSet):
     queryset = Group.objects.all().filter(flag=False)
     serializer_class = GroupSerializer
+
+    def list(self, req):
+        groups = Group.objects.all()
+        res = []
+        for x in groups:
+            res.append({
+                'id': x.id,
+                'name': x.name,
+                'subs': x.subs.all().count()
+            })
+        return Response(res)
+
+    def create(self, req):
+        data = json.loads(req.body)
+        data = Group.objects.create(name=data['name'])
+        
+        return Response({
+            'id': data.id,
+            'name': data.name,
+            'subs': len(data.subs.all())
+        })
