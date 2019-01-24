@@ -9,6 +9,10 @@ export default class subscriber extends Component {
     }
 
     componentDidMount = () => {
+        this.get_groups()
+    }
+
+    get_groups = () => {
         axios.get('api/group/')
             .then(d => {
                 d = d.data
@@ -16,6 +20,7 @@ export default class subscriber extends Component {
 
                 console.log(d)
                 this.setState({
+                    ...this.state,
                     groups: d,
                     selected_group_id: group_all.id,
                     selected_group_name: group_all.name
@@ -105,14 +110,15 @@ export default class subscriber extends Component {
                     <div className="col-md-9">
                         {
                             this.state.selected_group_id ?
-                                <Group selected_group_id={this.state.selected_group_id} /> :
+                                <Group 
+                                    update_groups={this.get_groups}
+                                    selected_group_id={this.state.selected_group_id} /> :
                                 ''
                         }
                     </div>
                     <div className="col-md-3">
-                        <div className='text-muted p-3'>
-                            <span className="font-weight-bold">Total groups:</span>
-                            <span>{this.state.groups.length}</span>
+                        <div className='text-muted p-3 font-weight-bold'>
+                            Total groups: {this.state.groups.length}
                         </div>
                         {new_group}
                         {groups}

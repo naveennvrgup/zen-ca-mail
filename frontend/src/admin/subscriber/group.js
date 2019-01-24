@@ -11,11 +11,8 @@ export default class group extends Component {
         new_sub_phone: '',
     }
 
-    componentWillReceiveProps = () =>{
-        console.log(this.props.selected_group_id)
-    }
-
     componentDidMount = () => {
+        console.log(this.props.selected_group_id)
         this.get_subs()
     }
 
@@ -33,32 +30,55 @@ export default class group extends Component {
     new_sub = (e) => {
         e.preventDefault()
         axios.post('api/add_sub_to_group/', {
-            group_id: this.props.selected_group_id,
+            groupId: this.props.selected_group_id,
             name: this.state.new_sub_name,
             email: this.state.new_sub_email,
             mobile: this.state.new_sub_phone
         }).then(d => {
-            console.log(d.data)
+            this.setState({
+                ...this.state,
+                group: {
+                    subs: [
+                        ...this.state.group.subs,
+                        d.data
+                    ]
+                }
+            })
+            // update the groups badges
+            this.props.update_groups()
         })
     }
 
 
     render() {
-        let subs = this.state.group.subs
+        // when user selects a different group this method will fire to show the subs
+        if (this.state.group.id !== this.props.selected_group_id) {
+            this.get_subs()
+        }
 
+        let subs = this.state.group.subs
         let subs_list = subs.map((sub, i) =>
             <div className={'d-flex tab align-items-center '} key={i + 1}>
                 <div className='sub_sno px-2 font-weight-bold'>{i + 1}</div>
-                <div className='sub_name px-2 flex-grow-1'
-                    onClick={(e) => this.show_sub(e, sub)}
-                >{sub.name}</div>
+                <div className='sub_phone px-2'>
+                    <i className={`fa fa-circle ${sub.verified ? 'text-success' : 'text-danger'}`}></i>
+                </div>
+                <div className='sub_email px-2'>{sub.email}</div>
+                <div className='sub_name px-2'>{sub.name}</div>
+                <div className='sub_phone px-2'>{sub.mobile}</div>
+                <div className='sub_phone px-2 flex-grow-1'>{sub.mobile}</div>
+                <button
+
+                    className={`btn nbtn ${sub.verified ? 'red' : 'green'}`}>
+                    <i className={`fa fa-${sub.verified ? 'times' : 'check'}`}></i>
+                </button>
             </div>
         )
 
         let new_sub =
             <form className={'d-flex tab align-items-center '} key={1}>
                 {/* <div className='sno px-2 font-weight-bold'>{1}</div> */}
-                <div className='flex-grow-1 d-flex align-items-center justify-content-between pl-2'>
+                <div className='flex-grow-1 d-flex align-items-center justify-content-between px-2'>
                     {/* email */}
                     <input
                         onChange={e => this.setState({

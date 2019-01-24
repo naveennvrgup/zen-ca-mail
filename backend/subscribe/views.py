@@ -69,6 +69,9 @@ class GroupViewset(ModelViewSet):
 @api_view(['POST'])
 def add_sub_to_group_view(req):
     data = json.loads(req.body)
+    data['name'] = data['name'] if data['name'] else 'anonymous'
+    data['mobile'] = data['mobile'] if data['mobile'] else '1234512345'
+    data['verified'] = True
     sub = SubscriberSerializer(data=data)
 
     if sub.is_valid():
