@@ -18,7 +18,7 @@ class Subscriber(Model):
 
 
 class Group(Model):
-    name = CharField(max_length=200)
+    name = CharField(max_length=200, unique=True)
     subs = ManyToManyField(Subscriber, related_name='groups')
     flag = BooleanField(default=False)
     created_on = DateTimeField(auto_now_add=True)

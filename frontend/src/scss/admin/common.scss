@@ -1,6 +1,6 @@
 .tab {
     background: white;
-    padding: 15px;
+    padding: 8px;
     margin-bottom: 10px;
     box-shadow: 3px 3px 15px -5px black;
     border-radius: 10px;
@@ -22,12 +22,3 @@
     box-shadow: none;
 }
 
-.tab_input{
-    border: none;
-    width: 100%;
-    outline: none;
-    // border-bottom: 2px solid rgb(224, 224, 224);
-    // &:focus{
-    //     border-bottom: 2px solid blue;
-    // }
-}

@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
 from .models import *
+from django.forms import model_to_dict
 
 import json
 from decouple import config
@@ -57,9 +58,24 @@ class GroupViewset(ModelViewSet):
     def create(self, req):
         data = json.loads(req.body)
         data = Group.objects.create(name=data['name'])
-        
+
         return Response({
             'id': data.id,
             'name': data.name,
             'subs': len(data.subs.all())
+            # 'subs': [x.id for x in data.subs.all()]
         })
+
+@api_view(['POST'])
+def add_sub_to_group_view(req):
+    data = json.loads(req.body)
+    sub = SubscriberSerializer(data=data)
+
+    if sub.is_valid():
+        sub.save()
+        group = Group.objects.get(pk=data['groupId'])
+        group.subs.add(sub.data['id'])
+        return Response(sub.data)
+    else:
+        return Response(sub.errors)
+        

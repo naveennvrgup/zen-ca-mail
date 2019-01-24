@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from '../../axios'
+import Group from './group'
 
 export default class subscriber extends Component {
     state = {
@@ -11,8 +12,14 @@ export default class subscriber extends Component {
         axios.get('api/group/')
             .then(d => {
                 d = d.data
+                let group_all = d.filter(ele => ele.name === 'all')[0]
+
                 console.log(d)
-                this.setState({ groups: d })
+                this.setState({
+                    groups: d,
+                    selected_group_id: group_all.id,
+                    selected_group_name: group_all.name
+                })
             })
             .catch(e => console.error(e))
     }
@@ -46,35 +53,28 @@ export default class subscriber extends Component {
             .catch(e => console.error(e))
     }
 
+    show_group = (e, group) => {
+        this.setState({
+            ...this.state,
+            selected_group_id: group.id,
+            selected_group_name: group.name
+        })
+    }
+
     render() {
         let groups = this.state.groups.map((group, i) =>
             <div className={'d-flex tab align-items-center '} key={i + 2}>
-                <div className='sno px-2 font-weight-bold'>{i + 2}</div>
-                <div className='name px-2 flex-grow-1'>
-                    <span>{group.name}</span>
-                    <span className="ml-2 badge badge-pill badge-secondary ">{group.subs}</span>
-                </div>
-                <div className='view px-2'>
-                    <button
-                        onClick={() => this.props.history.push(`/admin/group/${group.id}/`)}
-                        className="btn nbtn blue">
-                        <i className="fa fa-glasses"></i>
-                    </button>
-                </div>
-                <div className='delete px-2'>
-                    <button
-                        disabled={group.name === 'all' ? true : false}
-                        onClick={(e) => this.delete(e, group.id)}
-                        className="btn nbtn red">
-                        <i className="fa fa-trash"></i>
-                    </button>
-                </div>
+                {/* <div className='sno px-2 font-weight-bold'>{i + 2}</div> */}
+                <div className='group-name px-2 flex-grow-1'
+                    onClick={(e) => this.show_group(e, group)}
+                >{group.name}</div>
+                <div className="ml-2 badge badge-pill badge-secondary ">{group.subs}</div>
             </div>
         )
 
         let new_group =
             <form className={'d-flex tab align-items-center '} key={1}>
-                <div className='sno px-2 font-weight-bold'>{1}</div>
+                {/* <div className='sno px-2 font-weight-bold'>{1}</div> */}
                 <div className='flex-grow-1 pl-2'>
                     <input
                         onChange={e => this.setState({
@@ -84,10 +84,10 @@ export default class subscriber extends Component {
                         value={this.state.new_group_name}
                         type="text"
                         className="new_group_name tab_input"
-                        placeholder="Name"
+                        placeholder="create group"
                         autoFocus />
                 </div>
-                <div className='delete px-2'>
+                <div className='create-group create px-1'>
                     <button
                         onClick={this.new_group}
                         className="btn nbtn green">
@@ -98,15 +98,25 @@ export default class subscriber extends Component {
 
         return (
             <div className='subscribers p-5'>
-                <div className="d-flex">
-                    <h1 className=''>Subscriber Groups</h1>
+                <div className="d-flex mb-3">
+                    <h1 className=''>Showing group '{this.state.selected_group_name}'</h1>
                 </div>
-                <div className="d-flex text-muted">
-                    <div className='p-3'><span className="font-weight-bold">Total:</span> {this.state.groups.length}</div>
-                </div>
-                <div className="subs ">
-                    {new_group}
-                    {groups}
+                <div className="subs row">
+                    <div className="col-md-9">
+                        {
+                            this.state.selected_group_id ?
+                                <Group selected_group_id={this.state.selected_group_id} /> :
+                                ''
+                        }
+                    </div>
+                    <div className="col-md-3">
+                        <div className='text-muted p-3'>
+                            <span className="font-weight-bold">Total groups:</span>
+                            <span>{this.state.groups.length}</span>
+                        </div>
+                        {new_group}
+                        {groups}
+                    </div>
                 </div>
             </div >
         )

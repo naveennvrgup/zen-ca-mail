@@ -20,6 +20,7 @@ router.register('group', GroupViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/add_sub_to_group/', add_sub_to_group_view),
     path('api/', include(router.urls))
 ]
 
