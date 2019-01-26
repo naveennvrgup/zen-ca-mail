@@ -147,7 +147,9 @@ export default class group extends Component {
         return (
             <div>
                 <div className='text-muted'>
-                    <Toolbar {...this.props} get_subs={this.get_subs} />
+                    <Toolbar
+                        {...this.props}
+                        get_subs={this.get_subs} />
                     {pagination}
                     {subs_list}
                     {this.state.results.length ? pagination : null}

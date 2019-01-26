@@ -20,7 +20,7 @@ export default class toolbar extends Component {
             mobile: this.new_sub_mobile.value
         }).then(d => {
             // update sub list
-            this.get_subs()
+            this.props.get_subs()
             // update the groups badges
             this.props.update_groups()
         })

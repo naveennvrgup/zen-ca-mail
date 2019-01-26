@@ -6,6 +6,8 @@ export default class subscriber extends Component {
     state = {
         groups: [],
         new_group_name: '',
+        selected_group_id: null,
+        selected_group_name: 'all'
     }
 
     componentDidMount = () => {
@@ -16,7 +18,8 @@ export default class subscriber extends Component {
         axios.get('api/group/')
             .then(d => {
                 d = d.data
-                let group_all = d.filter(ele => ele.name === 'all')[0]
+                let group_all = d.filter(ele =>
+                    ele.name === this.state.selected_group_name)[0]
 
                 console.log(d)
                 this.setState({
@@ -68,7 +71,11 @@ export default class subscriber extends Component {
 
     render() {
         let groups = this.state.groups.map((group, i) =>
-            <div className={'d-flex tab align-items-center '} key={i + 2}>
+            <div className={`d-flex tab align-items-center 
+                ${group.id === this.state.selected_group_id ?
+                    'active-group' : ''}
+            `
+            } key={i + 2}>
                 {/* <div className='sno px-2 font-weight-bold'>{i + 2}</div> */}
                 <div className='group-name px-2 flex-grow-1'
                     onClick={(e) => this.show_group(e, group)}
@@ -110,7 +117,7 @@ export default class subscriber extends Component {
                     <div className="col-md-9">
                         {
                             this.state.selected_group_id ?
-                                <Group 
+                                <Group
                                     update_groups={this.get_groups}
                                     selected_group_id={this.state.selected_group_id} /> :
                                 ''
