@@ -49,10 +49,10 @@ def pre_save_outbox(sender, instance, **kwargs):
 
 
 # create group all if not already exists
-try:
-    all = Group.objects.get(name='all')
-    if all:
-        print('group all exists')
-except:
-    all = Group.objects.create(name='all')
-    print('created group all')
+# try:
+#     all = Group.objects.get(name='all')
+#     if all:
+#         print('group all exists')
+# except:
+#     all = Group.objects.create(name='all')
+#     print('created group all')
