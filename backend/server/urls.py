@@ -13,15 +13,16 @@ from sent.views import *
 
 router = DefaultRouter()
 router.register('subscribe', SubscribeViewset)
+router.register('group', GroupViewset)
 router.register('draft', DraftViewset)
 router.register('attachment', AttachmentViewset)
-router.register('group', GroupViewset)
-# router.register('test',list_subs_of_group)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/add_sub_to_group/', add_sub_to_group_view),
+    path('api/sub_as_csv/', sub_as_csv_view),
+    # router
     path('api/', include(router.urls))
 ]
 

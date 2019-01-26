@@ -20,13 +20,14 @@ export default class group extends Component {
     }
 
     get_subs = () => {
-        axios.get(`api/group/${this.props.selected_group_id}/?page=${this.state.page}`)
+        axios.get(`api/group/${this.props.selected_group_id}/`)
             .then(d => {
                 console.log(d.data)
                 this.setState({
                     ...this.state,
                     ...d.data,
-                    group_id: this.props.selected_group_id
+                    page: 1,
+                    group_id: this.props.selected_group_id,
                 })
             })
     }
@@ -52,15 +53,16 @@ export default class group extends Component {
 
     change_page = (e, id) => {
         e.preventDefault()
-        let url, change_page_no
+        let url
+        let pgno = this.state.page
 
 
-        if (id && this.state.next) {
+        if (id) {
             url = this.state.next
-            change_page_no = 1
-        } else if (!id && this.state.previous) {
+            pgno += 1
+        } else if (!id) {
             url = this.state.previous
-            change_page_no = -1
+            pgno -= 1
         } else {
             return
         }
@@ -71,7 +73,7 @@ export default class group extends Component {
                 this.setState({
                     ...this.state,
                     ...d.data,
-                    page: this.state.page + change_page_no
+                    page: pgno
                 })// end of setstate
             })
     }
@@ -106,9 +108,9 @@ export default class group extends Component {
             <div className="d-flex justify-content-between align-items-center">
                 <div className="font-weight-bold p-3">Subscribers: {this.state.count}</div>
                 <div className="sub-pagination pagination">
-                    {/* <span className='mx-1'>
+                    <span className='mx-1'>
                         Page {this.state.page}
-                    </span> */}
+                    </span>
                     <button
                         disabled={this.state.previous ? false : true}
                         onClick={e => this.change_page(e, 0)}

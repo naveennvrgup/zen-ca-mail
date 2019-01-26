@@ -34,6 +34,8 @@ export default class FileUpload extends Component {
             let res = e.target.response
             console.log(res);
             
+            this.props.get_subs()
+            this.props.update_groups()
             this.setState({
                 ...this.state,
                 onprogress: false
@@ -72,7 +74,7 @@ export default class FileUpload extends Component {
             <div className=''>
                 <div className="new_sub_csv d-flex justify-content-between align-items-center">
                     <div className='text-left'>
-                        Upload a .csv with fields email(required), name, mobile
+                        Upload a .csv with fields email, name, mobile
                     </div>
                     <button
                         onClick={this.selectFilesHandler}

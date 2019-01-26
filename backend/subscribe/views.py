@@ -1,12 +1,15 @@
+import csv
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
 
+from decouple import config
 from django.shortcuts import get_object_or_404
 import json
 from .models import *
-from decouple import config
+from django.utils import timezone
+
 
 class SubscribeViewset(ModelViewSet):
     queryset = Subscriber.objects.all().filter(flag=False)
@@ -14,11 +17,10 @@ class SubscribeViewset(ModelViewSet):
 
     def delete(self, req, pk=None):
         data = json.loads(req.body)
-        sub = get_object_or_404(Subscriber,pk=pk)
-        sub.flag=True
+        sub = get_object_or_404(Subscriber, pk=pk)
+        sub.flag = True
         sub.save()
         return Response({})
-        
 
     def create(self, req):
         data = json.loads(req.body)
@@ -54,8 +56,8 @@ class GroupViewset(ModelViewSet):
         return Response(res)
 
     def retrieve(self, request, pk=None):
-        group = get_object_or_404(Group,pk=pk)
-        subs = SubscriberSerializer(group.subs.all(),many=True)
+        group = get_object_or_404(Group, pk=pk)
+        subs = SubscriberSerializer(group.subs.all(), many=True)
         page = self.paginate_queryset(subs.data)
         return self.get_paginated_response(page)
 
@@ -69,6 +71,7 @@ class GroupViewset(ModelViewSet):
             'subs': len(data.subs.all())
             # 'subs': [x.id for x in data.subs.all()]
         })
+
 
 @api_view(['POST'])
 def add_sub_to_group_view(req):
@@ -85,3 +88,39 @@ def add_sub_to_group_view(req):
         return Response(sub.data)
     else:
         return Response(sub.errors)
+
+
+@api_view(['POST'])
+def sub_as_csv_view(req):
+    # parse the file
+    group_id = req.POST['group_id']
+    file = req.FILES['file']
+    decoded_file = file.read().decode('utf-8').splitlines()
+    reader = csv.DictReader(decoded_file)
+    count = Subscriber.objects.count()
+    ttime = timezone.now()
+
+    # if all fields are present
+    try:
+        subs = [Subscriber(
+            email=x['email'],
+            name=x['name'],
+            mobile=x['mobile'],
+            verified=True
+        ) for x in reader]
+        subs = Subscriber.objects.bulk_create(subs)
+        subs = Subscriber.objects.filter(created_on__gt=ttime)
+        Group.objects.get(pk=group_id).subs.add(*subs)
+        print(subs)
+        return Response()
+    except:
+        return Response({
+            'msg': 'all fields name should in lowercase with email compulsary'
+        })
+
+
+
+    print(req.POST)
+    print(req.FILES)
+
+
