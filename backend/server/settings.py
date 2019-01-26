@@ -13,7 +13,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 # Application definition
 
@@ -29,11 +29,12 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+    'import_export',
 
     'subscribe',
     'draft',
     'outbox',
-    'sent'
+    'sent',
 ]
 
 MIDDLEWARE = [

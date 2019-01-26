@@ -1,3 +1,7 @@
+from server.settings import BASE_DIR
+from django.http import HttpResponse
+import os
+from tempfile import NamedTemporaryFile
 import csv
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
@@ -119,25 +123,22 @@ def sub_as_csv_view(req):
             'msg': 'all fields name should in lowercase with email compulsary'
         })
 
+
 @api_view(['GET'])
-def download_group_csv_view(req,gid):
+def download_group_csv_view(req, gid):
     group = Group.objects.get(pk=gid)
     subs = group.subs.all()
-    
+
     # convet to csv
-    subs = [[
-        x.id,
-        x.email,
-        x.name,
-        x.mobile,
-        x.created_on
-    ] for x in subs]
+    fs = ','.join(['id','email','name','mobile','created_on']) + '\n'
+    fs += '\n'.join([','.join([
+        str(x.id),
+        str(x.email),
+        str(x.name),
+        str(x.mobile),
+        str(x.created_on)
+    ]) for x in subs])
 
-    response = Response(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="{}_{}.csv"'.format(group.name,timezone.now().date())
-
-    writer = csv.writer(response)
-    for x in subs:
-        writer.writerow(x)
-    import pdb; pdb.set_trace()
+    response = HttpResponse(fs, content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=group-{}-{}.csv'.format(group.name,timezone.now().date())
     return response
