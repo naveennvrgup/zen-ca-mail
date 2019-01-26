@@ -20,8 +20,8 @@ $lred: #e289898f;
 
 $lblue: rgba(135, 207, 235, 0.616);
 
-$yellow: rgb(255, 0, 242);
-$lyellow: rgba(255, 174, 0, 0.096);
+$pink: rgb(247, 0, 255);
+$lpink: rgba(255, 0, 255, 0.192);
 
 .blue:hover {
     color: $blue;
@@ -34,6 +34,11 @@ $lyellow: rgba(255, 174, 0, 0.096);
 .red:hover {
     color: $red;
     background: $lred;
+}
+
+.yellow:hover {
+    color: $pink;
+    background: $lpink;
 }
 
 //metrics
