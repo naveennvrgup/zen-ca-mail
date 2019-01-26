@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from '../../axios'
+import UploadCSV from './file_upload'
 
 export default class toolbar extends Component {
     state = {}
@@ -24,6 +25,9 @@ export default class toolbar extends Component {
             // update the groups badges
             this.props.update_groups()
         })
+    }
+
+    read_file = (file) => {
     }
 
     render() {
@@ -57,33 +61,18 @@ export default class toolbar extends Component {
                 </div>
             </form>
 
-        let new_sub_csv =
-            <div className='px-1 py-2'>
-                <div className="new_sub_csv d-flex justify-content-between align-items-center">
-                    <div className='d-flex justify-content-between align-items-center'>
-                        <button
-                            onClick={this.upload_csv_handler}
-                            className="btn mx-1 btn-sm">Upload CSV</button>
-                        <span className='mx-1 badge badge-pill badge-dark py-1'>Total: {this.state.upload_subs}</span>
-                        <span className={`mx-1 badge badge-pill badge-danger ${this.state.upload_email ? '' : 'd-none'}`}>email</span>
-                        <span className={`mx-1 badge badge-pill badge-danger ${this.state.upload_name ? '' : 'd-none'}`}>name</span>
-                        <span className={`mx-1 badge badge-pill badge-danger ${this.state.upload_mobile ? '' : 'd-none'}`}>mobile</span>
-                    </div>
-                    <div>
-                        <button className="btn nbtn green">
-                            <i className="fa fa-check"></i>
-                        </button>
-                    </div>
-                </div>
-                <div className='text-right'>
-                    Upload a .csv with fields email(required), name, mobile
-                </div>
-            </div>
-
         return (
-            <div>
-                {new_sub_input}
-                {new_sub_csv}
+            <div className='toolbar tab p-3'>
+                <div>
+                    <div className="font-weight-bold">New subscriber:</div>
+                    {new_sub_input}
+                </div>
+                <div>
+                    <div className="font-weight-bold mt-2">Upload subscribers as CSV:</div>
+                    <UploadCSV
+                        sgid={this.props.selected_group_id}
+                    />
+                </div>
             </div>
         )
     }

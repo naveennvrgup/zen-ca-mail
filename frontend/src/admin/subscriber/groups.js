@@ -85,7 +85,7 @@ export default class subscriber extends Component {
         )
 
         let new_group =
-            <form className={'d-flex tab align-items-center '} key={1}>
+            <form className={'d-flex tab align-items-center new-group'} key={1}>
                 {/* <div className='sno px-2 font-weight-bold'>{1}</div> */}
                 <div className='flex-grow-1 pl-2'>
                     <input
@@ -109,10 +109,7 @@ export default class subscriber extends Component {
             </form>
 
         return (
-            <div className='subscribers p-5'>
-                <div className="d-flex mb-3">
-                    <h1 className=''>Showing group '{this.state.selected_group_name}'</h1>
-                </div>
+            <div className='subscribers px-5 pb-5 pt-3'>
                 <div className="subs row">
                     <div className="col-md-9">
                         {
@@ -123,12 +120,14 @@ export default class subscriber extends Component {
                                 ''
                         }
                     </div>
-                    <div className="col-md-3">
-                        <div className='text-muted p-3 font-weight-bold'>
-                            Total groups: {this.state.groups.length}
+                    <div className="col-md-3 groups-container">
+                        <div className='groups-list'>
+                            <div className='text-muted p-3 font-weight-bold'>
+                                Total groups: {this.state.groups.length}
+                            </div>
+                            {new_group}
+                            {groups}
                         </div>
-                        {new_group}
-                        {groups}
                     </div>
                 </div>
             </div >

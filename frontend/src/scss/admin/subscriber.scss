@@ -9,7 +9,25 @@
 
     .active-group{
         font-weight: bold;
+        background: yellowgreen;
     }
+
+    .new-group{
+        background: $activelink;
+        input{
+            color: white;
+            background: inherit;
+        }
+    }
+
+    .groups-container{
+        position: relative;
+    }
+
+    .groups-list{
+        position: fixed;
+    }
+
 
     .tab_input{
         border: none;

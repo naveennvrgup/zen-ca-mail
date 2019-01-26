@@ -76,26 +76,6 @@ export default class group extends Component {
             })
     }
 
-    upload_csv_handler = (e) => {
-        e.preventDefault()
-        let input = document.createElement('input')
-        input.type = 'file'
-        input.accept = '.csv'
-        input.click()
-
-        input.addEventListener('change', e => {
-            let file = input.files[0]
-            let name = file.name.split('.')[0]
-            let extension = file.name.split('.')[1]
-            if (extension === 'csv') {
-                this.read_file(file)
-            }
-        })
-    }
-
-    read_file = (file) => {
-    }
-
     render() {
         // when user switch groups this will fire
         if (this.state.group_id !== this.props.selected_group_id) {
