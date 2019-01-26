@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
+import axios, { burl } from '../../axios'
 import UploadCSV from './file_upload'
 
 export default class toolbar extends Component {
@@ -51,11 +51,9 @@ export default class toolbar extends Component {
     }
 
     download_group_csv_handler = () => {
-        axios.post('api/download_group_as_csv/',{
-            group_id: this.props.selected_group_id
-        }).then(d=>{
-            console.log(d.data)
-        })
+        let anchor = document.createElement('a')
+        anchor.href=burl + `api/download_group_as_csv/${this.props.selected_group_id}/`
+        anchor.click()
     }
     
 
