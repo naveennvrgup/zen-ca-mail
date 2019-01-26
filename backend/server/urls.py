@@ -16,6 +16,7 @@ router.register('subscribe', SubscribeViewset)
 router.register('draft', DraftViewset)
 router.register('attachment', AttachmentViewset)
 router.register('group', GroupViewset)
+# router.register('test',list_subs_of_group)
 
 
 urlpatterns = [

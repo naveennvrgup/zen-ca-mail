@@ -2,25 +2,23 @@ from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
-from .models import *
-from django.forms import model_to_dict
 
+from django.shortcuts import get_object_or_404
 import json
+from .models import *
 from decouple import config
 
-
-def save_subscriber(data):
-    data['verified'] = True
-    serializer = SubscriberSerializer(data=data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
-    return Response(serializer.errors)
-
-
 class SubscribeViewset(ModelViewSet):
-    queryset = Subscriber.objects.all()
+    queryset = Subscriber.objects.all().filter(flag=False)
     serializer_class = SubscriberSerializer
+
+    def delete(self, req, pk=None):
+        data = json.loads(req.body)
+        sub = get_object_or_404(Subscriber,pk=pk)
+        sub.flag=True
+        sub.save()
+        return Response({})
+        
 
     def create(self, req):
         data = json.loads(req.body)
@@ -55,6 +53,12 @@ class GroupViewset(ModelViewSet):
             })
         return Response(res)
 
+    def retrieve(self, request, pk=None):
+        group = get_object_or_404(Group,pk=pk)
+        subs = SubscriberSerializer(group.subs.all(),many=True)
+        page = self.paginate_queryset(subs.data)
+        return self.get_paginated_response(page)
+
     def create(self, req):
         data = json.loads(req.body)
         data = Group.objects.create(name=data['name'])
@@ -81,4 +85,3 @@ def add_sub_to_group_view(req):
         return Response(sub.data)
     else:
         return Response(sub.errors)
-        
