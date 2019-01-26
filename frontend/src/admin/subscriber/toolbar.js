@@ -50,6 +50,15 @@ export default class toolbar extends Component {
             })
     }
 
+    download_group_csv_handler = () => {
+        axios.post('api/download_group_as_csv/',{
+            group_id: this.props.selected_group_id
+        }).then(d=>{
+            console.log(d.data)
+        })
+    }
+    
+
     render() {
         let new_sub_input =
             <form autoComplete='false' className={'d-flex new_sub align-items-center px-1 py-2'} key={1}>

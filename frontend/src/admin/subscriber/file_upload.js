@@ -28,12 +28,12 @@ export default class FileUpload extends Component {
         console.log(this.props)
         data.append('group_id', this.props.selected_group_id)
         data.append('file', file);
-        
+
         // load event
         request.addEventListener('load', (e) => {
             let res = e.target.response
             console.log(res);
-            
+
             this.props.get_subs()
             this.props.update_groups()
             this.setState({
@@ -41,19 +41,19 @@ export default class FileUpload extends Component {
                 onprogress: false
             })
         });
-        
+
         // monitor progress of upload
         request.upload.addEventListener('progress', (e) => {
             var progress = (e.loaded / e.total) * 100
-            
+            console.log(progress)
             this.setState({
                 ...this.state,
                 progress
             })
         })
-        
+
         request.responseType = 'json';
-        request.open('post', burl+ 'api/sub_as_csv/');
+        request.open('post', burl + 'api/sub_as_csv/');
         request.send(data);
 
         this.setState({
@@ -61,7 +61,7 @@ export default class FileUpload extends Component {
             progress: true,
         })// end of setstate
     }
-    
+
     render() {
         // let error = <
 
@@ -77,6 +77,7 @@ export default class FileUpload extends Component {
                         Upload a .csv with fields email, name, mobile
                     </div>
                     <button
+                        disabled={this.state.onprogress ? true : false}
                         onClick={this.selectFilesHandler}
                         className="btn nbtn green">
                         {btn_text}

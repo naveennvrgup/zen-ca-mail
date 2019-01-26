@@ -111,16 +111,33 @@ def sub_as_csv_view(req):
         subs = Subscriber.objects.bulk_create(subs)
         subs = Subscriber.objects.filter(created_on__gt=ttime)
         Group.objects.get(pk=group_id).subs.add(*subs)
-        print(subs)
+        Group.objects.get(name='all').subs.add(*subs)
+        # print(subs)
         return Response()
     except:
         return Response({
             'msg': 'all fields name should in lowercase with email compulsary'
         })
 
+@api_view(['GET'])
+def download_group_csv_view(req,gid):
+    group = Group.objects.get(pk=gid)
+    subs = group.subs.all()
+    
+    # convet to csv
+    subs = [[
+        x.id,
+        x.email,
+        x.name,
+        x.mobile,
+        x.created_on
+    ] for x in subs]
 
+    response = Response(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="{}_{}.csv"'.format(group.name,timezone.now().date())
 
-    print(req.POST)
-    print(req.FILES)
-
-
+    writer = csv.writer(response)
+    for x in subs:
+        writer.writerow(x)
+    import pdb; pdb.set_trace()
+    return response
