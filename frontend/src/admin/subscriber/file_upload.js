@@ -25,9 +25,9 @@ export default class FileUpload extends Component {
 
         var data = new FormData();
         var request = new XMLHttpRequest();
-
+        console.log(this.props)
+        data.append('group_id', this.props.selected_group_id)
         data.append('file', file);
-        data.append('group_id', this.props.sgid)
         
         // load event
         request.addEventListener('load', (e) => {
@@ -69,7 +69,7 @@ export default class FileUpload extends Component {
 
 
         return (
-            <div className='px-1 py-2'>
+            <div className=''>
                 <div className="new_sub_csv d-flex justify-content-between align-items-center">
                     <div className='text-left'>
                         Upload a .csv with fields email(required), name, mobile

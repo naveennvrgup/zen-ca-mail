@@ -10,6 +10,8 @@ export default class toolbar extends Component {
         this.new_sub_name = this.new_sub.querySelector('.new_sub_name');
         this.new_sub_email = this.new_sub.querySelector('.new_sub_email');
         this.new_sub_mobile = this.new_sub.querySelector('.new_sub_mobile');
+
+        console.log(this.props)
     }
 
     add_sub_to_group_handler = (e) => {
@@ -27,7 +29,25 @@ export default class toolbar extends Component {
         })
     }
 
-    read_file = (file) => {
+    delete_group_handler = (e) => {
+        e.preventDefault()
+        if (this.props.selected_group_name === 'all') {
+            return
+        }
+
+        let group_2_delete = this.props.selected_group_id
+
+        this.props.set_groups_state({
+            selected_group_id: null,
+            selected_group_name: 'all'
+        })
+
+        axios.delete(`api/group/${group_2_delete}/`)
+            .then(d => {
+                console.log(d.data)
+                this.props.update_groups()
+                // this.props.get_subs()
+            })
     }
 
     render() {
@@ -63,15 +83,44 @@ export default class toolbar extends Component {
 
         return (
             <div className='toolbar tab p-3'>
+                {/* new sub via input */}
                 <div>
                     <div className="font-weight-bold">New subscriber:</div>
                     {new_sub_input}
                 </div>
+                {/* upload csv */}
                 <div>
                     <div className="font-weight-bold mt-2">Upload subscribers as CSV:</div>
-                    <UploadCSV
-                        sgid={this.props.selected_group_id}
-                    />
+                    <UploadCSV {...this.props} />
+                </div>
+                {/* download csv */}
+                <div>
+                    <div className="font-weight-bold mt-2">Download subscribers as CSV:</div>
+                    <div className="d-flex justify-content-between align-items-center">
+                        <div>
+                            Click here to download .csv of the subscribers of this group
+                        </div>
+                        <button
+                            onClick={this.download_group_csv_handler}
+                            className="btn nbtn blue">
+                            <i className="fa fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+                {/* delete current group */}
+                <div>
+                    <div className="font-weight-bold mt-2">Delete current group:</div>
+                    <div className="d-flex justify-content-between align-items-center">
+                        <div>
+                            This will only delete the group not the subscribers
+                        </div>
+                        <button
+                            disabled={this.props.selected_group_name === 'all' ? true : false}
+                            onClick={this.delete_group_handler}
+                            className="btn nbtn red">
+                            <i className="fa fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         )

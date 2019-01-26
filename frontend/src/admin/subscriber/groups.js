@@ -18,15 +18,15 @@ export default class subscriber extends Component {
         axios.get('api/group/')
             .then(d => {
                 d = d.data
-                let group_all = d.filter(ele =>
+                let selected_group = d.filter(ele =>
                     ele.name === this.state.selected_group_name)[0]
 
-                console.log(d)
+                console.log(d, this.state, selected_group)
                 this.setState({
                     ...this.state,
                     groups: d,
-                    selected_group_id: group_all.id,
-                    selected_group_name: group_all.name
+                    selected_group_id: selected_group.id,
+                    selected_group_name: selected_group.name
                 })
             })
             .catch(e => console.error(e))
@@ -67,6 +67,13 @@ export default class subscriber extends Component {
             selected_group_id: group.id,
             selected_group_name: group.name
         })
+    }
+
+    set_groups_state = load => {
+        this.setState({
+            ...this.state,
+            ...load
+        })// end of setstate
     }
 
     render() {
@@ -115,7 +122,9 @@ export default class subscriber extends Component {
                         {
                             this.state.selected_group_id ?
                                 <Group
+                                    set_groups_state={this.set_groups_state}
                                     update_groups={this.get_groups}
+                                    selected_group_name={this.state.selected_group_name}
                                     selected_group_id={this.state.selected_group_id} /> :
                                 ''
                         }
