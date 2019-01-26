@@ -1,7 +1,8 @@
 from subscribe.views import *
 from rest_framework.routers import DefaultRouter
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from django.views.generic import TemplateView
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -19,13 +20,14 @@ router.register('attachment', AttachmentViewset)
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('master/', admin.site.urls),
     path('api/add_sub_to_group/', add_sub_to_group_view),
     path('api/sub_as_csv/', sub_as_csv_view),
     path('api/download_group_as_csv/<int:gid>/', download_group_csv_view),
 
     # router
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    re_path('', TemplateView.as_view(template_name="index.html"))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
