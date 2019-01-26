@@ -12,7 +12,7 @@ SECRET_KEY = 'gt^z&^xp7=el%wf-=!0(%zw0!-_q7#g#cgggy+_^hzyremb+%6'
 CORS_ORIGIN_ALLOW_ALL = True
 DEBUG = True
 
-ALLOWED_HOSTS = ['zenithec.tk','52.66.199.227','13.233.65.192']
+ALLOWED_HOSTS = ['zenithec.tk','52.66.199.227','13.233.65.192','127.0.0.1','localhost']
 
 # Application definition
 
