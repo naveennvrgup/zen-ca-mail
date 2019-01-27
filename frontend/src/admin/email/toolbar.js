@@ -41,11 +41,12 @@ class toolbar extends Component {
             })
     }
 
-    change_email_category_handler = (e, category) => {
+    change_email_category_handler = async(e, category) => {
         e.preventDefault()
-        this.props.change_email_state({
+        await this.props.change_email_state({
             selected_category: category
         })
+        this.props.get_drafts()
     }
 
     render() {

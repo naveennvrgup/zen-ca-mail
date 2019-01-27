@@ -11,6 +11,7 @@ from aws_engine.send_otp import *
 class DraftViewset(ModelViewSet):
     queryset=Draft.objects.all()
     serializer_class=DraftSerializer
+    filter_fields=['status']
 
 class AttachmentViewset(ModelViewSet):
     queryset=Attachment.objects.all()

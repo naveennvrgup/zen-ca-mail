@@ -18,7 +18,6 @@ from django.utils import timezone
 class SubscribeViewset(ModelViewSet):
     queryset = Subscriber.objects.all().filter(flag=False)
     serializer_class = SubscriberSerializer
-    filter_fields = ('name', 'id')
 
     def delete(self, req, pk=None):
         data = json.loads(req.body)

@@ -15,7 +15,17 @@ export default class email extends Component {
     ]
 
     componentDidMount = () => {
-        axios.get('api/draft/')
+        this.get_drafts()
+    }
+
+    get_drafts = () => {
+        let url = 'api/draft/?status='
+        if (this.state.selected_category > -1) {
+            url += String(this.state.selected_category)
+        }
+        console.log(url,this.state.selected_category)
+
+        axios.get(url)
             .then(d => {
                 d = d.data
                 console.log(d)
@@ -27,8 +37,6 @@ export default class email extends Component {
                 })
             })
     }
-
-
 
     deleteDraftHandler = (e, draftId) => {
         e.preventDefault()
@@ -153,8 +161,9 @@ export default class email extends Component {
                                 className="btn btn-success"
                                 onClick={this.newMailHandler}>New Mail</button>
                         </div>
-                        <Toolbar 
-                            change_email_state = {this.change_email_state}
+                        <Toolbar
+                            get_drafts = {this.get_drafts}
+                            change_email_state={this.change_email_state}
                             {...this.state} />
                     </div>
                 </div>
