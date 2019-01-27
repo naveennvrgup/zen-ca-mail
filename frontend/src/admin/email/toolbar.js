@@ -6,28 +6,21 @@ class toolbar extends Component {
     state = {
     }
 
-    componentDidMount = () => {
-        let total = this.props.results.length
-        let drafts = 0
-        let outbox = 0
-        let sent = 0
-        this.props.results.forEach(ele => {
-            switch (ele.status) {
-                case 0: drafts++; break
-                case 1: outbox++; break
-                case 2: sent++; break
-                default:
-            }
-        })
-
-        this.setState({
-            ...this.state,
-            total,
-            drafts,
-            outbox,
-            sent
-        })// end of setstate
+    update_toolbar = () => {
+        axios('api/get_draft_categories_count/')
+            .then(d => {
+                console.log(d.data)
+                this.setState({
+                    ...this.state,
+                    ...d.data
+                })// end of setstate
+            })
     }
+    componentDidMount = async () => {
+        this.update_toolbar()
+    }
+
+    componentWillReceiveProps = () => this.update_toolbar()
 
 
     newMailHandler = (e) => {
@@ -37,11 +30,11 @@ class toolbar extends Component {
         })
             .then(d => {
                 console.log(d.data)
-                this.props.history.push(`/admin/email/${d.data.id}/`)
+                this.props.history.push(`/admin/email/edit_email/${d.data.id}/`)
             })
     }
 
-    change_email_category_handler = async(e, category) => {
+    change_email_category_handler = async (e, category) => {
         e.preventDefault()
         await this.props.change_email_state({
             selected_category: category
@@ -55,6 +48,11 @@ class toolbar extends Component {
 
         return (
             <div className='email-toolbar'>
+                <div className="text-right my-3">
+                    <button
+                        className="btn btn-success"
+                        onClick={this.newMailHandler}>New Mail</button>
+                </div>
                 <div
                     onClick={e => this.change_email_category_handler(e, -1)}
                     className={tabs + is_selected_tab(-1)}>

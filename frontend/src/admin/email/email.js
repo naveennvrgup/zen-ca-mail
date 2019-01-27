@@ -6,7 +6,7 @@ export default class email extends Component {
     state = {
         results: [],
         page: 1,
-        selected_category: -1
+        selected_category: 0
     }
     status_color = [
         'text-danger',
@@ -19,21 +19,20 @@ export default class email extends Component {
     }
 
     get_drafts = () => {
-        let url = 'api/draft/?status='
+        let url = `api/draft/?page=${this.state.page}&status=`
         if (this.state.selected_category > -1) {
             url += String(this.state.selected_category)
         }
-        console.log(url,this.state.selected_category)
 
         axios.get(url)
             .then(d => {
                 d = d.data
                 console.log(d)
 
-                d.results = d.results.filter(ele => ele.status === 0)
                 this.setState({
                     ...this.state,
-                    ...d
+                    ...d,
+                    toolbar_render: !this.state.toolbar_render
                 })
             })
     }
@@ -41,25 +40,38 @@ export default class email extends Component {
     deleteDraftHandler = (e, draftId) => {
         e.preventDefault()
 
-        if (!draftId) {
-            draftId = e.target.parentElement.parentElement.dataset.sid;
-        }
-
         axios.delete('api/draft/' + draftId + '/')
             .then(d => {
-                let temp = this.state.drafts.filter(i => {
-                    return i.id !== Number(draftId)
-                })
-
-                this.setState({ drafts: temp })
-            }).catch(e => console.error(e))
-        console.log(draftId)
+                console.log(d.data)
+                
+                if(this.state.results.length===1 && this.state.page!==1){
+                    this.setState({
+                        ...this.state,
+                        page: this.state.page-1
+                    })// end of setstate
+                }
+                this.get_drafts()
+            })
     }
-
+    
+        flagDraftHandler = (e,id) => {
+            e.preventDefault()
+            axios.put(`api/draft/${id}/`,{
+                flag: true
+            }).then(d=>{
+                console.log(d.data)
+                this.get_drafts()
+            }) 
+        }    
 
     send2EditHandler = (e, id) => {
         e.preventDefault()
-        this.props.history.push(`/admin/email/${id}/`)
+        this.props.history.push(`/admin/email/edit_email/${id}/`)
+    }
+
+    send2sent_mail_handler = (e, id) => {
+        e.preventDefault()
+        this.props.history.push(`/admin/email/sent_email/${id}/`)
     }
 
     change_page = (e, id) => {
@@ -89,30 +101,6 @@ export default class email extends Component {
             })
     }
 
-    createDraftView = (p, i) => (
-        <div className='d-flex tab align-items-center justify-content-between email' key={p.id}>
-            <div className='d-flex align-items-center mx-2 flex-grow-1'>
-                <div className={this.status_color[p.status]}>
-                    <i className="fa fa-circle"></i>
-                </div>
-                <div className='srno mx-2 font-weight-bold'>{i + 1}</div>
-                <div className='subject mx-2 flex-grow-1'>{p.subject}</div>
-                <div className='date mx-2 text-muted'>({p.edited_on})</div>
-            </div>
-
-            <div className='d-flex align-items-center'>
-                <button onClick={(e) => this.send2EditHandler(e, p.id)}
-                    className="btn nbtn mx-1 green">
-                    <i className="fas fa-pen-alt"></i>
-                </button>
-                <button onClick={(e) => this.deleteDraftHandler(e, p.id)}
-                    className="btn nbtn mx-1 red">
-                    <i className="fas fa-times"></i>
-                </button>
-            </div>
-        </div >
-    )
-
     change_email_state = load => {
         this.setState({
             ...this.state,
@@ -121,12 +109,57 @@ export default class email extends Component {
     }
 
     render() {
+        const btns_for_edit_mail = (p, i) =>
+            <div className='d-flex align-items-center'>
+                <button onClick={(e) => this.send2EditHandler(e, p.id)}
+                    className="btn nbtn mx-1 green">
+                    <i className="fas fa-pen-alt"></i>
+                </button>
+                <button onClick={(e) => this.deleteDraftHandler(e, p.id)}
+                    className="btn nbtn mx-1 red">
+                    <i className="fas fa-trash"></i>
+                </button>
+            </div>
+
+        const btns_for_sent_mail = (p, i) =>
+            <div className='d-flex align-items-center'>
+                <button onClick={(e) => this.send2sent_mail_handler(e, p.id)}
+                    className="btn nbtn mx-1 blue">
+                    <i className="fas fa-glasses"></i>
+                </button>
+                <button onClick={(e) => this.flagDraftHandler(e, p.id)}
+                    className="btn nbtn mx-1 red">
+                    <i className="fas fa-times"></i>
+                </button>
+            </div>
+
+        const btns2show = (p, i) => p.status>0 ? btns_for_sent_mail(p,i): btns_for_edit_mail(p,i)
+
+        let createDraftView = (p, i) => (
+            <div className='d-flex tab align-items-center justify-content-between email' key={p.id}>
+                <div className='d-flex align-items-center mx-2 flex-grow-1'>
+                    <div className={this.status_color[p.status]}>
+                        <i className="fa fa-circle"></i>
+                    </div>
+                    <div className='srno mx-2 font-weight-bold'>{i + 1}</div>
+                    <div className='subject mx-2 flex-grow-1'>{p.subject}</div>
+                    <div className='date mx-2 text-muted'>({p.edited_on})</div>
+                </div>
+                <div>
+                    {btns2show(p,i)}
+                </div>
+            </div >
+        )
+
         let drafts = this.state.results
-        drafts = drafts.map((draft, i) => this.createDraftView(draft, i))
+        drafts = drafts.map((draft, i) => createDraftView(draft, i))
+
+        let category_names = ['Total','Drafts','Outbox','Sent']
+        let selected_category_name = category_names[this.state.selected_category+1]
 
         let pagination =
             <div className="d-flex justify-content-between align-items-center">
-                <div className="font-weight-bold p-3">Drafts: {this.state.count}</div>
+                <div className="font-weight-bold p-3">{selected_category_name}: {this.state.count}</div>
                 <div className="sub-pagination pagination">
                     <span className='mx-1'>
                         Page {this.state.page}
@@ -156,15 +189,11 @@ export default class email extends Component {
                             pagination : ''}
                     </div>
                     <div className="col-md-3">
-                        <div className="text-right my-3">
-                            <button
-                                className="btn btn-success"
-                                onClick={this.newMailHandler}>New Mail</button>
-                        </div>
                         <Toolbar
-                            get_drafts = {this.get_drafts}
+                            toolbar_render={this.state.toolbar_render}
+                            get_drafts={this.get_drafts}
                             change_email_state={this.change_email_state}
-                            {...this.state} />
+                            selected_category = {this.state.selected_category} />
                     </div>
                 </div>
             </div>

@@ -82,14 +82,7 @@ export default class NewMail extends Component {
     sendMailHandler = async (e) => {
         e.preventDefault()
         await this.saveDraftHandler(e, true)
-
-        axios.post('api/outbox/', {
-            draft: localStorage.getItem('currDraft')
-        })
-            .then(d => {
-                console.log(d.data)
-                this.props.history.push('/admin/email/')
-            })
+        this.props.history.push(`/admin/email/send_email/${this.draftId}/`)
     }
 
     deleteDraftHandler = (e) => {
