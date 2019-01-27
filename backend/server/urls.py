@@ -21,9 +21,12 @@ router.register('attachment', AttachmentViewset)
 
 urlpatterns = [
     path('master/', admin.site.urls),
+    # group
     path('api/add_sub_to_group/', add_sub_to_group_view),
     path('api/sub_as_csv/', sub_as_csv_view),
     path('api/download_group_as_csv/<int:gid>/', download_group_csv_view),
+    # draft
+    path('api/get_draft_categories_count/', get_draft_categories_count_view),
 
     # router
     path('api/', include(router.urls)),

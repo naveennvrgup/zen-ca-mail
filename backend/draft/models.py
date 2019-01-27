@@ -8,6 +8,7 @@ class Draft(Model):
     sentTo = CharField(max_length=100, default='')
     created_on = DateTimeField(auto_now_add=True)
     edited_on = DateField(auto_now=True)
+    flag = BooleanField(default=False)
 
     def __str__(self):
         return self.subject
@@ -15,6 +16,7 @@ class Draft(Model):
 class Attachment(Model):
     file = FileField(blank=True, default='', upload_to='attachments/%y-%m')
     draft = ForeignKey(Draft,on_delete=CASCADE,related_name='files', )
+    flag = BooleanField(default=False)
 
     def __str__(self):
         return self.file.name
