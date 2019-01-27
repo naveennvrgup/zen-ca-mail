@@ -5,17 +5,18 @@ import { withRouter } from 'react-router-dom'
 class toolbar extends Component {
     state = {
     }
-    
+
     componentDidMount = () => {
-        let total=this.props.count
+        let total = this.props.results.length
         let drafts = 0
         let outbox = 0
         let sent = 0
-        this.props.results.forEach(ele=>{
-            switch(ele.status){
-                case 0: drafts++;break
-                case 1: outbox++;break
-                case 2: sent++;break
+        this.props.results.forEach(ele => {
+            switch (ele.status) {
+                case 0: drafts++; break
+                case 1: outbox++; break
+                case 2: sent++; break
+                default:
             }
         })
 
@@ -27,7 +28,7 @@ class toolbar extends Component {
             sent
         })// end of setstate
     }
-    
+
 
     newMailHandler = (e) => {
         e.preventDefault()
@@ -40,28 +41,42 @@ class toolbar extends Component {
             })
     }
 
+    change_email_category_handler = (e, category) => {
+        e.preventDefault()
+        this.props.change_email_state({
+            selected_category: category
+        })
+    }
+
     render() {
+        let tabs = 'tab d-flex justify-content-between align-items-center btn '
+        const is_selected_tab = tab_id => this.props.selected_category === tab_id ? 'active-tab' : ''
+
         return (
-            <div className='tab p-4'>
-                <div>
-                    <i className="fa fa-circle text-primary"></i>
-                    <span className="font-weight-bold mx-2">Total Emails:</span>
-                    <span>{this.state.total}</span>
+            <div className='email-toolbar'>
+                <div
+                    onClick={e => this.change_email_category_handler(e, -1)}
+                    className={tabs + is_selected_tab(-1)}>
+                    <span className="font-weight-bold mx-2">All</span>
+                    <span className='badge badge-pill badge-primary'>{this.state.total}</span>
                 </div>
-                <div>
-                    <i className="fa fa-circle text-danger"></i>
-                    <span className="font-weight-bold text-muted mx-2">Drafts:</span>
-                    <span>{this.state.drafts}</span>
+                <div
+                    onClick={e => this.change_email_category_handler(e, 0)}
+                    className={tabs + is_selected_tab(0)}>
+                    <span className="font-weight-bold mx-2">Drafts</span>
+                    <span className='badge badge-pill badge-danger'>{this.state.drafts}</span>
                 </div>
-                <div>
-                    <i className="fa fa-circle text-warning"></i>
-                    <span className="font-weight-bold text-muted mx-2">Outbox:</span>
-                    <span>{this.state.outbox}</span>
+                <div
+                    onClick={e => this.change_email_category_handler(e, 1)}
+                    className={tabs + is_selected_tab(1)}>
+                    <span className="font-weight-bold mx-2">Outbox</span>
+                    <span className='badge badge-pill badge-warning'>{this.state.outbox}</span>
                 </div>
-                <div>
-                    <i className="fa fa-circle text-success"></i>
-                    <span className="font-weight-bold text-muted mx-2">Sent:</span>
-                    <span>{this.state.sent}</span>
+                <div
+                    onClick={e => this.change_email_category_handler(e, 2)}
+                    className={tabs + is_selected_tab(2)}>
+                    <span className="font-weight-bold mx-2">Sent</span>
+                    <span className='badge badge-pill badge-success'>{this.state.sent}</span>
                 </div>
             </div>
         )

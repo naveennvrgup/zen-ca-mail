@@ -5,7 +5,8 @@ import Toolbar from './toolbar'
 export default class email extends Component {
     state = {
         results: [],
-        page: 1
+        page: 1,
+        selected_category: -1
     }
     status_color = [
         'text-danger',
@@ -19,7 +20,7 @@ export default class email extends Component {
                 d = d.data
                 console.log(d)
 
-                d.results = d.results.filter(ele => ele.status == 0)
+                d.results = d.results.filter(ele => ele.status === 0)
                 this.setState({
                     ...this.state,
                     ...d
@@ -104,6 +105,13 @@ export default class email extends Component {
         </div >
     )
 
+    change_email_state = load => {
+        this.setState({
+            ...this.state,
+            ...load
+        })// end of setstate
+    }
+
     render() {
         let drafts = this.state.results
         drafts = drafts.map((draft, i) => this.createDraftView(draft, i))
@@ -134,16 +142,20 @@ export default class email extends Component {
             <div className='emails px-5 pb-5'>
                 <div className="mt-3 row">
                     <div className='col-md-9'>
-                        <Toolbar {...this.state} />
                         {pagination}
                         {drafts}
                         {this.state.results.length > 10 ?
                             pagination : ''}
                     </div>
                     <div className="col-md-3">
-                        <button
-                            className="btn btn-success"
-                            onClick={this.newMailHandler}>New Mail</button>
+                        <div className="text-right my-3">
+                            <button
+                                className="btn btn-success"
+                                onClick={this.newMailHandler}>New Mail</button>
+                        </div>
+                        <Toolbar 
+                            change_email_state = {this.change_email_state}
+                            {...this.state} />
                     </div>
                 </div>
             </div>
