@@ -52,9 +52,9 @@ export default class FileUpload extends Component {
             })
         })
 
-        request.setRequestHeader('Authorization',sessionStorage['token'])
         request.responseType = 'json';
         request.open('post', burl + 'api/sub_as_csv/');
+        request.setRequestHeader('Authorization',sessionStorage['token'])
         request.send(data);
 
         this.setState({

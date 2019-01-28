@@ -124,9 +124,9 @@ export default class FileUpload extends Component {
 
         })
 
-        request.setRequestHeader('Authorization',sessionStorage['token'])
         request.responseType = 'json';
         request.open('post', burl + 'api/attachment/');
+        request.setRequestHeader('Authorization',sessionStorage['token'])
         request.send(data);
 
         // attach request obj to state  

@@ -70,9 +70,9 @@ export default class FileUpload extends Component {
         })
 
         
-        request.setRequestHeader('Authorization',sessionStorage['token'])
         request.responseType = 'json';
         request.open('patch', burl + `api/news/${this.props.newsId}/`);
+        request.setRequestHeader('Authorization',sessionStorage['token'])
         request.send(data);
 
         this.setState({

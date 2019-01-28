@@ -125,6 +125,7 @@ def sub_as_csv_view(req):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def download_group_csv_view(req, gid):
     group = Group.objects.get(pk=gid)
     subs = group.subs.all()
