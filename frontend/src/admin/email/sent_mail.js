@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
+import faxios from '../../axios'; const axios = faxios()
 
 export default class sent_mail extends Component {
     state = {

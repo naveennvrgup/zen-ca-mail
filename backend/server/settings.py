@@ -9,16 +9,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'gt^z&^xp7=el%wf-=!0(%zw0!-_q7#g#cgggy+_^hzyremb+%6'
-CORS_ORIGIN_ALLOW_ALL = True
 DEBUG = True
 
-ALLOWED_HOSTS = ['zenithec.tk','52.66.199.227','13.233.65.192','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['zenithec.tk','52.66.199.227','13.233.65.192','127.0.0.1','localhost','192.168.1.6e']
 
 # Application definition
 
 INSTALLED_APPS = [
-    'corsheaders',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -29,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
+    'corsheaders',
 
     'subscribe',
     'draft',
@@ -51,6 +49,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'server.urls'
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {

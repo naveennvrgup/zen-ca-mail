@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import axios, { burl } from '../../axios'
 import UploadCSV from './file_upload'
+import faxios, { burl } from '../../axios'; const axios = faxios()
 
 export default class toolbar extends Component {
     state = {}

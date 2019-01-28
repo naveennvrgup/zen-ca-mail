@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { burl } from '../../axios'
+import { burl } from '../../axios'; 
 
 export default class FileUpload extends Component {
     state = {
@@ -52,6 +52,7 @@ export default class FileUpload extends Component {
             })
         })
 
+        request.setRequestHeader('Authorization',sessionStorage['token'])
         request.responseType = 'json';
         request.open('post', burl + 'api/sub_as_csv/');
         request.send(data);

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import FileUpload from './file_upload'
@@ -8,6 +7,8 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
+
+import faxios from '../../axios'; const axios = faxios()
 
 export default class NewMail extends Component {
     constructor(props) {

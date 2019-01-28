@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios, { burl } from '../../axios'
+import faxios, { burl } from '../../axios'; const axios = faxios()
 
 export default class FileUpload extends Component {
     state = {
@@ -67,6 +67,8 @@ export default class FileUpload extends Component {
             })// end of setstate
         })
 
+        
+        request.setRequestHeader('Authorization',sessionStorage['token'])
         request.responseType = 'json';
         request.open('patch', burl + `api/news/${this.props.newsId}/`);
         request.send(data);

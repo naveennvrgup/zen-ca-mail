@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
-import axios from '../../axios'
 import Toolbar from './toolbar'
+import faxios from '../../axios'; const axios = faxios()
 
 export default class group extends Component {
     constructor(props) {

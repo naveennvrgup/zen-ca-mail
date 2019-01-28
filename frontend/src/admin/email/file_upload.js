@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
+import faxios, { burl } from '../../axios'; const axios = faxios()
 
 export default class FileUpload extends Component {
     state = {
@@ -114,7 +114,7 @@ export default class FileUpload extends Component {
         request.upload.addEventListener('abort', (e) => {
             let files = this.state.files
                 .filter(item => item.name !== ele.file.name)
-                
+
             this.setState({
                 ...this.state,
                 files
@@ -122,8 +122,9 @@ export default class FileUpload extends Component {
 
         })
 
+        request.setRequestHeader('Authorization',sessionStorage['token'])
         request.responseType = 'json';
-        request.open('post', 'http://localhost:8000/api/attachment/');
+        request.open('post', burl + 'api/attachment/');
         request.send(data);
 
         // attach request obj to state  

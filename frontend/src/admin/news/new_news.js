@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
 import FileUpload from './file_upload'
+import faxios from '../../axios'; const axios = faxios()
 
 
 export default class NewMail extends Component {

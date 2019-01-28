@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
 import Toolbar from './toolbar'
+import faxios from '../../axios'; const axios = faxios()
 
 export default class news extends Component {
     state = {
@@ -142,7 +142,7 @@ export default class news extends Component {
                         <i className="fa fa-circle"></i>
                     </div>
                     <div className='srno mx-2 font-weight-bold'>{i + 1}</div>
-                    <div className='subject mx-2 flex-grow-1'>{p.subject}</div>
+                    <div className='subject mx-2 flex-grow-1'>{p.title}</div>
                     <div className='date mx-2 text-muted'>({p.created_on.slice(0, 10)})</div>
                 </div>
                 <div>

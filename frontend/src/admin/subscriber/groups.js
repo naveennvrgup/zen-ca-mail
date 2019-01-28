@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
 import Group from './group'
+import faxios from '../../axios'; const axios = faxios()
 
 export default class subscriber extends Component {
     state = {
