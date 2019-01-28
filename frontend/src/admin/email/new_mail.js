@@ -95,32 +95,7 @@ export default class NewMail extends Component {
     }
 
     render() {
-        let head = <h1>{this.draftId ? 'Edit Mail' : 'New Email'}</h1>
-
-        if (this.state.status) {
-            head = <div className="mb-5">
-                <h1 className=''>{this.state.status === 1 ? 'Mail in outbox' : 'Sent mail'} id: {this.state.id}</h1>
-                <div className="text-muted">
-                    <div>Sending to {this.state.sentTo} subscribers</div>
-                    <div>Last edit on at {this.state.edited_on}</div>
-                </div>
-            </div>
-
-            let body = document.querySelector('.body')
-            body.innerHTML = this.state.body
-
-            let files = this.state.files
-            if (files.length) {
-                body.innerHTML += '<p class="font-weight-bold">Attachments:</p>'
-                for (let i = 0; i < files.length; i++) {
-                    body.innerHTML += `<a href='${this.state.files[i].file}' class='d-block' target='_blank' download>
-                        ${files[i].file.split('/').pop()}
-                    </a>`
-                }
-            }
-        }
-
-
+        let head = <h1>Edit Mail</h1>
 
         return (
             <div className='newMail p-5'>

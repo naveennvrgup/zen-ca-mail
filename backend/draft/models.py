@@ -7,7 +7,7 @@ class Draft(Model):
     status = IntegerField(default=0)
     sentTo = CharField(max_length=100, default='')
     created_on = DateTimeField(auto_now_add=True)
-    edited_on = DateField(auto_now=True)
+    edited_on = DateTimeField(auto_now=True)
     flag = BooleanField(default=False)
 
     def __str__(self):

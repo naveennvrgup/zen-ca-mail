@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'draft',
     'outbox',
     'sent',
+    'news',
 ]
 
 MIDDLEWARE = [

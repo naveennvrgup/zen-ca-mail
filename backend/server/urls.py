@@ -11,12 +11,14 @@ from subscribe.views import *
 from draft.views import *
 from outbox.views import *
 from sent.views import *
+from news.views import *
 
 router = DefaultRouter()
 router.register('subscribe', SubscribeViewset)
 router.register('group', GroupViewset)
 router.register('draft', DraftViewset)
 router.register('attachment', AttachmentViewset)
+router.register('news', NewsViewset)
 
 
 urlpatterns = [
