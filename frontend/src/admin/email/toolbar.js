@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import faxios from '../../axios'; const axios = faxios()
+import faxios from '../../axios'; 
 
 class toolbar extends Component {
+    axios = faxios()
     state = {
     }
 
     update_toolbar = () => {
-        axios('api/get_draft_categories_count/')
+        this.axios.get('api/get_draft_categories_count/')
             .then(d => {
                 console.log(d.data)
                 this.setState({
@@ -18,6 +19,7 @@ class toolbar extends Component {
             })
     }
     componentDidMount = async () => {
+        
         this.update_toolbar()
     }
 
@@ -26,7 +28,7 @@ class toolbar extends Component {
 
     newMailHandler = (e) => {
         e.preventDefault()
-        axios.post('api/draft/', {
+        this.axios.post('api/draft/', {
             subject: 'new draft'
         })
             .then(d => {

@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import UploadCSV from './file_upload'
-import faxios, { burl } from '../../axios'; const axios = faxios()
+import faxios, { burl } from '../../axios'; 
 
 export default class toolbar extends Component {
+    axios = faxios()
     state = {}
 
     componentDidMount = () => {
+        
         this.new_sub = document.querySelector('.new_sub');
         this.new_sub_name = this.new_sub.querySelector('.new_sub_name');
         this.new_sub_email = this.new_sub.querySelector('.new_sub_email');
@@ -16,7 +18,7 @@ export default class toolbar extends Component {
 
     add_sub_to_group_handler = (e) => {
         e.preventDefault()
-        axios.post('api/add_sub_to_group/', {
+        this.axios.post('api/add_sub_to_group/', {
             groupId: this.props.selected_group_id,
             name: this.new_sub_name.value,
             email: this.new_sub_email.value,
@@ -42,7 +44,7 @@ export default class toolbar extends Component {
             selected_group_name: 'all'
         })
 
-        axios.delete(`api/group/${group_2_delete}/`)
+        this.axios.delete(`api/group/${group_2_delete}/`)
             .then(d => {
                 console.log(d.data)
                 this.props.update_groups()

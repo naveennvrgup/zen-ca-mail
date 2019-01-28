@@ -1,9 +1,10 @@
 
 import React, { Component } from 'react'
 import Toolbar from './toolbar'
-import faxios from '../../axios'; const axios = faxios()
+import faxios from '../../axios'; 
 
 export default class group extends Component {
+    axios = faxios()
     constructor(props) {
         super(props)
         this.state = {
@@ -20,7 +21,7 @@ export default class group extends Component {
     }
 
     get_subs = () => {
-        axios.get(`api/group/${this.props.selected_group_id}/`)
+        this.axios.get(`api/group/${this.props.selected_group_id}/`)
             .then(d => {
                 console.log(d.data)
                 this.setState({
@@ -37,7 +38,7 @@ export default class group extends Component {
     flag_sub_handler = (e, sub) => {
         e.preventDefault()
 
-        axios.delete(`api/subscribe/${sub.id}/`)
+        this.axios.delete(`api/subscribe/${sub.id}/`)
             .then(d => {
                 console.log('flagged')
                 if (this.state.results.length === 1 && this.state.page > 1) {
@@ -67,7 +68,7 @@ export default class group extends Component {
             return
         }
 
-        axios.get(url)
+        this.axios.get(url)
             .then(d => {
                 console.log(d)
                 this.setState({

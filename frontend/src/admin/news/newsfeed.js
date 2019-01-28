@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Toolbar from './toolbar'
-import faxios from '../../axios'; const axios = faxios()
+import faxios from '../../axios'; 
 
 export default class news extends Component {
+    axios = faxios()
     state = {
         results: [],
         page: 1,
@@ -10,6 +11,7 @@ export default class news extends Component {
     }
 
     componentDidMount = () => {
+        
         this.get_news()
     }
 
@@ -19,7 +21,7 @@ export default class news extends Component {
             url += this.state.selected_category === 0 ? 1 : 0
         }
 
-        axios.get(url)
+        this.axios.get(url)
             .then(d => {
                 d = d.data
                 console.log(d)
@@ -42,7 +44,7 @@ export default class news extends Component {
             })// end of setstate
         }
 
-        axios.patch(`api/news/${id}/`, {
+        this.axios.patch(`api/news/${id}/`, {
             flag: true,
             show: false
         }).then(d => {
@@ -53,7 +55,7 @@ export default class news extends Component {
 
     archieve_it_Handler = (e, id) => {
         e.preventDefault()
-        axios.patch(`api/news/${id}/`, {
+        this.axios.patch(`api/news/${id}/`, {
             show: false
         }).then(d => {
             this.get_news()
@@ -62,7 +64,7 @@ export default class news extends Component {
 
     display_it_Handler = (e, id) => {
         e.preventDefault()
-        axios.patch(`api/news/${id}/`, {
+        this.axios.patch(`api/news/${id}/`, {
             show: true
         }).then(d => {
             this.get_news()
@@ -90,7 +92,7 @@ export default class news extends Component {
             return
         }
 
-        axios.get(url)
+        this.axios.get(url)
             .then(d => {
                 console.log(d)
                 this.setState({

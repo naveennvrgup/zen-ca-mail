@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Toolbar from './toolbar'
-import faxios from '../../axios'; const axios = faxios()
+import faxios from '../../axios'; 
 
 export default class email extends Component {
+    axios = faxios()
     state = {
         results: [],
         page: 1,
@@ -15,6 +16,7 @@ export default class email extends Component {
     ]
 
     componentDidMount = () => {
+        
         this.get_drafts()
     }
 
@@ -24,7 +26,7 @@ export default class email extends Component {
             url += String(this.state.selected_category)
         }
 
-        axios.get(url)
+        this.axios.get(url)
             .then(d => {
                 d = d.data
                 console.log(d)
@@ -40,7 +42,7 @@ export default class email extends Component {
     deleteDraftHandler = (e, draftId) => {
         e.preventDefault()
 
-        axios.delete('api/draft/' + draftId + '/')
+        this.axios.delete('api/draft/' + draftId + '/')
             .then(d => {
                 console.log(d.data)
                 
@@ -56,7 +58,7 @@ export default class email extends Component {
     
         flagDraftHandler = (e,id) => {
             e.preventDefault()
-            axios.put(`api/draft/${id}/`,{
+            this.axios.put(`api/draft/${id}/`,{
                 flag: true
             }).then(d=>{
                 console.log(d.data)
@@ -90,7 +92,7 @@ export default class email extends Component {
             return
         }
 
-        axios.get(url)
+        this.axios.get(url)
             .then(d => {
                 console.log(d)
                 this.setState({

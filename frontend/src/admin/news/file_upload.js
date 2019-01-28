@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import faxios, { burl } from '../../axios'; const axios = faxios()
+import faxios, { burl } from '../../axios'; 
 
 export default class FileUpload extends Component {
+    axios = faxios()
     state = {
         progress: 0,
         onprogress: false,
     }
 
     componentDidMount = () => {
+        
         this.setState({
             ...this.state,
             ...this.props
@@ -88,7 +90,7 @@ export default class FileUpload extends Component {
 
     delete_handler = e => {
         e.preventDefault()
-        axios.patch(`api/news/${this.state.id}/`, {
+        this.axios.patch(`api/news/${this.state.id}/`, {
             img: null
         }).then(d => {
             console.log(d.data)

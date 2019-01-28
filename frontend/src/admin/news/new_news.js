@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import FileUpload from './file_upload'
-import faxios from '../../axios'; const axios = faxios()
+import faxios from '../../axios'; 
 
 
 export default class NewMail extends Component {
+    axios = faxios()
     state = {
 
     }
 
     componentDidMount = () => {
+        
         this.files = document.querySelector('.edit_news');
         this.title = this.files.querySelector('.title')
         this.link = this.files.querySelector('.link')
@@ -16,7 +18,7 @@ export default class NewMail extends Component {
 
         this.newsId = this.props.match.params.id
 
-        axios.get('api/news/' + this.newsId + '/')
+        this.axios.get('api/news/' + this.newsId + '/')
             .then(d => {
                 d = d.data
                 console.log(d)
@@ -33,7 +35,7 @@ export default class NewMail extends Component {
     saveNewsHandler = (e, show_news) => {
         e.preventDefault()
 
-        axios.put('api/news/' + this.state.id + '/', {
+        this.axios.put('api/news/' + this.state.id + '/', {
             title: this.title.value,
             link: this.link.value,
             brief: this.brief.value,
@@ -53,7 +55,7 @@ export default class NewMail extends Component {
 
     deleteNewsHandler = (e) => {
         e.preventDefault()
-        axios.patch('api/news/' + this.newsId + '/',{
+        this.axios.patch('api/news/' + this.newsId + '/',{
             flag: true
         })
             .then(d => {

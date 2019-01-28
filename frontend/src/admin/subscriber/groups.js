@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Group from './group'
-import faxios from '../../axios'; const axios = faxios()
+import faxios from '../../axios'; 
 
 export default class subscriber extends Component {
+    axios = faxios()
     state = {
         groups: [],
         new_group_name: '',
@@ -11,11 +12,12 @@ export default class subscriber extends Component {
     }
 
     componentDidMount = () => {
+        
         this.get_groups()
     }
 
     get_groups = () => {
-        axios.get('api/group/')
+        this.axios.get('api/group/')
             .then(d => {
                 d = d.data
                 let selected_group = d.filter(ele =>
@@ -34,7 +36,7 @@ export default class subscriber extends Component {
 
     delete = (e, id) => {
         e.preventDefault()
-        axios.delete(`api/group/${id}`)
+        this.axios.delete(`api/group/${id}`)
             .then(d => {
                 d = d.data
                 this.setState({ groups: this.state.groups.filter(ele => ele.id !== id) })
@@ -45,7 +47,7 @@ export default class subscriber extends Component {
     new_group = (e) => {
         e.preventDefault()
         if (!this.state.new_group_name) { return }
-        axios.post(`api/group/`, {
+        this.axios.post(`api/group/`, {
             name: this.state.new_group_name
         })
             .then(d => {

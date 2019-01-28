@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import './bootstrap/bootstrap.scss'
 import './scss/app.scss'
+import ProtectedRoute from './admin/auth/protected_route'
 
 import Admin from './admin/admin'
 import Main from './main/main'
-import Login from './admin/login/login'
+import Login from './admin/auth/login'
 
 class App extends Component {
   render() {
     return (
       <div id='app'>
         <Switch>
-          <Route path='/admin' component={Admin} />
+          <ProtectedRoute path='/admin' component={Admin} />
           <Route path='/user_login/' component={Login} />
           <Route path='/' component={Main} />
         </Switch>

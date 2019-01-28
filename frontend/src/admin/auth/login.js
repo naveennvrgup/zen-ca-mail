@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import faxios from '../../axios'; const axios = faxios()
+import faxios from '../../axios'; 
 
 export default class login extends Component {
+    axios = faxios()
     componentDidMount = () => {
         let login = document.querySelector('.login');
         this.username = login.querySelector('.username')
@@ -11,7 +12,7 @@ export default class login extends Component {
     
     login_handler = e =>{
         e.preventDefault()
-        axios.post('login/',{
+        this.axios.post('login/',{
             username: this.username.value,
             password: this.password.value
         }).then(d=>{

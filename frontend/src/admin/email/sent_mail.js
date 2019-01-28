@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import faxios from '../../axios'; const axios = faxios()
+import faxios from '../../axios'; 
 
 export default class sent_mail extends Component {
+    axios = faxios()
     state = {
     }
 
     componentDidMount = () => {
+        
         this.draftId = this.props.match.params.id
-        axios.get(`api/draft/${this.draftId}/`)
+        this.axios.get(`api/draft/${this.draftId}/`)
             .then(d => {
                 console.log(d.data)
                 this.setState({

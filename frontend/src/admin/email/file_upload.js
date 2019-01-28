@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import faxios, { burl } from '../../axios'; const axios = faxios()
+import faxios, { burl } from '../../axios'; 
 
 export default class FileUpload extends Component {
+    axios = faxios()
     state = {
         files: []
     }
 
     componentDidMount = () => {
+        
         let fi = this.props.initialFiles
         console.log(fi)
 
@@ -149,7 +151,7 @@ export default class FileUpload extends Component {
             return
         }
 
-        axios.delete(`api/attachment/${ele.id}/`)
+        this.axios.delete(`api/attachment/${ele.id}/`)
             .then(d => {
                 d = d.data
                 let files = this.state.files.filter(item => item.id !== ele.id)

@@ -8,11 +8,13 @@ import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 
-import faxios from '../../axios'; const axios = faxios()
+import faxios from '../../axios'; 
 
 export default class NewMail extends Component {
+    axios = faxios()
     constructor(props) {
         super(props);
+        
         let emailBody = '<p>loading please wait...</p>';
 
         const contentBlock = htmlToDraft(emailBody);
@@ -32,7 +34,7 @@ export default class NewMail extends Component {
         this.draftId = this.props.match.params.id
         localStorage.setItem('currDraft', this.draftId)
 
-        axios.get('api/draft/' + this.draftId + '/')
+        this.axios.get('api/draft/' + this.draftId + '/')
             .then(d => {
                 d = d.data
 
@@ -68,7 +70,7 @@ export default class NewMail extends Component {
     saveDraftHandler = (e, sendMail) => {
         e.preventDefault()
 
-        axios.put('api/draft/' + this.draftId + '/', {
+        this.axios.put('api/draft/' + this.draftId + '/', {
             subject: this.subject.value,
             body: this.draft2Html()
         })
@@ -88,7 +90,7 @@ export default class NewMail extends Component {
 
     deleteDraftHandler = (e) => {
         e.preventDefault()
-        axios.delete('api/draft/' + this.draftId + '/')
+        this.axios.delete('api/draft/' + this.draftId + '/')
             .then(d => {
                 console.log(d.data)
                 this.props.history.push('/admin/email/')

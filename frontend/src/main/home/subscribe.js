@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import faxios from '../../axios'; const axios = faxios()
+import faxios from '../../axios'; 
 
 export default class subscribe extends Component {
+    axios = faxios()
     state = {
         saved: false,
         verified: false,
@@ -23,7 +24,7 @@ export default class subscribe extends Component {
             email: subEmail.value,
         }
 
-        axios.post('api/subscriber/', payload)
+        this.axios.post('api/subscriber/', payload)
             .then((d) => {
                 const data = d.data
                 console.log(data);
@@ -45,7 +46,7 @@ export default class subscribe extends Component {
             e.preventDefault()
         }
 
-        axios.post('api/sendOtp/', {
+        this.axios.post('api/sendOtp/', {
             id: this.state.id
         })
             .then(d => {
@@ -59,7 +60,7 @@ export default class subscribe extends Component {
         e.preventDefault()
         let otp = this.subscribe.querySelector('#otp');
 
-        axios.post('api/verifyOtp/', {
+        this.axios.post('api/verifyOtp/', {
             otp: otp.value,
             id: this.state.id
         })
@@ -77,7 +78,7 @@ export default class subscribe extends Component {
     wrongMailHandler = (e) => {
         e.preventDefault()
 
-        axios.delete(`api/subscriber/${this.state.id}/`)
+        this.axios.delete(`api/subscriber/${this.state.id}/`)
             .then(d => {
                 console.log(d.data)
                 this.setState({
