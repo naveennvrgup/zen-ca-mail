@@ -80,7 +80,7 @@ export default class subscriber extends Component {
         let groups = this.state.groups.map((group, i) =>
             <div className={`d-flex tab align-items-center 
                 ${group.id === this.state.selected_group_id ?
-                    'active-group' : ''}
+                    'active-tab' : ''}
             `
             } key={i + 2}>
                 {/* <div className='sno px-2 font-weight-bold'>{i + 2}</div> */}

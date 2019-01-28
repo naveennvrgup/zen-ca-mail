@@ -1,35 +1,31 @@
 .subscribers {
-    .group-name{
+    .group-name {
         cursor: pointer;
+
         &:hover,
-        &:focus{
+        &:focus {
             font-weight: bold;
         }
     }
 
-    .active-group{
-        font-weight: bold;
+    .new-group {
         background: yellowgreen;
-    }
 
-    .new-group{
-        background: $activelink;
-        input{
-            color: white;
+        input {
             background: inherit;
         }
     }
 
-    .groups-container{
+    .groups-container {
         position: relative;
     }
 
-    .groups-list{
+    .groups-list {
         position: fixed;
     }
 
 
-    .tab_input{
+    .tab_input {
         border: none;
         width: 100%;
         outline: none;
@@ -39,7 +35,7 @@
         // }
     }
 
-    .tab_input_sm{
+    .tab_input_sm {
         width: auto;
         border-bottom: 2px solid #ddd;
         padding-bottom: 5px;
@@ -47,29 +43,32 @@
         text-align: center;
         flex-grow: 1;
         margin: 0 5px;
-        &:focus{
+
+        &:focus {
             border-bottom: 2px solid skyblue;
         }
     }
 
     .active-sub {
-        .face{
+        .face {
             color: $green;
         }
-        button:hover{
+
+        button:hover {
             color: $red;
             background: $lred;
         }
     }
 
     .inactive-sub {
-        .face{
+        .face {
             color: $red;
         }
-        button:hover{
+
+        button:hover {
             color: $green;
             background: $lgreen;
         }
     }
-    
+
 }

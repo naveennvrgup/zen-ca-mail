@@ -1,28 +1,10 @@
 import React, { Component } from 'react'
-import axios from '../../axios'
+import { burl } from '../../axios'
 
 export default class FileUpload extends Component {
     state = {
-        files: []
-    }
-
-    componentDidMount = () => {
-        let fi = this.props.initialFiles
-        console.log(fi)
-
-        fi = fi.map(ele => ({
-            id: ele.id,
-            url: ele.file,
-            progess: '100%',
-            name: ele.file.split('/').pop(),
-            saved: true
-        }))
-
-        this.setState({
-            ...this.state,
-            files: fi
-        })
-
+        progress: 0,
+        onprogress: false,
     }
 
     selectFilesHandler = e => {
@@ -30,204 +12,76 @@ export default class FileUpload extends Component {
 
         let fi = document.createElement('input')
         fi.type = 'file'
-        fi.multiple = true
+        fi.accept = '.csv'
         fi.click()
 
         fi.addEventListener('change', e => {
-            let currFiles = [...this.state.files]
-
-            for (let i = 0; i < fi.files.length; i++) {
-                let file = fi.files[i]
-                let flag = true
-
-                currFiles.forEach(ele => {
-                    if (ele.name === file.name) {
-                        flag = false
-                    }
-                })
-
-                if (flag) {
-                    currFiles.push({
-                        file: file,
-                        name: file.name,
-                        progress: 0,
-                    })
-                }
-            }
-
-            this.setState({
-                ...this.state,
-                files: currFiles
-            })
+            let file = e.target.files[0]
+            this.uploadFileHandler(file)
         })
     }
 
-    uploadFileHandler = (e, ele) => {
-        e.preventDefault()
+    uploadFileHandler = (file) => {
 
         var data = new FormData();
         var request = new XMLHttpRequest();
-
-        data.append('file', ele.file);
-        data.append('draft', this.props.draftId)
+        console.log(this.props)
+        data.append('group_id', this.props.selected_group_id)
+        data.append('file', file);
 
         // load event
         request.addEventListener('load', (e) => {
             let res = e.target.response
             console.log(res);
 
+            this.props.get_subs()
+            this.props.update_groups()
             this.setState({
-                files: this.state.files.map(item => {
-                    if (item.name === ele.name) {
-                        return {
-                            ...item,
-                            saved: true,
-                            progress: '100%',
-                            url: res.file,
-                            id: res.id,
-                        }
-                    }
-                    return item
-                })
+                ...this.state,
+                onprogress: false
             })
         });
-
-        console.log(this.state.files)
 
         // monitor progress of upload
         request.upload.addEventListener('progress', (e) => {
-            var progress = (e.loaded / e.total) * 100 + '%';
-
-            this.setState({
-                files: this.state.files.map(item => {
-                    if (item.name === ele.name) {
-                        return {
-                            ...item,
-                            progress
-                        }
-                    }
-                    return item
-                })
-            })
-        });
-
-        request.upload.addEventListener('abort', (e) => {
-            let files = this.state.files
-                .filter(item => item.name !== ele.file.name)
-                
+            var progress = (e.loaded / e.total) * 100
+            console.log(progress)
             this.setState({
                 ...this.state,
-                files
-            })// end of setstate
-
+                progress
+            })
         })
 
         request.responseType = 'json';
-        request.open('post', 'http://localhost:8000/api/attachment/');
+        request.open('post', burl + 'api/sub_as_csv/');
         request.send(data);
 
-        // attach request obj to state  
         this.setState({
-            files: this.state.files.map(item => {
-                if (item.name === ele.name) {
-                    return {
-                        ...item,
-                        request
-                    }
-                }
-                return item
-            })
-        })
-    }
-
-    deleteFileHandler = (e, ele) => {
-        e.preventDefault()
-
-        if (!ele.saved) {
-            ele.request.abort()
-            return
-        }
-
-        axios.delete(`api/attachment/${ele.id}/`)
-            .then(d => {
-                d = d.data
-                let files = this.state.files.filter(item => item.id !== ele.id)
-                this.setState({ files })
-            })
+            ...this.state,
+            progress: true,
+        })// end of setstate
     }
 
     render() {
-        let files = (
-            <div className="alert alert-warning">
-                No attachments yet
-            </div>
-        )
+        // let error = <
 
-        if (this.state.files.length > 0) {
-            // console.log('rendering')
-            files = []
-            this.state.files.forEach((ele, i) => {
-                // console.log(ele)
-                let action =
-                    <button className="btn green nbtn mx-2" onClick={(e) => this.uploadFileHandler(e, ele)}>
-                        <i className="fa fa-upload"></i>
-                    </button>
-                let file_link = 'inprogess'
+        let btn_text = this.state.onprogress ?
+            String(this.state.progress) + ' %' :
+            <i className="fa fa-upload"></i>
 
-                if (!ele.progess) {
-                    file_link = 'waiting'
-                }
-
-                if (ele.saved) {
-                    file_link =
-                        <a href={ele.url} target='_blank' rel="noopener noreferrer" >
-                            link
-                        </a>
-                }
-
-                if (ele.progress || ele.id) {
-                    action =
-                        <button className="btn red nbtn mx-2" onClick={(e) => this.deleteFileHandler(e, ele)}>
-                            <i className="fa fa-times"></i>
-                        </button>
-                }
-
-                files.push(
-                    <div className='d-flex tab file align-items-center justify-content-between' key={ele.name}>
-                        <div className='d-flex align-items-center justify-content-between'>
-                            <div className='name mx-2'>
-                                {ele.name}
-                            </div>
-                            <div className='link mx-2 badge badge-pill badge-dark'>
-                                {file_link}
-                            </div>
-                        </div>
-                        <div className='d-flex align-items-center justify-content-between'>
-                            <div className={`progress mx-2 ${ele.saved ? 'hide-progress' : ''}`}>
-                                <div className={`progress-bar progress-bar-striped m-0`}
-                                    style={{ width: ele.progress }}></div>
-                            </div>
-                            {action}
-                        </div>
-                    </div>
-                )
-            })
-        }
 
         return (
-            <div className='fileUpload'>
-                <div className="d-flex align-items-center mt-3">
-                    <div>
-                        <label className='font-weight-bold mx-3 my-4'>Attachments:</label>
+            <div className=''>
+                <div className="new_sub_csv d-flex justify-content-between align-items-center">
+                    <div className='text-left'>
+                        Upload a .csv with fields email, name, mobile
                     </div>
-                    <div>
-                        <button className="btn blue nbtn" onClick={this.selectFilesHandler}>
-                            <i className="fa fa-plus" ></i>
-                        </button>
-                    </div>
-                </div>
-                <div className="files">
-                    {files}
+                    <button
+                        disabled={this.state.onprogress ? true : false}
+                        onClick={this.selectFilesHandler}
+                        className="btn nbtn green">
+                        {btn_text}
+                    </button>
                 </div>
             </div>
         )

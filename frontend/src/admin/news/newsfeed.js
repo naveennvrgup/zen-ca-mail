@@ -16,7 +16,7 @@ export default class news extends Component {
     get_news = () => {
         let url = `api/news/?page=${this.state.page}&show=`
         if (this.state.selected_category !== -1) {
-            url += this.state.selected_category == 0 ? 1 : 0
+            url += this.state.selected_category === 0 ? 1 : 0
         }
 
         axios.get(url)

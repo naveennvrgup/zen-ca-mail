@@ -6,7 +6,7 @@ export default class email extends Component {
     state = {
         results: [],
         page: 1,
-        selected_category: 0
+        selected_category: -1
     }
     status_color = [
         'text-danger',
