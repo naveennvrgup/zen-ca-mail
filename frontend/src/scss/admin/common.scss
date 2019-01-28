@@ -25,3 +25,16 @@
 .active-tab{
     background: skyblue;
 }
+
+.progress {
+    width: 300px;
+    transition: opacity 2s ease;
+}
+
+.hide-progress {
+    opacity: 0.5;
+
+    .progress-bar {
+        width: 100%;
+    }
+}

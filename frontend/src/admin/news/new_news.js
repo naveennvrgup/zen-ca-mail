@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from '../../axios'
+import FileUpload from './file_upload'
 
-// import FileUpload from './file_upload'
 
 export default class NewMail extends Component {
     state = {
@@ -53,7 +53,9 @@ export default class NewMail extends Component {
 
     deleteNewsHandler = (e) => {
         e.preventDefault()
-        axios.delete('api/news/' + this.newsId + '/')
+        axios.patch('api/news/' + this.newsId + '/',{
+            flag: true
+        })
             .then(d => {
                 console.log(d.data)
                 this.props.history.push('/admin/news/')
@@ -89,9 +91,11 @@ export default class NewMail extends Component {
                     {/* img */}
                     <div className="form-group mt-3">
                         <label className='font-weight-bold'>Img:</label>
-                        <input
-                            type='text'
-                            className='img form-control w-100' />
+                        <div className="form-control d-flex pr-0 align-items-center">
+                            {this.state.id && <FileUpload
+                                {...this.state}
+                                newsId={this.state.id} />}
+                        </div>
                     </div>
 
                     {/* link */}

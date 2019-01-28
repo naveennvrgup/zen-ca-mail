@@ -123,9 +123,9 @@ export default class news extends Component {
 
         const show_false = (p, i) =>
             <div className='d-flex align-items-center'>
-                <button onClick={(e) => this.flagNewsHandler(e, p.id)}
-                    className="btn nbtn mx-1 red">
-                    <i className="fas fa-trash"></i>
+                <button onClick={(e) => this.send2EditHandler(e, p.id)}
+                    className="btn nbtn mx-1 blue">
+                    <i className="fas fa-pen-alt"></i>
                 </button>
                 <button onClick={(e) => this.display_it_Handler(e, p.id)}
                     className="btn nbtn mx-1 blue">
