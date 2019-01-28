@@ -30,13 +30,14 @@ export default class NewMail extends Component {
             })
     }
 
-    saveNewsHandler = (e, sendMail) => {
+    saveNewsHandler = (e, show_news) => {
         e.preventDefault()
 
-        axios.put('api/News/' + this.NewsId + '/', {
+        axios.put('api/news/' + this.state.id + '/', {
             title: this.title.value,
             link: this.link.value,
-            brief: this.brief.value
+            brief: this.brief.value,
+            show: show_news ? show_news : this.state.show
         })
             .then(d => {
                 console.log(d.data)
@@ -47,7 +48,7 @@ export default class NewMail extends Component {
     showNewsHandler = async (e) => {
         e.preventDefault()
         await this.saveNewsHandler(e, true)
-        this.props.history.push(`/admin/email/send_email/${this.NewsId}/`)
+        this.props.history.push(`/admin/news/`)
     }
 
     deleteNewsHandler = (e) => {
@@ -73,7 +74,7 @@ export default class NewMail extends Component {
                             <button className="btn mr-3"
                                 onClick={this.saveNewsHandler}>save</button>
                             <button className="btn btn-success"
-                                onClick={this.sendMailHandler}>send</button>
+                                onClick={this.showNewsHandler}>show</button>
                         </div>
                     </div>
 

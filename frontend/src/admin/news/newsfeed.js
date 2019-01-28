@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from '../../axios'
 import Toolbar from './toolbar'
 
-export default class email extends Component {
+export default class news extends Component {
     state = {
         results: [],
         page: 1,
@@ -61,12 +61,12 @@ export default class email extends Component {
 
     send2EditHandler = (e, id) => {
         e.preventDefault()
-        this.props.history.push(`/admin/email/edit_email/${id}/`)
+        this.props.history.push(`/admin/news/edit_news/${id}/`)
     }
 
     send2sent_mail_handler = (e, id) => {
         e.preventDefault()
-        this.props.history.push(`/admin/email/sent_email/${id}/`)
+        this.props.history.push(`/admin/news/sent_news/${id}/`)
     }
 
     change_page = (e, id) => {
@@ -96,7 +96,7 @@ export default class email extends Component {
             })
     }
 
-    change_email_state = load => {
+    change_news_state = load => {
         this.setState({
             ...this.state,
             ...load
@@ -131,7 +131,7 @@ export default class email extends Component {
         const btns2show = (p, i) => p.status > 0 ? btns_for_sent_mail(p, i) : btns_for_edit_mail(p, i)
 
         let createDraftView = (p, i) => (
-            <div className='d-flex tab align-items-center justify-content-between email' key={p.id}>
+            <div className='d-flex tab align-items-center justify-content-between news' key={p.id}>
                 <div className='d-flex align-items-center mx-2 flex-grow-1'>
                     <div className={p.show ? 'text-green' : 'text-danger'}>
                         <i className="fa fa-circle"></i>
@@ -175,7 +175,7 @@ export default class email extends Component {
             </div>
 
         return (
-            <div className='emails px-5 pb-5'>
+            <div className='newss px-5 pb-5'>
                 <div className="mt-3 row">
                     <div className='col-md-9'>
                         {pagination}
@@ -187,7 +187,7 @@ export default class email extends Component {
                         <Toolbar
                             toolbar_render={this.state.toolbar_render}
                             get_drafts={this.get_drafts}
-                            change_email_state={this.change_email_state}
+                            change_news_state={this.change_news_state}
                             selected_category={this.state.selected_category} />
                     </div>
                 </div>
