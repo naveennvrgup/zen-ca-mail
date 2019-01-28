@@ -38,7 +38,8 @@ class toolbar extends Component {
     change_news_category_handler = async (e, category) => {
         e.preventDefault()
         await this.props.change_news_state({
-            selected_category: category
+            selected_category: category,
+            page: 1
         })
         this.props.get_news()
     }

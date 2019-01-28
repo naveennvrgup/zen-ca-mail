@@ -37,7 +37,8 @@ class toolbar extends Component {
     change_email_category_handler = async (e, category) => {
         e.preventDefault()
         await this.props.change_email_state({
-            selected_category: category
+            selected_category: category,
+            page: 1
         })
         this.props.get_drafts()
     }
