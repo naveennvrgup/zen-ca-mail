@@ -5,6 +5,7 @@ import './scss/app.scss'
 
 import Admin from './admin/admin'
 import Main from './main/main'
+import Login from './admin/login/login'
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
       <div id='app'>
         <Switch>
           <Route path='/admin' component={Admin} />
+          <Route path='/login/' component={Login} />
           <Route path='/' component={Main} />
         </Switch>
 
