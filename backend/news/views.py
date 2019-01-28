@@ -10,3 +10,14 @@ import json
 class NewsViewset(ModelViewSet):
     queryset = News.objects.filter(flag=False)
     serializer_class = NewsSerializer
+    filter_fields = ['show']
+
+@api_view(['get'])
+def get_news_categories_count_view(req):
+    news = News.objects.filter(flag=False)
+    res={}
+    res['total'] = news.count()
+    res['displayed'] = news.filter(show=True).count()
+    res['archieved'] = news.filter(show=False).count()
+    
+    return JsonResponse(res)

@@ -53,10 +53,10 @@ export default class NewMail extends Component {
 
     deleteNewsHandler = (e) => {
         e.preventDefault()
-        axios.delete('api/News/' + this.NewsId + '/')
+        axios.delete('api/news/' + this.newsId + '/')
             .then(d => {
                 console.log(d.data)
-                this.props.history.push('/admin/email/')
+                this.props.history.push('/admin/news/')
             })
     }
 

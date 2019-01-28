@@ -6,16 +6,16 @@ export default class news extends Component {
     state = {
         results: [],
         page: 1,
-        selected_category: 0
+        selected_category: -1
     }
 
     componentDidMount = () => {
-        this.get_drafts()
+        this.get_news(1)
     }
 
-    get_drafts = () => {
-        let url = `api/news/?page=${this.state.page}&status=`
-        if (this.state.selected_category > -1) {
+    get_news = (page=this.state.page) => {
+        let url = `api/news/?page=${page}&show=`
+        if (this.state.selected_category !== -1) {
             url += String(this.state.selected_category)
         }
 
@@ -32,41 +32,46 @@ export default class news extends Component {
             })
     }
 
-    deleteDraftHandler = (e, draftId) => {
+    flagNewsHandler = (e, id) => {
         e.preventDefault()
 
-        axios.delete('api/draft/' + draftId + '/')
-            .then(d => {
-                console.log(d.data)
+        if (!this.state.results.length && this.state.page > 1) {
+            this.setState({
+                ...this.state,
+                page: this.state.page - 1
+            })// end of setstate
+        }
 
-                if (this.state.results.length === 1 && this.state.page !== 1) {
-                    this.setState({
-                        ...this.state,
-                        page: this.state.page - 1
-                    })// end of setstate
-                }
-                this.get_drafts()
-            })
-    }
-
-    flagDraftHandler = (e, id) => {
-        e.preventDefault()
-        axios.put(`api/draft/${id}/`, {
-            flag: true
+        axios.patch(`api/news/${id}/`, {
+            flag: true,
+            show: false
         }).then(d => {
             console.log(d.data)
-            this.get_drafts()
+            this.get_news()
+        })
+    }
+
+    archieve_it_Handler = (e, id) => {
+        e.preventDefault()
+        axios.patch(`api/news/${id}/`, {
+            show: false
+        }).then(d => {
+            this.get_news()
+        })
+    }
+
+    display_it_Handler = (e, id) => {
+        e.preventDefault()
+        axios.patch(`api/news/${id}/`, {
+            show: true
+        }).then(d => {
+            this.get_news()
         })
     }
 
     send2EditHandler = (e, id) => {
         e.preventDefault()
         this.props.history.push(`/admin/news/edit_news/${id}/`)
-    }
-
-    send2sent_mail_handler = (e, id) => {
-        e.preventDefault()
-        this.props.history.push(`/admin/news/sent_news/${id}/`)
     }
 
     change_page = (e, id) => {
@@ -104,36 +109,36 @@ export default class news extends Component {
     }
 
     render() {
-        const btns_for_edit_mail = (p, i) =>
+        const show_true = (p, i) =>
             <div className='d-flex align-items-center'>
                 <button onClick={(e) => this.send2EditHandler(e, p.id)}
-                    className="btn nbtn mx-1 green">
+                    className="btn nbtn mx-1 blue">
                     <i className="fas fa-pen-alt"></i>
                 </button>
-                <button onClick={(e) => this.deleteDraftHandler(e, p.id)}
-                    className="btn nbtn mx-1 red">
-                    <i className="fas fa-trash"></i>
-                </button>
-            </div>
-
-        const btns_for_sent_mail = (p, i) =>
-            <div className='d-flex align-items-center'>
-                <button onClick={(e) => this.send2sent_mail_handler(e, p.id)}
-                    className="btn nbtn mx-1 blue">
-                    <i className="fas fa-glasses"></i>
-                </button>
-                <button onClick={(e) => this.flagDraftHandler(e, p.id)}
+                <button onClick={(e) => this.archieve_it_Handler(e, p.id)}
                     className="btn nbtn mx-1 red">
                     <i className="fas fa-times"></i>
                 </button>
             </div>
 
-        const btns2show = (p, i) => p.status > 0 ? btns_for_sent_mail(p, i) : btns_for_edit_mail(p, i)
+        const show_false = (p, i) =>
+            <div className='d-flex align-items-center'>
+                <button onClick={(e) => this.flagNewsHandler(e, p.id)}
+                    className="btn nbtn mx-1 red">
+                    <i className="fas fa-trash"></i>
+                </button>
+                <button onClick={(e) => this.display_it_Handler(e, p.id)}
+                    className="btn nbtn mx-1 blue">
+                    <i className="fas fa-check"></i>
+                </button>
+            </div>
+
+        const btns = (p, i) => p.show ? show_true(p, i) : show_false(p, i)
 
         let createDraftView = (p, i) => (
             <div className='d-flex tab align-items-center justify-content-between news' key={p.id}>
                 <div className='d-flex align-items-center mx-2 flex-grow-1'>
-                    <div className={p.show ? 'text-green' : 'text-danger'}>
+                    <div className={p.show ? 'text-success' : 'text-danger'}>
                         <i className="fa fa-circle"></i>
                     </div>
                     <div className='srno mx-2 font-weight-bold'>{i + 1}</div>
@@ -141,15 +146,15 @@ export default class news extends Component {
                     <div className='date mx-2 text-muted'>({p.created_on.slice(0, 10)})</div>
                 </div>
                 <div>
-                    {btns2show(p, i)}
+                    {btns(p, i)}
                 </div>
             </div >
         )
 
-        let drafts = this.state.results
-        drafts = drafts.map((draft, i) => createDraftView(draft, i))
+        let news = this.state.results
+        news = news.map((draft, i) => createDraftView(draft, i))
 
-        let category_names = ['Total', 'Drafts', 'Outbox', 'Sent']
+        let category_names = ['Total', 'Displayed', 'Archieved']
         let selected_category_name = category_names[this.state.selected_category + 1]
 
         let pagination =
@@ -179,14 +184,14 @@ export default class news extends Component {
                 <div className="mt-3 row">
                     <div className='col-md-9'>
                         {pagination}
-                        {drafts}
+                        {news}
                         {this.state.results.length > 10 ?
                             pagination : ''}
                     </div>
                     <div className="col-md-3">
                         <Toolbar
                             toolbar_render={this.state.toolbar_render}
-                            get_drafts={this.get_drafts}
+                            get_news={this.get_news}
                             change_news_state={this.change_news_state}
                             selected_category={this.state.selected_category} />
                     </div>
