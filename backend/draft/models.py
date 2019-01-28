@@ -27,7 +27,7 @@ class AttachmentSerializer(ModelSerializer):
         fields = '__all__'
 
 class DraftSerializer(ModelSerializer):
-    # files = DraftAttachmentsSerializer(many=True, read_only=True)
+    files = AttachmentSerializer(many=True, read_only=True)
 
     class Meta:
         model = Draft

@@ -132,7 +132,7 @@ export default class NewMail extends Component {
                         />
                     </div>
 
-                    {this.state.files && !this.state.status ?
+                    {this.state.files ?
                         <FileUpload draftId={this.draftId} initialFiles={this.state.files} />
                         : ''}
 

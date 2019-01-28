@@ -143,7 +143,7 @@ export default class email extends Component {
                     </div>
                     <div className='srno mx-2 font-weight-bold'>{i + 1}</div>
                     <div className='subject mx-2 flex-grow-1'>{p.subject}</div>
-                    <div className='date mx-2 text-muted'>({p.edited_on})</div>
+                    <div className='date mx-2 text-muted'>({p.created_on.slice(0,10)})</div>
                 </div>
                 <div>
                     {btns2show(p,i)}

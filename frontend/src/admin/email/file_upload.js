@@ -92,6 +92,8 @@ export default class FileUpload extends Component {
             })
         });
 
+        console.log(this.state.files)
+
         // monitor progress of upload
         request.upload.addEventListener('progress', (e) => {
             var progress = (e.loaded / e.total) * 100 + '%';
@@ -108,6 +110,17 @@ export default class FileUpload extends Component {
                 })
             })
         });
+
+        request.upload.addEventListener('abort', (e) => {
+            let files = this.state.files
+                .filter(item => item.name !== ele.file.name)
+                
+            this.setState({
+                ...this.state,
+                files
+            })// end of setstate
+
+        })
 
         request.responseType = 'json';
         request.open('post', 'http://localhost:8000/api/attachment/');
@@ -130,6 +143,11 @@ export default class FileUpload extends Component {
     deleteFileHandler = (e, ele) => {
         e.preventDefault()
 
+        if (!ele.saved) {
+            ele.request.abort()
+            return
+        }
+
         axios.delete(`api/attachment/${ele.id}/`)
             .then(d => {
                 d = d.data
@@ -149,49 +167,46 @@ export default class FileUpload extends Component {
             // console.log('rendering')
             files = []
             this.state.files.forEach((ele, i) => {
-                console.log(ele)
+                // console.log(ele)
                 let action =
-                    <button className="btn green" onClick={(e) => this.uploadFileHandler(e, ele)}>
+                    <button className="btn green nbtn mx-2" onClick={(e) => this.uploadFileHandler(e, ele)}>
                         <i className="fa fa-upload"></i>
                     </button>
-                let fileId = 'inprogess'
+                let file_link = 'inprogess'
 
                 if (!ele.progess) {
-                    fileId = 'waiting'
+                    file_link = 'waiting'
                 }
 
                 if (ele.saved) {
-                    fileId =
+                    file_link =
                         <a href={ele.url} target='_blank' rel="noopener noreferrer" >
-                            FId: {ele.id}
+                            link
                         </a>
                 }
 
                 if (ele.progress || ele.id) {
                     action =
-                        <button className="btn red" onClick={(e) => this.deleteFileHandler(e, ele)}>
+                        <button className="btn red nbtn mx-2" onClick={(e) => this.deleteFileHandler(e, ele)}>
                             <i className="fa fa-times"></i>
                         </button>
                 }
 
                 files.push(
-                    <div className='d-flex file p-2' key={ele.name}>
-                        <div className='name'>
-                            {ele.name}
-                        </div>
-                        <div className='fid'>
-                            {fileId}
-                        </div>
-                        <div>
-                            <div className={`progress  ${ele.saved ? 'hide-progress' : ''}`}>
-                                <div
-                                    className={`progress-bar progress-bar-striped m-0`}
-                                    style={{
-                                        width: ele.progress
-                                    }}></div>
+                    <div className='d-flex tab file align-items-center justify-content-between' key={ele.name}>
+                        <div className='d-flex align-items-center justify-content-between'>
+                            <div className='name mx-2'>
+                                {ele.name}
+                            </div>
+                            <div className='link mx-2 badge badge-pill badge-dark'>
+                                {file_link}
                             </div>
                         </div>
-                        <div className='action'>
+                        <div className='d-flex align-items-center justify-content-between'>
+                            <div className={`progress mx-2 ${ele.saved ? 'hide-progress' : ''}`}>
+                                <div className={`progress-bar progress-bar-striped m-0`}
+                                    style={{ width: ele.progress }}></div>
+                            </div>
                             {action}
                         </div>
                     </div>
@@ -206,7 +221,7 @@ export default class FileUpload extends Component {
                         <label className='font-weight-bold mx-3 my-4'>Attachments:</label>
                     </div>
                     <div>
-                        <button className="btn blue" onClick={this.selectFilesHandler}>
+                        <button className="btn blue nbtn" onClick={this.selectFilesHandler}>
                             <i className="fa fa-plus" ></i>
                         </button>
                     </div>
