@@ -29,15 +29,11 @@ urlpatterns = [
     path('api/download_group_as_csv/<int:gid>/', download_group_csv_view),
     # draft
     path('api/get_draft_categories_count/', get_draft_categories_count_view),
-
     # router
     path('api/', include(router.urls)),
-
-    re_path('', TemplateView.as_view(template_name="index.html"))
 ]
 
 # media urls
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # react
-# urlpatterns += 
+urlpatterns.append(re_path('', TemplateView.as_view(template_name="index.html")))
