@@ -3,28 +3,26 @@ from rest_framework.serializers import ModelSerializer
 from django.dispatch import receiver
 from draft.models import *
 from subscribe.models import *
+from decouple import config
+import math
+
 
 class Outbox(Model):
-    draft = CharField(max_length=100)
-    subject = CharField(max_length=200, default='not yet updated')
-    created_on = DateTimeField(auto_now_add=True)
-    noSubs = IntegerField(default=0)
-    bounces = IntegerField(default=0)
-    complaints = IntegerField(default=0)
+    draft = IntegerField()
+    group = IntegerField()
 
     def __str__(self):
         return self.subject
 
 
-class SendQ(Model):
-    email = CharField(max_length=100)
-    msgId = CharField(max_length=100, default='no return yet')
-    sent = BooleanField(default=False)
-    status = CharField(max_length=100, default='delivery')
-    outbox = ForeignKey(Outbox, on_delete=CASCADE, related_name='sendq')
+class Batch(Model):
+    draft = IntegerField(null=True)
+    subs = ManyToManyField(Subscriber, related_name='batch')
+    created_on = DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.outbox.subject
+        return str(self.draft)
+
 
 class OutboxSerializer(ModelSerializer):
     class Meta:
@@ -33,27 +31,22 @@ class OutboxSerializer(ModelSerializer):
 
 
 # set amount of subs the email is sent to
-@receiver(signals.pre_save, sender=Outbox)
-def pre_save_outbox(sender, instance, **kwargs):
-    draft = Draft.objects.get(id=int(instance.draft))
-    instance.subject = draft.subject
-    instance.noSubs = Subcriber.objects.count()
-
-# 
 @receiver(signals.post_save, sender=Outbox)
 def post_save_outbox(sender, instance, **kwargs):
-    draft = Draft.objects.get(id=int(instance.draft))
-    try:
-        subs = Subcriber.objects.all().filter(verified=True)
-        print('sending bulkmail to {} subs '.format(len(subs)))
-        # attach email to queue
-        for i in range(len(subs)):
-            newq = SendQ(email=subs[i].email, outbox=instance)
-            newq.save()
+    draft = Draft.objects.get(pk=instance.draft)
+    group = Group.objects.get(pk=instance.group)
 
-        # send the mail
-        bulk_mail(instance, draft)
+    # change draft status to outbox
+    draft.status = 2
+    draft.save()
 
-    except:
-        print('error fetching subs')
-        pass
+    # create batches 
+    x = 1
+    y = int(config('batch_size'))
+    subs = group.subs.all()
+    batched_subs = [subs[x*y-y:x*y] for x in range(1, math.ceil(len(subs)/y)+1)]
+    for batch_of_subs in batched_subs:
+        batch = Batch.objects.create(draft=draft.id)
+        batch.subs.add(*batch_of_subs)
+        
+    print(subs)

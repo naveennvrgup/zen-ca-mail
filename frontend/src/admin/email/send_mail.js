@@ -48,9 +48,9 @@ export default class send_mail extends Component {
             return
         }
         
-        this.axios.post('api/send_bulk_mail/', {
-            group_id: this.group.value,
-            draft_id: this.draftId
+        this.axios.post('api/outbox/', {
+            group: this.group.value,
+            draft: this.draftId
         }).then(d => {
             console.log(d.data)
         })
@@ -74,7 +74,6 @@ export default class send_mail extends Component {
             <a href={ele.file}>{ele.file.split('/').pop()}</a>
         </li>)
 
-        console.log(groups)
         return (
             <div className='send-mail p-5'>
                 <div className="d-flex justify-content-between align-items-center">
