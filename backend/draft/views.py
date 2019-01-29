@@ -5,6 +5,8 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.parsers import MultiPartParser
 from rest_framework.pagination import PageNumberPagination
 from django.http import JsonResponse
+import dramatiq
+import time
 
 from .models import *
 import json
@@ -20,9 +22,15 @@ class AttachmentViewset(ModelViewSet):
     serializer_class=AttachmentSerializer
     parser_classes = (MultiPartParser,)
 
+@dramatiq.actor
+def print_msg():
+    time.sleep(10)
+    print('hello world after 10 seconds man dammmm')
+
 @api_view(['get'])
 def get_draft_categories_count_view(req):
     drafts = Draft.objects.filter(flag=False)
+    print_msg()
     res={}
     res['total'] = drafts.count()
     res['drafts'] = drafts.filter(status=0).count()
