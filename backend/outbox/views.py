@@ -11,3 +11,7 @@ class OutboxViewset(ModelViewSet):
     queryset=Outbox.objects.all()
     serializer_class=OutboxSerializer
 
+@api_view(['post'])
+def send_bulk_mail_view(req):
+    data = json.loads(req.body)
+    return Response(req.data)

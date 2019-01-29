@@ -43,7 +43,17 @@ export default class send_mail extends Component {
 
     send_mail_handler = e => {
         e.preventDefault()
-        console.log(this.group.value)
+
+        if(this.group.value==='0'){
+            return
+        }
+        
+        this.axios.post('api/send_bulk_mail/', {
+            group_id: this.group.value,
+            draft_id: this.draftId
+        }).then(d => {
+            console.log(d.data)
+        })
     }
 
 
@@ -51,7 +61,7 @@ export default class send_mail extends Component {
         const groups = [<option
             className='form-control'
             key={0}
-            value={false}>--choose--</option>]
+            value={0}>--choose--</option>]
 
         this.state.groups.forEach(ele =>
             groups.push(<option
@@ -89,7 +99,7 @@ export default class send_mail extends Component {
                         <select
                             name="group"
                             className='form-control d-inline-block w-auto mx-3'
-                            defaultValue='0'
+                            defaultValue={0}
                             id="group">
                             {groups}
                         </select>
