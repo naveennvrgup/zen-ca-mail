@@ -48,11 +48,12 @@ export default class send_mail extends Component {
             return
         }
         
-        this.axios.post('api/outbox/', {
+        this.axios.post('api/send_bulk_mail/', {
             group: this.group.value,
             draft: this.draftId
         }).then(d => {
             console.log(d.data)
+            this.props.history.push('/admin/email/')
         })
     }
 

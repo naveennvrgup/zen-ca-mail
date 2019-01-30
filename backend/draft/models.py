@@ -1,5 +1,6 @@
 from django.db.models import *
 from rest_framework.serializers import ModelSerializer
+from django.dispatch import Signal
 
 class Draft(Model):
     subject = CharField(default='',max_length=300)

@@ -1,3 +1,4 @@
+from .tasks import start_bulk_mail
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
@@ -10,28 +11,40 @@ from .models import *
 import json
 from aws_engine.send_otp import *
 
+
 class DraftViewset(ModelViewSet):
-    queryset=Draft.objects.all().filter(flag=False)
-    serializer_class=DraftSerializer
-    filter_fields='__all__'
+    queryset = Draft.objects.all().filter(flag=False)
+    serializer_class = DraftSerializer
+    filter_fields = '__all__'
+
 
 class AttachmentViewset(ModelViewSet):
-    queryset=Attachment.objects.all()
-    serializer_class=AttachmentSerializer
+    queryset = Attachment.objects.all()
+    serializer_class = AttachmentSerializer
     parser_classes = (MultiPartParser,)
 
-# @dramatiq.actor
-# def print_msg():
-#     time.sleep(10)
-#     print('hello world after 10 seconds man dammmm')
 
 @api_view(['get'])
 def get_draft_categories_count_view(req):
     drafts = Draft.objects.filter(flag=False)
-    res={}
+    res = {}
     res['total'] = drafts.count()
     res['drafts'] = drafts.filter(status=0).count()
     res['outbox'] = drafts.filter(status=1).count()
     res['sent'] = drafts.filter(status=2).count()
-    
+
     return JsonResponse(res)
+
+
+@api_view(['POST'])
+def send_bulk_mail_view(req):
+    data = json.loads(req.body)
+
+    draft = Draft.objects.get(pk=data['draft'])
+    group = Group.objects.get(pk=data['group'])
+    # set status to sending
+    draft.status = 1
+    draft.save()
+
+    start_bulk_mail(draft, group)
+    return Response({'success': True})
