@@ -46,5 +46,6 @@ def send_bulk_mail_view(req):
     draft.status = 1
     draft.save()
 
-    start_bulk_mail(draft, group)
+    # start_bulk_mail(draft, group)
+    start_bulk_mail.delay(draft, group)
     return Response({'success': True})
