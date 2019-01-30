@@ -41,11 +41,8 @@ def send_bulk_mail_view(req):
     data = json.loads(req.body)
 
     draft = Draft.objects.get(pk=data['draft'])
-    group = Group.objects.get(pk=data['group'])
-    # set status to sending
     draft.status = 1
     draft.save()
-
     # start_bulk_mail(draft, group)
-    start_bulk_mail.delay(draft, group)
+    start_bulk_mail.delay(data['draft'], data['group'])
     return Response({'success': True})

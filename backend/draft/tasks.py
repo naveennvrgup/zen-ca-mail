@@ -21,7 +21,7 @@ def create_template(draft):
 
     # fit the attachments
     tbody = draft.body
-    tbody = '<h3>Attachments: </h3>'
+    tbody += '<h3>Attachments: </h3>'
     tbody += '<ol>'
     files = draft.files.all()
     for file in files:
@@ -52,7 +52,7 @@ def send_mails_finally(subs, tname):
     source = config('from')
 
     for batch in subs:
-        time.sleep(55)
+        time.sleep(1)
         response = client.send_bulk_templated_email(
             Source=source,
             Template=tname,
@@ -71,6 +71,12 @@ def send_mails_finally(subs, tname):
 
 @shared_task
 def start_bulk_mail(draft, group):
+    draft = Draft.objects.get(pk=draft)
+    group = Group.objects.get(pk=group)
+    # set status to sending
+    
+    print(draft, group)
+    
     subs = group.subs.all()
     subs = [x.email for x in subs]
 
@@ -83,3 +89,4 @@ def start_bulk_mail(draft, group):
     # set draft status to sent
     draft.status = 2
     draft.save()
+    print('killed bulk mail')
