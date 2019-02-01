@@ -61,7 +61,7 @@ def send_mails_finally(subs, tname):
                     "Destination": {
                         "ToAddresses": batch
                     },
-                    "ReplacementTemplateData":"{}"
+                    "ReplacementTemplateData": "{}"
                 }
             ],
             DefaultTemplateData="{}"
@@ -74,9 +74,9 @@ def start_bulk_mail(draft, group):
     draft = Draft.objects.get(pk=draft)
     group = Group.objects.get(pk=group)
     # set status to sending
-    
+
     print(draft, group)
-    
+
     subs = group.subs.all()
     subs = [x.email for x in subs]
 
@@ -90,3 +90,21 @@ def start_bulk_mail(draft, group):
     draft.status = 2
     draft.save()
     print('killed bulk mail')
+
+
+@shared_task
+def handle_bounce_async(msg):
+    msg = json.loads(msg)
+    subs = msg['bounce']['bouncedRecipients']
+    subs = [x['emailAddress'] for x in subs]
+
+    print(subs, msg_id)
+
+
+@shared_task
+def handle_complaint_async(msg):
+    msg = json.loads(msg)
+    subs = msg['complaint']['complainedRecipients']
+    subs = [x['emailAddress'] for x in subs]
+
+    print(subs, msg_id)

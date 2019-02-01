@@ -1,4 +1,4 @@
-from .tasks import start_bulk_mail
+from .tasks import start_bulk_mail, handle_bounce_async, handle_complaint_async
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
@@ -46,3 +46,29 @@ def send_bulk_mail_view(req):
     # start_bulk_mail(draft, group)
     start_bulk_mail.delay(data['draft'], data['group'])
     return Response({'success': True})
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def handle_complaint_view(req):
+    data = json.loads(req.body)
+    
+    if data['Type'] == 'SubscriptionConfirmation':
+        print(data)
+        return Response()
+    
+    handle_complaint_async(data['Message'])
+    return Response()
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def handle_bounce_view(req):
+    data = json.loads(req.body)
+
+    if data['Type'] == 'SubscriptionConfirmation':
+        print(data)
+        return Response()
+
+    handle_bounce_async(data['Message'])
+    return Response()

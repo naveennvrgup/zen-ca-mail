@@ -34,6 +34,9 @@ urlpatterns = [
     # draft
     path('api/get_draft_categories_count/', get_draft_categories_count_view),
     path('api/send_bulk_mail/', send_bulk_mail_view),
+    # aws metrics
+    path('api/handle_bounce/', handle_bounce_view),
+    path('api/handle_complaint/', handle_complaint_view),
     # news
     path('api/get_news_categories_count/', get_news_categories_count_view),
 

@@ -11,7 +11,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gt^z&^xp7=el%wf-=!0(%zw0!-_q7#g#cgggy+_^hzyremb+%6'
 DEBUG = True
 
-ALLOWED_HOSTS = ['zenithec.tk','52.66.199.227','13.233.65.192','127.0.0.1','localhost','192.168.1.6e']
+# ALLOWED_HOSTS = ['zenithec.tk','52.66.199.227','13.233.65.192','127.0.0.1','localhost','192.168.1.6e']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
