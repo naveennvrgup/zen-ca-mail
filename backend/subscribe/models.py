@@ -13,9 +13,9 @@ class Group(Model):
 
 
 class Subscriber(Model):
-    name = CharField(max_length=200, default='')
+    name = CharField(max_length=200, default='anonymouse')
     email = EmailField()
-    mobile = CharField(max_length=100, default='')
+    mobile = CharField(max_length=100, default='0000000000')
     verified = BooleanField(default=False)
     otp = CharField(max_length=5, default='00000')
     created_on = DateTimeField(auto_now_add=True)

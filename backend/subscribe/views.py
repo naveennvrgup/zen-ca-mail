@@ -107,8 +107,7 @@ def sub_as_csv_view(req):
     file = req.FILES['file']
     decoded_file = file.read().decode('utf-8').splitlines()
     reader = csv.DictReader(decoded_file)
-    count = Subscriber.objects.count()
-    ttime = timezone.now()
+    group = Group.objects.get(pk=group_id)
 
     # if all fields are present
     try:
@@ -116,13 +115,12 @@ def sub_as_csv_view(req):
             email=x['email'],
             name=x['name'],
             mobile=x['mobile'],
-            verified=True
+            verified=True,
+            group=group
         ) for x in reader]
         subs = Subscriber.objects.bulk_create(subs)
-        subs = Subscriber.objects.filter(created_on__gt=ttime)
-        Group.objects.get(pk=group_id).subs.add(*subs)
-        Group.objects.get(name='all').subs.add(*subs)
-        # print(subs)
+
+        print(subs)
         return Response()
     except:
         return Response({
