@@ -80,7 +80,8 @@ def start_bulk_mail(draft, group):
 
     subs = group.subs.filter(flag=False)
     subs = [x.email for x in subs]
-
+    print('sending to', len(subs))
+    
     # create the template
     tname = create_template(draft)
 
