@@ -11,9 +11,8 @@ from django.conf.urls.static import static
 
 from subscribe.views import *
 from draft.views import *
-from outbox.views import *
-from sent.views import *
 from news.views import *
+from dashboard.views import *
 
 router = DefaultRouter()
 router.register('subscribe', SubscribeViewset)
@@ -21,7 +20,6 @@ router.register('group', GroupViewset)
 router.register('draft', DraftViewset)
 router.register('attachment', AttachmentViewset)
 router.register('news', NewsViewset)
-router.register('outbox', OutboxViewset)
 
 
 urlpatterns = [
