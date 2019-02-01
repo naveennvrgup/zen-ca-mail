@@ -20,7 +20,7 @@ def save_subscriber(data):
 
 
 class SubscribeViewset(ModelViewSet):
-    queryset = Subscriber.objects.all().filter(flag=False)
+    queryset = Subscriber.objects.filter(flag=False)
     serializer_class = SubscriberSerializer
 
     def delete(self, req, pk=None):
@@ -51,7 +51,7 @@ class SubscribeViewset(ModelViewSet):
 
 
 class GroupViewset(ModelViewSet):
-    queryset = Group.objects.all().filter(flag=False)
+    queryset = Group.objects.filter(flag=False)
     serializer_class = GroupSerializer
 
     def list(self, req):
@@ -61,13 +61,13 @@ class GroupViewset(ModelViewSet):
             res.append({
                 'id': x.id,
                 'name': x.name,
-                'subs': x.subs.all().count()
+                'subs': x.subs.filter(flag=False).count()
             })
         return Response(res)
 
     def retrieve(self, request, pk=None):
         group = get_object_or_404(Group, pk=pk)
-        subs = SubscriberSerializer(group.subs.all(), many=True)
+        subs = SubscriberSerializer(group.subs.filter(flag=False), many=True)
         page = self.paginate_queryset(subs.data)
         return self.get_paginated_response(page)
 
@@ -132,7 +132,7 @@ def sub_as_csv_view(req):
 @permission_classes([AllowAny])
 def download_group_csv_view(req, gid):
     group = Group.objects.get(pk=gid)
-    subs = group.subs.all()
+    subs = group.subs.filter(flag=False)
 
     # convet to csv
     fs = ','.join(['id', 'email', 'name', 'mobile', 'created_on']) + '\n'

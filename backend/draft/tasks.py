@@ -1,11 +1,12 @@
 from celery import shared_task
 from .models import Draft
-from subscribe.models import Group
+from subscribe.models import Group, Subscriber
 from decouple import config
 import boto3
 import time
 import random
 import math
+import json
 
 client = boto3.client(
     'ses',
@@ -77,7 +78,7 @@ def start_bulk_mail(draft, group):
 
     print(draft, group)
 
-    subs = group.subs.all()
+    subs = group.subs.filter(flag=False)
     subs = [x.email for x in subs]
 
     # create the template
@@ -95,16 +96,28 @@ def start_bulk_mail(draft, group):
 @shared_task
 def handle_bounce_async(msg):
     msg = json.loads(msg)
-    subs = msg['bounce']['bouncedRecipients']
-    subs = [x['emailAddress'] for x in subs]
+    emails = msg['bounce']['bouncedRecipients']
+    emails = [x['emailAddress'] for x in emails]
 
-    print(subs, msg_id)
+    for email in emails:
+        subs = Subscriber.objects.filter(email=email)
+        for sub in subs:
+            sub.flag = True
+            sub.save()
+
+    print('bounce', emails)
 
 
 @shared_task
 def handle_complaint_async(msg):
     msg = json.loads(msg)
-    subs = msg['complaint']['complainedRecipients']
-    subs = [x['emailAddress'] for x in subs]
+    emails = msg['complaint']['complainedRecipients']
+    emails = [x['emailAddress'] for x in emails]
 
-    print(subs, msg_id)
+    for email in emails:
+        subs = Subscriber.objects.filter(email=email)
+        for sub in subs:
+            sub.flag = True
+            sub.save()
+
+    print('complaint', emails)

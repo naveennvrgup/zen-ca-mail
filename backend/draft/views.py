@@ -57,7 +57,7 @@ def handle_complaint_view(req):
         print(data)
         return Response()
     
-    handle_complaint_async(data['Message'])
+    handle_complaint_async.delay(data['Message'])
     return Response()
 
 
@@ -70,5 +70,5 @@ def handle_bounce_view(req):
         print(data)
         return Response()
 
-    handle_bounce_async(data['Message'])
+    handle_bounce_async.delay(data['Message'])
     return Response()
