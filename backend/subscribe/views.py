@@ -15,6 +15,10 @@ from .models import *
 from django.utils import timezone
 
 
+def save_subscriber(data):
+    print(data)
+
+
 class SubscribeViewset(ModelViewSet):
     queryset = Subscriber.objects.all().filter(flag=False)
     serializer_class = SubscriberSerializer
@@ -28,11 +32,13 @@ class SubscribeViewset(ModelViewSet):
 
     def create(self, req):
         data = json.loads(req.body)
+
+        # check for duplicates
         try:
             sub = Subcriber.objects.get(email=data['email'])
 
             # for testing purpose option of duplicate sub is given
-            if bool(config('duplicate_subs')):
+            if config('duplicate_subs') == 'True':
                 return save_subscriber(data)
             else:
                 return Response({
@@ -83,12 +89,12 @@ def add_sub_to_group_view(req):
     data['name'] = data['name'] if data['name'] else 'anonymous'
     data['mobile'] = data['mobile'] if data['mobile'] else '1234512345'
     data['verified'] = True
+    data['group'] = data['groupId']
+
     sub = SubscriberSerializer(data=data)
 
     if sub.is_valid():
         sub.save()
-        group = Group.objects.get(pk=data['groupId'])
-        group.subs.add(sub.data['id'])
         return Response(sub.data)
     else:
         return Response(sub.errors)
@@ -131,7 +137,7 @@ def download_group_csv_view(req, gid):
     subs = group.subs.all()
 
     # convet to csv
-    fs = ','.join(['id','email','name','mobile','created_on']) + '\n'
+    fs = ','.join(['id', 'email', 'name', 'mobile', 'created_on']) + '\n'
     fs += '\n'.join([','.join([
         str(x.id),
         str(x.email),
@@ -141,5 +147,6 @@ def download_group_csv_view(req, gid):
     ]) for x in subs])
 
     response = HttpResponse(fs, content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename=group-{}-{}.csv'.format(group.name,timezone.now().date())
+    response['Content-Disposition'] = 'attachment; filename=group-{}-{}.csv'.format(
+        group.name, timezone.now().date())
     return response

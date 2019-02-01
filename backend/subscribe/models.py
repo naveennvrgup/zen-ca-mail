@@ -3,6 +3,15 @@ from rest_framework.serializers import ModelSerializer
 from django.dispatch import receiver
 
 
+class Group(Model):
+    name = CharField(max_length=200, unique=True)
+    flag = BooleanField(default=False)
+    created_on = DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Subscriber(Model):
     name = CharField(max_length=200, default='')
     email = EmailField()
@@ -11,16 +20,7 @@ class Subscriber(Model):
     otp = CharField(max_length=5, default='00000')
     created_on = DateTimeField(auto_now_add=True)
     flag = BooleanField(default=False)
-
-    def __str__(self):
-        return self.name
-
-
-class Group(Model):
-    name = CharField(max_length=200, unique=True)
-    subs = ForeignKey(Subscriber, on_delete=CASCADE, related_name='groups')
-    flag = BooleanField(default=False)
-    created_on = DateTimeField(auto_now_add=True)
+    group = ForeignKey(Group, on_delete=CASCADE, related_name='subs')
 
     def __str__(self):
         return self.name
@@ -38,4 +38,3 @@ class GroupSerializer(ModelSerializer):
     class Meta:
         model = Group
         fields = '__all__'
-
