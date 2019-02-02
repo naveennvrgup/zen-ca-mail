@@ -9,8 +9,10 @@ cffi==1.11.5
 defusedxml==0.5.0
 diff-match-patch==20181111
 Django==2.1.5
+django-celery-beat==1.4.0
 django-cors-headers==2.4.0
 django-filter==2.1.0
+django-timezone-field==3.0
 djangorestframework==3.9.0
 docutils==0.14
 jmespath==0.9.3
@@ -22,6 +24,7 @@ Pillow==5.4.1
 pkg-resources==0.0.0
 pycodestyle==2.4.0
 pycparser==2.19
+python-crontab==2.3.6
 python-dateutil==2.7.5
 python-decouple==3.1
 pytz==2018.9
