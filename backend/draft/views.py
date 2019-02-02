@@ -9,7 +9,6 @@ from django.http import JsonResponse
 
 from .models import *
 import json
-from aws_engine.send_otp import *
 
 
 class DraftViewset(ModelViewSet):
