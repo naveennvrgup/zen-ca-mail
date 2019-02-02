@@ -28,11 +28,13 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'django_filters',
     'corsheaders',
+    'django_celery_beat',
 
     'subscribe',
     'draft',
     'news',
     'dashboard',
+
 ]
 
 MIDDLEWARE = [
@@ -138,4 +140,4 @@ MEDIA_ROOT = './uploads'
 
 # celery setup
 CELERY_BROKER_URL = 'amqp://localhost'
-CELERY_IMPORTS = ("draft",)
+CELERY_IMPORTS = ("draft", 'dashboard')

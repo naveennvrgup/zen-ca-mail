@@ -89,6 +89,8 @@ def start_bulk_mail(draft, group):
     send_mails_finally(subs, tname)
 
     # set draft status to sent
+    draft.group = group.name
+    draft.sentTo = group.subs.count()
     draft.status = 2
     draft.save()
     print('killed bulk mail')
