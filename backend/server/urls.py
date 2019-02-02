@@ -38,7 +38,8 @@ urlpatterns = [
     # news
     path('api/get_news_categories_count/', get_news_categories_count_view),
     # dashboard 
-    path('api/sending_statistics/', sending_statistics_view),
+    path('api/get_delivery_reports/', get_delivery_reports_view),
+    path('api/get_draft_details/', get_draft_details_view),
 
     # router
     path('api/', include(router.urls)),

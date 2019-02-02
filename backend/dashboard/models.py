@@ -1,4 +1,5 @@
 from django.db import models
+from rest_framework.serializers import ModelSerializer
 
 
 class Report(models.Model):
@@ -10,3 +11,9 @@ class Report(models.Model):
 
     def __str__(self):
         return str(self.time)
+
+
+class ReportSerializer(ModelSerializer):
+    class Meta:
+        fields = '__all__'
+        model = Report

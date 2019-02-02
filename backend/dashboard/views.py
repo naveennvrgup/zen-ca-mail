@@ -1,17 +1,26 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from django.http import JsonResponse
-from decouple import config
-import boto3
+from .models import *
+from draft.models import Draft
 
-client = boto3.client(
-    'ses',
-    region_name='eu-west-1',
-    aws_access_key_id=config('aws_key'),
-    aws_secret_access_key=config('aws_secret')
-)
 
 @api_view(['get'])
-def sending_statistics_view(req):
-    response = client.get_send_statistics()
-    return JsonResponse(response)
+def get_delivery_reports_view(req):
+    reports = Report.objects.all()
+    sdata = ReportSerializer(reports, many=True)
+    # import pdb; pdb.set_trace()
+    return Response(sdata.data)
+
+
+@api_view(['get'])
+def get_draft_details_view(req):
+    drafts = Draft.objects.all()
+    drafts = [{
+        'time': x.edited_on,
+        'status': x.status,
+        'sentTo': x.sentTo,
+        'flag': x.flag
+    } for x in drafts]
+    return Response(drafts)

@@ -17,5 +17,4 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         print('Starting celery worker with autoreload....')
-        if config('debug') == 'True':
-            autoreload.main(restart_celery)
+        autoreload.main(restart_celery)
