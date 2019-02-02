@@ -42,7 +42,9 @@ export default class email extends Component {
     deleteDraftHandler = (e, draftId) => {
         e.preventDefault()
 
-        this.axios.delete('api/draft/' + draftId + '/')
+        this.axios.post('api/draft/' + draftId + '/',{
+            flag: true
+        })
             .then(d => {
                 console.log(d.data)
                 

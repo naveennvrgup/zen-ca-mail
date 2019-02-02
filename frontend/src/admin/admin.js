@@ -4,6 +4,8 @@ import {Route,Switch} from 'react-router-dom'
 import Sidebar from './sidebar/sidebar';
 import Signout from './auth/signout'
 
+import Dashboard from './dashboard/dashboard'
+
 import Email from './email/email';
 import New_mail from './email/new_mail'
 import Sent_mail from './email/sent_mail'
@@ -36,6 +38,8 @@ export default class admin extends Component {
 
                     <Route path='/admin/settings/' component={Settings} />
                     <Route path='/admin/signout/' component={Signout} />
+
+                    <Route path='/admin/' component={Dashboard} />
                 </Switch>
             </div>
         )
