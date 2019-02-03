@@ -2,6 +2,12 @@ from django.db.models import *
 from rest_framework.serializers import ModelSerializer
 from django.dispatch import receiver
 
+subscriber_status_choices = (
+    ('available', 'available'),
+    ('bounced', 'bounced'),
+    ('complaint', 'complaint')
+)
+
 
 class Group(Model):
     name = CharField(max_length=200, unique=True)
@@ -17,6 +23,8 @@ class Subscriber(Model):
     email = EmailField()
     mobile = CharField(max_length=100, default='0000000000')
     verified = BooleanField(default=False)
+    status = CharField(
+        max_length=100, choices=subscriber_status_choices, default='available')
     otp = CharField(max_length=5, default='00000')
     created_on = DateTimeField(auto_now_add=True)
     flag = BooleanField(default=False)

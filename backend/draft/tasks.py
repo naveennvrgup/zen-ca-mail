@@ -78,7 +78,7 @@ def start_bulk_mail(draft, group):
 
     print(draft, group)
 
-    subs = group.subs.filter(flag=False)
+    subs = group.subs.filter(flag=False, verified=True)
     subs = [x.email for x in subs]
     print('sending to', len(subs))
     
@@ -105,6 +105,7 @@ def handle_bounce_async(msg):
     for email in emails:
         subs = Subscriber.objects.filter(email=email)
         for sub in subs:
+            sub.status = 'bounced'
             sub.flag = True
             sub.save()
 
@@ -120,6 +121,7 @@ def handle_complaint_async(msg):
     for email in emails:
         subs = Subscriber.objects.filter(email=email)
         for sub in subs:
+            sub.status = 'complaint'
             sub.flag = True
             sub.save()
 
