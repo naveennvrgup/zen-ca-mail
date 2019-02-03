@@ -49,3 +49,17 @@ $big-menubar-zindex: 100;
 $sidebarLen: 250px;
 $border: #EFF1F3;
 
+// admin-colors.
+.admin-orange{
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+}
+
+.admin-green{
+    background: linear-gradient(60deg, #66bb6a, #43a047);
+}
+.admin-red{
+    background: linear-gradient(60deg, #ef5350, #e53935);
+}
+.admin-sky-blue{
+    background: linear-gradient(60deg, #26c6da, #00acc1);
+}

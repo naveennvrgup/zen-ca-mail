@@ -1,0 +1,35 @@
+.dashboard{
+    min-height: 100vh;
+    .n-card{
+        padding: 0 15px;
+        background: white;
+        display: flex;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+        border-radius: 3px;
+    }
+    .n-card-i{
+        width: 87px;
+        height: 87px;   
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+        transform: translate(0, -10px);
+        box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28),
+            0 4px 20px 0px rgba(0, 0, 0, 0.12), 
+            0 7px 8px -5px rgba(255, 152, 0, 0.2);
+    }
+    .n-card-info{
+        flex-grow: 1;
+        padding: 10px 0;
+        text-align: right;
+    }
+    .n-card-title{
+        flex-grow: 1;
+        color: grey;
+    }
+    .n-card-metric{
+        font-size: 30px;
+        text-align: right;
+    }
+}

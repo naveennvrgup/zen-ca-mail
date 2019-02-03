@@ -40,6 +40,9 @@ urlpatterns = [
     # dashboard 
     path('api/get_delivery_reports/', get_delivery_reports_view),
     path('api/get_draft_details/', get_draft_details_view),
+    path('api/subscribers_brief/', subscribers_brief_view),
+    path('api/drafts_brief/', drafts_brief_view),
+    path('api/news_brief/', news_brief_view),
 
     # router
     path('api/', include(router.urls)),

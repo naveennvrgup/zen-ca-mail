@@ -49,14 +49,6 @@ class sidebar extends Component {
                     <i className="far fa-envelope"></i>
                     <Link to='/admin/email'>E-mail</Link>
                 </div>
-                {/* <div className='link w-100'>
-                    <i className="fas fa-inbox"></i>
-                    <Link to='/admin/outbox'>Outbox</Link>
-                </div>
-                <div className='link w-100'>
-                    <i className="fas fa-rocket"></i>
-                    <Link to='/admin/sent'>Sent Mail</Link>
-                </div> */}
                 <div className='link w-100'>
                     <i className="fa fa-cog"></i>
                     <Link to='/admin/settings'>Settings</Link>

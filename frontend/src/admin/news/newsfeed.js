@@ -183,7 +183,7 @@ export default class news extends Component {
 
         return (
             <div className='newss px-5 pb-5'>
-                <div className="mt-3 row">
+                <div className="pt-3 row">
                     <div className='col-md-9'>
                         {pagination}
                         {news}

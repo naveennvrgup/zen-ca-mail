@@ -185,7 +185,7 @@ export default class email extends Component {
 
         return (
             <div className='emails px-5 pb-5'>
-                <div className="mt-3 row">
+                <div className="pt-3 row">
                     <div className='col-md-9'>
                         {pagination}
                         {drafts}
