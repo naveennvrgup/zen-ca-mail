@@ -18,7 +18,7 @@ def get_delivery_reports_view(req):
 
 @api_view(['get'])
 def get_draft_details_view(req):
-    drafts = Draft.objects.all()
+    drafts = Draft.objects.filter(flag=False)
     drafts = [{
         'time': x.edited_on,
         'status': x.status,
@@ -30,7 +30,7 @@ def get_draft_details_view(req):
 
 @api_view(['get'])
 def subscribers_brief_view(req):
-    subs = Subscriber.objects.all()
+    subs = Subscriber.objects.filter(flag=False)
 
     return Response({
         'total': subs.count(),
@@ -44,7 +44,7 @@ def subscribers_brief_view(req):
 
 @api_view(['get'])
 def drafts_brief_view(req):
-    drafts = Draft.objects.all()
+    drafts = Draft.objects.filter(flag=False)
 
     return Response({
         'total': drafts.count(),
@@ -56,7 +56,7 @@ def drafts_brief_view(req):
 
 @api_view(['get'])
 def news_brief_view(req):
-    news = News.objects.all()
+    news = News.objects.filter(flag=False)
 
     return Response({
         'total': news.count(),

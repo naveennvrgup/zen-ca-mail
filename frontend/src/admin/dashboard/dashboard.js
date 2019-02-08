@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import faxios from '../../axios'
 
 import Brief from './brief'
+import EmailsSentChart from './emails_sent_chart'
 
 export default class dashboard extends Component {
     axios = faxios()
@@ -57,6 +58,7 @@ export default class dashboard extends Component {
                     drafts={this.state.drafts}
                     news={this.state.news}
                 />
+                <EmailsSentChart />
             </div>
         )
     }
