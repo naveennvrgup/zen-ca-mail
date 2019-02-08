@@ -21,7 +21,6 @@ kombu==4.2.2.post1
 pathtools==0.1.2
 pika==0.12.0
 Pillow==5.4.1
-pkg-resources==0.0.0
 pycodestyle==2.4.0
 pycparser==2.19
 python-crontab==2.3.6
