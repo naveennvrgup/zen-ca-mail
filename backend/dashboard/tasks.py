@@ -17,7 +17,7 @@ def fetch_ses_sending_metrics():
     print('fetching sending statistics from the aws-ses')
     response = client.get_send_statistics()
 
-    dataPoint = response['SendDataPoints'] 
+    dataPoint = response['SendDataPoints']
     reports = []
     for x in dataPoint:
         time = x['Timestamp']
@@ -34,8 +34,10 @@ def fetch_ses_sending_metrics():
             rejects=rejects
         ))
 
+    Report.objects.all().delete()
     Report.objects.bulk_create(reports)
     print('fetched ses metrics')
+
 
 @shared_task
 def print_simply():

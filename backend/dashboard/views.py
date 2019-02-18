@@ -6,14 +6,29 @@ from .models import *
 from draft.models import Draft
 from subscribe.models import Subscriber
 from news.models import News
+from django.utils import timezone
 
 
 @api_view(['get'])
 def get_delivery_reports_view(req):
     reports = Report.objects.all()
-    sdata = ReportSerializer(reports, many=True)
-    # import pdb; pdb.set_trace()
-    return Response(sdata.data)
+    data = [{
+        'sent': 0,
+        'rejects': 0,
+        'complaints': 0,
+        'bounces': 0,
+    } for x in range(15)]
+
+    for x in reports:
+        i = timezone.now() - x.time
+        i = i.days
+
+        data[i]['sent'] += x.sent
+        data[i]['rejects'] += x.rejects
+        data[i]['complaints'] += x.complaints
+        data[i]['bounces'] += x.bounces
+
+    return Response(data)
 
 
 @api_view(['get'])

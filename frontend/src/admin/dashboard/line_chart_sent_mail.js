@@ -30,7 +30,7 @@ export default class emails_sent_chart extends Component {
                     sent.data.push({ x, y: ele.sent })
                     complaints.data.push({ x, y: ele.complaints })
                     rejects.data.push({ x, y: ele.rejects })
-                    bounces.data.push({ x, y: ele.sent })
+                    bounces.data.push({ x, y: ele.bounces })
                 })
                 d = [sent, complaints, rejects, bounces]
                 console.log(d)
