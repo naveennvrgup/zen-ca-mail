@@ -1,6 +1,6 @@
-.dashboard{
+.dashboard {
     min-height: 100vh;
-    .n-card{
+    .n-card {
         margin: 0 5px;
         box-sizing: border-box;
         background: white;
@@ -8,32 +8,42 @@
         box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
         border-radius: 3px;
     }
-    .n-card-i{
+    .n-card-i {
         width: 87px;
-        height: 87px;   
+        height: 87px;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 3px;
         transform: translate(0, -10px);
-        box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28),
-            0 4px 20px 0px rgba(0, 0, 0, 0.12), 
-            0 7px 8px -5px rgba(255, 152, 0, 0.2);
+        box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
     }
-    .n-card-info{
+    .n-card-info {
         flex-grow: 1;
         padding: 10px;
         text-align: right;
     }
-    .n-card-title{
+    .n-card-title {
         flex-grow: 1;
         color: grey;
     }
-    .n-card-metric{
+    .n-card-metric {
         font-size: 30px;
         text-align: right;
     }
-    .emails-sent-chart{
+    .emails-sent-chart {
         height: 500px;
+    }
+    @media(max-width: $mobile-break-point) {
+        .n-card-i {
+            width: 50px;
+            width: 100px;
+            height: 50px;
+            height: inherit;
+            transform: none;
+        }
+        .emails-sent-chart{
+            height: 250px;
+        }
     }
 }

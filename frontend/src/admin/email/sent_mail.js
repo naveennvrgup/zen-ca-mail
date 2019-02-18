@@ -59,7 +59,7 @@ export default class send_mail extends Component {
         </li>)
 
         return (
-            <div className='send-mail p-5'>
+            <div className='send-mail p-1 p-md-5'>
                 <div className="d-flex justify-content-between align-items-center">
                     <h1 className="">Send Mail</h1>
                     <div>
@@ -73,15 +73,15 @@ export default class send_mail extends Component {
                 <div className="info mt-4">
                     <div className="form-group">
                         <label className='font-weight-bold'>Sent to: </label>
-                        <span>{this.state.draft.sentTo}</span>
+                        <span> {this.state.draft.sentTo}</span>
                     </div>
                     <div className="form-group">
                         <label className='font-weight-bold'>Sent to group: </label>
-                        <span>{this.state.draft.group}</span>
+                        <span> {this.state.draft.group}</span>
                     </div>
                     <div className="form-group">
                         <label className='font-weight-bold'>Subject:</label>
-                        <span className="subject mx-3">{this.state.draft.subject}</span>
+                        <span className="subject"> {this.state.draft.subject}</span>
                     </div>
                     <div className="form-group">
                         <label className='font-weight-bold'>Body:</label>

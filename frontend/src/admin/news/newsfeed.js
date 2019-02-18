@@ -183,14 +183,14 @@ export default class news extends Component {
 
         return (
             <div className='newss'>
-                <div className="pt-3 row">
-                    <div className='col-md-9'>
+                <div className="row">
+                    <div className='col-md-9 order-2 order-md-1'>
                         {pagination}
                         {news}
                         {this.state.results.length > 10 ?
                             pagination : ''}
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 order-1 order-md-2">
                         <Toolbar
                             toolbar_render={this.state.toolbar_render}
                             get_news={this.get_news}

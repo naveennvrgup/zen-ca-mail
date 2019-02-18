@@ -9,7 +9,7 @@ export default class signout extends Component {
 
     render() {
         return (
-            <div className='p-5 text-center'>
+            <div className='text-center'>
                 <div className="font-weight-bold">
                     Are you sure want to sign out?
                 </div>

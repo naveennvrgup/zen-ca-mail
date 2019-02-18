@@ -1,0 +1,7 @@
+.emails{
+    @media(max-width: $mobile-break-point){
+        .date{
+            display: none;
+        }
+    }
+}

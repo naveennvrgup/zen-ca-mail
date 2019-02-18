@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Group from './group'
-import faxios from '../../axios'; 
+import faxios from '../../axios';
 
 export default class subscriber extends Component {
     axios = faxios()
@@ -12,7 +12,7 @@ export default class subscriber extends Component {
     }
 
     componentDidMount = () => {
-        
+
         this.get_groups()
     }
 
@@ -105,8 +105,7 @@ export default class subscriber extends Component {
                         value={this.state.new_group_name}
                         type="text"
                         className="new_group_name tab_input"
-                        placeholder="create group"
-                        autoFocus />
+                        placeholder="create group" />
                 </div>
                 <div className='create-group create px-1'>
                     <button
@@ -120,7 +119,7 @@ export default class subscriber extends Component {
         return (
             <div className='subscribers '>
                 <div className="subs row">
-                    <div className="col-md-9">
+                    <div className="col-md-9 order-md-1 order-2">
                         {
                             this.state.selected_group_id ?
                                 <Group
@@ -131,7 +130,7 @@ export default class subscriber extends Component {
                                 ''
                         }
                     </div>
-                    <div className="col-md-3 groups-container">
+                    <div className="col-md-3 order-md-2 order-1 groups-container">
                         <div className='groups-list'>
                             <div className='text-muted p-3 font-weight-bold'>
                                 Total groups: {this.state.groups.length}

@@ -8,13 +8,13 @@ import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 
-import faxios from '../../axios'; 
+import faxios from '../../axios';
 
 export default class NewMail extends Component {
     axios = faxios()
     constructor(props) {
         super(props);
-        
+
         let emailBody = '<p>loading please wait...</p>';
 
         const contentBlock = htmlToDraft(emailBody);
@@ -98,14 +98,12 @@ export default class NewMail extends Component {
     }
 
     render() {
-        let head = <h1>Edit Mail</h1>
-
         return (
             <div className='newMail'>
-                <form className='ml-3'>
-                    <div className="d-flex align-items-center justify-content-between">
-                        {head}
-                        <div className={`buttons py-3 ${this.state.status ? 'd-none' : 'd-flex'}`}>
+                <form className=''>
+                    <div className="d-md-flex d-block align-items-center justify-content-between">
+                        <h1 className='text-center'>Edit Mail</h1>
+                        <div className={`buttons py-md-3 py-1 ${this.state.status ? 'd-none' : 'd-flex justify-content-center'}`}>
                             <button className="btn btn-outline-danger mr-3"
                                 onClick={this.deleteDraftHandler}>delete</button>
                             <button className="btn mr-3"

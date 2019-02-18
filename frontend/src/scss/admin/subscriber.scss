@@ -1,40 +1,27 @@
 .subscribers {
     .group-name {
         cursor: pointer;
-
         &:hover,
         &:focus {
             font-weight: bold;
         }
     }
-
     .new-group {
         background: yellowgreen;
-
         input {
             background: inherit;
         }
     }
-
     .groups-container {
         position: relative;
-    }
-
-    .groups-list {
-        position: fixed;
-    }
-
-
+    } // .groups-list {
+    //     position: fixed;
+    // }
     .tab_input {
         border: none;
         width: 100%;
         outline: none;
-        // border-bottom: 2px solid rgb(224, 224, 224);
-        // &:focus{
-        //     border-bottom: 2px solid blue;
-        // }
     }
-
     .tab_input_sm {
         width: auto;
         border-bottom: 2px solid #ddd;
@@ -43,32 +30,36 @@
         text-align: center;
         flex-grow: 1;
         margin: 0 5px;
-
         &:focus {
             border-bottom: 2px solid skyblue;
         }
     }
-
     .active-sub {
         .face {
             color: $green;
         }
-
         button:hover {
             color: $red;
             background: $lred;
         }
     }
-
     .inactive-sub {
         .face {
             color: $red;
         }
-
         button:hover {
             color: $green;
             background: $lgreen;
         }
     }
+    @media(max-width: $mobile-break-point) {
+        .sub_name,
+        .sub_phone {
+            display: none;
+        }
+        .sub_email{
+            flex-grow: 1;
+        }
 
+    }
 }

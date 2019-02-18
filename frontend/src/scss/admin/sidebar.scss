@@ -1,7 +1,7 @@
 .admin {
     padding: 5px;
     margin-top: 60px;
-    @media(min-width: 900px) {
+    @media(min-width: $mobile-break-point) {
         margin-top: 0;
         margin-left: 40px;
         padding: 40px 40px 40px $sidebarLen;
@@ -54,7 +54,7 @@
     .close-sidebar-btn {
         padding: 10px 20px;
     }
-    @media(min-width: 900px) {
+    @media(min-width: $mobile-break-point) {
         width: $sidebarLen;
         text-align: left;
         height: 100vh;
