@@ -24,7 +24,7 @@ export default class emails_sent_chart extends Component {
                     i = 14 - i
                     let currDate = new Date()
                     currDate.setDate(currDate.getDate() - i)
-                    let x = currDate.toDateString().slice(0, 10)
+                    let x = `${currDate.getMonth()+1}/${currDate.toDateString().slice(8, 10)}`
                     console.log(x);
 
                     sent.data.push({ x, y: ele.sent })
@@ -69,7 +69,7 @@ export default class emails_sent_chart extends Component {
                     "tickSize": 5,
                     "tickPadding": 5,
                     "tickRotation": 0,
-                    "legend": "transportation",
+                    "legend": "Day of the month",
                     "legendOffset": 36,
                     "legendPosition": "middle"
                 }}
@@ -78,7 +78,7 @@ export default class emails_sent_chart extends Component {
                     "tickSize": 5,
                     "tickPadding": 5,
                     "tickRotation": 0,
-                    "legend": "count",
+                    "legend": "No. of emails sent",
                     "legendOffset": -40,
                     "legendPosition": "middle"
                 }}
