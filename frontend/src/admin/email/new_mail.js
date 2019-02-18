@@ -101,7 +101,7 @@ export default class NewMail extends Component {
         let head = <h1>Edit Mail</h1>
 
         return (
-            <div className='newMail p-5'>
+            <div className='newMail'>
                 <form className='ml-3'>
                     <div className="d-flex align-items-center justify-content-between">
                         {head}
@@ -129,6 +129,7 @@ export default class NewMail extends Component {
                     <label className='font-weight-bold mt-2'>Body:</label>
                     <div className='body'>
                         <Editor
+                            className='bg-white'
                             status={this.state.status}
                             editorState={this.state.editorState}
                             onEditorStateChange={this.onEditorStateChange}

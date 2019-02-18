@@ -47,7 +47,7 @@ export default class dashboard extends Component {
 
     render() {
         return (
-            <div className='p-5 dashboard'>
+            <div className='dashboard'>
                 <h1 className=''>Dashboard</h1>
                 <Brief
                     subscribers={this.state.subscribers}

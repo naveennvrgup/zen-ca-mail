@@ -118,7 +118,7 @@ export default class subscriber extends Component {
             </form>
 
         return (
-            <div className='subscribers px-5 pb-5 pt-3'>
+            <div className='subscribers '>
                 <div className="subs row">
                     <div className="col-md-9">
                         {

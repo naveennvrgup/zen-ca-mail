@@ -20,3 +20,7 @@
 .index {
     margin-top: $big-menubar-height;
 }
+html,body{
+    overflow-x: hidden;
+    width: 100vw;
+}

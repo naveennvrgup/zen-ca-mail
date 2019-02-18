@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import UploadCSV from './file_upload'
-import faxios, { burl } from '../../axios'; 
+import faxios, { burl } from '../../axios';
 
 export default class toolbar extends Component {
     axios = faxios()
     state = {}
 
     componentDidMount = () => {
-        
+
         this.new_sub = document.querySelector('.new_sub');
         this.new_sub_name = this.new_sub.querySelector('.new_sub_name');
         this.new_sub_email = this.new_sub.querySelector('.new_sub_email');
@@ -54,31 +54,30 @@ export default class toolbar extends Component {
 
     download_group_csv_handler = () => {
         let anchor = document.createElement('a')
-        anchor.href=burl + `api/download_group_as_csv/${this.props.selected_group_id}/`
+        anchor.href = burl + `api/download_group_as_csv/${this.props.selected_group_id}/`
         anchor.click()
     }
-    
+
 
     render() {
         let new_sub_input =
             <form autoComplete='false' className={'d-flex new_sub align-items-center px-1 py-2'} key={1}>
                 {/* <div className='sno px-2 font-weight-bold'>{1}</div> */}
-                <div className='flex-grow-1 d-flex align-items-center justify-content-between'>
+                <div className='flex-grow-1 d-flex align-items-center flex-wrap justify-content-between'>
                     {/* email */}
                     <input
                         type="email"
-                        className="new_sub_email tab_input tab_input_sm"
-                        placeholder="email"
-                        autoFocus />
+                        className="new_sub_email tab_input tab_input_sm mt-2"
+                        placeholder="email" />
                     {/* username */}
                     <input
                         type="text"
-                        className="new_sub_name tab_input tab_input_sm"
+                        className="new_sub_name tab_input tab_input_sm mt-2"
                         placeholder="username" />
                     {/* mobile */}
                     <input
                         type="mobile"
-                        className="new_sub_mobile tab_input tab_input_sm"
+                        className="new_sub_mobile tab_input tab_input_sm mt-2"
                         placeholder="mobile no." />
                 </div>
                 <div className='create-sub create'>

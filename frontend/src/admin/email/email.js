@@ -42,7 +42,7 @@ export default class email extends Component {
     deleteDraftHandler = (e, draftId) => {
         e.preventDefault()
 
-        this.axios.post('api/draft/' + draftId + '/',{
+        this.axios.put('api/draft/' + draftId + '/',{
             flag: true
         })
             .then(d => {
@@ -184,15 +184,15 @@ export default class email extends Component {
             </div>
 
         return (
-            <div className='emails px-5 pb-5'>
-                <div className="pt-3 row">
-                    <div className='col-md-9'>
+            <div className='emails'>
+                <div className=" row">
+                    <div className='col-md-9 order-2 order-md-1'>
                         {pagination}
                         {drafts}
                         {this.state.results.length > 10 ?
                             pagination : ''}
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-3 order-1 order-md-2">
                         <Toolbar
                             toolbar_render={this.state.toolbar_render}
                             get_drafts={this.get_drafts}

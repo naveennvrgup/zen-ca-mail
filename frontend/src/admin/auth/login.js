@@ -18,6 +18,7 @@ export default class login extends Component {
         }).then(d=>{
             sessionStorage.setItem('token', `Token ${d.data.token}`)
             this.props.history.push('/admin/dashboard/')
+            console.log('hello')
         })
     }
 

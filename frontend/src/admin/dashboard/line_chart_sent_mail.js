@@ -49,7 +49,7 @@ export default class emails_sent_chart extends Component {
                 data={this.state.data}
                 margin={{
                     "top": 50,
-                    "right": 50,
+                    "right": 15,
                     "bottom": 50,
                     "left": 50
                 }}
