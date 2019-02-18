@@ -1,9 +1,9 @@
 .admin {
-    padding-left: 0;
-    margin-top: 60px;
+    padding: 0;
+    margin-top: 50px;
     @media(min-width: 900px) {
-        padding-left: $sidebarLen;
         margin-top: 0;
+        padding-left: $sidebarLen;
     }
 }
 
@@ -12,12 +12,15 @@
     font-size: 20px;
     background: $sidebg;
     position: fixed;
-    height: 100vh;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 100;
     text-align: center;
+    transition: all 200ms ease;
+    height: 55px;
+    overflow-y: none;
+
     i {
         color: $icons;
     }
@@ -43,10 +46,18 @@
         cursor: pointer;
         outline: none !important;
     }
+    .contents{
+        opacity: 0;
+    }
+    .close-sidebar-btn{
+        padding: 10px 20px;
+    }
 
     @media(min-width: 900px){
         width: $sidebarLen;
         text-align: left;
+        height: 100vh;
+        padding-top: 30px;
         
         .close-sidebar-btn{
             display: none;
@@ -58,59 +69,15 @@
             padding: 0 30px;
             display: inline;
         }
+        .contents{
+            opacity: 1;
+        }
     }
 }
 
-// .sidebar {
-//     font-family: Arial, Helvetica, sans-serif;
-//     font-size: 20px;
-//     background: $sidebg;
-//     position: fixed;
-//     height: 100vh;
-//     width: 100%;
-//     top: 0;
-//     left: 0;
-//     z-index: 100;
-//     text-align: center;
-//     * {
-//         display: inline-block;
-//     }
-//     a {
-//         color: white;
-//         text-decoration: none;
-//     }
-//     .active {
-//         background: $activelink;
-//     }
-//     .close-sidebar-btn {
-//         background: inherit;
-//         border: none;
-//         outline: none;
-//         cursor: pointer;
-//         padding: 15px 20px;
-//     }
-//     i {
-//         color: $icons;
-//     }
-//     .link {
-//         padding: 10px 0px 10px;
-//         i {
-//             display: none;
-//         }
-//     }
-//     @media(min-width: 800px) {
-//         width: $sidebarLen;
-//         text-align-last: left;
-//         .close-sidebar-btn {
-//             display: none;
-//         }
-//         .link {
-//             padding: 10px 0px 10px 35px;
-//             i {
-//                 padding-right: 50px;
-//                 width: 50px;
-//                 display: inline-block;
-//             }
-//         }
-//     }
-// }
+.sidebar-open{
+    height: 100vh;
+    .contents{
+        opacity: 1;
+    }
+}
