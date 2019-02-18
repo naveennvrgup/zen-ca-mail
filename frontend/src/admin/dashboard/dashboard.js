@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import faxios from '../../axios'
 
 import Brief from './brief'
-import EmailsSentChart from './emails_sent_chart'
+import EmailsSentChart from './line_chart_sent_mail'
 
 export default class dashboard extends Component {
     axios = faxios()
@@ -14,10 +14,6 @@ export default class dashboard extends Component {
     }
 
     componentDidMount = () => {
-        this.axios.get('api/get_delivery_reports/')
-            .then(d => {
-                console.log(d.data);
-            })
         this.axios.get('api/get_draft_details/')
             .then(d => {
                 console.log(d.data);
