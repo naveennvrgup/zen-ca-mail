@@ -3,5 +3,10 @@
         .date{
             display: none;
         }
+        .subject{
+            white-space: nowrap;
+            overflow: hidden;
+            // max-width: 50vw;
+        }
     }
 }

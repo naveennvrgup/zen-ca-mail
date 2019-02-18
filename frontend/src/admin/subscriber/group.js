@@ -87,7 +87,7 @@ export default class group extends Component {
 
         let subs = this.state.results
         let subs_list = subs.map((sub, i) =>
-            <div className={'d-flex flex-wrap tab align-items-center '} key={i + 1}>
+            <div className={'d-flex  tab align-items-center '} key={i + 1}>
                 <div className='sub_sno px-2 font-weight-bold'>{i + 1}</div>
                 <div className='sub_phone px-2'>
                     <i className={`fa fa-circle ${sub.verified ? 'text-success' : 'text-danger'}`}></i>

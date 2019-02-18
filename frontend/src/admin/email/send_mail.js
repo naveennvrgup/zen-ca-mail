@@ -76,7 +76,7 @@ export default class send_mail extends Component {
         </li>)
 
         return (
-            <div className='send-mail p-5'>
+            <div className='send-mail'>
                 <div className="d-flex justify-content-between align-items-center">
                     <h1 className="">Send Mail</h1>
                     <div>

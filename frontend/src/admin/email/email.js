@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Toolbar from './toolbar'
-import faxios from '../../axios'; 
+import faxios from '../../axios';
 
 export default class email extends Component {
     axios = faxios()
@@ -16,7 +16,7 @@ export default class email extends Component {
     ]
 
     componentDidMount = () => {
-        
+
         this.get_drafts()
     }
 
@@ -42,31 +42,31 @@ export default class email extends Component {
     deleteDraftHandler = (e, draftId) => {
         e.preventDefault()
 
-        this.axios.put('api/draft/' + draftId + '/',{
+        this.axios.put('api/draft/' + draftId + '/', {
             flag: true
         })
             .then(d => {
                 console.log(d.data)
-                
-                if(this.state.results.length===1 && this.state.page!==1){
+
+                if (this.state.results.length === 1 && this.state.page !== 1) {
                     this.setState({
                         ...this.state,
-                        page: this.state.page-1
+                        page: this.state.page - 1
                     })// end of setstate
                 }
                 this.get_drafts()
             })
     }
-    
-        flagDraftHandler = (e,id) => {
-            e.preventDefault()
-            this.axios.put(`api/draft/${id}/`,{
-                flag: true
-            }).then(d=>{
-                console.log(d.data)
-                this.get_drafts()
-            }) 
-        }    
+
+    flagDraftHandler = (e, id) => {
+        e.preventDefault()
+        this.axios.put(`api/draft/${id}/`, {
+            flag: true
+        }).then(d => {
+            console.log(d.data)
+            this.get_drafts()
+        })
+    }
 
     send2EditHandler = (e, id) => {
         e.preventDefault()
@@ -137,29 +137,25 @@ export default class email extends Component {
                 </button>
             </div>
 
-        const btns2show = (p, i) => p.status>0 ? btns_for_sent_mail(p,i): btns_for_edit_mail(p,i)
+        const btns2show = (p, i) => p.status > 0 ? btns_for_sent_mail(p, i) : btns_for_edit_mail(p, i)
 
         let createDraftView = (p, i) => (
             <div className='d-flex tab align-items-center justify-content-between email' key={p.id}>
-                <div className='d-flex align-items-center mx-2 flex-grow-1'>
-                    <div className={this.status_color[p.status]}>
-                        <i className="fa fa-circle"></i>
-                    </div>
-                    <div className='srno mx-2 font-weight-bold'>{i + 1}</div>
-                    <div className='subject mx-2 flex-grow-1'>{p.subject}</div>
-                    <div className='date mx-2 text-muted'>({p.created_on.slice(0,10)})</div>
+                <div className={this.status_color[p.status]}>
+                    <i className="fa fa-circle mx-1"></i>
                 </div>
-                <div>
-                    {btns2show(p,i)}
-                </div>
+                <div className='srno mx-2 font-weight-bold'>{i + 1}</div>
+                <div className='subject mx-2 flex-grow-1'>{p.subject}</div>
+                <div className='date mx-2 text-muted'>({p.created_on.slice(0, 10)})</div>
+                {btns2show(p, i)}
             </div >
         )
 
         let drafts = this.state.results
         drafts = drafts.map((draft, i) => createDraftView(draft, i))
 
-        let category_names = ['Total','Drafts','Outbox','Sent']
-        let selected_category_name = category_names[this.state.selected_category+1]
+        let category_names = ['Total', 'Drafts', 'Outbox', 'Sent']
+        let selected_category_name = category_names[this.state.selected_category + 1]
 
         let pagination =
             <div className="d-flex justify-content-between align-items-center">
@@ -197,7 +193,7 @@ export default class email extends Component {
                             toolbar_render={this.state.toolbar_render}
                             get_drafts={this.get_drafts}
                             change_email_state={this.change_email_state}
-                            selected_category = {this.state.selected_category} />
+                            selected_category={this.state.selected_category} />
                     </div>
                 </div>
             </div>
