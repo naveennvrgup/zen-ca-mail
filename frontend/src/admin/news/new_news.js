@@ -68,8 +68,8 @@ export default class NewMail extends Component {
         let head = <h1>Edit News</h1>
 
         return (
-            <div className='edit_news p-5'>
-                <form className='ml-3'>
+            <div className='edit_news'>
+                <form className=''>
                     <div className="d-flex align-items-center justify-content-between">
                         {head}
                         <div className={`buttons py-3 d-flex`}>
