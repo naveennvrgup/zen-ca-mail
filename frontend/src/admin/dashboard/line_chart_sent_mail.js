@@ -33,7 +33,7 @@ export default class emails_sent_chart extends Component {
                     bounces.data.push({ x, y: ele.sent })
                 })
                 d = [sent, complaints, rejects, bounces]
-
+                console.log(d)
                 this.setState({
                     ...this.state,
                     data: d
