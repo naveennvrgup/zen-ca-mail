@@ -1,23 +1,17 @@
 import React, { Component } from 'react'
-import {Route,Switch} from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
-import Sidebar from './sidebar/sidebar';
-import Signout from './auth/signout'
-
-import Dashboard from './dashboard/dashboard'
-
-import Email from './email/email';
-import New_mail from './email/new_mail'
-import Sent_mail from './email/sent_mail'
-import Send_mail from './email/send_mail'
-
-import Settings from './settings/settings'
-
-import Group from './subscriber/group'
-import Groups from './subscriber/groups'
-
-import New_news from './news/new_news'
-import News from './news/newsfeed'
+const Sidebar = React.lazy(() => import('./sidebar/sidebar'))
+const Signout = React.lazy(() => import('./auth/signout'))
+const Email = React.lazy(() => import('./email/email'))
+const New_mail = React.lazy(() => import('./email/new_mail'))
+const Sent_mail = React.lazy(() => import('./email/sent_mail'))
+const Send_mail = React.lazy(() => import('./email/sent_mail'))
+const Groups = React.lazy(() => import('./subscriber/groups'))
+const Group = React.lazy(() => import('./subscriber/group'))
+const News = React.lazy(() => import('./news/newsfeed'))
+const New_news = React.lazy(() => import('./news/new_news'))
+const Dashboard = React.lazy(() => import('./dashboard/dashboard'))
 
 export default class admin extends Component {
     render() {
@@ -36,7 +30,6 @@ export default class admin extends Component {
                     <Route path='/admin/news/edit_news/:id/' component={New_news} />
                     <Route path='/admin/news' component={News} />
 
-                    <Route path='/admin/settings/' component={Settings} />
                     <Route path='/admin/signout/' component={Signout} />
 
                     <Route path='/admin/' component={Dashboard} />

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import './bootstrap/bootstrap.scss'
 import './scss/app.scss'
@@ -12,12 +12,14 @@ class App extends Component {
   render() {
     return (
       <div id='app'>
-        <Switch>
-          <ProtectedRoute path='/admin' component={Admin} />
-          <Route path='/user_login/' component={Login} />
-          <Route path='/' component={Main} />
-        </Switch>
+        <Suspense fallback={<div>loading..</div>}>
 
+          <Switch>
+            <ProtectedRoute path='/admin' component={Admin} />
+            <Route path='/user_login/' component={Login} />
+            <Route path='/' component={Main} />
+          </Switch>
+        </Suspense>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous"></link>
       </div>
     );

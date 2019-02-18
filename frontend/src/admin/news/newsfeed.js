@@ -138,8 +138,8 @@ export default class news extends Component {
         const btns = (p, i) => p.show ? show_true(p, i) : show_false(p, i)
 
         let createDraftView = (p, i) => (
-            <div className='d-flex tab align-items-center justify-content-between news' key={p.id}>
-                <div className='d-flex align-items-center mx-2 flex-grow-1'>
+            <div className='d-flex flex-wrap tab align-items-center justify-content-between news' key={p.id}>
+                <div className='d-flex ml-auto flex-wrap align-items-center mx-2 flex-grow-1'>
                     <div className={p.show ? 'text-success' : 'text-danger'}>
                         <i className="fa fa-circle"></i>
                     </div>

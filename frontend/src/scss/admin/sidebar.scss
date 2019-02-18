@@ -20,15 +20,14 @@
     text-align: center;
     transition: all 200ms ease;
     height: 55px;
-    overflow-y: none;
-
+    overflow: none;
     i {
         color: $icons;
     }
     .active {
         background: $activelink;
     }
-    a{
+    a {
         text-decoration: none;
         color: white;
     }
@@ -47,39 +46,40 @@
         cursor: pointer;
         outline: none !important;
     }
-    .contents{
+    .contents {
         opacity: 0;
         margin-top: 50px;
+        transform: translate(-200%);
     }
-    .close-sidebar-btn{
+    .close-sidebar-btn {
         padding: 10px 20px;
     }
-
-    @media(min-width: 900px){
+    @media(min-width: 900px) {
         width: $sidebarLen;
         text-align: left;
         height: 100vh;
-        
-        .close-sidebar-btn{
+        .close-sidebar-btn {
             display: none;
         }
-        .admin-logo{
+        .admin-logo {
             text-align: center;
         }
-        .link i{
+        .link i {
             padding: 0 30px;
             display: inline;
         }
-        .contents{
+        .contents {
             opacity: 1;
             margin-top: 30px;
+            transform: none;
         }
     }
 }
 
-.sidebar-open{
+.sidebar-open {
     height: 100vh;
-    .contents{
+    .contents {
         opacity: 1;
+        transform: none;
     }
 }
