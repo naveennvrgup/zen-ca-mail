@@ -126,7 +126,7 @@ export default class FileUpload extends Component {
 
 
         let progress_bar =
-            <div className={`progress mx-2 ${this.state.onprogress ? '' : 'hide-progress'}`}>
+            <div className={`progress mx-2  ${this.state.onprogress ? '' : 'hide-progress'}`}>
                 <div className="progress-bar progress-bar-striped" style={{ width: this.state.progress }}></div>
             </div>
 
@@ -134,9 +134,9 @@ export default class FileUpload extends Component {
 
         return (
             <div className='flex-grow-1 px-0'>
-                <div className="new_sub_csv d-flex justify-content-between align-items-center">
+                <div className="new_sub_csv d-flex flex-wrap  justify-content-between align-items-center">
                     <div className=''>
-                        <span>
+                        <span className='d-none d-md-inline-block'>
                             {filename ? filename : 'No images attached to the news'}
                         </span>
                         {this.state.img && <span className="badge text-white mx-2 badge-dark badge-pill">

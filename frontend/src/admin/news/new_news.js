@@ -65,14 +65,14 @@ export default class NewMail extends Component {
     }
 
     render() {
-        let head = <h1>Edit News</h1>
+        let head = <h1 className='text-center'>Edit News</h1>
 
         return (
             <div className='edit_news'>
                 <form className=''>
-                    <div className="d-flex align-items-center justify-content-between">
+                    <div className="d-md-flex align-items-center justify-content-between">
                         {head}
-                        <div className={`buttons py-3 d-flex`}>
+                        <div className={`buttons justify-content-center py-3 d-flex`}>
                             <button className="btn btn-outline-danger mr-3"
                                 onClick={this.deleteNewsHandler}>delete</button>
                             <button className="btn mr-3"

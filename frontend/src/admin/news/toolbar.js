@@ -67,13 +67,13 @@ class toolbar extends Component {
                     onClick={e => this.change_news_category_handler(e, 0)}
                     className={tabs + is_selected_tab(0)}>
                     <span className="font-weight-bold mx-2">Displayed</span>
-                    <span className='badge badge-pill badge-danger'>{this.state.displayed}</span>
+                    <span className='badge badge-pill badge-success'>{this.state.displayed}</span>
                 </div>
                 <div
                     onClick={e => this.change_news_category_handler(e, 1)}
                     className={tabs + is_selected_tab(1)}>
                     <span className="font-weight-bold mx-2">Archieved</span>
-                    <span className='badge badge-pill badge-warning'>{this.state.archieved}</span>
+                    <span className='badge badge-pill badge-danger'>{this.state.archieved}</span>
                 </div>
             </div>
         )

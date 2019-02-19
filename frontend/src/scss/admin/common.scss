@@ -30,6 +30,11 @@
     width: 300px;
     transition: opacity 2s ease;
 }
+@media(max-width: $mobile-break-point){
+    .progress{
+        width: 150px;
+    }
+}
 
 .hide-progress {
     opacity: 0.5;

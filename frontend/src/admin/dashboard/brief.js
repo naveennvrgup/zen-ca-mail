@@ -43,8 +43,8 @@ export default class brief extends Component {
                             <i className="fa fa-server fa-2x text-white"></i>
                         </div>
                         <div className='n-card-info'>
-                            <div className="n-card-title">Server</div>
-                            <div className="n-card-metric">{this.props.subscribers.total}</div>
+                            <div className="n-card-title">Server Bill</div>
+                            <div className="n-card-metric"><i className="fa fa-rupee-sign"></i> <span>0</span></div>
                         </div>
                     </div>
                 </div>

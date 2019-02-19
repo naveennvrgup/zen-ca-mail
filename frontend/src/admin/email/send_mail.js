@@ -77,9 +77,9 @@ export default class send_mail extends Component {
 
         return (
             <div className='send-mail'>
-                <div className="d-flex justify-content-between align-items-center">
-                    <h1 className="">Send Mail</h1>
-                    <div>
+                <div className="d-md-flex justify-content-between align-items-center">
+                    <h1 className="text-center">Send Mail</h1>
+                    <div className='text-center'>
                         <button
                             onClick={this.props.history.goBack}
                             className="btn mx-2">
