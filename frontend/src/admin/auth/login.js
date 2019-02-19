@@ -1,24 +1,32 @@
 import React, { Component } from 'react'
-import faxios from '../../axios'; 
+import faxios from '../../axios';
 
 export default class login extends Component {
     axios = faxios()
+    state = {
+        error_msg: ''
+    }
     componentDidMount = () => {
         let login = document.querySelector('.login');
         this.username = login.querySelector('.username')
         this.password = login.querySelector('.password')
     }
-    
-    
-    login_handler = e =>{
+
+
+    login_handler = e => {
         e.preventDefault()
-        this.axios.post('login/',{
+        this.axios.post('login/', {
             username: this.username.value,
             password: this.password.value
-        }).then(d=>{
+        }).then(d => {
             sessionStorage.setItem('token', `Token ${d.data.token}`)
             this.props.history.push('/admin/dashboard/')
             console.log('hello')
+        }).catch(d => {
+            this.setState({
+                ...this.state,
+                error_msg: 'Error: Invalid credentials'
+            })// end of setstate
         })
     }
 
@@ -26,6 +34,7 @@ export default class login extends Component {
         return (
             <div className='login d-flex justify-content-center align-items-center'>
                 <form className="p-5">
+                    <div className="text-center text-danger">{this.state.error_msg}</div>
                     <div className="form-group">
                         <label className='font-weight-bold'>Username:</label>
                         <input type="text" className="username text-center form-control" />

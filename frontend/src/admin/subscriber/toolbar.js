@@ -24,6 +24,9 @@ export default class toolbar extends Component {
             email: this.new_sub_email.value,
             mobile: this.new_sub_mobile.value
         }).then(d => {
+            this.new_sub_name.value = ''
+            this.new_sub_email.value =  ''
+            this.new_sub_mobile.value =  ''
             // update sub list
             this.props.get_subs()
             // update the groups badges

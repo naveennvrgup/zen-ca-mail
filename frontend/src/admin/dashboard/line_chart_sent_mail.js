@@ -15,7 +15,7 @@ export default class emails_sent_chart extends Component {
                 d = d.data
                 console.table(d);
 
-                let sent = { id: 'sent', color:'hsl(115, 100%, 50%)', data: [] }
+                let sent = { id: 'sent', color:'green', data: [] }
                 let complaints = { id: 'complaints', color:'hsl(0, 100%, 50%)', data: [] }
                 let rejects = { id: 'rejects', data: [] }
                 let bounces = { id: 'bounces', data: [] }
@@ -83,6 +83,7 @@ export default class emails_sent_chart extends Component {
                     "legendPosition": "middle"
                 }}
                 curve="linear"
+                colors='dark2'
                 dotSize={10}
                 dotColor="inherit:darker(0.3)"
                 dotBorderWidth={2}
