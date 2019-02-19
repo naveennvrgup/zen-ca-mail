@@ -27,7 +27,8 @@ def create_template(draft):
     files = draft.files.all()
     for file in files:
         print(file)
-        tbody += '<li><a href={}>{}</a></li>'.format(file.file, file.file)
+        tbody += '<li><a href={}/{}>{}</a></li>'.format(
+            config('hostname'), file.file, file.file)
     tbody += '</ol>'
     if not files:
         tbody += '<div>none</div>'
@@ -81,7 +82,7 @@ def start_bulk_mail(draft, group):
     subs = group.subs.filter(flag=False, verified=True)
     subs = [x.email for x in subs]
     print('sending to', len(subs))
-    
+
     # create the template
     tname = create_template(draft)
 
