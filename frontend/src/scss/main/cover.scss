@@ -1,0 +1,12 @@
+.cover{
+    min-height: 100vh;
+    background: url('../assets/bg-3.jpg') center center ;
+    background-size: cover;
+    .left{
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+    }
+}

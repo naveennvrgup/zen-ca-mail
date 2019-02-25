@@ -1,3 +1,7 @@
+// fonts
+@import url('https://fonts.googleapis.com/css?family=Oswald:700|Raleway');
+
+// common
 @import './common.scss';
 
 // admin
@@ -14,9 +18,9 @@
 @import './admin/newsfeed.scss';
 
 // main
-@import './main/about.scss';
-@import './main/big.scss';
-@import './main/get_started.scss';
+@import './main/cover.scss';
+@import './main/navbar.scss';
+@import './main/common.scss';
 
 .index {
     margin-top: $big-menubar-height;

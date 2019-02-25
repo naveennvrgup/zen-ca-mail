@@ -4,9 +4,12 @@ import './bootstrap/bootstrap.scss'
 import './scss/app.scss'
 import ProtectedRoute from './admin/auth/protected_route'
 
-const Admin = React.lazy(() => import('./admin/admin'))
-const Main = React.lazy(() => import('./main/main'))
-const Login = React.lazy(() => import('./admin/auth/login'))
+import Admin from './admin/admin'
+import Login from './admin/auth/login'
+import Main from './main/main'
+// const Admin = React.lazy(() => import('./admin/admin'))
+// const Main = React.lazy(() => import('./main/main'))
+// const Login = React.lazy(() => import('./admin/auth/login'))
 
 class App extends Component {
   render() {

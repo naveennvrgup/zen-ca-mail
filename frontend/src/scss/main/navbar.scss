@@ -1,0 +1,64 @@
+.smnav {
+    padding: 15px 20px;
+    font-size: 20px;
+    position: fixed;
+    z-index: 100;
+    background: white;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+    button{
+        outline: none;
+        background: inherit;
+        border: none;
+        cursor: pointer;
+    }
+    .right {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-family: sans-serif;
+        font-size: 17px;
+        border: 1px dashed black;
+        div {
+            padding: 5px;
+        }
+        i {
+            font-size: 20px;
+        }
+        .slink {
+            display: none;
+        }
+    }
+    .hide {
+        // display: none;
+        transition: height 0.2s ease;
+        height: 0;
+        transform: translateX(-500px);
+    }
+    .show {
+        display: flex;
+        justify-content: space-between;
+    }
+    .left {
+        text-align: center;
+    }
+    .left {
+        div {
+            padding: 5px 0;
+        }
+    }
+}
+
+.smn_active{
+    .show{
+        padding-bottom: 30px;
+    }
+    .hide{
+        // display: block;
+        height: 250px;
+        transform: none;
+    }
+}
