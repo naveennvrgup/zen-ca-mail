@@ -7,6 +7,7 @@
     left: 0;
     top: 0;
     width: 100%;
+    box-shadow: 0 3px 16px 0 rgba(0,0,0,.1);
 
     button{
         outline: none;
@@ -60,5 +61,43 @@
         // display: block;
         height: 250px;
         transform: none;
+    }
+}
+
+.bignav{
+    position: fixed;
+    border-bottom: 5px solid yellowgreen;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white;
+    z-index: 100;
+    box-shadow: 0 3px 16px 0 rgba(0,0,0,.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    >div{
+        display: flex;
+    }
+    .brand{
+        font-size: 25px;
+        // font-weight: 700px;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+    .left{
+        >div{
+            margin: 0 15px;
+        }
+    }
+    .right{
+        font-family: sans-serif;
+        i{
+            color: grey;
+        }
+        >div{
+            margin: 0 10px;
+        }
     }
 }

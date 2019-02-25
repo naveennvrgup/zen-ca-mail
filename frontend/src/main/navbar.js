@@ -16,8 +16,8 @@ export default class navbar extends Component {
 
     bignav =
         <div className='bignav'>
-            <div className="brand">
-                Mr. J K Gupta
+            <div className="brand hf">
+                MR. J K GUPTA
             </div>
             <div className="left">
                 <div className="nlink">Home</div>
@@ -50,7 +50,7 @@ export default class navbar extends Component {
         <div className={`smnav ${this.state.smn_active ? 'smn_active' : ''}`}>
             <div className="show">
                 <div className="brand hf">
-                    Mr. J K Gupta
+                    MR. J K GUPTA
                 </div>
                 <div className="trigger">
                     <button onClick={this.toggle_sm_nav}>
@@ -90,10 +90,10 @@ export default class navbar extends Component {
     render() {
         return (
             <div>
-                <div className="d-none d-md-block">
+                <div className="d-none d-lg-block">
                     {this.bignav}
                 </div>
-                <div className="d-md-none">
+                <div className="d-lg-none">
                     {this.smnav()}
                 </div>
             </div>
