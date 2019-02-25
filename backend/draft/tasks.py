@@ -27,7 +27,7 @@ def create_template(draft):
     files = draft.files.all()
     for file in files:
         print(file)
-        tbody += '<li><a href={}/{}>{}</a></li>'.format(
+        tbody += '<li><a href={}{}>{}</a></li>'.format(
             config('hostname'), file.file, file.file)
     tbody += '</ol>'
     if not files:
