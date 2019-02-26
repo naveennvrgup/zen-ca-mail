@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class navbar extends Component {
     state = {
-        smn_active: true
+        smn_active: false
     }
 
     toggle_sm_nav = (e) => {
@@ -41,7 +41,7 @@ export default class navbar extends Component {
                     zenithec@gmail.com
             </div>
                 <div className="clink">
-                    +91 89400 73123
+                    +91 8940073123
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@ export default class navbar extends Component {
                         </a>
                     </div>
                     <div className="clink">
-                        +91 89400 73123
+                        +91 8940073123
                 </div>
                 </div>
             </div>
