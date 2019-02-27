@@ -1,5 +1,13 @@
 .aboutus{
     padding: $section-pad;
+    #read_more{
+        background: black;
+        border-radius: 5px;
+        color: white;
+        padding: 3px 10px;
+        border: none;
+        outline: none;
+    }
     .client-pic{
         height: 200px;
         width: 200px;

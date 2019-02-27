@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import History from './history'
 
 export default class aboutus extends Component {
+    state = {
+        show_history: false
+    }
+
     render() {
         return (
             <div className='aboutus'>
@@ -19,7 +23,16 @@ export default class aboutus extends Component {
                                 Central Excise & Service Tax, GST, Labor laws, provident fund, ESIC, Goods
                                 and Services Tax etc.
                         </p>
+                            <div className={`text-center ${this.state.show_history ? 'd-none' : ''}`}>
+                                <button
+                                    onClick={() => this.setState({
+                                        ...this.state,
+                                        show_history: true
+                                    })}
+                                    id='read_more'>read more</button>
+                            </div>
                         </div>
+
                         <div className="col-md-7">
                             <h2 className="hf">About US</h2>
                             <p className='text-justify mt-4'>
@@ -34,7 +47,7 @@ export default class aboutus extends Component {
                         </div>
                     </div>
                 </div>
-                <History />
+                {this.state.show_history ? <History /> : ''}
             </div>
         )
     }

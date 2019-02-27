@@ -39,6 +39,7 @@ urlpatterns = [
     path('api/handle_complaint/', handle_complaint_view),
     # news
     path('api/get_news_categories_count/', get_news_categories_count_view),
+    path('api/get_news/', get_news_view),
     # dashboard
     path('api/get_delivery_reports/', get_delivery_reports_view),
     path('api/get_draft_details/', get_draft_details_view),

@@ -1,0 +1,14 @@
+.news_main{
+    padding: $section-pad;
+    .ms_news{
+        padding: 40px;
+        // box-shadow: 0px 0px 15px 15px black;
+        border: 2px solid black;
+        display:flex;
+        img{
+            width: 100%;
+            max-width: 400px;
+            max-height: 300px;
+        }
+    }
+}
