@@ -4,15 +4,17 @@ export default class cover extends Component {
     render() {
         return (
             <div className='cover'>
-                <div className="row">
-                    <div className="col-md-7 left"></div>
-                    <div className="col-md-5 right">
-                        <div className='p-5 mb-5'>
-                            <h1>LashshmiKumaran </h1>
-                            <h1>&amp; Sridharan</h1>
-                            <h1>(L&amp;S)</h1>
-                            <div className="punch-line mt-3 text-muted">
-                                Damn fine Tax litigators and advisors
+                <div className="container">
+                    <div className="wrapper">
+                        <div className="intro p-5 ml-md-5">
+                            <h1 className="hf name">Mr. J K GUPTA</h1>
+                            <h1 className="hf desig">CHARTED ACCOUNTANT</h1>
+                            <p className="mt-3">
+                                Damn Fine Tax Litigators and Advisors.
+                            </p>
+                            <div className="mt-5">
+                                <button id="to_contactus_btn">Contact Us</button>
+                                <button id="to_subscribe_btn">Subscribe</button>
                             </div>
                         </div>
                     </div>

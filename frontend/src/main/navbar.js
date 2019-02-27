@@ -17,7 +17,7 @@ export default class navbar extends Component {
     bignav =
         <div className='bignav'>
             <div className="brand hf">
-                MR. J K GUPTA
+                Mr. J K GUPTA
             </div>
             <div className="left">
                 <div className="nlink">Home</div>

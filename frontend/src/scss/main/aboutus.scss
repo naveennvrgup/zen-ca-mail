@@ -1,0 +1,10 @@
+.aboutus{
+    padding: $section-pad;
+    .client-pic{
+        height: 200px;
+        width: 200px;
+        background: url('../assets/jkgupta.jpeg') top center;
+        background-size: cover;
+        border-radius: 50%;
+    }
+}

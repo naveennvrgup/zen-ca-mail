@@ -1,12 +1,51 @@
-.cover{
+.cover {
     min-height: 100vh;
-    background: url('../assets/bg-3.jpg') center center ;
+    background: url('../assets/nbg2.jpg');
     background-size: cover;
-    .left{
+    display: flex;
+    .wrapper {
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            left: -50px;
+            z-index: 5;
+            display: block;
+            height: 450px;
+            width: 500px;
+            background: $tcolor;
+            opacity: .7;
+        }
+    }
+    .left {
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         opacity: 0;
+    }
+    .intro {
+        background: white;
+        z-index: 10;
+    }
+    button {
+        border: none;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border: 2px solid black;
+        transition: all 0.3s ease;
+    }
+    #to_contactus_btn {
+        background: black;
+        color: white;
+        font-weight: bold;
+    }
+    #to_subscribe_btn {
+        background: white;
+        color: black;
+        font-weight: bold;
     }
 }
