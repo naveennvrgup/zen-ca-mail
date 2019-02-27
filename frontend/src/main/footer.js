@@ -26,14 +26,14 @@ export default class footer extends Component {
                                 <h4>newsletter</h4>
                                 <div>Subscribe to the email newsletter to stay updated on finance!</div>
                                 <div className="text-center">
-                                    <button id='footer_sub_btn'>Subscribe</button>
                                 </div>
+                                    <button id='footer_sub_btn'>Subscribe</button>
                             </div>
                             <div className="col-md-3">
                                 <h4>Credits</h4>
                                 <div>Website built by <br />
                                     <span className="font-weight-bold">
-                                        <a href="https://zenithec.com" target='_blank'>Zenithec Techware</a>
+                                        <a rel='noopener noreferrer' href="https://zenithec.com" target='_blank'>Zenithec Techware</a>
                                     </span>
                                 </div>
                             </div>

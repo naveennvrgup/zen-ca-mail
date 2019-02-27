@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import History from './history'
 
 export default class aboutus extends Component {
     render() {
@@ -33,6 +34,7 @@ export default class aboutus extends Component {
                         </div>
                     </div>
                 </div>
+                <History />
             </div>
         )
     }
