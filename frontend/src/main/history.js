@@ -14,41 +14,65 @@ export default class history extends Component {
                 </p>
                     <ul>
                         <li>
-                            Reply to show cause notice, Refund Applications, Appeal before the Commissioner (Appeals), Appeal before the Tribunal (CESTAT) and drafting of Opinions pertaining to service tax/Excise/Customs/VAT, assistance in drafting of Writ Petitions before the High Courts.
-                    </li>
+                            <div>
+                                Reply to show cause notice, Refund Applications, Appeal before the Commissioner (Appeals), Appeal before the Tribunal (CESTAT) and drafting of Opinions pertaining to service tax/Excise/Customs/VAT, assistance in drafting of Writ Petitions before the High Courts.
+                            </div>
+                        </li>
                         <li>
-                            Handled the GST related Search and Seizure, prosecution cases.
-                    </li>
+                            <div>
+                                Handled the GST related Search and Seizure, prosecution cases.
+                            </div>
+                        </li>
                         <li>
-                            Given various representations to reduce the rate of GST and suggested various exemptions to the GST Council.
-                    </li>
+                            <div>
+                                Given various representations to reduce the rate of GST and suggested various exemptions to the GST Council.
+                            </div>
+                        </li>
                         <li>
-                            Appeared and represented before the Central Excise and Service tax Appellate Tribunal (CESTAT), New Delhi, Kolkata, Mumbai etc.
-                    </li>
+                            <div>
+                                Appeared and represented before the Central Excise and Service tax Appellate Tribunal (CESTAT), New Delhi, Kolkata, Mumbai etc.
+                            </div>
+                        </li>
                         <li>
-                            Independently extended the arguments before the Larger Bench of Tribunal (CESTAT) in the long awaited and highest revenue implication matter of free of cost issue (commonly known as FOC matter) which is widely published Judgement. (Reported in the name of Bhayana Builders & Others)
-                    </li>
+                            <div>
+                                Independently extended the arguments before the Larger Bench of Tribunal (CESTAT) in the long awaited and highest revenue implication matter of free of cost issue (commonly known as FOC matter) which is widely published Judgement. (Reported in the name of Bhayana Builders & Others)
+                            </div>
+                        </li>
                         <li>
-                            Represented the matter before the various departmental authorities at Delhi, Chandigarh, Ludhiana, Pune, Raipur, Gauhati, Shilong, Hyderabad, Patna, Nagpur, Mumbai, Bangalore, Ranchi and Kolkata including Commissioner (Appeals), Commissioner, Additional Commissioner and Joint Commissioner etc.
-                    </li>
+                            <div>
+                                Represented the matter before the various departmental authorities at Delhi, Chandigarh, Ludhiana, Pune, Raipur, Gauhati, Shilong, Hyderabad, Patna, Nagpur, Mumbai, Bangalore, Ranchi and Kolkata including Commissioner (Appeals), Commissioner, Additional Commissioner and Joint Commissioner etc.
+                            </div>
+                        </li>
                         <li>
-                            Compliance relating to GST like Registration, filing of service tax returns etc.
-                    </li>
+                            <div>
+                                Compliance relating to GST like Registration, filing of service tax returns etc.
+                            </div>
+                        </li>
                         <li>
-                            Liasoning and follow up with the Tax Authorities against tax issues/notices and always tried to resolve the problem in short span of time by taking the issue with higher authorities, if required.
-                    </li>
+                            <div>
+                                Liasoning and follow up with the Tax Authorities against tax issues/notices and always tried to resolve the problem in short span of time by taking the issue with higher authorities, if required.
+                            </div>
+                        </li>
                         <li>
-                            Assisted & advised the clients at the time of Departmental, CERA, CAG and Anti-Evasion audit by ensuing that balance between the Departmental requirement for information and clients benefits.
-                    </li>
+                            <div>
+                                Assisted & advised the clients at the time of Departmental, CERA, CAG and Anti-Evasion audit by ensuing that balance between the Departmental requirement for information and clients benefits.
+                            </div>
+                        </li>
                         <li>
-                            Readiness for departmental audit and submission of audit replies.
-                    </li>
+                            <div>
+                                Readiness for departmental audit and submission of audit replies.
+                            </div>
+                        </li>
                         <li>
-                            Assisted Mr. J.K. Mittal before Various Hon’ble High Court of Delhi, Allahabad, Guwahati and Chandigarh and Kolkata.
-                    </li>
+                            <div>
+                                Assisted Mr. J.K. Mittal before Various Hon’ble High Court of Delhi, Allahabad, Guwahati and Chandigarh and Kolkata.
+                            </div>
+                        </li>
                         <li>
-                            Assisted Mr. J.K. Mittal in authoring of his Book named ‘Law, procedure and practice of Service tax’.
-                    </li>
+                            <div>
+                                Assisted Mr. J.K. Mittal in authoring of his Book named ‘Law, procedure and practice of Service tax’.
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
