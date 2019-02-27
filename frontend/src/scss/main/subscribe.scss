@@ -1,12 +1,14 @@
 .subscribe{
-    background: yellowgreen;
+    background: #ddd;
     padding: $section-pad;
+    // padding: 40px 0 50px;
     input{
-        // border: 2px solid black;
+        box-shadow: 3px 3px 15px -5px black; 
+        border-radius: 2px;
         border: none;
         outline: none;
         background: white;
-        padding: 7px 15px;
+        padding: 8px 15px;
         text-align: center;
         margin: 0 10px;
     }
@@ -15,7 +17,14 @@
         outline: none;
         padding: 10px 20px;
         background: black;
+        border-radius: 2px;
         color: white;
         box-shadow: $nav-box-shadow;
+        box-shadow: 3px 3px 15px -5px black; 
+    }
+    input{
+        display: block;
+        width: 250px;
+        margin: 10px auto 0;
     }
 }

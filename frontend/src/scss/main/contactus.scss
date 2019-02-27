@@ -1,21 +1,24 @@
-.contactus{
+.contactus {
     padding: $section-pad;
     background: url('../assets/gravel.png');
-    .left{
+    .row {
+        box-shadow: 5px 5px 25px -5px black;
+    }
+    .left {
         background: white;
         padding: 50px;
     }
-    .right{
+    .right {
         color: white;
         padding: 50px;
         background: $contact-r8-bg;
-        .info{
+        .info {
             // font-size: 20px;
             font-family: sans-serif;
         }
     }
     input,
-    textarea{
+    textarea {
         border: 2px solid black;
         padding: 10px 10px;
         display: block;
@@ -25,15 +28,14 @@
         margin-top: 10px;
         outline: none;
     }
-    button{
+    button {
         background: #000;
         padding: 10px 20px;
         border: none;
         color: white;
         font-weight: bold;
     }
-
-    .social{
+    .social {
         font-size: 25px;
     }
 }

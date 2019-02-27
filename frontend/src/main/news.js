@@ -12,6 +12,7 @@ export default class SimpleSlider extends Component {
     componentDidMount = () => {
         this.axios.get('/api/get_news/').then(d => {
             d = d.data
+            console.log(d)
             this.setState({
                 ...this.state,
                 news: d
@@ -30,12 +31,20 @@ export default class SimpleSlider extends Component {
         ele.img = temp_img
 
         return (
-            <div className="slider-main ms_news">
+            <div className="slider mt-4">
                 <div className='img'>
                     <img src={ele.img} alt="" />
                 </div>
                 <div className='info'>
-                    <h4 className='hf'>{ele.title}</h4>
+                    <h4 className='hf'>
+                        <span>{ele.title}</span>
+                        <span>
+                            <a href={ele.link} id='slider-link'>link</a>
+                        </span>
+                    </h4>
+                    <p className="mt-4">
+                        {ele.brief}
+                    </p>
                 </div>
             </div>
         )
@@ -45,12 +54,8 @@ export default class SimpleSlider extends Component {
 
         return (
             this.state.news.length ? <div className='news_main'>
-                <div className="container">
-                    <h2 className='hf text-center'>Newsfeed</h2>
-                    <div className="slider mt-4">
-                        {this.curr_news(this.state.snid)}
-                    </div>
-                </div>
+                <h2 className="text-center hf">Newsfeed</h2>
+                {this.curr_news(this.state.snid)}
             </div> : ''
         );
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import fuser from '../axios'
+import News from './news'
 
 export default class subscribe extends Component {
     axios = fuser()
@@ -9,7 +10,7 @@ export default class subscribe extends Component {
     Success = () => <div className='my-3'>{this.state.success}</div>
 
     componentDidMount = () => {
-        this.form = document.querySelector('.subscribe form')
+        this.form = document.querySelector('.subscribe .left form')
         this.name = this.form.querySelector('.name')
         this.email = this.form.querySelector('.email')
         this.mobile = this.form.querySelector('.phone')
@@ -18,7 +19,7 @@ export default class subscribe extends Component {
 
     add_sub_handler = e => {
         e.preventDefault()
-        if(!this.form.checkValidity()){
+        if (!this.form.checkValidity()) {
             this.setState({
                 ...this.state,
                 error: 'Please fill all the fields with valid details!'
@@ -51,21 +52,33 @@ export default class subscribe extends Component {
 
     render() {
         return (
-            <div className='subscribe text-center'>
-                <h2 className='hf'>Subscribe to our Newsletter</h2>
-                <p>We provide useful updates on finance via email.</p>
-                {this.state.error ? <this.Error /> : ''}
-                {this.state.success ? <this.Success /> : ''}
-                <form className={this.state.success ? 'd-none' : ''}>
-                    <input type="text" placeholder='Name' className="name" required/>
-                    <input type="email" placeholder='Email' className="email" required/>
-                    <input type="text" placeholder='Phone no.' className="phone" required/>
-                    <div className="text-center mt-3">
-                        <button disabled={this.state.success} onClick={this.add_sub_handler}>
-                            Submit
-                        </button>
+            <div className='subscribe'>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-4">
+                            <div className="left text-center">
+                                <h2 className='hf'>Subscribe</h2>
+                                <p className='px-5'>We provide useful updates on finance via email.</p>
+                                {this.state.error ? <this.Error /> : ''}
+                                {this.state.success ? <this.Success /> : ''}
+                                <form className={this.state.success ? 'd-none' : ''}>
+                                    <input type="text" placeholder='Name' className="name" required />
+                                    <input type="email" placeholder='Email' className="email" required />
+                                    <input type="text" placeholder='Phone no.' className="phone" required />
+                                    <div className="text-center mt-3">
+                                        <button disabled={this.state.success} onClick={this.add_sub_handler}>
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div className="col-md-8">
+                            <News />
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         )
     }

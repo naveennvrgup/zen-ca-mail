@@ -7,7 +7,6 @@ import Navbar from './navbar'
 import Aboutus from './aboutus'
 import Contactus from './contactus'
 import Footer from './footer'
-import News from './news'
 
 export default class main extends Component {
     render() {
@@ -16,7 +15,6 @@ export default class main extends Component {
                 <Navbar />
                 <Cover />
                 <Subscribe />
-                <News />
                 <Values />
                 <Aboutus />
                 <Contactus />
