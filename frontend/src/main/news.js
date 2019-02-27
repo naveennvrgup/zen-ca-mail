@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-import Slider from "react-slick";
 import fuser, { burl } from '../axios'
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 
 export default class SimpleSlider extends Component {
     state = {
-        news: []
+        news: [],
+        snid: 0
     }
 
     axios = fuser()
@@ -18,46 +14,44 @@ export default class SimpleSlider extends Component {
             d = d.data
             this.setState({
                 ...this.state,
-                news: d.map((ele, i) => this.news_html(ele, i))
+                news: d
             })// end of setstate
         })
     }
 
-    news_html = (ele, i) => {
-        ele.img = ele.img && ele.img.slice(1, ele.img.length)
+    curr_news = (snid) => {
+        const ele = this.state.news[snid]
+        let temp_img = require('../assets/news_placeholder.jpeg')
+
+        if (ele.img) {
+            temp_img = burl + ele.img.slice(1, ele.img.length)
+        }
+
+        ele.img = temp_img
 
         return (
-            <div key={i} className="ms_news">
-                <div className="row">
-                    <div className="col-md-5">
-                        <img src={burl + ele.img} alt="" />
-                    </div>
-                    <div className="col-md-7">
-                        <h4 className='hf'>{ele.title}</h4>
-                    </div>
+            <div className="slider-main ms_news">
+                <div className='img'>
+                    <img src={ele.img} alt="" />
+                </div>
+                <div className='info'>
+                    <h4 className='hf'>{ele.title}</h4>
                 </div>
             </div>
         )
     }
 
-
     render() {
-        const settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
-        };
+
         return (
-            <div className='news_main'>
+            this.state.news.length ? <div className='news_main'>
                 <div className="container">
-                    <h2 className='hf text-center mb-5'>Newsfeed</h2>
-                    <Slider {...settings}>
-                        {this.state.news}
-                    </Slider>
+                    <h2 className='hf text-center'>Newsfeed</h2>
+                    <div className="slider mt-4">
+                        {this.curr_news(this.state.snid)}
+                    </div>
                 </div>
-            </div>
+            </div> : ''
         );
     }
 }

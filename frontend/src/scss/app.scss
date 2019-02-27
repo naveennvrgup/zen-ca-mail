@@ -1,9 +1,7 @@
 // fonts
 @import url('https://fonts.googleapis.com/css?family=Oswald:700|Raleway');
-
 // common
 @import './common.scss';
-
 // admin
 @import './admin/sidebar.scss';
 @import './admin/subscriber.scss';
@@ -16,7 +14,6 @@
 @import './admin/login.scss';
 @import './admin/dashboard.scss';
 @import './admin/newsfeed.scss';
-
 // main
 @import './main/contactus.scss';
 @import './main/aboutus.scss';
@@ -28,21 +25,26 @@
 @import './main/footer.scss';
 @import './main/history.scss';
 @import './main/news.scss';
-
 .index {
     margin-top: $big-menubar-height;
 }
-html,body{
+
+html,
+body {
     overflow-x: hidden;
     width: 100vw;
 }
-button{
+
+button {
     cursor: pointer !important;
-    &:disabled{
+}
+
+.main {
+    button:disabled {
         background: green;
     }
 }
 
-a{
+a {
     text-decoration: none !important;
 }
