@@ -1,0 +1,36 @@
+.contactus{
+    padding: $section-pad;
+    background: url('../assets/gravel.png');
+    .left{
+        background: white;
+        padding: 50px;
+    }
+    .right{
+        color: white;
+        padding: 50px;
+        background: $contact-r8-bg;
+        .info{
+            // font-size: 20px;
+            font-family: sans-serif;
+        }
+    }
+    input,
+    textarea{
+        border: 2px solid black;
+        padding: 10px 10px;
+        display: block;
+        margin: auto;
+        width: 100%;
+        max-width: 400px;
+        margin-top: 10px;
+        outline: none;
+    }
+    button{
+        background: #000;
+        padding: 10px 20px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        width: 130px;
+    }
+}

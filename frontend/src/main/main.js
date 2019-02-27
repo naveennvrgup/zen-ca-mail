@@ -6,6 +6,7 @@ import Values from './values'
 import Navbar from './navbar'
 import Aboutus from './aboutus'
 import Contactus from './contactus'
+import Footer from './footer'
 
 export default class main extends Component {
     render() {
@@ -17,6 +18,7 @@ export default class main extends Component {
                 <Aboutus />
                 <Values />
                 <Contactus />
+                <Footer />
             </div>
         )
     }

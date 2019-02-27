@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class subscribe extends Component {
     render() {
         return (
-            <div className='subscribe text-center p-5'>
+            <div className='subscribe text-center'>
                 <h2 className='hf'>Subscribe to our Newsletter</h2>
                 <p>We provide useful updates on finance via email.</p>
                 <form>
