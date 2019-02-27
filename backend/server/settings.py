@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'draft',
     'news',
     'dashboard',
-
+    'enquiry',
 ]
 
 MIDDLEWARE = [

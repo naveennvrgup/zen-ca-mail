@@ -13,6 +13,7 @@ from subscribe.views import *
 from draft.views import *
 from news.views import *
 from dashboard.views import *
+from enquiry.views import *
 
 router = DefaultRouter()
 router.register('subscribe', SubscribeViewset)
@@ -45,6 +46,8 @@ urlpatterns = [
     path('api/drafts_brief/', drafts_brief_view),
     path('api/news_brief/', news_brief_view),
 
+    # enquiry
+    path('api/send_enquiry/', send_enquiry_view),
     # router
     path('api/', include(router.urls)),
 ]

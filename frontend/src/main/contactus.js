@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import fuser from '../axios'
 
 export default class contactus extends Component {
-  Error = () => <div className="my-3 text-danger">{this.state.error}</div>
-  Success = () => <div className='my-3'>{this.state.success}</div>
+  axios = fuser()
+  state = {}
 
   componentDidMount = () => {
     this.form = document.querySelector('.contactus form')
@@ -12,11 +13,10 @@ export default class contactus extends Component {
     this.msg = this.form.querySelector('#msg')
   }
 
+  Error = () => <div className="text-danger my-3">{this.state.error}</div>
 
   place_enquiry_handler = e => {
     e.preventDefault()
-    console.log(this.form);
-    return
 
     if (!this.form.checkValidity()) {
       this.setState({
@@ -26,10 +26,11 @@ export default class contactus extends Component {
       return
     }
 
-    this.axios.post('/api/sub_from_main/', {
+    this.axios.post('/api/send_enquiry/', {
       'name': this.name.value,
       'email': this.email.value,
-      'mobile': this.mobile.value
+      'mobile': this.mobile.value,
+      'msg': this.msg.value
     }).then(d => {
       d = d.data
       console.log(d)
@@ -46,6 +47,8 @@ export default class contactus extends Component {
           error: null,
         })// end of setstate
       }
+    }).catch(e => {
+      console.error(e)
     })
   }
 
@@ -62,12 +65,13 @@ export default class contactus extends Component {
                 Let us know what you are thinking
               </p>
               <form className='mt-4'>
-                <input type="text" id="name" placeholder="Name" />
-                <input type="text" id="phone" placeholder="Phone" />
-                <input type="text" id="email" placeholder="Email" />
-                <textarea rows='3' type="text" id="msg" placeholder="Your message" />
-                <button onClick={this.place_enquiry_handler} id="enquiry-btn" className='mt-4'>
-                  Send
+                {this.state.error ? <this.Error /> : ''}
+                <input required type="text" id="name" placeholder="Name" />
+                <input required type="text" id="phone" placeholder="Phone" />
+                <input required type="text" id="email" placeholder="Email" />
+                <textarea required rows='3' type="text" id="msg" placeholder="Your message" />
+                <button onClick={this.place_enquiry_handler} id="enquiry-btn" disabled={this.state.success} className='mt-4'>
+                  {this.state.success ? 'Message sent!' : 'Send'}
                 </button>
               </form>
             </div>

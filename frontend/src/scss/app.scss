@@ -37,6 +37,9 @@ html,body{
 }
 button{
     cursor: pointer !important;
+    &:disabled{
+        background: green;
+    }
 }
 
 a{
