@@ -1,3 +1,35 @@
 footer {
-    background: #242424;
-}
+    color: #ddd;
+    a{
+        color: white;
+        &:hover{
+            color: white;
+        }
+    }
+    #info{
+        padding: 40px 0 20px;
+        background: #242424;
+    }
+    #rights{
+        background: #212121;
+        padding: 10px 0;
+    }
+    h4{
+        font-family: Oswald, sans-serif;
+        border-bottom: 1px solid white;
+        text-transform: uppercase;
+        font-size: 18px;
+        padding-bottom: 10px;
+        color: white;
+    }
+    .col-md-3 div{
+        margin-top: 5px;
+    }
+    button{
+        border: none;
+        background: $tcolor;
+        padding: 5px 10px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+}   

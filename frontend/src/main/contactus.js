@@ -27,7 +27,7 @@ export default class contactus extends Component {
               <h2 className="text-center hf">Contact</h2>
               <p className="mt-2">Have a question? We can help you...</p>
 
-              <div className="mt-5  info">
+              <div className="mt-3  info">
                 <div>
                   <span className="font-weight-bold">
                     <i className="mx-2 fa fa-map"></i> Address
@@ -62,7 +62,7 @@ export default class contactus extends Component {
                   <div className="social">
                     <i className="fab mx-2 fa-facebook"></i>
                     <i className="fab mx-2 fa-twitter"></i>
-                    <i className="fab mx-2 fa-linkedin"></i>
+                    <i className="fab mx-2 fa-linkedin"></i> 
                   </div>
                 </div>
               </div>

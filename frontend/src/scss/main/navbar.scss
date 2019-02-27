@@ -66,13 +66,13 @@
 
 .bignav{
     position: fixed;
-    border-bottom: 5px solid yellowgreen;
+    // border-bottom: 5px solid yellowgreen;
     left: 0;
     top: 0;
     width: 100%;
     background: white;
     z-index: 100;
-    box-shadow: 0 3px 16px 0 rgba(0,0,0,.1);
+    box-shadow: 0 3px 16px 0 rgba(0,0,0,.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
