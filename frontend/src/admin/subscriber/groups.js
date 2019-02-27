@@ -8,7 +8,7 @@ export default class subscriber extends Component {
         groups: [],
         new_group_name: '',
         selected_group_id: null,
-        selected_group_name: 'all'
+        selected_group_name: 'Subscribers'
     }
 
     componentDidMount = () => {

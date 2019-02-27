@@ -27,6 +27,7 @@ urlpatterns = [
     path('login/', obtain_auth_token),
     # group
     path('api/add_sub_to_group/', add_sub_to_group_view),
+    path('api/sub_from_main/', sub_from_main_view),
     path('api/sub_as_csv/', sub_as_csv_view),
     path('api/download_group_as_csv/<int:gid>/', download_group_csv_view),
     # draft
@@ -37,7 +38,7 @@ urlpatterns = [
     path('api/handle_complaint/', handle_complaint_view),
     # news
     path('api/get_news_categories_count/', get_news_categories_count_view),
-    # dashboard 
+    # dashboard
     path('api/get_delivery_reports/', get_delivery_reports_view),
     path('api/get_draft_details/', get_draft_details_view),
     path('api/subscribers_brief/', subscribers_brief_view),

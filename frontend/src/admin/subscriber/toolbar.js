@@ -36,7 +36,7 @@ export default class toolbar extends Component {
 
     delete_group_handler = (e) => {
         e.preventDefault()
-        if (this.props.selected_group_name === 'all') {
+        if (this.props.selected_group_name === 'Subscribers') {
             return
         }
 
@@ -44,7 +44,7 @@ export default class toolbar extends Component {
 
         this.props.set_groups_state({
             selected_group_id: null,
-            selected_group_name: 'all'
+            selected_group_name: 'Subscribers'
         })
 
         this.axios.delete(`api/group/${group_2_delete}/`)
@@ -126,7 +126,7 @@ export default class toolbar extends Component {
                             This will only delete the group not the subscribers
                         </div>
                         <button
-                            disabled={this.props.selected_group_name === 'all' ? true : false}
+                            disabled={this.props.selected_group_name === 'Subscribers' ? true : false}
                             onClick={this.delete_group_handler}
                             className="btn nbtn red">
                             <i className="fa fa-trash"></i>

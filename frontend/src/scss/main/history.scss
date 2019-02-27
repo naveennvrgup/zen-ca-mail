@@ -9,8 +9,10 @@
         transform: translateX(100%);
         border-left: 2px solid black;
         div {
-            padding: 30px; // background: red;
-            margin: 0 15px; // border: 1px dashed black;
+            padding: 30px; 
+            margin: 0 15px;
+            background: #ddd; 
+            border-radius: 5px;
         }
         &::before {
             content: '';

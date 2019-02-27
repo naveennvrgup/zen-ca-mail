@@ -7,6 +7,7 @@ from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.parsers import JSONParser
 
 from decouple import config
 from django.shortcuts import get_object_or_404
@@ -148,3 +149,27 @@ def download_group_csv_view(req, gid):
     response['Content-Disposition'] = 'attachment; filename=group-{}-{}.csv'.format(
         group.name, timezone.now().date())
     return response
+
+
+@api_view(['post'])
+@permission_classes([AllowAny])
+def sub_from_main_view(req):
+    data = JSONParser().parse(req)
+    group = Group.objects.get(name='Subscribers')
+    try:
+        sub = Subscriber.objects.get(email=data.get('email'))
+        sub.flag = False
+        sub.save()
+        return Response({
+            'error': 'You have already subscribed!'
+        })
+    except:
+        sub = Subscriber.objects.create(
+            group=group,
+            name=data.get('name'),
+            email=data.get('email'),
+            mobile=data.get('mobile')
+        )
+        return Response({
+            'msg': 'You have successfully subscribed!'
+        })
