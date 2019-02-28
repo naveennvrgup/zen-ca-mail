@@ -1,13 +1,13 @@
 .subscribe{
     background: #ddb;
     background: #f2f2f2;
-    background: url('../assets/gravel.png');
     padding: $section-pad;
     // padding: 40px 0 50px;
     input{
-        box-shadow: 3px 3px 15px -5px black; 
+        box-shadow: 3px 3px 10px -5px black; 
         border-radius: 2px;
         border: none;
+        border: 2px solid black;
         outline: none;
         background: white;
         padding: 8px 15px;

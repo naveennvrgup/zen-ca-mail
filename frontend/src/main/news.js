@@ -10,7 +10,7 @@ export default class SimpleSlider extends Component {
     axios = fuser()
 
     componentDidMount = () => {
-        this.slider = document.querySelector('.slider')
+        this.slider = document.querySelector('.news_main')
         this.mouse_on_slider = false
 
         this.slider.addEventListener('mouseover', () => {
@@ -34,11 +34,11 @@ export default class SimpleSlider extends Component {
         })
 
         setInterval(() => {
-            if(this.mouse_on_slider){
+            if (this.mouse_on_slider) {
                 return
             }
             this.change_news_handler({}, 1)
-        }, 3000);
+        }, 1500);
     }
 
     html_news = ele => {
@@ -63,7 +63,7 @@ export default class SimpleSlider extends Component {
                             href={ele.link} id='slider-link'>link</a> : ''}
                     </span>
                 </h4>
-                <p className="mt-4">
+                <p className="mt-3">
                     {ele.brief}
                 </p>
             </div>
@@ -89,18 +89,18 @@ export default class SimpleSlider extends Component {
                 <h2 className="text-center hf">Newsfeed</h2>
                 <div className="slider mt-4">
                     {this.state.news[this.state.snid]}
-                    <div className="controls mt-3">
-                        <button
-                            onClick={e => this.change_news_handler(e, -1)}
-                            className='btn nbtn'>
-                            <i className="fa fa-angle-left"></i>
-                        </button>
-                        <button
-                            onClick={e => this.change_news_handler(e, 1)}
-                            className='btn nbtn'>
-                            <i className="fa fa-angle-right"></i>
-                        </button>
-                    </div>
+                </div>
+                <div className="controls mt-3">
+                    <button
+                        onClick={e => this.change_news_handler(e, -1)}
+                        className='btn nbtn'>
+                        <i className="fa fa-angle-left"></i>
+                    </button>
+                    <button
+                        onClick={e => this.change_news_handler(e, 1)}
+                        className='btn nbtn'>
+                        <i className="fa fa-angle-right"></i>
+                    </button>
                 </div>
             </div>
         );

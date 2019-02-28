@@ -17,6 +17,9 @@
             height: 450px;
             width: 500px;
             background: $tcolor;
+            // transform: rotate3d(1,1,1,15deg);
+            perspective: 1000;
+            // transform-origin: bottom right;
             opacity: .7;
         }
     }

@@ -17,6 +17,7 @@ export default class cover extends Component {
                                 <Link
                                     smooth={true}
                                     duration={500}
+                                    offset={-75}
                                     to='contactus'
                                     id="to_contactus_btn" className='btn-link'>
                                     Contact Us
