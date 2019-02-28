@@ -75,6 +75,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
+    .nlink{
+        cursor: pointer;
+    }
     .active_link{
         font-weight: bold;
         border-bottom: 1px solid #000;

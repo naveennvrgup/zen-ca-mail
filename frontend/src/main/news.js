@@ -76,7 +76,6 @@ export default class SimpleSlider extends Component {
         if (new_snid < 0) {
             new_snid = len - 1
         }
-        console.log(new_snid);
         this.setState({
             ...this.state,
             snid: new_snid

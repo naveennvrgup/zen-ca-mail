@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Scrollspy from 'react-scrollspy'
+import { Link } from "react-scroll";
 
 export default class navbar extends Component {
     state = {
@@ -15,15 +15,42 @@ export default class navbar extends Component {
         })// end of setstate
     }
 
-    bignav =
+    bnlink = (section, link_name) => <Link
+        activeClass='active_link'
+        to={section}
+        spy={true}
+        smooth={true}
+        offset={-75}
+        duration={500}
+    >{link_name}</Link>
+
+    bignav = () =>
         <div className='bignav'>
             <div className="brand hf">
                 Mr. J K GUPTA
             </div>
-            <Scrollspy
+            <ul>
+                <li className="nlink">
+                    {this.bnlink('cover', 'Home')}
+                </li>
+                <li className="nlink">
+                    {this.bnlink('values', 'Values')}
+                </li>
+                <li className="nlink">
+                    {this.bnlink('services', 'Services')}
+                </li>
+                <li className="nlink">
+                    {this.bnlink('aboutus', 'About')}
+                </li>
+                <li className="nlink">
+                    {this.bnlink('contactus', 'Contact')}
+                </li>
+            </ul>
+
+            {/* <Scrollspy
                 offset={-200}
                 className="left"
-                items={['cover','values','services','aboutus','contactus']}
+                items={['cover', 'values', 'services', 'aboutus', 'contactus']}
                 currentClassName="active_link">
                 <li className="nlink">
                     <a href="#cover">Home</a>
@@ -40,7 +67,7 @@ export default class navbar extends Component {
                 <li className="nlink">
                     <a href="#contactus">Contact</a>
                 </li>
-            </Scrollspy>
+            </Scrollspy> */}
             <div className="right">
                 <div className="slink">
                     <a href="facebook.com">
@@ -106,7 +133,7 @@ export default class navbar extends Component {
         return (
             <div>
                 <div className="d-none d-lg-block">
-                    {this.bignav}
+                    {this.bignav()}
                 </div>
                 <div className="d-lg-none">
                     {this.smnav()}
