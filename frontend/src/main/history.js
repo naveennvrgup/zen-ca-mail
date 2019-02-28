@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
+import { scroller } from 'react-scroll'
 
 export default class history extends Component {
+    componentDidMount = () => {
+        scroller.scrollTo('history', {
+            duration: 500,
+            smooth: true,
+            offset: -100,
+        })
+    }
+
+
     render() {
         return (
-            <div id='history'>
+            <div ref={ele => this.history = ele} id='history'>
                 <div className="container">
                     <h2 className="hf text-center mt-5">Brief Profile</h2>
                     <p className='mt-5'>

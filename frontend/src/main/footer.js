@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
+import { Link } from 'react-scroll'
 
 export default class footer extends Component {
+    flink = (to, name) => <Link
+        to={to}
+        smooth={true}
+        duration={500}
+        offset={-80}>
+        {name}
+    </Link>
+
+
     render() {
         return (
             <footer id='footer'>
@@ -15,19 +25,23 @@ export default class footer extends Component {
                                 <div>Emmet</div>
                                 <div>Lorem</div>
                             </div>
-                            <div className="col-md-3">
+                            <div className="col-md-3 flinks">
                                 <h4>Navigation</h4>
-                                <div>Home</div>
-                                <div>About</div>
-                                <div>Services</div>
-                                <div>Contact Us</div>
+                                <div>{this.flink('cover', 'Home')}</div>
+                                <div>{this.flink('subscribe', 'Subscribe')}</div>
+                                <div>{this.flink('values', 'Values')}</div>
+                                <div>{this.flink('services', 'Services')}</div>
+                                <div>{this.flink('aboutus', 'About')}</div>
+                                <div>{this.flink('contactus', 'Contact')}</div>
                             </div>
                             <div className="col-md-3">
                                 <h4>newsletter</h4>
                                 <div>Subscribe to the email newsletter to stay updated on finance!</div>
                                 <div className="text-center">
                                 </div>
-                                    <button id='footer_sub_btn'>Subscribe</button>
+                                <div className="footer_sub_link">
+                                    {this.flink('subscribe', 'Subscribe')}
+                                </div>
                             </div>
                             <div className="col-md-3">
                                 <h4>Credits</h4>

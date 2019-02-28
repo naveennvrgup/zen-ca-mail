@@ -31,12 +31,17 @@
         background: white;
         z-index: 10;
     }
-    button {
+    .btn-link {
         border: none;
         padding: 10px 20px;
         margin-right: 10px;
         border: 2px solid black;
         transition: all 0.3s ease;
+        cursor: pointer;
+        user-select: none;
+        span{
+            pointer-events: none;
+        }
     }
     #to_contactus_btn {
         background: black;

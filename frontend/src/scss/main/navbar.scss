@@ -77,6 +77,7 @@
     padding: 20px 5%;
     .nlink{
         cursor: pointer;
+        user-select: none;
     }
     .active_link{
         font-weight: bold;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-scroll'
 
 export default class cover extends Component {
     render() {
@@ -13,8 +14,21 @@ export default class cover extends Component {
                                 Damn Fine Tax Litigators and Advisors.
                             </p>
                             <div className="mt-5">
-                                <button id="to_contactus_btn">Contact Us</button>
-                                <button id="to_subscribe_btn">Subscribe</button>
+                                <Link
+                                    smooth={true}
+                                    duration={500}
+                                    to='contactus'
+                                    id="to_contactus_btn" className='btn-link'>
+                                    Contact Us
+                                </Link>
+                                <Link
+                                    smooth={true}
+                                    duration={500}
+                                    offset={-100}
+                                    to='subscribe'
+                                    id="to_subscribe_btn" className='btn-link'>
+                                    Subscribe
+                                </Link>
                             </div>
                         </div>
                     </div>
