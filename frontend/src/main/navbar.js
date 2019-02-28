@@ -86,17 +86,35 @@ export default class navbar extends Component {
                 </div>
                 <div className="trigger">
                     <button onClick={this.toggle_sm_nav}>
-                        <i className="fa fa-bars"></i>
+                        {this.state.smn_active ?
+                            <i className="fa fa-times"></i> :
+                            <i className="fa fa-bars"></i>}
                     </button>
                 </div>
             </div>
             <div className="hide">
-                <div className="left">
-                    <div className="nlink">Home</div>
-                    <div className="nlink">Values</div>
-                    <div className="nlink">About</div>
-                    <div className="nlink">Services</div>
-                    <div className="nlink">Contact</div>
+                <div onClick={() => this.setState({
+                    ...this.state,
+                    smn_active: false
+                })} className="left">
+                    <div className="smlink">
+                        {this.bnlink('cover', 'Home')}
+                    </div>
+                    <div className="smlink">
+                        {this.bnlink('aboutus', 'About')}
+                    </div>
+                    <div className="smlink">
+                        {this.bnlink('values', 'Values')}
+                    </div>
+                    <div className="smlink">
+                        {this.bnlink('services', 'Services')}
+                    </div>
+                    <div className="smlink">
+                        {this.bnlink('clients', 'Clients')}
+                    </div>
+                    <div className="smlink">
+                        {this.bnlink('contactus', 'Contact')}
+                    </div>
                 </div>
                 <div className="right">
                     <div className="clink">
