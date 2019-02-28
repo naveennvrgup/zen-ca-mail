@@ -114,9 +114,24 @@ export default class contactus extends Component {
                     <br />
                   </span>
                   <div className="social">
-                    <i className="fab mx-2 fa-facebook"></i>
-                    <i className="fab mx-2 fa-twitter"></i>
-                    <i className="fab mx-2 fa-linkedin"></i>
+                    <a href="https://www.facebook.com/pages/JK-Gupta-Chartered-Accountant/235462179990288"
+                      target='_blank'
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fab fa-facebook"></i>
+                    </a>
+                    <a href="twitter.com"
+                      target='_blank'
+                      rel="https://twitter.com/cajeetugupta8"
+                    >
+                      <i className="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://in.linkedin.com/in/jeetu-gupta-74308440"
+                      target='_blank'
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fab fa-linkedin"></i>
+                    </a>
                   </div>
                 </div>
               </div>

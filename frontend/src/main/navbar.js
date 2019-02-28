@@ -50,40 +50,28 @@ export default class navbar extends Component {
                 </li>
             </ul>
 
-            {/* <Scrollspy
-                offset={-200}
-                className="left"
-                items={['cover', 'values', 'services', 'aboutus', 'contactus']}
-                currentClassName="active_link">
-                <li className="nlink">
-                    <a href="#cover">Home</a>
-                </li>
-                <li className="nlink">
-                    <a href="#values">Values</a>
-                </li>
-                <li className="nlink">
-                    <a href="#services">Services</a>
-                </li>
-                <li className="nlink">
-                    <a href="#aboutus">About</a>
-                </li>
-                <li className="nlink">
-                    <a href="#contactus">Contact</a>
-                </li>
-            </Scrollspy> */}
             <div className="right">
                 <div className="slink">
-                    <a href="facebook.com">
+                    <a href="https://www.facebook.com/pages/JK-Gupta-Chartered-Accountant/235462179990288"
+                        target='_blank'
+                        rel="noopener noreferrer"
+                    >
                         <i className="fab fa-facebook"></i>
                     </a>
                 </div>
                 <div className="slink">
-                    <a href="twitter.com">
+                    <a href="https://twitter.com/cajeetugupta8"
+                        target='_blank'
+                        rel="noopener noreferrer"
+                    >
                         <i className="fab fa-twitter"></i>
                     </a>
                 </div>
                 <div className="slink">
-                    <a href="twitter.com">
+                    <a href="https://in.linkedin.com/in/jeetu-gupta-74308440"
+                        target='_blank'
+                        rel="noopener noreferrer"
+                    >
                         <i className="fab fa-linkedin"></i>
                     </a>
                 </div>
@@ -115,18 +103,29 @@ export default class navbar extends Component {
                         zenithec@gmail.com
                 </div>
                     <div className="slink">
-                        <a href="facebook.com">
+                        <a href="https://www.facebook.com/pages/JK-Gupta-Chartered-Accountant/235462179990288"
+                            target='_blank'
+                            rel="noopener noreferrer"
+                        >
                             <i className="fab fa-facebook"></i>
                         </a>
                     </div>
                     <div className="slink">
-                        <a href="twitter.com">
+                        <a href="twitter.com"
+                            target='_blank'
+                            rel="https://twitter.com/cajeetugupta8"
+                        >
                             <i className="fab fa-twitter"></i>
                         </a>
                     </div>
-                    <div className="clink">
-                        +91 8940073123
-                </div>
+                    <div className="slink">
+                        <a href="https://in.linkedin.com/in/jeetu-gupta-74308440"
+                            target='_blank'
+                            rel="noopener noreferrer"
+                        >
+                            <i className="fab fa-linkedin"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
