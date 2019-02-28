@@ -34,13 +34,16 @@ export default class navbar extends Component {
                     {this.bnlink('cover', 'Home')}
                 </li>
                 <li className="nlink">
+                    {this.bnlink('aboutus', 'About')}
+                </li>
+                <li className="nlink">
                     {this.bnlink('values', 'Values')}
                 </li>
                 <li className="nlink">
                     {this.bnlink('services', 'Services')}
                 </li>
                 <li className="nlink">
-                    {this.bnlink('aboutus', 'About')}
+                    {this.bnlink('clients', 'Clients')}
                 </li>
                 <li className="nlink">
                     {this.bnlink('contactus', 'Contact')}
@@ -79,11 +82,10 @@ export default class navbar extends Component {
                         <i className="fab fa-twitter"></i>
                     </a>
                 </div>
-                <div className="clink">
-                    zenithec@gmail.com
-            </div>
-                <div className="clink">
-                    +91 8940073123
+                <div className="slink">
+                    <a href="twitter.com">
+                        <i className="fab fa-linkedin"></i>
+                    </a>
                 </div>
             </div>
         </div>

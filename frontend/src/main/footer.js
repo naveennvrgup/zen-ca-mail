@@ -6,7 +6,7 @@ export default class footer extends Component {
         to={to}
         smooth={true}
         duration={500}
-        offset={-80}>
+        offset={-75}>
         {name}
     </Link>
 
@@ -28,10 +28,10 @@ export default class footer extends Component {
                             <div className="col-md-3 flinks">
                                 <h4>Navigation</h4>
                                 <div>{this.flink('cover', 'Home')}</div>
-                                <div>{this.flink('subscribe', 'Subscribe')}</div>
+                                <div>{this.flink('aboutus', 'About')}</div>
                                 <div>{this.flink('values', 'Values')}</div>
                                 <div>{this.flink('services', 'Services')}</div>
-                                <div>{this.flink('aboutus', 'About')}</div>
+                                <div>{this.flink('clients', 'Clients')}</div>
                                 <div>{this.flink('contactus', 'Contact')}</div>
                             </div>
                             <div className="col-md-3">
