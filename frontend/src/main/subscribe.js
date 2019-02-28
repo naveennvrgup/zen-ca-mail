@@ -55,7 +55,7 @@ export default class subscribe extends Component {
 
     render() {
         return (
-            <div ref={ele => this.subscribe = ele} className='subscribe py-3 py-md-0' id='subscribe'>
+            <div ref={ele => this.subscribe = ele} className='subscribe py-3 py-md-5' id='subscribe'>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">

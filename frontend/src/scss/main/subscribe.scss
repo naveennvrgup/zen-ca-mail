@@ -1,9 +1,9 @@
-.subscribe{
+.subscribe {
     background: #ddb;
     background: #f2f2f2;
     padding: $section-pad;
-    input{
-        box-shadow: 3px 3px 10px -5px black; 
+    input {
+        box-shadow: 3px 3px 10px -5px black;
         border-radius: 2px;
         border: none;
         border: 2px solid black;
@@ -13,7 +13,7 @@
         text-align: center;
         margin: 0 10px;
     }
-    button{
+    button {
         border: none;
         outline: none;
         padding: 10px 20px;
@@ -21,11 +21,12 @@
         border-radius: 2px;
         color: white;
         box-shadow: $nav-box-shadow;
-        box-shadow: 3px 3px 15px -5px black; 
+        box-shadow: 3px 3px 15px -5px black;
     }
-    input{
+    input {
         display: block;
         width: 250px;
+        max-width: 100%;
         margin: 10px auto 0;
     }
 }

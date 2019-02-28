@@ -3,10 +3,11 @@ import { Route, Switch } from 'react-router-dom'
 import './bootstrap/bootstrap.scss'
 import './scss/app.scss'
 import ProtectedRoute from './admin/auth/protected_route'
-
+import './assets/spinner.css'
 import Admin from './admin/admin'
 import Login from './admin/auth/login'
 import Main from './main/main'
+
 // const Admin = React.lazy(() => import('./admin/admin'))
 // const Main = React.lazy(() => import('./main/main'))
 // const Login = React.lazy(() => import('./admin/auth/login'))
@@ -15,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div id='app'>
-        <Suspense fallback={<div>loading..</div>}>
+        <Suspense fallback={<div class="lds-dual-ring"></div>}>
 
           <Switch>
             <ProtectedRoute path='/admin' component={Admin} />

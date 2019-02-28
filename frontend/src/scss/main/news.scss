@@ -45,12 +45,13 @@
         margin: 0 10px;
         font-family: raleway;
     }
-    @media(max-width: $md-brk){
+    @media(max-width: 1000px){
         img{
             width: 100%;
         }
         .wrapper{
-            
+            display: block;
+            width: auto;
         }
     }
 }
