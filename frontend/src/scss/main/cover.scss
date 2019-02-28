@@ -17,9 +17,7 @@
             height: 450px;
             width: 500px;
             background: $tcolor;
-            // transform: rotate3d(1,1,1,15deg);
             perspective: 1000;
-            // transform-origin: bottom right;
             opacity: .7;
         }
     }
@@ -55,5 +53,14 @@
         background: white;
         color: black;
         font-weight: bold;
+    }
+
+    @media(max-width: $md-brk){
+        .btn-link{
+            padding: 5px 10px; 
+        }
+        .wrapper::before{
+            height: 300px;
+        }
     }
 }

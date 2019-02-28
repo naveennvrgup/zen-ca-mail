@@ -17,6 +17,12 @@
             margin-top: 1.5em; 
         }
     }
+    @media(max-width: $md-brk){
+        padding: $spad-sm;   
+        .value{
+            padding: 10px 20px;
+        }
+    }
 }
 
 .clr-yg{

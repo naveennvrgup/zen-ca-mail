@@ -6,7 +6,7 @@ export default class client extends Component {
             <div id='clients'>
                 <div className="container">
                     <h2 className="hf text-center">Clients</h2>
-                    <div className="row mt-5 align-items-center">
+                    <div className="row mt-3 mt-md-5 align-items-center">
                         <div className="col-md-5">
                             <p>
                                 Our client list includes domestic and international entities of various sizes from different industries. Our team of experienced professionals provide financial solutions in a manner where client satisfaction is top priority.

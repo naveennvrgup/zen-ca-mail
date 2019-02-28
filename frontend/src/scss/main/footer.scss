@@ -15,7 +15,7 @@ footer {
         background: #242424;
     }
     #rights{
-        background: #212121;
+        background: #161616;
         padding: 10px 0;
     }
     h4{
@@ -45,5 +45,18 @@ footer {
         text-align: center;
         border-radius: 2px;
         background: yellowgreen;
+    }
+    @media(max-width: $md-brk) {
+        #info{
+            padding: 5px 0 10px;
+        }
+        .row{
+            >div{
+                margin-top: 15px;
+            }
+        }
+        #fnav{
+            display: none;
+        }
     }
 }   

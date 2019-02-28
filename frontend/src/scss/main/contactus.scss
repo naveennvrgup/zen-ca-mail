@@ -37,9 +37,19 @@
     }
     .social {
         font-size: 25px;
-        i{
+        i {
             margin: 0 5px;
             color: white;
+        }
+    }
+    @media(max-width: $md-brk) {
+        padding: 0;
+        .row{
+            box-shadow: none;
+        }
+        .left,
+        .right {
+            padding: 10px;
         }
     }
 }

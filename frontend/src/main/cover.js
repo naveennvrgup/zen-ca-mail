@@ -7,7 +7,7 @@ export default class cover extends Component {
             <div className='cover' id='cover'>
                 <div className="container">
                     <div className="wrapper">
-                        <div className="intro p-5 ml-md-5">
+                        <div className="intro p-4 p-md-5 ml-md-5">
                             <h1 className="hf name">Mr. J K GUPTA</h1>
                             <h1 className="hf desig">CHARTED ACCOUNTANT</h1>
                             <p className="mt-3">

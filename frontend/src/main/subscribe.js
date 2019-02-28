@@ -55,13 +55,13 @@ export default class subscribe extends Component {
 
     render() {
         return (
-            <div ref={ele => this.subscribe = ele} className='subscribe' id='subscribe'>
+            <div ref={ele => this.subscribe = ele} className='subscribe py-3 py-md-0' id='subscribe'>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">
                             <div className="left text-center">
                                 <h2 className='hf'>Subscribe</h2>
-                                <p className='px-5'>We provide useful updates on finance via email.</p>
+                                <p className='px-md-5'>We provide useful updates on finance via email.</p>
                                 {this.state.error ? <this.Error /> : ''}
                                 {this.state.success ? <this.Success /> : ''}
                                 <form className={this.state.success ? 'd-none' : ''}>
@@ -77,7 +77,7 @@ export default class subscribe extends Component {
                             </div>
                         </div>
 
-                        <div className="col-md-8">
+                        <div className="col-md-8 pt-4 pt-md-0">
                             <News />
                         </div>
                     </div>

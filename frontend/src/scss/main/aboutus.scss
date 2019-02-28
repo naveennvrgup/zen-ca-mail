@@ -1,6 +1,6 @@
-.aboutus{
+.aboutus {
     padding: $section-pad;
-    #read_more{
+    #read_more {
         background: black;
         border-radius: 5px;
         color: white;
@@ -8,11 +8,14 @@
         border: none;
         outline: none;
     }
-    .client-pic{
+    .client-pic {
         height: 200px;
         width: 200px;
         background: url('../assets/jkgupta.jpeg') top center;
         background-size: cover;
         border-radius: 50%;
+    }
+    @media(max-width: $md-brk) {
+        padding: $spad-sm;
     }
 }

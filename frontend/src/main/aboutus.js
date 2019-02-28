@@ -11,7 +11,7 @@ export default class aboutus extends Component {
             <div className='aboutus' id='aboutus'>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-5 px-5">
+                        <div className="col-md-5 px-3 px-md-5">
                             <div className="client-pic mx-auto"></div>
                             <div className="info mt-4 text-center">
                                 <h5 className="hf">Mr. J K GUPTA</h5>
@@ -23,7 +23,7 @@ export default class aboutus extends Component {
                                 Central Excise & Service Tax, GST, Labor laws, provident fund, ESIC, Goods
                                 and Services Tax etc.
                         </p>
-                            <div className={`text-center ${this.state.show_history ? 'd-none' : ''}`}>
+                            <div className={`text-center d-none d-md-block ${this.state.show_history ? 'd-none' : ''}`}>
                                 <button
                                     onClick={() => this.setState({
                                         ...this.state,
@@ -33,7 +33,7 @@ export default class aboutus extends Component {
                             </div>
                         </div>
 
-                        <div className="col-md-7">
+                        <div className="col-md-7 d-none d-md-block">
                             <h2 className="hf">About</h2>
                             <p className='text-justify mt-4'>
                                 Our core competency and area of expertise is Indirect Taxation, and specializes in all aspects of GST, Excise, Service Tax, Customs, VAT, Labor laws, Money laundering, etc. and carries a blend of Litigation, Advisories and Compliance experience.

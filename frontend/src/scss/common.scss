@@ -1,6 +1,5 @@
 $blue: blue;
 $active-menu-link: #007aee;
-
 $blue: blue;
 $active-menu-link: #007aee;
 // sidebar
@@ -9,28 +8,25 @@ $icons: #a5a4bf;
 $activelink: #393241;
 // subscribers
 $bg: #f9f9f9;
-$pcircle : #11ff00;
+$pcircle: #11ff00;
 $theadcolor: rgba(0, 255, 0, 0.301);
-
 $green: green;
 $lgreen:#54d1276b;
-
 $red: #ff0000;
 $lred: #e289898f;
-
 $lblue: rgba(135, 207, 235, 0.616);
-
 $pink: rgb(247, 0, 255);
 $lpink: rgba(255, 0, 255, 0.192);
-
 .blue:hover {
     color: $blue;
     background: $lblue;
 }
+
 .green:hover {
     color: $green;
     background: $lgreen;
 }
+
 .red:hover {
     color: $red;
     background: $lred;
@@ -45,32 +41,37 @@ $lpink: rgba(255, 0, 255, 0.192);
 $big-menubar-height: 80px;
 $big-menubar-zindex: 100;
 $mobile-break-point: 800px;
-
 // metrics
 $sidebarLen: 250px;
 $border: #EFF1F3;
-
 // admin-colors.
-.admin-orange{
+.admin-orange {
     background: linear-gradient(60deg, #ffa726, #fb8c00);
 }
 
-.admin-green{
+.admin-green {
     background: linear-gradient(60deg, #66bb6a, #43a047);
 }
-.admin-red{
+
+.admin-red {
     background: linear-gradient(60deg, #ef5350, #e53935);
 }
-.admin-sky-blue{
+
+.admin-sky-blue {
     background: linear-gradient(60deg, #26c6da, #00acc1);
 }
 
 // main site
 $section-pad: 70px 0;
+$spad-sm: 35px 0;
 $contact-r8-bg: #1D73BD;
-
 // box shadows
-$nav-box-shadow: 0 3px 16px 0 rgba(0,0,0,.1);
-
+$nav-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, .1);
 // theme color
 $tcolor: #a7cb00;
+$md-brk: 576px;
+@media(max-width: $md-brk) {
+    h1 {
+        font-size: 27px;
+    }
+}

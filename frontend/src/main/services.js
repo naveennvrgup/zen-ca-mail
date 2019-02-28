@@ -9,7 +9,7 @@ export default class services extends Component {
         return (
             <div id='services'>
                 <h2 className="text-center hf">Services</h2>
-                <div className="btns mt-4 mb-5">
+                <div className="btns mt-4 mb-4 mb-md-5">
                     <button
                         className={this.state.stype === 'special' ? 'activ_btn' : ''}
                         onClick={() => this.setState({
@@ -64,9 +64,9 @@ const specialized =
 
 const preventive =
     <div>
-        <div className="h3 hf">
+        <h3 className="h3 hf">
             Preventive Consultancy
-        </div>
+        </h3>
         <p>
             The aim of this package is to be with the clients 24x7 and to take care of the issues relating to their domain.
         </p>
