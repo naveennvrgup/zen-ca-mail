@@ -1,9 +1,21 @@
 import React, { Component } from 'react'
-import { Link } from "react-scroll";
+import { Link, scroller } from "react-scroll";
 
 export default class navbar extends Component {
     state = {
         smn_active: false
+    }
+
+    bnlink_sm = (to, name) => {
+
+        return <a onClick={e => {
+            e.preventDefault()
+            scroller.scrollTo(to, {
+                duration: 500,
+                smooth: true,
+                offset: -60
+            })
+        }} href='#'>{name}</a>
     }
 
     toggle_sm_nav = (e) => {
@@ -98,53 +110,25 @@ export default class navbar extends Component {
                     smn_active: false
                 })} className="left">
                     <div className="smlink">
-                        {this.bnlink('cover', 'Home')}
+                        {this.bnlink_sm('cover', 'Home')}
                     </div>
                     <div className="smlink">
-                        {this.bnlink('aboutus', 'About')}
+                        {this.bnlink_sm('aboutus', 'About')}
                     </div>
                     <div className="smlink">
-                        {this.bnlink('values', 'Values')}
+                        {this.bnlink_sm('values', 'Values')}
                     </div>
                     <div className="smlink">
-                        {this.bnlink('services', 'Services')}
+                        {this.bnlink_sm('services', 'Services')}
                     </div>
                     <div className="smlink">
-                        {this.bnlink('clients', 'Clients')}
+                        {this.bnlink_sm('clients', 'Clients')}
                     </div>
                     <div className="smlink">
-                        {this.bnlink('contactus', 'Contact')}
+                        {this.bnlink_sm('contactus', 'Contact')}
                     </div>
                 </div>
-                <div className="right">
-                    <div className="clink">
-                        zenithec@gmail.com
-                </div>
-                    <div className="slink">
-                        <a href="https://www.facebook.com/pages/JK-Gupta-Chartered-Accountant/235462179990288"
-                            target='_blank'
-                            rel="noopener noreferrer"
-                        >
-                            <i className="fab fa-facebook"></i>
-                        </a>
-                    </div>
-                    <div className="slink">
-                        <a href="twitter.com"
-                            target='_blank'
-                            rel="https://twitter.com/cajeetugupta8"
-                        >
-                            <i className="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                    <div className="slink">
-                        <a href="https://in.linkedin.com/in/jeetu-gupta-74308440"
-                            target='_blank'
-                            rel="noopener noreferrer"
-                        >
-                            <i className="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
+                
             </div>
         </div>
 
