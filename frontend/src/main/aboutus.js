@@ -8,7 +8,7 @@ export default class aboutus extends Component {
 
     render() {
         return (
-            <div className='aboutus'>
+            <div className='aboutus' id='aboutus'>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-5 px-5">

@@ -75,18 +75,29 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
+    .active_link{
+        font-weight: bold;
+        border-bottom: 1px solid #000;
+    }
     >div {
         display: flex;
+    }
+    ul{
+        display: flex;
+        list-style: none;
+        margin: 0;
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        li{
+            margin: 0 15px;
+        }
     }
     .brand {
         font-size: 25px; // font-weight: 700px;
         font-weight: bold;
         text-transform: capitalize;
-    }
-    .left {
-        >div {
-            margin: 0 15px;
-        }
     }
     .right {
         font-family: sans-serif;

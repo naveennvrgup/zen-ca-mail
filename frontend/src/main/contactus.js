@@ -54,7 +54,7 @@ export default class contactus extends Component {
 
   render() {
     return (
-      <div className='contactus'>
+      <div className='contactus' id='contactus'>
         <div className="container">
           <div className="row">
             <div className="col-md-6 text-center left">

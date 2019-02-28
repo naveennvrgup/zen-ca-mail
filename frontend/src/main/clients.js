@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class clients extends Component {
     render() {
         return (
-            <div className='clients'>
+            <div className='clients' id='clients'>
                 <h2>
                     Our Clients
                 </h2>

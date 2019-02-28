@@ -14,6 +14,9 @@ export default class subscribe extends Component {
         this.name = this.form.querySelector('.name')
         this.email = this.form.querySelector('.email')
         this.mobile = this.form.querySelector('.phone')
+
+        console.log(this.subscribe)
+
     }
 
 
@@ -52,7 +55,7 @@ export default class subscribe extends Component {
 
     render() {
         return (
-            <div className='subscribe'>
+            <div ref={ele => this.subscribe = ele} className='subscribe' id='subscribe'>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">

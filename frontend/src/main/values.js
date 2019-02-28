@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class values extends Component {
     render() {
         return (
-            <div className='values'>
+            <div className='values' id='values'>
                 <div className="container">
                     <h2 className="hf text-center">What we <span className="clr-yg">Value</span></h2>
                     <p className="text-center mt-3">

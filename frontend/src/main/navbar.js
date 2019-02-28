@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Scrollspy from 'react-scrollspy'
 
 export default class navbar extends Component {
     state = {
@@ -19,13 +20,27 @@ export default class navbar extends Component {
             <div className="brand hf">
                 Mr. J K GUPTA
             </div>
-            <div className="left">
-                <div className="nlink">Home</div>
-                <div className="nlink">Values</div>
-                <div className="nlink">About</div>
-                <div className="nlink">Services</div>
-                <div className="nlink">Contact</div>
-            </div>
+            <Scrollspy
+                offset={-200}
+                className="left"
+                items={['cover','values','services','aboutus','contactus']}
+                currentClassName="active_link">
+                <li className="nlink">
+                    <a href="#cover">Home</a>
+                </li>
+                <li className="nlink">
+                    <a href="#values">Values</a>
+                </li>
+                <li className="nlink">
+                    <a href="#services">Services</a>
+                </li>
+                <li className="nlink">
+                    <a href="#aboutus">About</a>
+                </li>
+                <li className="nlink">
+                    <a href="#contactus">Contact</a>
+                </li>
+            </Scrollspy>
             <div className="right">
                 <div className="slink">
                     <a href="facebook.com">

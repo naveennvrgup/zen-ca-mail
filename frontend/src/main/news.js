@@ -86,7 +86,7 @@ export default class SimpleSlider extends Component {
     render() {
 
         return (
-            <div className='news_main'>
+            <div className='news_main' id='news'>
                 <h2 className="text-center hf">Newsfeed</h2>
                 <div className="slider mt-4">
                     {this.state.news[this.state.snid]}

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class cover extends Component {
     render() {
         return (
-            <div className='cover'>
+            <div className='cover' id='cover'>
                 <div className="container">
                     <div className="wrapper">
                         <div className="intro p-5 ml-md-5">
