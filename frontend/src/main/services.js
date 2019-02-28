@@ -2,29 +2,31 @@ import React, { Component } from 'react'
 
 export default class services extends Component {
     state = {
-        stype: true
+        stype: 'special'
     }
 
     render() {
         return (
             <div id='services'>
                 <h2 className="text-center hf">Services</h2>
-                <div className="btns">
+                <div className="btns mt-4 mb-5">
                     <button
+                        className={this.state.stype === 'special' ? 'activ_btn' : ''}
                         onClick={() => this.setState({
                             ...this.state,
-                            stype: true
+                            stype: 'special'
                         })}> SPECIALIZED</button>
                     <button
+                        className={this.state.stype === 'featured' ? 'activ_btn' : ''}
                         onClick={() => this.setState({
                             ...this.state,
-                            stype: false
+                            stype: 'featured'
                         })}> FEATURED</button>
                 </div>
                 <div className="container">
-                    {this.state.stype ? specialized : featured}
+                    {this.state.stype === 'special' ? specialized : featured}
                 </div>
-            </div>
+            </div >
         )
     }
 }

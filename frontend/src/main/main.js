@@ -8,6 +8,7 @@ import Aboutus from './aboutus'
 import Contactus from './contactus'
 import Footer from './footer'
 import Services from './services'
+import Clients from './client'
 
 export default class main extends Component {
     render() {
@@ -16,9 +17,10 @@ export default class main extends Component {
                 <Navbar />
                 <Cover />
                 <Subscribe />
+                <Aboutus />
                 <Values />
                 <Services />
-                <Aboutus />
+                <Clients />
                 <Contactus />
                 <Footer />
             </div>

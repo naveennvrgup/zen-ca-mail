@@ -1,11 +1,37 @@
-#services{
+#services {
     padding: $section-pad;
-
-    .btns{
+    .row>div {
+        border: 2px solid white;
+        transition: border 0.5s ease;
+        &:hover {
+            border: 2px solid black;
+        }
+    }
+    .btns {
         text-align: center;
     }
-    button{
+    button {
         padding: 5px 10px;
-        
+        border: 2px solid black;
+        background: white;
+        border-radius: 15px;
+        margin: 0 10px;
+        font-size: 13px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+    .activ_btn {
+        background: black;
+        color: white;
+        font-weight: bold;
+    }
+    #specialized {
+        h3 {
+            text-align: center;
+        }
+    }
+    p,
+    li {
+        text-align: justify;
     }
 }

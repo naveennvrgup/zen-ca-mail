@@ -39,7 +39,7 @@ export default class footer extends Component {
                                 <div>Subscribe to the email newsletter to stay updated on finance!</div>
                                 <div className="text-center">
                                 </div>
-                                <div className="footer_sub_link">
+                                <div className="footer_sub_link mt-3">
                                     {this.flink('subscribe', 'Subscribe')}
                                 </div>
                             </div>
