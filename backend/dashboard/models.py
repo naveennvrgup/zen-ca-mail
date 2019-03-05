@@ -13,6 +13,11 @@ class Report(models.Model):
         return str(self.time)
 
 
+class Metrics(models.Model):
+    name = models.CharField(max_length=200)
+    value = models.FloatField()
+
+
 class ReportSerializer(ModelSerializer):
     class Meta:
         fields = '__all__'

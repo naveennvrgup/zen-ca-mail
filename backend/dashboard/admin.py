@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Report
+from .models import *
 
 
 class reportAdmin(admin.ModelAdmin):
@@ -7,3 +7,4 @@ class reportAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Report, reportAdmin)
+admin.site.register(Metrics)

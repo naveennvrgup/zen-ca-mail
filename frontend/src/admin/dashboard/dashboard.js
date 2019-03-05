@@ -42,6 +42,14 @@ export default class dashboard extends Component {
                     news: d.data
                 })// end of setstate
             })
+        this.axios.get('api/server_cost/')
+            .then(d => {
+                console.log(d.data);
+                this.setState({
+                    ...this.state,
+                    cost: d.data.cost
+                })// end of setstate
+            })
     }
 
 
@@ -53,6 +61,7 @@ export default class dashboard extends Component {
                     subscribers={this.state.subscribers}
                     drafts={this.state.drafts}
                     news={this.state.news}
+                    cost={this.state.cost}
                 />
                 <EmailsSentChart />
             </div>

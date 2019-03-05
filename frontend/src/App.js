@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div id='app'>
-        <Suspense fallback={<div class="lds-dual-ring"></div>}>
+        <Suspense fallback={<div className="lds-dual-ring"></div>}>
 
           <Switch>
             <ProtectedRoute path='/admin' component={Admin} />

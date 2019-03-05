@@ -46,6 +46,7 @@ urlpatterns = [
     path('api/subscribers_brief/', subscribers_brief_view),
     path('api/drafts_brief/', drafts_brief_view),
     path('api/news_brief/', news_brief_view),
+    path('api/server_cost/', server_cost_view),
 
     # enquiry
     path('api/send_enquiry/', send_enquiry_view),

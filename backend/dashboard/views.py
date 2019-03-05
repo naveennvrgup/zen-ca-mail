@@ -78,3 +78,14 @@ def news_brief_view(req):
         'flag': news.filter(flag=True).count(),
         'noflag': news.filter(flag=False).count(),
     })
+
+
+@api_view(['get'])
+def server_cost_view(req):
+    cost = 0
+    try:
+        cost = Metrics.objects.get(name='current_bill').value
+    except:
+        pass
+
+    return Response({'cost': cost})
