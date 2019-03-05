@@ -37,7 +37,6 @@ def get_aws_cost():
         },
         Granularity='MONTHLY',
         Metrics=[
-            # 'BLENDED_COST', 'UNBLENDED_COST', 'AMORTIZED_COST', 'NET_UNBLENDED_COST', 'NET_AMORTIZED_COST', 'USAGE_QUANTITY', 'NORMALIZED_USAGE_AMOUNT'
             'UNBLENDED_COST'
         ],
     )
