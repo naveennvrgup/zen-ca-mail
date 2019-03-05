@@ -120,9 +120,9 @@ export default class contactus extends Component {
                     >
                       <i className="fab fa-facebook"></i>
                     </a>
-                    <a href="twitter.com"
+                    <a href="https://twitter.com/cajeetugupta8"
                       target='_blank'
-                      rel="https://twitter.com/cajeetugupta8"
+                      rel="noopener noreferrer"
                     >
                       <i className="fab fa-twitter"></i>
                     </a>

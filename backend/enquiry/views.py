@@ -14,7 +14,7 @@ from django.shortcuts import get_object_or_404
 import json
 from .models import *
 from django.utils import timezone
-
+from .tasks import *
 
 @api_view(['post'])
 @permission_classes([AllowAny])
@@ -27,6 +27,7 @@ def send_enquiry_view(req):
         msg=data.get('msg'),
     )
 
+    send_enquiry_mail.delay(enqiry.id)
     senqiry = EnquirySerializer(enqiry)
 
     return Response(senqiry.data)

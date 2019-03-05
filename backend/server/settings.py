@@ -141,4 +141,4 @@ MEDIA_ROOT = './uploads'
 
 # celery setup
 CELERY_BROKER_URL = 'amqp://localhost'
-CELERY_IMPORTS = ("draft", 'dashboard')
+CELERY_IMPORTS = ("draft", 'dashboard', 'enquiry')
