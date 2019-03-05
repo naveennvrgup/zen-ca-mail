@@ -6,7 +6,7 @@ import faxios from '../../axios';
 export default class NewMail extends Component {
     axios = faxios()
     state = {
-
+        error: false
     }
 
     componentDidMount = () => {
@@ -44,6 +44,12 @@ export default class NewMail extends Component {
             .then(d => {
                 console.log(d.data)
                 this.props.history.push('/admin/news/')
+            })
+            .catch(e=>{
+                this.setState({
+                    ...this.state,
+                    error: true
+                })// end of setstate
             })
     }
 
@@ -103,6 +109,7 @@ export default class NewMail extends Component {
                     {/* link */}
                     <div className="form-group mt-3">
                         <label className='font-weight-bold'>Link:</label>
+                        {this.state.error?<div className="text-danger mb-3">Please provide a proper link ex: https://www.google.com/</div>: ''}
                         <input
                             type='text'
                             className='link form-control w-100' />
