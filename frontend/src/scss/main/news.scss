@@ -13,12 +13,11 @@
 }
 .slider {
     margin: 8px;
-    border-radius: 10px;
+    border-radius: 3px;
     overflow: hidden;
     box-shadow: 2px 3px 15px -5px black;
     .wrapper {
         display: flex;
-        flex-wrap: wrap;
     }
     background: white; // border: 1px dashed black;
     img {

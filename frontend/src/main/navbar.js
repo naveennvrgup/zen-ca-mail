@@ -15,7 +15,7 @@ export default class navbar extends Component {
                 smooth: true,
                 offset: -60
             })
-        }} href='#'>{name}</a>
+        }} href='#this'>{name}</a>
     }
 
     toggle_sm_nav = (e) => {
