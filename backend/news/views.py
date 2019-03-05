@@ -9,7 +9,7 @@ import json
 
 
 class NewsViewset(ModelViewSet):
-    queryset = News.objects.filter(flag=False)
+    queryset = News.objects.filter(flag=False).reverse()
     serializer_class = NewsSerializer
     filter_fields = ['show']
 

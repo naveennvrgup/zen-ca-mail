@@ -12,7 +12,7 @@ import json
 
 
 class DraftViewset(ModelViewSet):
-    queryset = Draft.objects.all().filter(flag=False)
+    queryset = Draft.objects.all().filter(flag=False).reverse()
     serializer_class = DraftSerializer
     filter_fields = '__all__'
 

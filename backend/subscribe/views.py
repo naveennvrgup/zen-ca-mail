@@ -21,7 +21,7 @@ def save_subscriber(data):
 
 
 class SubscribeViewset(ModelViewSet):
-    queryset = Subscriber.objects.filter(flag=False)
+    queryset = Subscriber.objects.filter(flag=False).reverse()
     serializer_class = SubscriberSerializer
 
     def delete(self, req, pk=None):
