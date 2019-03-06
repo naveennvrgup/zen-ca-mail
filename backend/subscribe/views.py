@@ -45,7 +45,7 @@ class SubscribeViewset(ModelViewSet):
                 return Response({
                     'id': sub.id,
                     'email': sub.email,
-                    'verified': sub.verified
+                    'verified': True
                 })
         except:
             return save_subscriber(data)
@@ -168,7 +168,8 @@ def sub_from_main_view(req):
             group=group,
             name=data.get('name'),
             email=data.get('email'),
-            mobile=data.get('mobile')
+            mobile=data.get('mobile'),
+            verified=True
         )
         return Response({
             'msg': 'You have successfully subscribed!'

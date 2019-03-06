@@ -14,48 +14,48 @@ client = boto3.client(
 )
 
 
-@shared_task
-def get_aws_cost():
+# @shared_task
+# def get_aws_cost():
 
-    client = boto3.client(
-        'ce',
-        region_name='eu-west-1',
-        aws_access_key_id=config('aws_key'),
-        aws_secret_access_key=config('aws_secret')
-    )
+#     client = boto3.client(
+#         'ce',
+#         region_name='eu-west-1',
+#         aws_access_key_id=config('aws_key'),
+#         aws_secret_access_key=config('aws_secret')
+#     )
 
-    start = datetime.now()-timedelta(days=30)
-    end = datetime.now()
+#     start = datetime.now()-timedelta(days=30)
+#     end = datetime.now()
 
-    start = start.strftime('%Y-%m-%d')
-    end = end.strftime('%Y-%m-%d')
+#     start = start.strftime('%Y-%m-%d')
+#     end = end.strftime('%Y-%m-%d')
 
-    response = client.get_cost_and_usage(
-        TimePeriod={
-            'Start': start,
-            'End': end
-        },
-        Granularity='MONTHLY',
-        Metrics=[
-            'UNBLENDED_COST'
-        ],
-    )
+#     response = client.get_cost_and_usage(
+#         TimePeriod={
+#             'Start': start,
+#             'End': end
+#         },
+#         Granularity='MONTHLY',
+#         Metrics=[
+#             'UNBLENDED_COST'
+#         ],
+#     )
 
-    response = response.get('ResultsByTime')[-1]
+#     response = response.get('ResultsByTime')[-1]
 
-    curr_bill = response.get('Total').get('UnblendedCost').get('Amount')
-    curr_bill = float(curr_bill)
+#     curr_bill = response.get('Total').get('UnblendedCost').get('Amount')
+#     curr_bill = float(curr_bill)
 
-    c = CurrencyRates()
-    curr_bill = c.convert('USD', 'INR', curr_bill)
-    try:
-        metric = Metrics.objects.get(name='current_bill')
-    except:
-        metric = Metrics(name='current_bill')
-    metric.value = curr_bill
-    metric.save()
+#     c = CurrencyRates()
+#     curr_bill = c.convert('USD', 'INR', curr_bill)
+#     try:
+#         metric = Metrics.objects.get(name='current_bill')
+#     except:
+#         metric = Metrics(name='current_bill')
+#     metric.value = curr_bill
+#     metric.save()
 
-    print(metric.value)
+#     print(metric.value)
 
 
 @shared_task

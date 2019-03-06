@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class brief extends Component {
     render() {
         return (
-            <div className="row mt-2 px-0 brief">
+            <div className="row mt-2 px-0 brief justify-content-center">
                 <div className="col-md-3 mt-3 col-sm-6 n-card-wrapper">
                     <div className=' n-card'>
                         <div className='admin-orange n-card-i'>
@@ -37,7 +37,7 @@ export default class brief extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-3 mt-3 col-sm-6 n-card-wrapper">
+                {/* <div className="col-md-3 mt-3 col-sm-6 n-card-wrapper">
                     <div className=' n-card'>
                         <div className='admin-sky-blue n-card-i'>
                             <i className="fa fa-server fa-2x text-white"></i>
@@ -52,7 +52,7 @@ export default class brief extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         )
     }
