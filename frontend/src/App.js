@@ -13,6 +13,13 @@ import Main from './main/main'
 // const Login = React.lazy(() => import('./admin/auth/login'))
 
 class App extends Component {
+  componentDidMount = () => {
+    let fav = document.querySelector('[rel="shortcut icon"]')
+    fav.href=require('./assets/rupee.png')
+    console.log(fav);
+  }
+
+
   render() {
     return (
       <div id='app'>
