@@ -14,7 +14,7 @@ export default class aboutus extends Component {
                         <div className="col-md-5 px-3 px-md-5">
                             <div className="client-pic mx-auto"></div>
                             <div className="info mt-4 text-center">
-                                <h5 className="hf">Mr. J K GUPTA</h5>
+                                <h5 className="hf">J K GUPTA</h5>
                                 <div>Chartered Accountant</div>
                             </div>
                             <p className='text-justify mt-4'>
