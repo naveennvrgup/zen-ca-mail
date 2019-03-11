@@ -87,9 +87,9 @@ export default class contactus extends Component {
                     <i className="mx-2 fa fa-map"></i> Address
                   </span>
                   <div>
-                    1156, Tower B2, 11th Floor, <br />
-                    Spaze I Tech Park, Sohna Road, <br />
-                    Sector 49, Gurgaon - 122001
+                    Suite No: 206C, Block -A, Second floor, <br />
+                    Crystal Arcade, Shankar Nagar Road, <br />
+                    Raipur - 492001
                     </div>
                 </div>
 
@@ -97,15 +97,14 @@ export default class contactus extends Component {
                   <span className="font-weight-bold">
                     <i className="mx-2 fa fa-envelope"></i> Email
                   </span>
-                  <div> zenithec@gmail.com</div>
+                  <div> gst@jkgupta.in</div>
                 </div>
 
                 <div className='mt-4'>
                   <span className="font-weight-bold">
                     <i className="mx-2 fa fa-phone"></i> Phone
                 </span>
-                  <div> +91 8940073123</div>
-                  <div>+91 9787536393</div>
+                  <div> +91 8516088888</div>
                 </div>
 
                 <div className="mt-4">

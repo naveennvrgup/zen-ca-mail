@@ -71,17 +71,17 @@ export default class toolbar extends Component {
                     <input
                         type="email"
                         className="new_sub_email tab_input tab_input_sm mt-2"
-                        placeholder="email" />
+                        placeholder="Email" />
                     {/* username */}
                     <input
                         type="text"
                         className="new_sub_name tab_input tab_input_sm mt-2"
-                        placeholder="username" />
+                        placeholder="Name" />
                     {/* mobile */}
                     <input
                         type="mobile"
                         className="new_sub_mobile tab_input tab_input_sm mt-2"
-                        placeholder="mobile no." />
+                        placeholder="Mobile number" />
                 </div>
                 <div className='create-sub create'>
                     <button
