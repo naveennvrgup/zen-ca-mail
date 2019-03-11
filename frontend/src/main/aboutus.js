@@ -6,6 +6,11 @@ export default class aboutus extends Component {
         show_history: false
     }
 
+    read_more_handler = () => this.setState({
+        ...this.state,
+        show_history: true
+    })
+
     render() {
         return (
             <div className='aboutus' id='aboutus'>
@@ -23,14 +28,11 @@ export default class aboutus extends Component {
                                 Central Excise & Service Tax, GST, Labor laws, provident fund, ESIC, Goods
                                 and Services Tax etc.
                         </p>
-                            <div className={`text-center d-none d-md-block ${this.state.show_history ? 'd-none' : ''}`}>
+                            {!this.state.show_history ? <div className={`text-center d-none d-md-block `}>
                                 <button
-                                    onClick={() => this.setState({
-                                        ...this.state,
-                                        show_history: true
-                                    })}
+                                    onClick={this.read_more_handler}
                                     id='read_more'>read more</button>
-                            </div>
+                            </div> : null}
                         </div>
 
                         <div className="col-md-7 d-none d-md-block">
