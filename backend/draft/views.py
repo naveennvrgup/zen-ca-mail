@@ -57,7 +57,7 @@ def handle_complaint_view(req):
         return Response()
     
     handle_complaint_async.delay(data['Message'])
-    return Response()
+    return Response('got the handle complaint subscription')
 
 
 @api_view(['POST'])
@@ -70,4 +70,4 @@ def handle_bounce_view(req):
         return Response()
 
     handle_bounce_async.delay(data['Message'])
-    return Response()
+    return Response('got the handle bounce subscription')
