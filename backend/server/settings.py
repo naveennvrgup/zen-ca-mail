@@ -155,3 +155,5 @@ MEDIA_ROOT = './uploads'
 # celery setup
 CELERY_BROKER_URL = 'amqp://localhost'
 CELERY_IMPORTS = ("draft", 'dashboard', 'enquiry')
+CELERY_TIMEZONE = 'UTC'
+CELERY_ENABLE_UTC = True
