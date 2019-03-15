@@ -59,15 +59,16 @@ export default class FileUpload extends Component {
 
         this.setState({
             ...this.state,
-            progress: true,
+            onprogress: true,
         })// end of setstate
+        console.log('upload started', this.state)
     }
 
     render() {
         // let error = <
 
         let btn_text = this.state.onprogress ?
-            String(this.state.progress) + ' %' :
+            String(this.state.progress.toFixed(0)) :
             <i className="fa fa-upload"></i>
 
 
