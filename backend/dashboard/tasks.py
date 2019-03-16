@@ -4,7 +4,7 @@ from decouple import config
 from .models import Report, Metrics
 import boto3
 from datetime import datetime, timedelta
-from forex_python.converter import CurrencyRates
+from django.core import management
 
 client = boto3.client(
     'ses',
@@ -12,51 +12,6 @@ client = boto3.client(
     aws_access_key_id=config('aws_key'),
     aws_secret_access_key=config('aws_secret')
 )
-
-
-# @shared_task
-# def get_aws_cost():
-
-#     client = boto3.client(
-#         'ce',
-#         region_name='eu-west-1',
-#         aws_access_key_id=config('aws_key'),
-#         aws_secret_access_key=config('aws_secret')
-#     )
-
-#     start = datetime.now()-timedelta(days=30)
-#     end = datetime.now()
-
-#     start = start.strftime('%Y-%m-%d')
-#     end = end.strftime('%Y-%m-%d')
-
-#     response = client.get_cost_and_usage(
-#         TimePeriod={
-#             'Start': start,
-#             'End': end
-#         },
-#         Granularity='MONTHLY',
-#         Metrics=[
-#             'UNBLENDED_COST'
-#         ],
-#     )
-
-#     response = response.get('ResultsByTime')[-1]
-
-#     curr_bill = response.get('Total').get('UnblendedCost').get('Amount')
-#     curr_bill = float(curr_bill)
-
-#     c = CurrencyRates()
-#     curr_bill = c.convert('USD', 'INR', curr_bill)
-#     try:
-#         metric = Metrics.objects.get(name='current_bill')
-#     except:
-#         metric = Metrics(name='current_bill')
-#     metric.value = curr_bill
-#     metric.save()
-
-#     print(metric.value)
-
 
 @shared_task
 def fetch_ses_sending_metrics():
@@ -88,3 +43,7 @@ def fetch_ses_sending_metrics():
 @shared_task
 def print_simply():
     print('god of war man')
+
+@shared_task
+def dbbackup():
+    management.call_command('dbbackup')

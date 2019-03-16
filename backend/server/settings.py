@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'django_celery_beat',
+    'dbbackup',
 
     'subscribe',
     'draft',
@@ -157,3 +158,7 @@ CELERY_BROKER_URL = 'amqp://localhost'
 CELERY_IMPORTS = ("draft", 'dashboard', 'enquiry')
 CELERY_TIMEZONE = 'UTC'
 CELERY_ENABLE_UTC = True
+
+# db backup
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': '../backup'}
