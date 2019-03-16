@@ -36,7 +36,7 @@ export default class FileUpload extends Component {
         var data = new FormData();
         var request = new XMLHttpRequest();
         console.log(this.props)
-        data.append('group_id', this.props.selected_group_id)
+        data.append('nid', this.props.id)
         data.append('img', file);
 
         // load event
@@ -71,7 +71,7 @@ export default class FileUpload extends Component {
 
         
         request.responseType = 'json';
-        request.open('patch', burl + `api/news/${this.props.newsId}/`);
+        request.open('post', burl + `api/put_news_img/`);
         request.setRequestHeader('Authorization',sessionStorage['token'])
         request.send(data);
 

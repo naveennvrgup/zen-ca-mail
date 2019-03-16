@@ -2,6 +2,7 @@ from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
 
 from .models import *
@@ -30,4 +31,14 @@ def get_news_categories_count_view(req):
 def get_news_view(req):
     news = News.objects.filter(flag=False, show=True)
     snews = NewsSerializer(news, many=True)
+    return Response(snews.data)
+
+
+@api_view(['post'])
+def put_news_img_view(req):
+    news = News.objects.get(pk=req.POST['nid'])
+    news.img = req.FILES['img']
+    news.save()
+
+    snews = NewsSerializer(news)
     return Response(snews.data)
