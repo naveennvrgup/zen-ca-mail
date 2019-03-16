@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import faxios, { burl } from '../../axios'; 
+import faxios, { burl } from '../../axios';
 
 export default class FileUpload extends Component {
     axios = faxios()
@@ -9,10 +9,11 @@ export default class FileUpload extends Component {
     }
 
     componentDidMount = () => {
-        
+
         this.setState({
             ...this.state,
-            ...this.props
+            ...this.props,
+            progress: this.props.img ? '100%' : null
         })// end of setstate
     }
 
@@ -69,10 +70,10 @@ export default class FileUpload extends Component {
             })// end of setstate
         })
 
-        
+
         request.responseType = 'json';
         request.open('post', burl + `api/put_news_img/`);
-        request.setRequestHeader('Authorization',sessionStorage['token'])
+        request.setRequestHeader('Authorization', sessionStorage['token'])
         request.send(data);
 
         this.setState({
