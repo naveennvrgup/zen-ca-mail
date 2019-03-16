@@ -9,12 +9,14 @@ export default class FileUpload extends Component {
     }
 
     componentDidMount = () => {
+        var progress = this.props.img ? '100%' : ''
 
         this.setState({
             ...this.state,
             ...this.props,
-            progress: this.props.img ? '100%' : null
+            progress,
         })// end of setstate
+        console.log(this.state);
     }
 
 
@@ -125,13 +127,12 @@ export default class FileUpload extends Component {
 
         let button_to_show = this.state.img ? btn_img_true : btn_img_false
 
-
         let progress_bar =
-            <div className={`progress mx-2  ${this.state.onprogress ? '' : 'hide-progress'}`}>
+            <div className={`progress mx-2  ${this.state.onprogress ? '' : 'hide-progress-news'}`}>
                 <div className="progress-bar progress-bar-striped" style={{ width: this.state.progress }}></div>
             </div>
 
-        let filename = this.state.img && this.state.img.split('/').pop()
+        let filename = this.state.img ? this.state.img.split('/').pop() : ''
 
         return (
             <div className='flex-grow-1 px-0'>
