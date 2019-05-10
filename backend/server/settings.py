@@ -1,21 +1,13 @@
 import os
 from decouple import config
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'gt^z&^xp7=el%wf-=!0(%zw0!-_q7#g#cgggy+_^hzyremb+%6'
 DEBUG = True if config('debug') == 'True' else False
 
 # ALLOWED_HOSTS = ['zenithec.tk','52.66.199.227','13.233.65.192','127.0.0.1','localhost','192.168.1.6e']
 ALLOWED_HOSTS = ['*']
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,6 +31,8 @@ INSTALLED_APPS = [
     'enquiry',
 ]
 
+# cors middleware is added so that react can make req to server during the dev process in localhost
+# as react and django will be running on different port during dev time
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -74,9 +68,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'server.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -96,10 +87,6 @@ DATABASES = {
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -115,10 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Kolkata'
@@ -129,7 +112,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+# some basic config the rest framework
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 15,
@@ -162,3 +145,11 @@ CELERY_ENABLE_UTC = True
 # db backup
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': '../backup'}
+
+# note:
+# some configs are present in the .env file
+# to start the celery running run 'python3 manage.py celery'
+# celery takes care of all the async tasks
+# redis is used as broker
+# all the cron jobs can be setup with the help of default django admin
+# in the peridic tasks section

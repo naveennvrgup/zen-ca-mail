@@ -46,7 +46,7 @@ def send_bulk_mail_view(req):
     start_bulk_mail.delay(data['draft'], data['group'])
     return Response({'success': True})
 
-
+# handles the problem in async to improve performance
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def handle_complaint_view(req):
@@ -60,6 +60,7 @@ def handle_complaint_view(req):
     return Response('got the handle complaint subscription')
 
 
+# handles the problem in async to improve performance
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def handle_bounce_view(req):

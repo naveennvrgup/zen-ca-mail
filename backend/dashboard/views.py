@@ -8,7 +8,8 @@ from subscribe.models import Subscriber
 from news.models import News
 from django.utils import timezone
 
-
+# compiles and sends the sending stats provided by the aws
+# for drawing the graph
 @api_view(['get'])
 def get_delivery_reports_view(req):
     reports = Report.objects.all()
@@ -30,7 +31,6 @@ def get_delivery_reports_view(req):
 
     return Response(data)
 
-
 @api_view(['get'])
 def get_draft_details_view(req):
     drafts = Draft.objects.filter(flag=False)
@@ -41,7 +41,6 @@ def get_draft_details_view(req):
         'flag': x.flag
     } for x in drafts]
     return Response(drafts)
-
 
 @api_view(['get'])
 def subscribers_brief_view(req):

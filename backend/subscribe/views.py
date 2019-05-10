@@ -24,6 +24,7 @@ class SubscribeViewset(ModelViewSet):
     queryset = Subscriber.objects.filter(flag=False).reverse()
     serializer_class = SubscriberSerializer
 
+# deletes the given by blocking the account
     def delete(self, req, pk=None):
         data = json.loads(req.body)
         sub = get_object_or_404(Subscriber, pk=pk)
@@ -31,6 +32,7 @@ class SubscribeViewset(ModelViewSet):
         sub.save()
         return Response({})
 
+# creates a sub sub
     def create(self, req):
         data = json.loads(req.body)
 
@@ -66,6 +68,7 @@ class GroupViewset(ModelViewSet):
             })
         return Response(res)
 
+# provides a group of subs with pagination
     def retrieve(self, request, pk=None):
         group = get_object_or_404(Group, pk=pk)
         subs = SubscriberSerializer(group.subs.filter(flag=False), many=True)
@@ -101,6 +104,7 @@ def add_sub_to_group_view(req):
         return Response(sub.errors)
 
 
+# is help the user upload list of subs as a csv file
 @api_view(['POST'])
 def sub_as_csv_view(req):
     # parse the file
@@ -129,6 +133,7 @@ def sub_as_csv_view(req):
         })
 
 
+# download the particular group of subs as a csv
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def download_group_csv_view(req, gid):
@@ -150,7 +155,7 @@ def download_group_csv_view(req, gid):
         group.name, timezone.now().date())
     return response
 
-
+# for subscribing for the index page
 @api_view(['post'])
 @permission_classes([AllowAny])
 def sub_from_main_view(req):

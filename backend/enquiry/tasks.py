@@ -11,7 +11,7 @@ client = boto3.client(
     aws_secret_access_key=config('aws_secret')
 )
 
-
+# in case of any enquiry by a user in the website it forward the enquiry to the 'caemail'
 @shared_task
 def send_enquiry_mail(eid):
     print('enquiry id', eid)

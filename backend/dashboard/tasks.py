@@ -13,6 +13,12 @@ client = boto3.client(
     aws_secret_access_key=config('aws_secret')
 )
 
+# this func gets the aws email sending statistics 
+# aws provides stats for past 14 days
+# the stats are stored in reports table
+# this func is run as a cron with the help of celery
+# it best to run it func every 15 mins which is same 
+# as the freq with which aws updates the metrics in the their db  
 @shared_task
 def fetch_ses_sending_metrics():
     print('fetching sending statistics from the aws-ses')
@@ -39,11 +45,12 @@ def fetch_ses_sending_metrics():
     Report.objects.bulk_create(reports)
     print('fetched ses metrics')
 
-
+# just for testing
 @shared_task
 def print_simply():
     print('god of war man')
 
+# creates a backup of the database with the setting provided at the server/settings.py
 @shared_task
 def dbbackup():
     management.call_command('dbbackup')

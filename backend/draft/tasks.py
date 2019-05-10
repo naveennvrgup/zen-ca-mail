@@ -15,7 +15,8 @@ client = boto3.client(
     aws_secret_access_key=config('aws_secret')
 )
 
-
+# creates email template
+# this is because bulk mail demands it
 def create_template(draft):
     tname = str(draft.id) + '-' + str(random.random())[2:]
     print(tname, 'creating template')
@@ -45,7 +46,8 @@ def create_template(draft):
     print(response)
     return tname
 
-
+# this divides the subs into batches of size = aws allowed sending freq/sec
+# and sends the mail with the help of the template
 def send_mails_finally(subs, tname):
     bs = int(config('batch_size'))
     l = math.ceil(len(subs)/bs)
@@ -70,7 +72,8 @@ def send_mails_finally(subs, tname):
         )
         print(response)
 
-
+# it coordinates the above 2 funcs
+# and updates the draft status to 2 = sent
 @shared_task
 def start_bulk_mail(draft, group):
     draft = Draft.objects.get(pk=draft)
@@ -96,7 +99,8 @@ def start_bulk_mail(draft, group):
     draft.save()
     print('killed bulk mail')
 
-
+# handles bounced mail
+# it block the email which got bounced
 @shared_task
 def handle_bounce_async(msg):
     msg = json.loads(msg)
@@ -113,6 +117,8 @@ def handle_bounce_async(msg):
     print('bounce', emails)
 
 
+# handles complaint mail
+# it block the email which got complainted
 @shared_task
 def handle_complaint_async(msg):
     msg = json.loads(msg)

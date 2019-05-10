@@ -9,6 +9,9 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 
+# all the routes stay here
+# no separate route files as it is a very small project
+
 from subscribe.views import *
 from draft.views import *
 from news.views import *
@@ -57,6 +60,7 @@ urlpatterns = [
 
 # media urls
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# react
+# react / all the routes except the above will be pointed to the frontend
+# this is becoz react takes care of the routing  of the frontend
 urlpatterns.append(
     re_path('', TemplateView.as_view(template_name="index.html")))

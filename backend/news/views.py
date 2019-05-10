@@ -34,6 +34,7 @@ def get_news_view(req):
     return Response(snews.data)
 
 
+# used to upload news imgs
 @api_view(['post'])
 def put_news_img_view(req):
     news = News.objects.get(pk=req.POST['nid'])
