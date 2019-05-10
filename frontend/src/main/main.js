@@ -10,6 +10,7 @@ import Footer from './footer'
 import Services from './services'
 import Clients from './client'
 
+// it as the layout for the index page
 export default class main extends Component {
     render() {
         return (

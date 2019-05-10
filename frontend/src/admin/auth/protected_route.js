@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
+// this acts gaurd preventing the unauthenticated users from 
+// accessing the protected routes
 class protected_route extends Component {
     authorised = sessionStorage['token']
 

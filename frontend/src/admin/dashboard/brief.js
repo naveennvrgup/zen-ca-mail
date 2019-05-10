@@ -37,22 +37,6 @@ export default class brief extends Component {
                         </div>
                     </div>
                 </div>
-                {/* <div className="col-md-3 mt-3 col-sm-6 n-card-wrapper">
-                    <div className=' n-card'>
-                        <div className='admin-sky-blue n-card-i'>
-                            <i className="fa fa-server fa-2x text-white"></i>
-                        </div>
-                        <div className='n-card-info'>
-                            <div className="n-card-title">Server Bill</div>
-                            <div className="n-card-metric">
-                                <span className='smallf'>
-                                    <i className="fa fa-rupee-sign"></i>
-                                    {this.props.cost && this.props.cost.toFixed(2)}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
             </div>
         )
     }

@@ -5,20 +5,19 @@ import faxios from '../../axios';
 export default class news extends Component {
     axios = faxios()
     state = {
-        results: [],
-        page: 1,
-        selected_category: -1
+        results: [], // keeps the list of new objects
+        page: 1, // keeps track of pages
+        selected_category: -1 // -1 refers to category all
     }
 
     componentDidMount = () => {
-        
         this.get_news()
     }
 
     get_news = () => {
         let url = `api/news/?page=${this.state.page}&show=`
         if (this.state.selected_category !== -1) {
-            url += this.state.selected_category === 0 ? 1 : 0
+            url += this.state.selected_category === 0 ? 1 : 0 // 1 for displayed news and 0 for archieved news
         }
 
         this.axios.get(url)
@@ -29,7 +28,7 @@ export default class news extends Component {
                 this.setState({
                     ...this.state,
                     ...d,
-                    toolbar_render: !this.state.toolbar_render
+                    toolbar_render: !this.state.toolbar_render // this is to trigger toolbar rerender
                 })
             })
     }

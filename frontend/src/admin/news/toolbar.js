@@ -18,13 +18,13 @@ class toolbar extends Component {
             })
     }
     componentDidMount = async () => {
-        
         this.update_toolbar()
     }
 
+    // on recieving the new props update the toolbar 
     componentWillReceiveProps = () => this.update_toolbar()
 
-
+    // when user click the new news btn creata empty news and divert the user to it
     newNewsHandler = (e) => {
         e.preventDefault()
         this.axios.post('api/news/', {

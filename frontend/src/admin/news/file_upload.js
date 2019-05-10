@@ -4,8 +4,8 @@ import faxios, { burl } from '../../axios';
 export default class FileUpload extends Component {
     axios = faxios()
     state = {
-        progress: 0,
-        onprogress: false,
+        progress: 0, // progress percentage of the loading bar
+        onprogress: false, // uploading yes/no
     }
 
     componentDidMount = () => {

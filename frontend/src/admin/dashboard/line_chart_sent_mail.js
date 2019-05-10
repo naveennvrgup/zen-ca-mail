@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ResponsiveLine } from '@nivo/line'
 import fuser from '../../axios'
 
+// this comp draws the chart in the dashboard
 export default class emails_sent_chart extends Component {
     axios = fuser()
 
@@ -20,6 +21,8 @@ export default class emails_sent_chart extends Component {
                 let rejects = { id: 'rejects', data: [] }
                 let bounces = { id: 'bounces', data: [] }
 
+                // this transform the data from server into the required format 
+                // for the chart library
                 d.reverse().forEach((ele, i) => {
                     i = 14 - i
                     let currDate = new Date()

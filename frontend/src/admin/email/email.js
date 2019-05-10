@@ -5,9 +5,9 @@ import faxios from '../../axios';
 export default class email extends Component {
     axios = faxios()
     state = {
-        results: [],
-        page: 1,
-        selected_category: -1
+        results: [], // to store list of email objs
+        page: 1, // current page
+        selected_category: -1 // -1 for category 'all'
     }
     status_color = [
         'text-danger',
@@ -16,7 +16,6 @@ export default class email extends Component {
     ]
 
     componentDidMount = () => {
-
         this.get_drafts()
     }
 

@@ -4,7 +4,7 @@ import faxios, { burl } from '../../axios';
 export default class FileUpload extends Component {
     axios = faxios()
     state = {
-        files: []
+        files: [] // list of files to be uploaded
     }
 
     componentDidMount = () => {
@@ -33,10 +33,10 @@ export default class FileUpload extends Component {
         let fi = document.createElement('input')
         fi.type = 'file'
         fi.multiple = true
-        fi.click()
+        fi.click() // get the files
 
         fi.addEventListener('change', e => {
-            let currFiles = [...this.state.files]
+            let currFiles = [...this.state.files] // stores files details in the required format
 
             for (let i = 0; i < fi.files.length; i++) {
                 let file = fi.files[i]

@@ -53,6 +53,7 @@ export default class NewMail extends Component {
             })
     }
 
+    // used to AIR  the news
     showNewsHandler = async (e) => {
         e.preventDefault()
         await this.saveNewsHandler(e, true)
@@ -122,10 +123,6 @@ export default class NewMail extends Component {
                             rows='4'
                             className='brief form-control w-100' />
                     </div>
-
-                    {/* {this.state.files ?
-                        <FileUpload NewsId={this.NewsId} initialFiles={this.state.files} />
-                        : ''} */}
 
                 </form>
             </div>

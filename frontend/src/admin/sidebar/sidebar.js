@@ -3,7 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 
 class sidebar extends Component {
     state = {
-        sbopen: false
+        sbopen: false // used to toggle the sidebar in the mobile view
     }
 
     toggle_sidebar = (e) => {

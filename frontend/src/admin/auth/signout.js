@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 export default class signout extends Component {
     signout_handler = e => {
         e.preventDefault()
+        // signout is preformed by deleting the token off the sessionstorage
         sessionStorage.clear('token')
         this.props.history.push('/user_login/')
     }

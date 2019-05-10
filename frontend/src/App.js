@@ -8,14 +8,13 @@ import Login from './admin/auth/login'
 import Main from './main/main'
 import './assets/spinner.css'
 
-
+// app.scss is the single entry point for all the scss files
+// scss files are structed hierarchially
+// the SPA is divided into two parts 
+// 1. main - the website visible for everyone
+// 2.admin - custom admin panel
+// ProtectedRoute comp will allow the user to use the protected route only when token is present int the sessionstorage
 class App extends Component {
-  // componentDidMount = () => {
-  //   let fav = document.querySelector('[rel="shortcut icon"]')
-  //   fav.href = require('./assets/rupee.png')
-  //   console.log(fav);
-  // }
-
 
   render() {
     return (

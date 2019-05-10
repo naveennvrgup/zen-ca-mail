@@ -19,6 +19,7 @@ export default class login extends Component {
             username: this.username.value,
             password: this.password.value
         }).then(d => {
+            // when a login is successful the user token is saved in the sessionstorage
             sessionStorage.setItem('token', `Token ${d.data.token}`)
             this.props.history.push('/admin/dashboard/')
             console.log('hello')
