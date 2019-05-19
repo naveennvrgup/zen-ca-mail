@@ -1,20 +1,39 @@
 .values{
-    background: #f2f2f2;
+    background: #f7f9fb;
     padding: $section-pad;
+    h2{
+        color: #626262;
+    }
+    .desc{
+        color: #878787;
+        font-weight: bold;
+    }
     .value{
         padding: 20px 40px;
         transition: all 0.5s ease;
         border: 2px solid transparent;
-        &:hover{
-            border: 2px solid black;
-        }
+        color: white;
+        
         h3{
             text-align: center;
             font-size: 23px;
+            margin-top: 20px;
         }
         p{
             text-align: justify;           
             margin-top: 1.5em; 
+        }
+        &:nth-child(1){
+            background: #41cea4;
+        }
+        &:nth-child(2){
+            background: #02bcc8;
+        }
+        &:nth-child(3){
+            background: #638bc8;
+        }
+        &:nth-child(4){
+            background: #3b63a0;
         }
     }
     @media(max-width: $md-brk){
