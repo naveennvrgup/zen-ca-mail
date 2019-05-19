@@ -5,7 +5,7 @@ export default class client extends Component {
         return (
             <div id='clients'>
                 <div className="container">
-                    <h2 className="hf text-center">Clients</h2>
+                    <h2 className="hf text-center">Our Clients</h2>
                     <div className="row mt-3 mt-md-5 align-items-center">
                         <div className="col-md-5">
                             <p>

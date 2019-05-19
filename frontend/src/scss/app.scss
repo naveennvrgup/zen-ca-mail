@@ -1,5 +1,19 @@
 // fonts
-@import url('https://fonts.googleapis.com/css?family=Oswald:700|Raleway');
+// @import url('https://fonts.googleapis.com/css?family=Oswald:700|Raleway');
+@font-face{
+    font-family: 'oswald';
+    src: url('../assets/futura.ttf');
+}
+@font-face{
+    font-family: 'raleway';
+    src: url('../assets/nexa.otf');
+}
+@font-face{
+    font-family: 'nexa-bold';
+    src: url('../assets/Nexa\ Bold.otf');
+}
+
+
 // common
 @import './common.scss';
 // admin

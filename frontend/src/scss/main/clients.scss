@@ -1,21 +1,25 @@
 #clients {
     padding: $section-pad;
-    background: #f2f2f2;
+    background: #f7f9fb;
+    h2{
+        color: #686868;
+    }
     p {
         text-align: justify;
+        color: #808080;
     }
     .fields {
         display: flex;
         flex-wrap: wrap;
         span {
-            border: 1px solid black;
-            padding: 3px 5px;
+            border-radius: 5px;
+            background-color: #e6e6e6;
+            padding: 5px 10px;
             margin: 3px;
+            color: #545454;
+            font-weight: bold;
             user-select: none;
-            &:hover {
-                background: #000;
-                color: white;
-            }
+            font-family: 'nexa-bold';
         }
     }
     @media(max-width: $md-brk) {

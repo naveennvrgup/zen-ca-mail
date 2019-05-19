@@ -42,12 +42,14 @@ export default class FileUpload extends Component {
                 let file = fi.files[i]
                 let flag = true
 
+                // this is remove duplicates 
                 currFiles.forEach(ele => {
                     if (ele.name === file.name) {
                         flag = false
                     }
                 })
 
+                // this is remove duplicates 
                 if (flag) {
                     currFiles.push({
                         file: file,
