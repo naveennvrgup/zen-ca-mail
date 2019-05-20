@@ -11,16 +11,29 @@ export default class aboutus extends Component {
         show_history: true
     })
 
+    read_less_handler = () => this.setState({
+        ...this.state,
+        show_history: false
+    })
+
+
     render() {
+        const readmore_btn = <button
+            onClick={this.read_more_handler}
+            id='read_more'>read more</button>
+
+        const readless_btn = <button
+            onClick={this.read_less_handler}
+            id='read_more'>read less</button>
+
         return (
             <div className='aboutus' id='aboutus'>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-5 px-3 px-md-5">
-                            <div className="client-pic mx-auto"></div>
                             <div className="info mt-4 text-center">
-                                <h5 className="hf">J K GUPTA</h5>
-                                <div>Chartered Accountant</div>
+                                <h4 className="hf">J K GUPTA</h4>
+                                <div className='font-weight-bold'>B.COMM, FCA, LLB</div>
                             </div>
                             <p className='text-justify mt-4'>
                                 Our Associate is a
@@ -28,15 +41,13 @@ export default class aboutus extends Component {
                                 Central Excise & Service Tax, GST, Labor laws, provident fund, ESIC, Goods
                                 and Services Tax etc.
                         </p>
-                            {!this.state.show_history ? <div className={`text-center d-none d-md-block `}>
-                                <button
-                                    onClick={this.read_more_handler}
-                                    id='read_more'>read more</button>
-                            </div> : null}
+                            <div className={`text-center d-none d-md-block `}>
+                                {this.state.show_history ? readless_btn : readmore_btn}
+                            </div>
                         </div>
 
                         <div className="col-md-7 d-none d-md-block">
-                            <h2 className="hf">About</h2>
+                            <h2 className="hf text-center">About</h2>
                             <p className='text-justify mt-4'>
                                 Our core competency and area of expertise is Indirect Taxation, and specializes in all aspects of GST, Excise, Service Tax, Customs, VAT, Labor laws, Money laundering, etc. and carries a blend of Litigation, Advisories and Compliance experience.
                         </p>
@@ -50,6 +61,9 @@ export default class aboutus extends Component {
                     </div>
                 </div>
                 {this.state.show_history ? <History /> : ''}
+                <div className="text-center mt-5">
+                    {this.state.show_history ? readless_btn : ''}
+                </div>
             </div>
         )
     }

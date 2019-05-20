@@ -8,11 +8,11 @@ export default class cover extends Component {
                 <div className="container">
                     <div className="wrapper">
                         <div className="intro p-4 p-md-5 ml-md-5">
-                            <h1 className="hf name">J K GUPTA</h1>
-                            <h1 className="hf desig">CHARTED ACCOUNTANT</h1>
+                            <h1 className="hf name">Damn Fine Tax <br/> Litigators and Advisors</h1>
+                            {/* <h1 className="hf desig">B.COMM, FCA, LLB</h1>
                             <p className="mt-3">
                                 Damn Fine Tax Litigators and Advisors.
-                            </p>
+                            </p> */}
                             <div className="mt-5">
                                 <Link
                                     smooth={true}

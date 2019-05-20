@@ -10,6 +10,15 @@ export default class history extends Component {
         })
     }
 
+    componentWillUnmount() {
+        scroller.scrollTo('aboutus', {
+            duration: 500,
+            smooth: true,
+            offset: -100,
+        })
+    }
+    
+
 
     render() {
         return (

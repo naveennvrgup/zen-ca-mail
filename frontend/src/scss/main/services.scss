@@ -1,43 +1,53 @@
-#services {
-    padding: $section-pad;
-    .row>div {
-        border: 2px solid white;
-        transition: border 0.5s ease;
-        &:hover {
-            border: 2px solid black;
-        }
-    }
-    .btns {
+.services{
+    .head{
+        margin: auto;
+        max-width: 600px;
         text-align: center;
-    }
-    button {
-        padding: 5px 10px;
-        border: 2px solid black;
-        background: white;
-        border-radius: 15px;
-        margin: 0 10px;
-        font-size: 13px;
-        outline: none;
-        transition: all 0.3s ease;
-    }
-    .activ_btn {
-        background: black;
-        color: white;
-        font-weight: bold;
-    }
-    #specialized {
-        h3 {
-            text-align: center;
-        }
-    }
-    p,
-    li {
-        text-align: justify;
-    }
-    @media(max-width: $md-brk) {
-        padding: $spad-sm;
-        h3,h4{
+        h3{
             font-size: 20px;
+            font-family: nexa-bold;
+            color: #0016db;
+            transform: translateY(-13px);
+            background: white;
+            display: inline-block;
+            padding: 0 10px;
         }
+        .spark{
+            border: 1px solid #dddddd;      
+        }  
+    }
+
+    .service{
+        box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08);
+        display: inline-block;
+        padding: 20px 25px 30px;
+        border-radius: 5px;
+        flex-basis: 150px;
+        height: 130px;
+        text-align: center;
+        line-height: 15px;
+        font-weight: bold;
+        font-size: 14px;
+        margin: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        i{
+            color: #0016db;
+        }
+        .name{
+            margin-top: 20px;
+        }
+        &:hover {
+            box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.26);
+        }
+    }
+    
+    .services_list{
+        max-width: 900px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: auto;
     }
 }
