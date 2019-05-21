@@ -38,32 +38,32 @@ export default class navbar extends Component {
 
     bignav = () =>
         <div className='bignav'>
-            <div className="brand hf">
+            <div className="brand hf wow fadeIn" data-wow-duration='2s'>
                 J K GUPTA
             </div>
             <ul>
-                <li className="nlink">
+                <li className="nlink wow fadeInRight" data-wow-delay='0s'>
                     {this.bnlink('cover', 'Home')}
                 </li>
-                <li className="nlink">
+                <li className="nlink wow fadeInRight" data-wow-delay='0.2s'>
                     {this.bnlink('aboutus', 'About')}
                 </li>
-                <li className="nlink">
+                <li className="nlink wow fadeInRight" data-wow-delay='0.3s'>
                     {this.bnlink('values', 'Values')}
                 </li>
-                <li className="nlink">
+                <li className="nlink wow fadeInRight" data-wow-delay='0.4s'>
                     {this.bnlink('services', 'Services')}
                 </li>
-                <li className="nlink">
+                <li className="nlink wow fadeInRight" data-wow-delay='0.5s'>
                     {this.bnlink('clients', 'Clients')}
                 </li>
-                <li className="nlink">
+                <li className="nlink wow fadeInRight" data-wow-delay='0.6s'>
                     {this.bnlink('contactus', 'Contact')}
                 </li>
             </ul>
 
             <div className="right">
-                <div className="slink">
+                <div className="slink wow zoomIn" data-wow-delay='0.1s'>
                     <a href="https://www.facebook.com/pages/JK-Gupta-Chartered-Accountant/235462179990288"
                         target='_blank'
                         rel="noopener noreferrer"
@@ -71,7 +71,7 @@ export default class navbar extends Component {
                         <i className="fab fa-facebook"></i>
                     </a>
                 </div>
-                <div className="slink">
+                <div className="slink  wow zoomIn" data-wow-delay='0.2s'>
                     <a href="https://twitter.com/cajeetugupta8"
                         target='_blank'
                         rel="noopener noreferrer"
@@ -79,7 +79,7 @@ export default class navbar extends Component {
                         <i className="fab fa-twitter"></i>
                     </a>
                 </div>
-                <div className="slink">
+                <div className="slink  wow zoomIn" data-wow-delay='0.3s'>
                     <a href="https://in.linkedin.com/in/jeetu-gupta-74308440"
                         target='_blank'
                         rel="noopener noreferrer"

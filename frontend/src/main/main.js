@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import WOW from "wow.js";
 
 import Cover from './cover'
 import Subscribe from './subscribe'
@@ -13,6 +14,12 @@ import Cookie from './cookie'
 
 // it as the layout for the index page
 export default class main extends Component {
+    componentDidMount() {
+        const wow = new WOW();
+        wow.init();
+    }
+
+
     render() {
         return (
             <div className='main'>

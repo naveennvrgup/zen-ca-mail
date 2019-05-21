@@ -60,11 +60,11 @@ export default class subscribe extends Component {
                     <div className="row">
                         <div className="col-md-4">
                             <div className="left text-center">
-                                <h2 className='hf'>Subscribe</h2>
-                                <p className='px-md-5'>We provide useful updates on finance via email.</p>
+                                <h2 className='hf wow fadeInUp' data-wow-delay='0.2s'>Subscribe</h2>
+                                <p className='px-md-5 wow fadeInUp' data-wow-delay='0.4s'>We provide useful updates on finance via email.</p>
                                 {this.state.error ? <this.Error /> : ''}
                                 {this.state.success ? <this.Success /> : ''}
-                                <form className={this.state.success ? 'd-none' : ''}>
+                                <form className={this.state.success ? 'd-none' : 'wow fadeIn'} data-wow-delay='0.8s'>
                                     <input type="text" placeholder='Name' className="name" required />
                                     <input type="email" placeholder='Email' className="email" required />
                                     <input type="text" placeholder='Phone no.' className="phone" required />

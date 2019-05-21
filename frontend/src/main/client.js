@@ -5,7 +5,7 @@ export default class client extends Component {
         return (
             <div id='clients'>
                 <div className="container">
-                    <h2 className="hf text-center">Our Clients</h2>
+                    <h2 className="hf text-center wow fadeInUp">Our Clients</h2>
                     <div className="row mt-3 mt-md-5 align-items-center">
                         <div className="col-md-5">
                             <p>
@@ -17,70 +17,70 @@ export default class client extends Component {
                         </div>
                         <div className="col-md-7">
                             <div className="fields">
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.2s'>
                                     Foreign companies having subsidiary in India
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.2s'>
                                     Foreign Companies having Branch / Liaison Offices in India.
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.4s'>
                                     Non- Resident Indians
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.4s'>
                                     Automobiles and Auto Ancillaries
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.5s'>
                                     Chemicals
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.5s'>
                                     Consumer Durable
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.6s'>
                                     Consultancy Support
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.6s'>
                                     Education & Welfare
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.7s'>
                                     Electronics
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.8s'>
                                     Energy
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.9s'>
                                     FMCG
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.9s'>
                                     Food Processing
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1s'>
                                     Infrastructure
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1s'>
                                     Manufacturing
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1.1s'>
                                     Media
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1.1s'>
                                     Pharmaceuticals
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1.2s'>
                                     Real Estate & Construction
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1.2s'>
                                     Retailing & Distribution
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1.3s'>
                                     Software & Information Technology
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1.3s'>
                                     Telecommunications
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1.4s'>
                                     Trading
                                 </span>
-                                <span>
+                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1.4s'>
                                     Travel, Tourism & Leisure
                                 </span>
                             </div>

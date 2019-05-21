@@ -58,13 +58,13 @@ export default class contactus extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-6 text-center left">
-              <h2 className="hf">
+              <h2 className="hf wow fadeInUp" data-wow-delay='0.1s'>
                 Get in touch with us
               </h2>
-              <p className='text-muted mt-2'>
+              <p className='text-muted mt-2 wow fadeInUp' data-wow-delay='0.3s'>
                 Let us know what you are thinking
               </p>
-              <form className='mt-4'>
+              <form className='mt-4 wow fadeIn' data-wow-delay='1s'>
                 {this.state.error ? <this.Error /> : ''}
                 <input required type="text" id="name" placeholder="Name" />
                 <input required type="text" id="phone" placeholder="Phone" />
@@ -78,11 +78,11 @@ export default class contactus extends Component {
 
             {/* right side */}
             <div className="col-md-6 right text-center">
-              <h2 className="text-center hf">Contact</h2>
-              <p className="mt-2">Have a question? We can help you...</p>
+              <h2 className="text-center hf wow fadeInUp">Contact</h2>
+              <p className="mt-2 wow fadeInUp" data-wow-delay='0.2s'>Have a question? We can help you...</p>
 
               <div className="mt-3  info">
-                <div>
+                <div className="wow flipInY" data-wow-delay='0.3s'>
                   <span className="font-weight-bold">
                     <i className="mx-2 fa fa-map"></i> Address
                   </span>
@@ -93,21 +93,21 @@ export default class contactus extends Component {
                     </div>
                 </div>
 
-                <div className='mt-4'>
+                <div className='mt-4 wow flipInY' data-wow-delay='0.5s'>
                   <span className="font-weight-bold">
                     <i className="mx-2 fa fa-envelope"></i> Email
                   </span>
                   <div> gst@jkgupta.in</div>
                 </div>
 
-                <div className='mt-4'>
+                <div className='mt-4 wow flipInY' data-wow-delay='0.7s'>
                   <span className="font-weight-bold">
                     <i className="mx-2 fa fa-phone"></i> Phone
                 </span>
                   <div> +91 8516088888</div>
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4 wow flipInY" data-wow-delay='0.9s'>
                   <span className="font-weight-bold">
                     Social
                     <br />

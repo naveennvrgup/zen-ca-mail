@@ -32,8 +32,8 @@ export default class aboutus extends Component {
                     <div className="row">
                         <div className="col-md-5 px-3 px-md-5">
                             <div className="info mt-4 text-center">
-                                <h4 className="hf">J K GUPTA</h4>
-                                <div className='font-weight-bold'>B.COMM, FCA, LLB</div>
+                                <h4 className="hf wow fadeInUp">J K GUPTA</h4>
+                                <div className='font-weight-bold wow zoomIn' data-wow-delay='0.5s'>B.COMM, FCA, LLB</div>
                             </div>
                             <p className='text-justify mt-4'>
                                 Our Associate is a
@@ -47,7 +47,7 @@ export default class aboutus extends Component {
                         </div>
 
                         <div className="col-md-7 d-none d-md-block">
-                            <h2 className="hf text-center">About</h2>
+                            <h2 className="hf text-center wow fadeInUp">About</h2>
                             <p className='text-justify mt-4'>
                                 Our core competency and area of expertise is Indirect Taxation, and specializes in all aspects of GST, Excise, Service Tax, Customs, VAT, Labor laws, Money laundering, etc. and carries a blend of Litigation, Advisories and Compliance experience.
                         </p>
