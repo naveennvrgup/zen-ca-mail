@@ -64,7 +64,7 @@ export default class contactus extends Component {
               <p className='text-muted mt-2 wow fadeInUp' data-wow-delay='0.3s'>
                 Let us know what you are thinking
               </p>
-              <form className='mt-4 wow fadeIn' data-wow-delay='1s'>
+              <form className='mt-4 wow fadeIn' data-wow-delay='0.5s'>
                 {this.state.error ? <this.Error /> : ''}
                 <input required type="text" id="name" placeholder="Name" />
                 <input required type="text" id="phone" placeholder="Phone" />

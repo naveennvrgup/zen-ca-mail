@@ -85,7 +85,7 @@ export default class SimpleSlider extends Component {
     render() {
 
         return (
-            <div className='news_main wow flipInY' data-wow-delay='0.5s' id='news'>
+            <div className='news_main wow fadeIn' data-wow-delay='0.3s' id='news'>
                 <h2 className="text-center hf">Newsfeed</h2>
                 <div className="slider mt-4">
                     {this.state.news[this.state.snid]}
