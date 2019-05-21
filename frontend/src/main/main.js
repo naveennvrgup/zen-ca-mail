@@ -9,6 +9,7 @@ import Contactus from './contactus'
 import Footer from './footer'
 import Services from './services'
 import Clients from './client'
+import Cookie from './cookie'
 
 // it as the layout for the index page
 export default class main extends Component {
@@ -17,6 +18,7 @@ export default class main extends Component {
             <div className='main'>
                 <Navbar />
                 <Cover />
+                <Cookie />
                 <Subscribe />
                 <Aboutus />
                 <Values />
