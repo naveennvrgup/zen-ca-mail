@@ -6,7 +6,7 @@ export default class client extends Component {
             <div id='clients'>
                 <div className="container">
                     <h2 className="hf text-center wow fadeInUp">Our Clients</h2>
-                    <div className="row mt-3 mt-md-5 align-items-center">
+                    <div className="row mt-3 mt-md-5">
                         <div className="col-md-5">
                             <p>
                                 Our client list includes domestic and international entities of various sizes from different industries. Our team of experienced professionals provide financial solutions in a manner where client satisfaction is top priority.
@@ -17,12 +17,6 @@ export default class client extends Component {
                         </div>
                         <div className="col-md-7">
                             <div className="fields">
-                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.2s'>
-                                    Foreign companies having subsidiary in India
-                                </span>
-                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.2s'>
-                                    Foreign Companies having Branch / Liaison Offices in India.
-                                </span>
                                 <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.4s'>
                                     Non- Resident Indians
                                 </span>
@@ -51,9 +45,9 @@ export default class client extends Component {
                                     FMCG
                                 </span>
                                 <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='0.9s'>
-                                    Food Processing
+                                    and more
                                 </span>
-                                <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1s'>
+                                {/* <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1s'>
                                     Infrastructure
                                 </span>
                                 <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1s'>
@@ -82,7 +76,7 @@ export default class client extends Component {
                                 </span>
                                 <span className="wow zoom flipInY" data-wow-duration='1.5s' data-wow-delay='1.4s'>
                                     Travel, Tourism & Leisure
-                                </span>
+                                </span> */}
                             </div>
                         </div>
                     </div>

@@ -11,6 +11,7 @@ import Footer from './footer'
 import Services from './services'
 import Clients from './client'
 import Cookie from './cookie'
+import Snews from './slick_news'
 
 // it as the layout for the index page
 export default class main extends Component {
@@ -26,6 +27,7 @@ export default class main extends Component {
                 <Navbar />
                 <Cover />
                 <Cookie />
+                <Snews />
                 <Subscribe />
                 <Aboutus />
                 <Values />

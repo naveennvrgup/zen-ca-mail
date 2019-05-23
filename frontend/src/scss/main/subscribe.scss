@@ -1,7 +1,20 @@
 .subscribe {
     background: #ddb;
     background: #f2f2f2;
-    padding: $section-pad;
+    max-width: 95vw;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    z-index: 250;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 0 0 10px white, 3px 3px 10px 5px black;
+    border: 2px dashed black;
+
+
+    &+.open{
+        
+    }
     input {
         box-shadow: 3px 3px 10px -5px black;
         border-radius: 2px;
@@ -28,5 +41,27 @@
         width: 250px;
         max-width: 100%;
         margin: 10px auto 0;
+    }
+}
+
+.sub-btn{
+    bottom: 0;
+    right: 0;
+    z-index: 250;
+    position: fixed;
+    border-radius: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    transform: translate(-30%,-30%);
+    outline: none;
+    border: none;
+    background: blue;
+    color: white;
+    &:focus{
+        outline: none;
+        box-shadow: 3px 5px 15px -5px black;  
     }
 }
