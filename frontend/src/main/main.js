@@ -27,7 +27,7 @@ export default class main extends Component {
                 <Navbar />
                 <Cover />
                 <Cookie />
-                <Snews />
+                {/* <Snews /> */}
                 <Subscribe />
                 <Aboutus />
                 <Values />
