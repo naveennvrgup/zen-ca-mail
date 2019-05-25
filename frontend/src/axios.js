@@ -4,7 +4,7 @@ import axios from 'axios'
 // providing the appropriate base url for the 
 // dev and prod
 
-export let burl = 'http://192.168.1.3:8000/'
+export let burl = 'http://127.0.0.1:8000/'
 
 if (process.env.NODE_ENV === 'production') {
   burl = '/'

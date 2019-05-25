@@ -1,35 +1,31 @@
-.news_main .controls {
-    display: flex;
-    justify-content: center;
-    button {
-        background: #000;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        margin: 0 5px;
+#news {
+    .wrapper{
+        overflow: hidden;
+        margin: 8px;
+        padding: 5px;
     }
-}
-.slider {
-    margin: 8px;
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 2px 3px 15px -5px black;
-    .wrapper {
+    .news_obj {
+        border-radius: 3px;
         display: flex;
+        background: white; 
+        // border: 1px dashed black;
+        box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.16);
     }
-    background: white; // border: 1px dashed black;
     img {
-        width: 100%;
-        width: 300px;
-        height: 240px;
+        width: 250px;
+        height: 250px;
     }
     .info{
-        padding: 30px;
+        padding: 15px;
+    }
+    p{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 20px;     /* fallback */
+        max-height: 140px;      /* fallback */
+        -webkit-line-clamp: 4; /* number of lines to show */
+        -webkit-box-orient: vertical;
     }
     h4 {
         display: flex;
@@ -37,24 +33,17 @@
         font-size: 18px;
         flex-wrap: wrap;
         align-items: center;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 20px;     /* fallback */
+        max-height: 40px;      /* fallback */
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
     }
-    #slider-link {
-        font-size: 15px;
-        border-radius: 2px;
-        background: $tcolor;
-        color: white;
-        padding: 3px 10px;
-        margin: 10px;
-        display: inline-block;
-        font-family: raleway;
-    }
+
     @media(max-width: 1000px){
-        img{
-            width: 100%;
-        }
-        .wrapper{
-            display: block;
-            width: auto;
-        }
+
     }
 }

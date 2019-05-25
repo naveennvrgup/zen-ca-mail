@@ -36,42 +36,81 @@ export default class CenterMode extends Component {
 
         ele.img = temp_img
         return <div className="wrapper">
-            <div className='img'>
-                <img src={ele.img} alt="" />
-            </div>
-            <div className='info'>
-                <h4 className='hf'>
-                    <span>{ele.title}</span>
-                    <span>
-                        {ele.link ? <a
-                            rel="noopener noreferrer"
-                            target='_blank'
-                            href={ele.link} id='slider-link'>link</a> : ''}
-                    </span>
-                </h4>
-                <p className="mt-3">
-                    {ele.brief}
-                </p>
+            <div className="news_obj">
+
+                <div className='img'>
+                    <img src={ele.img} alt="" />
+                </div>
+                <div className='info'>
+                    <h4 className='hf'>
+                        <span>
+                            {ele.link ? <a
+                                rel="noopener noreferrer"
+                                target='_blank'
+                                className="text-primary mx-2"
+                                href={ele.link} >
+                                <i className="fa fa-link"></i>
+                            </a> : ''}
+                        </span>
+                        <span>{ele.title}</span>
+                    </h4>
+                    <p className="mt-3 w-100">
+                        {ele.brief}
+                    </p>
+                </div>
             </div>
         </div>
     }
 
     render() {
-        const settings = {
-            className: "center",
-            centerMode: true,
+        var settings = {
+            dots: true,
             infinite: true,
-            centerPadding: "60px",
+            speed: 2000,
+            autoplaySpeed: 3000,
             slidesToShow: 2,
-            speed: 500
+            autoplay: true,
+            slidesToScroll: 1,
+            cssEase: "linear",
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        initialSlide: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
         };
 
 
+        const news_list = this.state.newss.map((ele, i) =>
+            <div key={i}>
+                {ele}
+            </div>
+        )
+
         return (
-            <div className='container'>
-                <h2>Center Mode</h2>
+            <div className='container mt-4' id='news'>
                 <Slider {...settings}>
-                    <div>
+                    {/* <div>
                         <h3>1</h3>
                     </div>
                     <div>
@@ -88,7 +127,8 @@ export default class CenterMode extends Component {
                     </div>
                     <div>
                         <h3>6</h3>
-                    </div>
+                    </div> */}
+                    {news_list}
                 </Slider>
             </div>
         );
