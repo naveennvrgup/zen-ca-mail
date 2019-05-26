@@ -9,10 +9,10 @@ export default class client extends Component {
                     <div className="row mt-3 mt-md-5">
                         <div className="col-md-5">
                             <p>
-                                Our client list includes domestic and international entities of various sizes from different industries. Our team of experienced professionals provide financial solutions in a manner where client satisfaction is top priority.
+                                We are a Business Taxation Firm India and we ensure confidentiality and professional ethics, names and nature of business of clients are not provided on the website. We have serviced clients from following industries.
                             </p>
                             <p>
-                                We are a Business Taxation Firm India and we ensure confidentiality and professional ethics, names and nature of business of clients are not provided on the website. We have serviced clients from following industries.
+                                Our client list includes domestic and international entities of various sizes from different industries. Our team of experienced professionals provide financial solutions in a manner where client satisfaction is top priority.
                             </p>
                         </div>
                         <div className="col-md-7">
