@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import History from './history'
+import { scroller } from 'react-scroll'
+
 
 export default class aboutus extends Component {
     state = {
@@ -11,10 +13,21 @@ export default class aboutus extends Component {
         show_history: true
     })
 
-    read_less_handler = () => this.setState({
-        ...this.state,
-        show_history: false
-    })
+    read_less_handler = () => {
+
+        scroller.scrollTo('aboutus', {
+            duration: 500,
+            smooth: true,
+            offset: -100,
+        })
+
+        setTimeout(() => {
+            this.setState({
+                ...this.state,
+                show_history: false
+            })
+        },500)
+    }
 
 
     render() {
@@ -52,7 +65,7 @@ export default class aboutus extends Component {
                                 Our core competency and area of expertise is Indirect Taxation, and specializes in all aspects of GST, Excise, Service Tax, Customs, VAT, Labor laws, Money laundering, etc. and carries a blend of Litigation, Advisories and Compliance experience.
                         </p>
                             <p className='text-justify '>
-                                We have good hands-on experience in carrying out diagnostic review of business operations with respect to Indirect Taxation, opinion & advisory services, litigation services at all appropriate forums, representation before the TRU/ CBEC/ DGFT/ CBDT, etc. for various matters concerning to trade, industry and commerce, process review, structuring of business model,  and providing  Strategic  legal  &  Taxation  services  to  a number  of  clients across diverse sectors.
+                                We have good hands-on experience in carrying out diagnostic review of business operations with respect to Indirect Taxation, opinion & advisory services, litigation services at all appropriate forums, representation before the TRU/ CBEC/ DGFT/ CBDT, etc. for various matters concerning to trade, industry and commerce, process review, structuring of business model,  and providing  Strategic  Legal  &  Taxation  services  to  a number  of  clients across diverse sectors.
                         </p>
                             <p className='text-justify '>
                                 We have authored 1000+ articles in the domain of indirect taxation and our associate is also a Member of Excise Customs & Gold Control Bar Association (Commonly known as CESTAT Bar Association) at New Delhi.
