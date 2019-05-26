@@ -47,7 +47,7 @@ export default class aboutus extends Component {
                         </div>
 
                         <div className="col-md-7 d-none d-md-block">
-                            <h2 className="hf text-center wow fadeInUp">About</h2>
+                            <h2 className="hf text-center wow fadeInUp">About Us</h2>
                             <p className='text-justify mt-4'>
                                 Our core competency and area of expertise is Indirect Taxation, and specializes in all aspects of GST, Excise, Service Tax, Customs, VAT, Labor laws, Money laundering, etc. and carries a blend of Litigation, Advisories and Compliance experience.
                         </p>

@@ -18,19 +18,21 @@ export default class footer extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-3" id='fservices'>
-                                <h4>Our Services</h4>
-                                <div>Hygiene Audit</div>
-                                <div>Legal Opinions</div>
-                                <div>Refund Processing</div>
+                                <h4>Our Expertise</h4>
                                 <div>Preventive Consultancy</div>
                                 <div>Curative Consultancy</div>
+                                <div>Service Tax, Excise, Customs </div>
+                                <div>Goods and Service tax </div>
+                                <div>Provident Fund </div>
+                                <div>Export incentives </div>
+                                <div>and more </div>
                             </div>
                             <div className="col-md-3 flinks" id='fnav'>
                                 <h4>Navigation</h4>
                                 <div>{this.flink('cover', 'Home')}</div>
                                 <div>{this.flink('aboutus', 'About')}</div>
                                 <div>{this.flink('values', 'Values')}</div>
-                                <div>{this.flink('services', 'Services')}</div>
+                                <div>{this.flink('services', 'Practices')}</div>
                                 <div>{this.flink('clients', 'Clients')}</div>
                                 <div>{this.flink('contactus', 'Contact')}</div>
                             </div>
@@ -40,7 +42,8 @@ export default class footer extends Component {
                                 <div className="text-center">
                                 </div>
                                 <div className="footer_sub_link mt-3">
-                                    {this.flink('subscribe', 'Subscribe')}
+                                    {/* {this.flink('subscribe', 'Subscribe')} */}
+                                    <Link to='none' onClick={this._opensub}>Subscribe</Link>
                                 </div>
                             </div>
                             <div className="col-md-3" id='fcredits'>
@@ -61,5 +64,10 @@ export default class footer extends Component {
                 </div>
             </footer>
         )
+    }
+
+    _opensub = e => {
+        e.preventDefault()
+        document.querySelector('.sub-btn').click()
     }
 }

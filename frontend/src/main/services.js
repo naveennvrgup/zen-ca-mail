@@ -5,7 +5,7 @@ export default class Services extends Component {
   render() {
     return (
       <div className='services my-5'>
-        <h2 className="text-center hf wow fadeIn" data-wow-duration='1s'>Services</h2>
+        <h2 className="text-center hf wow fadeIn" data-wow-duration='1s'>Practices</h2>
 
         <div className="specialized">
           {/* specialized */}

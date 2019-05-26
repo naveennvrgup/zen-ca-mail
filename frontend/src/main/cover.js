@@ -29,6 +29,7 @@ export default class cover extends Component {
                                     smooth={true}
                                     duration={500}
                                     offset={-100}
+                                    onClick={this._opensub}
                                     to='subscribe'
                                     id="to_subscribe_btn" className='btn-link'>
                                     Subscribe
@@ -39,5 +40,10 @@ export default class cover extends Component {
                 </div>
             </div>
         )
+    }
+
+    _opensub = e => {
+        e.preventDefault()
+        document.querySelector('.sub-btn').click()
     }
 }
