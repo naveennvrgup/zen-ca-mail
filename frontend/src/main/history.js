@@ -26,10 +26,10 @@ export default class history extends Component {
                 <div className="container">
                     <h2 className="hf text-center mt-5">Brief Profile</h2>
                     <p className='mt-5'>
-                        Our Associate is qualified as Chartered Accountant in May 2011 and after his qualification he got privilege to work about 3 years with distinguished Author of Law, Practice and Procedure of Service Tax 2 Vols and his renowned legal firm J. K. Mittal & Co. New Delhi (Advocates and Legal Consultants) and presently practicing independently etc.
+                        Our Associate is qualified as Chartered Accountant in May 2011 and after his qualification he got the privilege to for work about 3 years with distinguished Author of Law, Practice and Procedure of Service Tax 2 Vols and his renowned legal firm J. K. Mittal & Co. New Delhi (Advocates and Legal Consultants) and presently practicing independently etc.
                 </p>
                     <p>
-                        In my almost three years of experience with J.K.Mittal & Co. Advocates and legal consultants and after completing 4 years in Independent practice in Chhattisgarh and New Delhi he has handled following and Key Role Undertaken is as follows:
+                        In three years of experience with J.K.Mittal & Co. Advocates and legal consultants and after completing 4 years in Independent practice in Chhattisgarh and New Delhi he has handled following and Key Role Undertaken is as follows:
                 </p>
                     <ul>
                         <li>
