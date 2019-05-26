@@ -30,7 +30,7 @@ export default class footer extends Component {
                             <div className="col-md-3 flinks" id='fnav'>
                                 <h4>Navigation</h4>
                                 <div>{this.flink('cover', 'Home')}</div>
-                                <div>{this.flink('aboutus', 'About')}</div>
+                                <div>{this.flink('aboutus', 'About Us')}</div>
                                 <div>{this.flink('values', 'Values')}</div>
                                 <div>{this.flink('services', 'Practices')}</div>
                                 <div>{this.flink('clients', 'Clients')}</div>

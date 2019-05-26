@@ -7,6 +7,9 @@
     box-shadow: 3px 3px 15px -5px black;
     background: white;
     padding: 40px;
+    width: 80%;
+    max-height: 100%;
+    overflow: auto;
     p{
         text-align: justify;
     }
@@ -23,6 +26,10 @@
     }
     .exit-btn{
         background: rgb(141, 33, 33);
+    }
+
+    @media(max-width: $md-brk) {
+        width: 100%;
     }
 }
 .cookie-bg{
