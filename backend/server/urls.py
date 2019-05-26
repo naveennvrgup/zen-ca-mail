@@ -59,7 +59,8 @@ urlpatterns = [
 ]
 
 # media urls
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
 # react / all the routes except the above will be pointed to the frontend
 # this is becoz react takes care of the routing  of the frontend
 urlpatterns.append(
