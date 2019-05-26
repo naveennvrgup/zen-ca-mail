@@ -67,7 +67,8 @@ export default class subscribe extends Component {
         e.preventDefault()
         this.setState({
             ...this.state,
-            popup: false
+            popup: false,
+            success: null
         })
     }
 
@@ -93,14 +94,22 @@ export default class subscribe extends Component {
                                     No Thanks
                                         </button>
                             </div>
+                            {this.state.success ? <div className="text-center mt-3">
+                                <button className='bg-success' onClick={this._close}>
+                                    close
+                                </button>
+                            </div> : ''}
                         </form>
                     </div>
                 </div>
 
                 <div className={this.state.popup ? 'd-none' : "sub-btn-div"}>
-                    <button onClick={this._show} className='sub-btn'>
-                        <i className="fa fa-newspaper"></i>
-                    </button>
+                    <div className="anim-holder">
+                        <button onClick={this._show} className='sub-btn'>
+                            <i className="fa fa-newspaper"></i>
+                        </button>
+                        <div className="at-anim"></div>
+                    </div>
                 </div>
             </div>
         )
