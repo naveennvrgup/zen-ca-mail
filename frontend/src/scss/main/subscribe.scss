@@ -60,7 +60,7 @@
             top: 0;
             left: 0;
             align-items: center;
-            animation: attract 1s ease-out infinite;
+            animation: attract 2s ease-out infinite;
 
             justify-content: center;
             width: 50px;
@@ -80,6 +80,9 @@
 @keyframes attract{
     0%{
         box-shadow: 0px 0px 0px 0px rgb(153, 205, 50);
+    }
+    50%{
+        box-shadow: 0px 0px 0px 0px rgba(153, 205, 50, 0);        
     }
     100%{
         box-shadow: 0px 0px 0px 25px rgba(153, 205, 50, 0);        

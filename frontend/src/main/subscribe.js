@@ -6,7 +6,6 @@ export default class subscribe extends Component {
     axios = fuser()
     state = {
         popup: false,
-        success: true
     }
 
     Error = () => <div className="my-3 text-danger">{this.state.error}</div>
