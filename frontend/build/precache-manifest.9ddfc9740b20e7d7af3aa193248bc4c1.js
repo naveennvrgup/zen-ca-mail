@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/js/13.3c0804c8.chunk.js"
   },
   {
-    "revision": "44f213c444a890e15547",
+    "revision": "88f125ca4a5b0cf6a626",
     "url": "/static/css/main.944b2b07.chunk.css"
   },
   {
@@ -60,8 +60,8 @@ self.__precacheManifest = [
     "url": "/static/media/news_placeholder.c91e2f1e.jpeg"
   },
   {
-    "revision": "44f213c444a890e15547",
-    "url": "/static/js/main.44f213c4.chunk.js"
+    "revision": "88f125ca4a5b0cf6a626",
+    "url": "/static/js/main.88f125ca.chunk.js"
   },
   {
     "revision": "f97e3bbf73254b0112091d0192f17aec",
@@ -120,7 +120,7 @@ self.__precacheManifest = [
     "url": "/static/css/13.5174673a.chunk.css"
   },
   {
-    "revision": "564d901341b57f9b250283d2c79b29fb",
+    "revision": "151f99bf2e72cc7ab8572661987ddfb2",
     "url": "/index.html"
   }
 ];

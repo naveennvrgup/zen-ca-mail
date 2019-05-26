@@ -5,7 +5,8 @@ import fuser from '../axios'
 export default class subscribe extends Component {
     axios = fuser()
     state = {
-        popup: false
+        popup: false,
+        success: true
     }
 
     Error = () => <div className="my-3 text-danger">{this.state.error}</div>
@@ -94,12 +95,12 @@ export default class subscribe extends Component {
                                     No Thanks
                                         </button>
                             </div>
-                            {this.state.success ? <div className="text-center mt-3">
-                                <button className='bg-success' onClick={this._close}>
-                                    close
-                                </button>
-                            </div> : ''}
                         </form>
+                        {this.state.success ? <div className="text-center mt-3">
+                            <button className='bg-success' onClick={this._close}>
+                                Close
+                                </button>
+                        </div> : ''}
                     </div>
                 </div>
 
