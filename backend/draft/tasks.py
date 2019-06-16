@@ -26,13 +26,22 @@ def create_template(draft):
     tbody += '<h3>Attachments: </h3>'
     tbody += '<ol>'
     files = draft.files.all()
+    
     for file in files:
         print(file)
         tbody += '<li><a href={}{} download>{}</a></li>'.format(
-            config('hostname'), file.file, file.file)
+            config('hostname') + 'media/', file.file, file.file)
     tbody += '</ol>'
+    
     if not files:
         tbody += '<div>none</div>'
+
+    tbody += '''
+        <hr style='margin-top:30px'>
+        <div style='text-align:center'>
+            <a href='{}unsubscribe/?email={{{{email}}}}'>unsubscribe from our mailing list</a>
+        </div>
+    '''.format(config('hostname'))
 
     response = client.create_template(
         Template={
@@ -45,6 +54,14 @@ def create_template(draft):
     print(tname, 'template created')
     print(response)
     return tname
+
+def create_destination(email):
+    return {
+        "Destination": {
+            "BccAddresses": [email]
+        },
+        "ReplacementTemplateData": json.dumps({ "email": email})
+    }
 
 # this divides the subs into batches of size = aws allowed sending freq/sec
 # and sends the mail with the help of the template
@@ -60,14 +77,7 @@ def send_mails_finally(subs, tname):
         response = client.send_bulk_templated_email(
             Source=source,
             Template=tname,
-            Destinations=[
-                {
-                    "Destination": {
-                        "ToAddresses": batch
-                    },
-                    "ReplacementTemplateData": "{}"
-                }
-            ],
+            Destinations=[create_destination(x) for x in batch],
             DefaultTemplateData="{}"
         )
         print(response)

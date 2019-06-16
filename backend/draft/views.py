@@ -3,7 +3,7 @@ from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.parsers import MultiPartParser
+from rest_framework.parsers import MultiPartParser, JSONParser
 from rest_framework.pagination import PageNumberPagination
 from django.http import JsonResponse
 
@@ -37,7 +37,7 @@ def get_draft_categories_count_view(req):
 
 @api_view(['POST'])
 def send_bulk_mail_view(req):
-    data = json.loads(req.body)
+    data = JSONParser().parse(req)
 
     draft = Draft.objects.get(pk=data['draft'])
     draft.status = 1
@@ -50,7 +50,7 @@ def send_bulk_mail_view(req):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def handle_complaint_view(req):
-    data = json.loads(req.body)
+    data = JSONParser().parse(req)
     
     if data['Type'] == 'SubscriptionConfirmation':
         print(data)
@@ -64,7 +64,7 @@ def handle_complaint_view(req):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def handle_bounce_view(req):
-    data = json.loads(req.body)
+    data = JSONParser().parse(req)
 
     if data['Type'] == 'SubscriptionConfirmation':
         print(data)

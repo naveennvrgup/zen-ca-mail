@@ -26,7 +26,7 @@ class SubscribeViewset(ModelViewSet):
 
 # deletes the given by blocking the account
     def delete(self, req, pk=None):
-        data = json.loads(req.body)
+        data = JSONParser().parse(req)
         sub = get_object_or_404(Subscriber, pk=pk)
         sub.flag = True
         sub.save()
@@ -34,7 +34,7 @@ class SubscribeViewset(ModelViewSet):
 
 # creates a sub sub
     def create(self, req):
-        data = json.loads(req.body)
+        data = JSONParser().parse(req)
 
         # check for duplicates
         try:
@@ -76,7 +76,7 @@ class GroupViewset(ModelViewSet):
         return self.get_paginated_response(page)
 
     def create(self, req):
-        data = json.loads(req.body)
+        data = JSONParser().parse(req)
         data = Group.objects.create(name=data['name'])
 
         return Response({
@@ -89,7 +89,7 @@ class GroupViewset(ModelViewSet):
 
 @api_view(['POST'])
 def add_sub_to_group_view(req):
-    data = json.loads(req.body)
+    data = JSONParser().parse(req)
     data['name'] = data['name'] if data['name'] else 'anonymous'
     data['mobile'] = data['mobile'] if data['mobile'] else '1234512345'
     data['verified'] = True

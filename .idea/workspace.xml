@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="583aa476-794a-4de9-b9ac-c1a9c0867567" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/zen-ca-mail.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/draft/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/draft/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/admin/js/vendor/jquery/LICENSE-JQUERY.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/admin/js/vendor/select2/LICENSE-SELECT2.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/admin/js/vendor/xregexp/LICENSE-XREGEXP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/13.5174673a.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/13.5174673a.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/14.b39bd368.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/14.b39bd368.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/main.2f28896f.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/main.2f28896f.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/main.39c41266.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/main.39c41266.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/main.5bba1925.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/main.5bba1925.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/main.944b2b07.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/main.944b2b07.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/main.a379ba29.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/css/main.a379ba29.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/1.db239b34.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/1.db239b34.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/10.9e9763e5.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/10.9e9763e5.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/11.da404ea6.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/11.da404ea6.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/13.3c0804c8.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/13.3c0804c8.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/14.632bbb00.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/14.632bbb00.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/14.6662064f.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/14.6662064f.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/2.e8448dd7.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/2.e8448dd7.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/3.6e3fcab3.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/3.6e3fcab3.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/4.a817a184.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/4.a817a184.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/5.9d1e9f26.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/5.9d1e9f26.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/6.9ab3e162.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/6.9ab3e162.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/7.42529095.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/7.42529095.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/8.10efa0d5.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/8.10efa0d5.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/9.b6fabdd7.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/9.b6fabdd7.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.02794575.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.02794575.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.44f213c4.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.44f213c4.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.5af59b83.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.5af59b83.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.6abd3b69.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.6abd3b69.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.88f125ca.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.88f125ca.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.c1c1c1c7.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/main.c1c1c1c7.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/runtime~main.d8695d70.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/static/js/runtime~main.d8695d70.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/precache-manifest.d60ae347333412291dbd3c34104b3417.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/css/13.5174673a.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/css/13.5174673a.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/css/14.b39bd368.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/css/14.b39bd368.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/css/main.a379ba29.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/css/main.a379ba29.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/1.db239b34.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/1.db239b34.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/10.9e9763e5.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/10.9e9763e5.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/11.da404ea6.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/11.da404ea6.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/13.3c0804c8.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/13.3c0804c8.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/14.632bbb00.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/14.632bbb00.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/2.e8448dd7.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/2.e8448dd7.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/3.6e3fcab3.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/3.6e3fcab3.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/4.a817a184.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/4.a817a184.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/5.9d1e9f26.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/5.9d1e9f26.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/6.9ab3e162.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/6.9ab3e162.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/7.42529095.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/7.42529095.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/8.10efa0d5.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/8.10efa0d5.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/9.b6fabdd7.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/9.b6fabdd7.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/main.6abd3b69.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/main.6abd3b69.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/runtime~main.d8695d70.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/runtime~main.d8695d70.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/subscribe/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-187">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/draft/tasks.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/server/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/src/axios.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Subscriber</find>
+      <find>Group</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/backend/draft/tasks.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="465" />
+    <option name="y" value="24" />
+    <option name="width" value="1295" />
+    <option name="height" value="741" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="zen-ca-mail" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Desktop/zen-ca-mail" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="zen-ca-mail" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Desktop/zen-ca-mail" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="backend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="zen-ca-mail" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Desktop/zen-ca-mail" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="backend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="server" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="zen-ca-mail" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Desktop/zen-ca-mail" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="backend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="subscribe" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="zen-ca-mail" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Desktop/zen-ca-mail" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="frontend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="zen-ca-mail" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Desktop/zen-ca-mail" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="frontend" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Python.DjangoServer" factoryName="Django server" nameIsGenerated="true">
+      <module name="zen-ca-mail" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/backend/env/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="localhost" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <module name="zen-ca-mail" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/backend/env/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="localhost" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="583aa476-794a-4de9-b9ac-c1a9c0867567" name="Default Changelist" comment="" />
+      <created>1560668651844</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1560668651844</updated>
+      <workItem from="1560668659567" duration="2778000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2778000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17247097" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32959184" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32959184" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.17247097" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32959184" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="4" />
+      <window_info anchor="bottom" id="Python Console" order="5" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Find" order="7" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.32959184" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="right" id="SciView" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/backend/subscribe/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/axios.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/server/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/env/lib/python3.5/site-packages/django/test/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="377" column="6" selection-start-line="377" selection-start-column="6" selection-end-line="377" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/draft/tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
