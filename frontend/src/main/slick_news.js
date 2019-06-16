@@ -12,6 +12,7 @@ export default class CenterMode extends Component {
     state = {
         newss: []
     }
+    temp_img = require('../assets/news_placeholder.jpeg')
 
     componentDidMount() {
         this.axios.get('/api/get_news/').then(d => {
@@ -35,7 +36,7 @@ export default class CenterMode extends Component {
 
 
     html_news = ele => {
-        let temp_img = require('../assets/news_placeholder.jpeg')
+        let temp_img = this.temp_img
 
         if (ele.img) {
             temp_img = burl + ele.img.slice(1, ele.img.length)

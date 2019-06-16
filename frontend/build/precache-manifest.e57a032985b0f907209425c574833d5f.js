@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/js/14.f5023a94.chunk.js"
   },
   {
-    "revision": "dfbd67f18ab00ee83825",
+    "revision": "56de2848b25cc0ef0aa9",
     "url": "/static/css/main.39db01ea.chunk.css"
   },
   {
@@ -64,24 +64,24 @@ self.__precacheManifest = [
     "url": "/static/js/13.ab163e98.chunk.js"
   },
   {
-    "revision": "03f45d882ff3a80b719cfc0789c5eab9",
-    "url": "/static/media/summernote.03f45d88.woff"
+    "revision": "7e263200d01fb5998c401b03ef3e6433",
+    "url": "/static/media/summernote.7e263200.eot"
   },
   {
-    "revision": "dfbd67f18ab00ee83825",
-    "url": "/static/js/main.dfbd67f1.chunk.js"
+    "revision": "56de2848b25cc0ef0aa9",
+    "url": "/static/js/main.56de2848.chunk.js"
   },
   {
     "revision": "05a86a7b1f59cee2749c",
     "url": "/static/js/runtime~main.05a86a7b.js"
   },
   {
-    "revision": "12108809f49c49bcdc126dcecc938761",
-    "url": "/static/media/nexa.12108809.otf"
-  },
-  {
     "revision": "4c62644b159530ff6214336f8cfb1d32",
     "url": "/static/media/futura.4c62644b.ttf"
+  },
+  {
+    "revision": "12108809f49c49bcdc126dcecc938761",
+    "url": "/static/media/nexa.12108809.otf"
   },
   {
     "revision": "c9f309b3d47969ecac64a77a6c672594",
@@ -100,16 +100,16 @@ self.__precacheManifest = [
     "url": "/static/media/gravel.6eda72ff.png"
   },
   {
+    "revision": "d41f55a78e6f49a5512878df1737e58a",
+    "url": "/static/media/slick.d41f55a7.ttf"
+  },
+  {
     "revision": "ced611daf7709cc778da928fec876475",
     "url": "/static/media/slick.ced611da.eot"
   },
   {
     "revision": "b7c9e1e479de3b53f1e4e30ebac2403a",
     "url": "/static/media/slick.b7c9e1e4.woff"
-  },
-  {
-    "revision": "d41f55a78e6f49a5512878df1737e58a",
-    "url": "/static/media/slick.d41f55a7.ttf"
   },
   {
     "revision": "f97e3bbf73254b0112091d0192f17aec",
@@ -120,8 +120,8 @@ self.__precacheManifest = [
     "url": "/static/media/news_placeholder.c91e2f1e.jpeg"
   },
   {
-    "revision": "7e263200d01fb5998c401b03ef3e6433",
-    "url": "/static/media/summernote.7e263200.eot"
+    "revision": "03f45d882ff3a80b719cfc0789c5eab9",
+    "url": "/static/media/summernote.03f45d88.woff"
   },
   {
     "revision": "f5023a9444d58b937f3b",
@@ -132,7 +132,7 @@ self.__precacheManifest = [
     "url": "/static/css/13.b578206f.chunk.css"
   },
   {
-    "revision": "bffc237a282f10e603a24b87e14569f4",
+    "revision": "5aee47adec555b10674b4ed33d6b5d0b",
     "url": "/index.html"
   }
 ];
