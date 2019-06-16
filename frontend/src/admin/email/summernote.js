@@ -7,23 +7,21 @@ import 'react-summernote/lang/summernote-ru-RU'; // you can import any other loc
 import 'bootstrap/js/dist/modal';
 import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tooltip';
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 
-import $ from 'jquery'
-var jQuery = $
-require('jquery') 
- 
+
 class RichTextEditor extends Component {
-  onChange(content) {
+  onChange = content => {
     console.log('onChange', content);
+    this.props.onEditorStateChange(content)
   }
  
   render() {
     return (
       <ReactSummernote
-        value="Default value"
+        value={this.props.editorState}
         options={{
-          lang: 'ru-RU',
+          lang: 'en',
           height: 350,
           dialogsInBody: true,
           toolbar: [
@@ -32,7 +30,7 @@ class RichTextEditor extends Component {
             ['fontname', ['fontname']],
             ['para', ['ul', 'ol', 'paragraph']],
             ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
+            ['insert', ['link']],
             ['view', ['fullscreen', 'codeview']]
           ]
         }}
