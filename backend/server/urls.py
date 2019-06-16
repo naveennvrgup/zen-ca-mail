@@ -34,6 +34,7 @@ urlpatterns = [
     path('api/sub_from_main/', sub_from_main_view),
     path('api/sub_as_csv/', sub_as_csv_view),
     path('api/download_group_as_csv/<int:gid>/', download_group_csv_view),
+    path('unsubscribe/', unsubscribe_view),
     # draft
     path('api/get_draft_categories_count/', get_draft_categories_count_view),
     path('api/send_bulk_mail/', send_bulk_mail_view),

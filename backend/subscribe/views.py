@@ -10,7 +10,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.parsers import JSONParser
 
 from decouple import config
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 import json
 from .models import *
 from django.utils import timezone
@@ -179,3 +179,16 @@ def sub_from_main_view(req):
         return Response({
             'msg': 'You have successfully subscribed!'
         })
+
+@api_view(['get'])
+@permission_classes([AllowAny])
+def unsubscribe_view(req):
+    email = req.query_params['email']
+
+    try:
+        subsriber = Subscriber.objects.get(email=email)
+        Subscriber.delete()
+    except:
+        pass
+    
+    return render(req,'unsubscribe.html', {'email': email})

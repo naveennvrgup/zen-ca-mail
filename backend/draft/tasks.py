@@ -73,11 +73,12 @@ def send_mails_finally(subs, tname):
     source = config('from')
 
     for batch in subs:
+        destinations = [create_destination(x) for x in batch]
         time.sleep(1)
         response = client.send_bulk_templated_email(
             Source=source,
             Template=tname,
-            Destinations=[create_destination(x) for x in batch],
+            Destinations=destinations,
             DefaultTemplateData="{}"
         )
         print(response)
