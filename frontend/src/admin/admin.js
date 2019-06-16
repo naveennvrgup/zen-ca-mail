@@ -12,6 +12,7 @@ const Group = React.lazy(() => import('./subscriber/group'))
 const News = React.lazy(() => import('./news/newsfeed'))
 const New_news = React.lazy(() => import('./news/new_news'))
 const Dashboard = React.lazy(() => import('./dashboard/dashboard'))
+const Summernote = React.lazy(() => import('./email/sumemrnote'))
 
 export default class admin extends Component {
     render() {
@@ -19,6 +20,7 @@ export default class admin extends Component {
             <div className='admin'>
                 <Suspense fallback={<div className='sus-loader'><div className="lds-dual-ring"></div></div>}>
                     <Sidebar />
+                    <Summernote/>
                     <Switch>
                         <Route path='/admin/group/:id/' component={Group} />
                         <Route path='/admin/group/' component={Groups} />
