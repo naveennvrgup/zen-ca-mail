@@ -186,8 +186,8 @@ def unsubscribe_view(req):
     email = req.query_params['email']
 
     try:
-        subsriber = Subscriber.objects.get(email=email)
-        Subscriber.delete()
+        subscriber = Subscriber.objects.get(email=email)
+        subscriber.delete()
     except:
         pass
     
