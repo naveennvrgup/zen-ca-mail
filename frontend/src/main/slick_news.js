@@ -16,6 +16,13 @@ export default class CenterMode extends Component {
     componentDidMount() {
         this.axios.get('/api/get_news/').then(d => {
             d = d.data
+            if(d.length==1){
+                d.push({
+                    img: null,
+                    title: 'Subscribe to our NewsLetter!',
+                    brief: 'Stay tuned for important updates on Tax and Accounting via Email.'
+                })
+            }
             d = d.map(ele => this.html_news(ele))
             console.log(d)
             this.setState({
