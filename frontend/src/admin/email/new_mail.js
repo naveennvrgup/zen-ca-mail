@@ -44,16 +44,14 @@ export default class NewMail extends Component {
         })
             .then(d => {
                 // console.log(d.data)
-                if (!sendMail) {
+                if (sendMail) {
+                    this.props.history.push(`/admin/email/send_email/${this.draftId}/`)
+                }else{
                     this.props.history.push('/admin/email/')
                 }
             })
-    }
 
-    sendMailHandler = async (e) => {
-        e.preventDefault()
-        await this.saveDraftHandler(e, true)
-        this.props.history.push(`/admin/email/send_email/${this.draftId}/`)
+        setInterval(()=>console.log('timeout'),5000)
     }
 
     deleteDraftHandler = (e) => {
@@ -75,9 +73,9 @@ export default class NewMail extends Component {
                             <button className="btn btn-outline-danger mr-3"
                                 onClick={this.deleteDraftHandler}>delete</button>
                             <button className="btn mr-3"
-                                onClick={this.saveDraftHandler}>save</button>
+                                onClick={e=> this.saveDraftHandler(e,false)}>save</button>
                             <button className="btn btn-success"
-                                onClick={this.sendMailHandler}>send</button>
+                                onClick={e=> this.saveDraftHandler(e,true)}>send</button>
                         </div>
                     </div>
 
