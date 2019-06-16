@@ -30,7 +30,7 @@ def create_template(draft):
     for file in files:
         print(file)
         tbody += '<li><a href={}{} download>{}</a></li>'.format(
-            config('hostname') + 'media/', file.file, file.file)
+            config('hostname') + 'media/', file.file, str(file.file).split('/').pop())
     tbody += '</ol>'
     
     if not files:
