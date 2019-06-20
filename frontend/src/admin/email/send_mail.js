@@ -75,8 +75,6 @@ export default class send_mail extends Component {
 
     _on_selectall_group = e => {
         e.preventDefault()
-        const value= Number(e.target.value)
-        
         this.setState({
             groups: [],
             selected_groups: this.state.groups

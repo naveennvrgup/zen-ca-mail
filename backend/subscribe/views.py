@@ -19,6 +19,11 @@ from django.utils import timezone
 def save_subscriber(data):
     print(data)
 
+class AllSubscribeViewset(ModelViewSet):
+    queryset = Subscriber.objects.all()
+    serializer_class = SubscriberSerializer
+ 
+
 
 class SubscribeViewset(ModelViewSet):
     queryset = Subscriber.objects.filter(flag=False).reverse()

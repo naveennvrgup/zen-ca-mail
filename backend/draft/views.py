@@ -2,12 +2,14 @@ from .tasks import start_bulk_mail, handle_bounce_async, handle_complaint_async
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
+from rest_framework.generics import ListAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.parsers import MultiPartParser, JSONParser
 from rest_framework.pagination import PageNumberPagination
 from django.http import JsonResponse
 
 from .models import *
+from subscribe.models import *
 import json
 
 
@@ -45,19 +47,21 @@ def send_bulk_mail_view(req):
 
     # send the mail in async
     start_bulk_mail.delay(data['draft'], data['groups'])
-    
+
     return Response({'success': True})
 
 # handles the problem in async to improve performance
+
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def handle_complaint_view(req):
     data = JSONParser().parse(req)
-    
+
     if data['Type'] == 'SubscriptionConfirmation':
         print(data)
         return Response()
-    
+
     handle_complaint_async.delay(data['Message'])
     return Response('got the handle complaint subscription')
 
@@ -74,3 +78,13 @@ def handle_bounce_view(req):
 
     handle_bounce_async.delay(data['Message'])
     return Response('got the handle bounce subscription')
+
+
+class get_bounces(ListAPIView):
+    queryset = Subscriber.objects.filter(status='bounced', flag=True)
+    serializer_class = SubscriberSerializer
+
+
+class get_complaints(ListAPIView):
+    queryset = Subscriber.objects.filter(status='complaint', flag=True)
+    serializer_class = SubscriberSerializer

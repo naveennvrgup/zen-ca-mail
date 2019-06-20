@@ -20,6 +20,7 @@ from enquiry.views import *
 
 router = DefaultRouter()
 router.register('subscribe', SubscribeViewset)
+router.register('all_subs', AllSubscribeViewset)
 router.register('group', GroupViewset)
 router.register('draft', DraftViewset)
 router.register('attachment', AttachmentViewset)
@@ -35,6 +36,8 @@ urlpatterns = [
     path('api/sub_as_csv/', sub_as_csv_view),
     path('api/download_group_as_csv/<int:gid>/', download_group_csv_view),
     path('unsubscribe/', unsubscribe_view),
+    path('api/bounced_mails/', get_bounces.as_view()),
+    path('api/complaint_mails/', get_complaints.as_view()),
     # draft
     path('api/get_draft_categories_count/', get_draft_categories_count_view),
     path('api/send_bulk_mail/', send_bulk_mail_view),
@@ -61,7 +64,7 @@ urlpatterns = [
 
 # media urls
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    
+
 # react / all the routes except the above will be pointed to the frontend
 # this is becoz react takes care of the routing  of the frontend
 urlpatterns.append(

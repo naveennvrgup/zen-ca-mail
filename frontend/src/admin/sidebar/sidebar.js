@@ -15,7 +15,7 @@ class sidebar extends Component {
 
     render() {
         return (
-            <div className={`sidebar ${this.state.sbopen? 'sidebar-open': ''}`}>
+            <div className={`sidebar ${this.state.sbopen ? 'sidebar-open' : ''}`}>
                 <div className="text-right">
                     <div
                         onClick={this.toggle_sidebar}
@@ -44,6 +44,14 @@ class sidebar extends Component {
                         <NavLink onClick={this.toggle_sidebar} to='/admin/news/' className="link ">
                             <i className="far fa-newspaper"></i>
                             <span to='/admin/news'>Newsfeed</span>
+                        </NavLink>
+                        <NavLink onClick={this.toggle_sidebar} to='/admin/bounces/' className="link ">
+                            <i class="fas fa-futbol"></i>
+                            <span to='/admin/bounces'>Bounces</span>
+                        </NavLink>
+                        <NavLink onClick={this.toggle_sidebar} to='/admin/complaint/' className="link ">
+                            <i className="fas fa-dumpster-fire"></i>
+                            <span to='/admin/complaint'>Complaint</span>
                         </NavLink>
                         <NavLink onClick={this.toggle_sidebar} to='/admin/Signout/' className="link ">
                             <i className="fas fa-sign-out-alt"></i>
