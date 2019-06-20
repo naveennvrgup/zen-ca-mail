@@ -86,16 +86,21 @@ def send_mails_finally(subs, tname):
 # it coordinates the above 2 funcs
 # and updates the draft status to 2 = sent
 @shared_task
-def start_bulk_mail(draft, group):
+def start_bulk_mail(draft, groups):
     draft = Draft.objects.get(pk=draft)
-    group = Group.objects.get(pk=group)
-    # set status to sending
+    subs = []
+    group_names = []
 
-    print(draft, group)
+    print(groups)
+    for group_id in groups:
+        group = Group.objects.get(id=group_id)
+        group_names.append(group.name)
+        filter_subs = group.subs.filter(flag=False, verified=True)
+        subs.extend(filter_subs)
 
-    subs = group.subs.filter(flag=False, verified=True)
     subs = [x.email for x in subs]
     print('sending to', len(subs))
+    print(subs)
 
     # create the template
     tname = create_template(draft)
@@ -104,7 +109,7 @@ def start_bulk_mail(draft, group):
     send_mails_finally(subs, tname)
 
     # set draft status to sent
-    draft.group = group.name
+    draft.group = ', '.join(group_names)
     draft.sentTo = group.subs.count()
     draft.status = 2
     draft.save()

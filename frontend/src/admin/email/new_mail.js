@@ -51,7 +51,6 @@ export default class NewMail extends Component {
                 }
             })
 
-        setInterval(()=>console.log('timeout'),5000)
     }
 
     deleteDraftHandler = (e) => {

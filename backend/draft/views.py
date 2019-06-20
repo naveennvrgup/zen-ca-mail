@@ -42,8 +42,10 @@ def send_bulk_mail_view(req):
     draft = Draft.objects.get(pk=data['draft'])
     draft.status = 1
     draft.save()
-    # start_bulk_mail(draft, group)
-    start_bulk_mail.delay(data['draft'], data['group'])
+
+    # send the mail in async
+    start_bulk_mail.delay(data['draft'], data['groups'])
+    
     return Response({'success': True})
 
 # handles the problem in async to improve performance
