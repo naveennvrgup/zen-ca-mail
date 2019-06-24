@@ -25,7 +25,6 @@ export default class subscriber extends Component {
 
                 console.log(d, this.state, selected_group)
                 this.setState({
-                    ...this.state,
                     groups: d,
                     selected_group_id: selected_group.id,
                     selected_group_name: selected_group.name
@@ -65,7 +64,6 @@ export default class subscriber extends Component {
 
     show_group = (e, group) => {
         this.setState({
-            ...this.state,
             selected_group_id: group.id,
             selected_group_name: group.name
         })
@@ -73,7 +71,6 @@ export default class subscriber extends Component {
 
     set_groups_state = load => {
         this.setState({
-            ...this.state,
             ...load
         })// end of setstate
     }
@@ -99,7 +96,6 @@ export default class subscriber extends Component {
                 <div className='flex-grow-1 pl-2'>
                     <input
                         onChange={e => this.setState({
-                            ...this.state,
                             new_group_name: e.target.value
                         })}
                         value={this.state.new_group_name}

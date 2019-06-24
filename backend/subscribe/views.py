@@ -69,14 +69,14 @@ class GroupViewset(ModelViewSet):
             res.append({
                 'id': x.id,
                 'name': x.name,
-                'subs': x.subs.filter(flag=False).count()
+                'subs': x.subs.count()
             })
         return Response(res)
 
 # provides a group of subs with pagination
     def retrieve(self, request, pk=None):
         group = get_object_or_404(Group, pk=pk)
-        subs = SubscriberSerializer(group.subs.filter(flag=False), many=True)
+        subs = SubscriberSerializer(group.subs.all(), many=True)
         page = self.paginate_queryset(subs.data)
         return self.get_paginated_response(page)
 

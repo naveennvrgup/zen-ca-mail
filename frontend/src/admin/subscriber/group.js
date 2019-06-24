@@ -33,7 +33,17 @@ export default class group extends Component {
             })
     }
 
-
+    _unblock_subscriber  = (e,sub) => {
+        e.preventDefault()
+        this.axios.put(`api/all_subs/${sub.id}/`, {
+            status: 'available',
+            flag: false,
+            email: sub.email,
+            group: sub.group
+        }).then(d => {
+            this.get_subs() 
+        })
+    }
 
     flag_sub_handler = (e, sub) => {
         e.preventDefault()
@@ -90,15 +100,25 @@ export default class group extends Component {
             <div className={'d-flex  tab align-items-center '} key={i + 1}>
                 <div className='sub_sno px-2 font-weight-bold'>{i + 1}</div>
                 <div className='sub_phone px-2'>
-                    <i className={`fa fa-circle ${sub.verified ? 'text-success' : 'text-danger'}`}></i>
+                    <i className={`fa fa-circle ${sub.status === 'available' ? 'text-success' : 'text-danger'}`}></i>
                 </div>
                 <div className='sub_email px-2'>{sub.email}</div>
                 <div className='sub_name px-2'>{sub.name}</div>
                 <div className='sub_phone px-2 flex-grow-1'>{sub.mobile}</div>
+                {sub.status !== 'available' ? <button
+                    onClick={e => this._unblock_subscriber(e, sub)}
+                    className={`btn mx-1 nbtn green`}>
+                    <i className='fa fa-check'></i>
+                </button> : null}
+                <button
+                    onClick={e => this._edit_subscriber(e, sub)}
+                    className={`btn mx-1 nbtn blue`}>
+                    <i className='fa fa-pen'></i>
+                </button>
                 <button
                     onClick={e => this.flag_sub_handler(e, sub)}
-                    className={`btn nbtn red`}>
-                    <i className='fa fa-times'></i>
+                    className={`btn mx-1 nbtn red`}>
+                    <i className='fa fa-trash'></i>
                 </button>
             </div>
         )
