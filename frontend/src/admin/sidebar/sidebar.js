@@ -46,7 +46,7 @@ class sidebar extends Component {
                             <span to='/admin/news'>Newsfeed</span>
                         </NavLink>
                         <NavLink onClick={this.toggle_sidebar} to='/admin/bounces/' className="link ">
-                            <i class="fas fa-futbol"></i>
+                            <i className="fas fa-futbol"></i>
                             <span to='/admin/bounces'>Bounces</span>
                         </NavLink>
                         <NavLink onClick={this.toggle_sidebar} to='/admin/complaint/' className="link ">

@@ -45,7 +45,7 @@ export default class group extends Component {
         })
     }
 
-    flag_sub_handler = (e, sub) => {
+    _delete_subscriber = (e, sub) => {
         e.preventDefault()
 
         this.axios.delete(`api/subscribe/${sub.id}/`)
@@ -89,41 +89,88 @@ export default class group extends Component {
             })
     }
 
+    _edit_subscriber = (e,sub_id) => {
+        e.preventDefault()
+
+        let subs = this.state.results
+        const selected_sub_index = subs.findIndex(sub => sub.id===sub_id)
+        subs[selected_sub_index].onedit = true
+        this.setState({
+            results: subs
+        })
+
+        console.log(subs)
+    }
+
+    _edit_sub_change = (e, inputname, sub_id) => {
+        e.preventDefault()
+
+        let subs = this.state.results
+        const selected_sub_index = subs.findIndex(sub => sub.id===sub_id)
+        subs[selected_sub_index][inputname] = e.target.value
+        this.setState({
+            results: subs
+        })
+    }
+
     render() {
+        console.log(this.state)
         // when user switch groups this will fire
         if (this.state.group_id !== this.props.selected_group_id) {
             this.get_subs()
         }
+ 
+        let show_subscriber_html =  (sub,i) =>       
+        <div className={'d-flex  tab align-items-center '} key={i + 1}>
+            <div className='sub_sno px-2 font-weight-bold'>{i + 1}</div>
+            <div className='sub_phone px-2'>
+                <i className={`fa fa-circle ${sub.status === 'available' ? 'text-success' : 'text-danger'}`}></i>
+            </div>
+            <div className='sub_email px-2'>{sub.email}</div>
+            <div className='sub_name px-2'>{sub.name}</div>
+            <div className='sub_phone px-2 flex-grow-1'>{sub.mobile}</div>
+            {sub.status !== 'available' ? <button
+                onClick={e => this._unblock_subscriber(e, sub)}
+                className={`btn mx-1 nbtn green`}>
+                <i className='fa fa-check'></i>
+            </button> : null}
+            <button
+                onClick={e => this._edit_subscriber(e, sub.id)}
+                className={`btn mx-1 nbtn blue`}>
+                <i className='fa fa-pen'></i>
+            </button>
+            <button
+                onClick={e => this._delete_subscriber(e, sub)}
+                className={`btn mx-1 nbtn red`}>
+                <i className='fa fa-trash'></i>
+            </button>
+        </div>  
+
+        let edit_subscriber_html = (sub,i) =>    
+        <div className={'d-flex  tab align-items-center '} key={i + 1}>
+            <div className='sub_sno px-2 font-weight-bold'>{i + 1}</div>
+            <div className='sub_phone px-2'>
+                <i className={`fa fa-circle ${sub.status === 'available' ? 'text-success' : 'text-danger'}`}></i>
+            </div>
+            <div className='sub_email px-2'><input type="email" placeholder='Email' onChange={e=>this._edit_sub_change(e,'email', sub.id)} value={sub.email}/></div>
+            <div className='sub_name px-2'><input type="text" placeholder='Name' onChange={e=>this._edit_sub_change(e,'name', sub.id)} value={sub.name}/></div>
+            <div className='sub_phone px-2 flex-grow-1'><input type="text" placeholder='Phone no.' onChange={e=>this._edit_sub_change(e,'mobile', sub.id)} value={sub.mobile}/></div>
+            <button
+                onClick={e => this._unblock_subscriber(e, sub)}
+                className={`btn mx-1 nbtn green`}>
+                <i className='fa fa-check'></i>
+            </button>
+        </div>
+
 
         let subs = this.state.results
-        let subs_list = subs.map((sub, i) =>
-            <div className={'d-flex  tab align-items-center '} key={i + 1}>
-                <div className='sub_sno px-2 font-weight-bold'>{i + 1}</div>
-                <div className='sub_phone px-2'>
-                    <i className={`fa fa-circle ${sub.status === 'available' ? 'text-success' : 'text-danger'}`}></i>
-                </div>
-                <div className='sub_email px-2'>{sub.email}</div>
-                <div className='sub_name px-2'>{sub.name}</div>
-                <div className='sub_phone px-2 flex-grow-1'>{sub.mobile}</div>
-                {sub.status !== 'available' ? <button
-                    onClick={e => this._unblock_subscriber(e, sub)}
-                    className={`btn mx-1 nbtn green`}>
-                    <i className='fa fa-check'></i>
-                </button> : null}
-                <button
-                    onClick={e => this._edit_subscriber(e, sub)}
-                    className={`btn mx-1 nbtn blue`}>
-                    <i className='fa fa-pen'></i>
-                </button>
-                <button
-                    onClick={e => this.flag_sub_handler(e, sub)}
-                    className={`btn mx-1 nbtn red`}>
-                    <i className='fa fa-trash'></i>
-                </button>
-            </div>
-        )
-
-
+        let subs_list = subs.map((sub, i) => {
+            if(sub.onedit === true){
+                return edit_subscriber_html(sub,i)
+            }else {
+                return show_subscriber_html(sub,i)
+            }
+        })
 
         let pagination =
             <div className="d-flex justify-content-between align-items-center">
