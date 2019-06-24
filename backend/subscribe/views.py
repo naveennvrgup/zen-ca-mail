@@ -29,14 +29,6 @@ class SubscribeViewset(ModelViewSet):
     queryset = Subscriber.objects.filter(flag=False).reverse()
     serializer_class = SubscriberSerializer
 
-# deletes the given by blocking the account
-    def delete(self, req, pk=None):
-        data = JSONParser().parse(req)
-        sub = get_object_or_404(Subscriber, pk=pk)
-        sub.flag = True
-        sub.save()
-        return Response({})
-
 # creates a sub sub
     def create(self, req):
         data = JSONParser().parse(req)
