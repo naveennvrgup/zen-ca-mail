@@ -48,7 +48,7 @@ export default class group extends Component {
     _delete_subscriber = (e, sub) => {
         e.preventDefault()
 
-        this.axios.delete(`api/subscribe/${sub.id}/`)
+        this.axios.delete(`api/all_subs/${sub.id}/`)
             .then(d => {
                 console.log('flagged')
                 if (this.state.results.length === 1 && this.state.page > 1) {
