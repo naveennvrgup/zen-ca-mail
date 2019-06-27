@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'news',
     'dashboard',
     'enquiry',
+    'recruitment',
 ]
 
 # cors middleware is added so that react can make req to server during the dev process in localhost

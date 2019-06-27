@@ -17,6 +17,7 @@ from draft.views import *
 from news.views import *
 from dashboard.views import *
 from enquiry.views import *
+from recruitment.views import *
 
 router = DefaultRouter()
 router.register('subscribe', SubscribeViewset)
@@ -25,6 +26,7 @@ router.register('group', GroupViewset)
 router.register('draft', DraftViewset)
 router.register('attachment', AttachmentViewset)
 router.register('news', NewsViewset)
+router.register('recuritment', RecruitmentViewset)
 
 
 urlpatterns = [
