@@ -7,6 +7,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.parsers import MultiPartParser, JSONParser
 from rest_framework.pagination import PageNumberPagination
 from django.http import JsonResponse
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import *
 from subscribe.models import *
@@ -16,12 +17,14 @@ import json
 class DraftViewset(ModelViewSet):
     queryset = Draft.objects.all().filter(flag=False).reverse()
     serializer_class = DraftSerializer
+    filter_backends = (DjangoFilterBackend,)
     filter_fields = '__all__'
 
 
 class AttachmentViewset(ModelViewSet):
     queryset = Attachment.objects.all()
     serializer_class = AttachmentSerializer
+    filter_backends = (DjangoFilterBackend,)
     parser_classes = (MultiPartParser,)
 
 
@@ -82,9 +85,11 @@ def handle_bounce_view(req):
 
 class get_bounces(ListAPIView):
     queryset = Subscriber.objects.filter(status='bounced', flag=True)
+    filter_backends = (DjangoFilterBackend,)
     serializer_class = SubscriberSerializer
 
 
 class get_complaints(ListAPIView):
     queryset = Subscriber.objects.filter(status='complaint', flag=True)
+    filter_backends = (DjangoFilterBackend,)
     serializer_class = SubscriberSerializer

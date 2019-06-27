@@ -6,6 +6,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.parsers import MultiPartParser, JSONParser
 from rest_framework.pagination import PageNumberPagination
 from django.http import JsonResponse
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import *
 import json
@@ -14,4 +15,5 @@ import json
 class RecruitmentViewset(ModelViewSet):
     queryset = Recruitment.objects.all()
     serializer_class = RecruitmentSerializer
+    filter_backends = (DjangoFilterBackend,)
     filter_fields = '__all__'

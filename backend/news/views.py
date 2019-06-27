@@ -4,6 +4,7 @@ from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import *
 import json
@@ -13,6 +14,7 @@ class NewsViewset(ModelViewSet):
     queryset = News.objects.filter(flag=False).reverse()
     serializer_class = NewsSerializer
     filter_fields = ['show']
+    filter_backends = (DjangoFilterBackend,)
 
 
 @api_view(['get'])

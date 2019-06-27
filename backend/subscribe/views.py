@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.parsers import JSONParser
+from django_filters.rest_framework import DjangoFilterBackend
 
 from decouple import config
 from django.shortcuts import get_object_or_404, render
@@ -22,12 +23,14 @@ def save_subscriber(data):
 class AllSubscribeViewset(ModelViewSet):
     queryset = Subscriber.objects.all()
     serializer_class = SubscriberSerializer
+    filter_backends = (DjangoFilterBackend,)
  
 
 
 class SubscribeViewset(ModelViewSet):
     queryset = Subscriber.objects.filter(flag=False).reverse()
     serializer_class = SubscriberSerializer
+    filter_backends = (DjangoFilterBackend,)
 
 # creates a sub sub
     def create(self, req):
@@ -53,6 +56,7 @@ class SubscribeViewset(ModelViewSet):
 class GroupViewset(ModelViewSet):
     queryset = Group.objects.filter(flag=False)
     serializer_class = GroupSerializer
+    filter_backends = (DjangoFilterBackend,)
 
     def list(self, req):
         groups = Group.objects.all()
