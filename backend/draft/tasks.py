@@ -102,6 +102,11 @@ def start_bulk_mail(draft, groups):
     print('sending to', len(subs))
     print(subs)
 
+    # update the to info in the draft
+    draft.group = ', '.join(group_names)
+    draft.sentTo = len(subs)
+    draft.save()
+
     # create the template
     tname = create_template(draft)
 
@@ -109,8 +114,7 @@ def start_bulk_mail(draft, groups):
     send_mails_finally(subs, tname)
 
     # set draft status to sent
-    draft.group = ', '.join(group_names)
-    draft.sentTo = len(subs)
+    
     draft.status = 2
     draft.save()
     print('killed bulk mail')

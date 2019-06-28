@@ -15,5 +15,3 @@ import json
 class RecruitmentViewset(ModelViewSet):
     queryset = Recruitment.objects.all()
     serializer_class = RecruitmentSerializer
-    filter_backends = (DjangoFilterBackend,)
-    filter_fields = '__all__'
