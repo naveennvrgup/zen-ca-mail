@@ -1,6 +1,17 @@
 .recruitment {
     background: #ddd;
+    min-height: 100vh;
     .white{
         background: white;
     }
+    input{
+    }
 }
+
+.show_invalid {
+    input {
+        &:invalid {
+            border: 2px solid red;
+        }
+    }
+} 

@@ -1,5 +1,8 @@
 from django.db import models
 from rest_framework.serializers import ModelSerializer
+from django.db.models import signals
+from django.dispatch import receiver
+from .tasks import send_job_form_mail
 
 gender_choices = [['male']*2, ['female']*2]
 
@@ -28,3 +31,9 @@ class RecruitmentSerializer(ModelSerializer):
     class Meta:
         model = Recruitment
         fields = '__all__'
+
+
+@receiver(signals.post_save, sender=Recruitment)
+def create_customer(sender, instance, created, **kwargs):
+    formdata = RecruitmentSerializer(instance).data
+    send_job_form_mail.delay(formdata)

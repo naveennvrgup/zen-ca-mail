@@ -102,7 +102,7 @@ def start_bulk_mail(draft, groups):
     print('sending to', len(subs))
     print(subs)
 
-    # update the to info in the draft
+    # update the info to the draft
     draft.group = ', '.join(group_names)
     draft.sentTo = len(subs)
     draft.save()

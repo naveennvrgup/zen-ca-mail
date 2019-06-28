@@ -15,3 +15,4 @@ import json
 class RecruitmentViewset(ModelViewSet):
     queryset = Recruitment.objects.all()
     serializer_class = RecruitmentSerializer
+    permission_classes = [AllowAny]

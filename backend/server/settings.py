@@ -19,7 +19,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-    # 'django_filters',
+    'django_filters',
     'corsheaders',
     'django_celery_beat',
     'dbbackup',
@@ -139,7 +139,7 @@ MEDIA_ROOT = './uploads'
 
 # celery setup
 CELERY_BROKER_URL = 'amqp://localhost'
-CELERY_IMPORTS = ("draft", 'dashboard', 'enquiry')
+CELERY_IMPORTS = ("draft", 'dashboard', 'enquiry', 'recruitment')
 CELERY_TIMEZONE = 'UTC'
 CELERY_ENABLE_UTC = True
 

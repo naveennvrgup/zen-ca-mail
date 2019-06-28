@@ -53,6 +53,10 @@ class sidebar extends Component {
                             <i className="fas fa-dumpster-fire"></i>
                             <span to='/admin/complaint'>Complaint</span>
                         </NavLink>
+                        <NavLink onClick={this.toggle_sidebar} to='/admin/recruitment/' className="link ">
+                            <i className="fas fa-suitcase"></i>
+                            <span to='/admin/recruitment'>Recruitment</span>
+                        </NavLink>
                         <NavLink onClick={this.toggle_sidebar} to='/admin/Signout/' className="link ">
                             <i className="fas fa-sign-out-alt"></i>
                             <span to='/admin/signout'>Signout</span>

@@ -22,7 +22,7 @@ export default class admin extends Component {
                 <Suspense fallback={<div className='sus-loader'><div className="lds-dual-ring"></div></div>}>
                     <Sidebar />
                     <Switch>
-                        
+
                         <Route path='/admin/complaint/' component={Complaint} />
                         <Route path='/admin/bounces/' component={Bounces} />
 
