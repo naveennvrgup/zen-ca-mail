@@ -124,17 +124,21 @@ def start_bulk_mail(draft, groups):
 @shared_task
 def handle_bounce_async(msg):
     msg = json.loads(msg)
-    emails = msg['bounce']['bouncedRecipients']
-    emails = [x['emailAddress'] for x in emails]
 
-    for email in emails:
-        subs = Subscriber.objects.filter(email=email)
-        for sub in subs:
-            sub.status = 'bounced'
-            sub.flag = True
-            sub.save()
+    try:    
+        emails = msg['bounce']['bouncedRecipients']
+        emails = [x['emailAddress'] for x in emails]
 
-    print('bounce', emails)
+        for email in emails:
+            subs = Subscriber.objects.filter(email=email)
+            for sub in subs:
+                sub.status = 'bounced'
+                sub.flag = True
+                sub.save()
+
+        print('bounce', emails)
+    except:
+        print(msg)
 
 
 # handles complaint mail
@@ -142,14 +146,18 @@ def handle_bounce_async(msg):
 @shared_task
 def handle_complaint_async(msg):
     msg = json.loads(msg)
-    emails = msg['complaint']['complainedRecipients']
-    emails = [x['emailAddress'] for x in emails]
 
-    for email in emails:
-        subs = Subscriber.objects.filter(email=email)
-        for sub in subs:
-            sub.status = 'complaint'
-            sub.flag = True
-            sub.save()
+    try:
+        emails = msg['complaint']['complainedRecipients']
+        emails = [x['emailAddress'] for x in emails]
 
-    print('complaint', emails)
+        for email in emails:
+            subs = Subscriber.objects.filter(email=email)
+            for sub in subs:
+                sub.status = 'complaint'
+                sub.flag = True
+                sub.save()
+
+        print('complaint', emails)
+    except:
+        print(msg)
