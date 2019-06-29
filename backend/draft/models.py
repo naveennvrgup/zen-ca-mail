@@ -7,7 +7,7 @@ class Draft(Model):
     subject = CharField(default='', max_length=300)
     body = TextField(default='')
     status = IntegerField(default=0)
-    sentTo = CharField(max_length=100, default='')
+    sentTo = TextField(default='')
     created_on = DateTimeField(auto_now_add=True)
     edited_on = DateTimeField(auto_now=True)
     flag = BooleanField(default=False)
