@@ -40,10 +40,7 @@ export default class send_mail extends Component {
   _forward_mail_handler = e => {
     e.preventDefault();
     this.axios
-      .post("api/draft/", {
-        subject: this.state.draft.subject,
-        body: this.state.draft.body
-      })
+      .post(`api/forward_mail/${this.draftId}/`, {})
       .then(d => {
         console.log(d.data);
         this.props.history.push(`/admin/email/edit_email/${d.data.id}/`);
