@@ -11,7 +11,7 @@ class Draft(Model):
     created_on = DateTimeField(auto_now_add=True)
     edited_on = DateTimeField(auto_now=True)
     flag = BooleanField(default=False)
-    group = CharField(max_length=200, null=True)
+    group = TextField(default='')
 
     def __str__(self):
         return self.subject
