@@ -93,3 +93,27 @@ class get_complaints(ListAPIView):
     queryset = Subscriber.objects.filter(status='complaint', flag=True)
     filter_backends = (DjangoFilterBackend,)
     serializer_class = SubscriberSerializer
+
+
+@api_view(['post'])
+def forward_draft_view(req, id):
+    old_draft_id = id
+    old_draft = Draft.objects.get(pk=old_draft_id)
+
+    new_draft = Draft()
+    new_draft.subject = old_draft.subject
+    new_draft.body = old_draft.body
+    new_draft.save()
+
+    old_files = old_draft.files.all()
+    new_files = []
+
+    for old_file_obj in old_files:
+        file_obj = Attachment()
+        file_obj.file = old_file_obj.file
+        file_obj.draft = new_draft
+        file_obj.save()
+
+    return JsonResponse({
+        'id': new_draft.id
+    })

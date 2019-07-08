@@ -43,6 +43,7 @@ urlpatterns = [
     # draft
     path('api/get_draft_categories_count/', get_draft_categories_count_view),
     path('api/send_bulk_mail/', send_bulk_mail_view),
+    path('api/forward_mail/<int:id>/', forward_draft_view),
     # aws metrics
     path('api/handle_bounce/', handle_bounce_view),
     path('api/handle_complaint/', handle_complaint_view),
