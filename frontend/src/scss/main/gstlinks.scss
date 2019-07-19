@@ -1,0 +1,29 @@
+.gst_links{
+    background: #f5f5f5;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .gstlink a{
+        display: inline-block;
+        min-width: 200px;
+        padding: 10px;
+        margin: 0px 30px;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0px 3px 5px -3px black;
+    }
+    .one{
+        background: #41CEA4;
+    }
+    .two{
+        background: #2BBCC7;
+    }
+    .three{
+        background: #638AC8;
+    }
+    .four{
+        background: #3B63A0;
+    }
+}
