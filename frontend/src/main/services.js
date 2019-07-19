@@ -16,43 +16,43 @@ export default class Services extends Component {
 
           <div className="services_list">
             <div className="service wow zoomIn" data-wow-delay='0.1s'>
-              <i className="fas fa-piggy-bank fa-2x"></i>
+              <img src={require('../assets/pratices/service tax.jpg')} alt=""/>
               <div className="name">Service Tax, Excise, Customs</div>
             </div>
             <div className="service wow zoomIn" data-wow-delay='0.4s'>
-              <i className="fas fa-hand-holding-usd fa-2x"></i>
+              <img src={require('../assets/pratices/gst.jpg')} alt=""/>
               <div className="name">Goods and Service tax</div>
             </div>
             <div className="service wow zoomIn" data-wow-delay='0.2s'>
-              <i className="fas fa-hand-holding-heart fa-2x"></i>
+              <img src={require('../assets/pratices/epf.jpg')} alt=""/>
               <div className="name">Provident Fund</div>
             </div>
             <div className="service wow zoomIn" data-wow-delay='0.3s'>
-              <i className="fas fa-user-tie fa-2x"></i>
+              <img src={require('../assets/pratices/esic.jpg')} alt=""/>
               <div className="name">ESIC</div>
             </div>
             <div className="service wow zoomIn" data-wow-delay='0.6s'>
-              <i className="fas fa-building fa-2x"></i>
+              <img src={require('../assets/pratices/rera.jpg')} alt=""/>
               <div className="name">RERA</div>
             </div>
             <div className="service wow zoomIn" data-wow-delay='0.5s'>
-              <i className="fas fa-exchange-alt fa-2x"></i>
+              <img src={require('../assets/pratices/fema.jpg')} alt=""/>
               <div className="name">FEMA</div>
             </div>
             <div className="service wow zoomIn" data-wow-delay='0.9s'>
-              <i className="fas fa-dollar-sign fa-2x"></i>
+              <img src={require('../assets/pratices/moneylau.jpg')} alt=""/>
               <div className="name">Money Laundering</div>
             </div>
             <div className="service wow zoomIn" data-wow-delay='0.8s'>
-              <i className="fas fa-shield-alt fa-2x"></i>
+              <img src={require('../assets/pratices/sebi.jpg')} alt=""/>
               <div className="name">SEBI related litigations</div>
             </div>
             <div className="service wow zoomIn" data-wow-delay='0.2s'>
-              <i className="fas fa-box-open fa-2x"></i>
+              <img src={require('../assets/pratices/exports.jpg')} alt=""/>
               <div className="name">Export incentives</div>
             </div>
             <div className="service wow zoomIn" data-wow-delay='0.3s'>
-              <i className="fas fa-bolt fa-2x"></i>
+              <img src={require('../assets/pratices/electricity.jpg')} alt=""/>
               <div className="name">Electricity Law</div>
             </div>
           </div>
@@ -67,11 +67,11 @@ export default class Services extends Component {
 
           <div className="services_list">
             <div className="service wow zoomIn" data-wow-delay='0.2s'>
-              <i className="fas fa-chalkboard-teacher fa-2x"></i>
+              <img src={require('../assets/pratices/Preventive.jpg')} alt=""/>
               <div className="name">Preventive Consultancy</div>
             </div>
             <div className="service wow zoomIn" data-wow-delay='0.5s'>
-              <i className="fas fa-chart-line fa-2x"></i>
+              <img src={require('../assets/pratices/curative.jpg')} alt=""/>
               <div className="name">Curative Consultancy</div>
             </div>
           </div>

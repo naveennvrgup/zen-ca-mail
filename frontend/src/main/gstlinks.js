@@ -3,7 +3,15 @@ import React from "react";
 export default function gstlinks() {
     return (
         <div className="gst_links pt-4 pb-4">
-            <h3 className="hf">GST Resources:</h3>
+            <div className="gstlink">
+                <a  disabled
+                    target="_blank"
+                    className="two"
+                    rel="noopener noreferrer"
+                >
+                GST Resources
+                </a>
+            </div>
             <div className="gstlink">
                 <a
                     target="_blank"
