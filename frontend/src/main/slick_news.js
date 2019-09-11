@@ -65,7 +65,7 @@ class SlickNews extends Component {
                         <span>{ele.title}</span>
                     </h4>
                     <p className="mt-3 w-100">
-                        {ele.brief.slice(0, 100)}...
+                        {ele.brief.slice(0, 120)}...
                             <button onClick={()=>this.props.history.push(`/news_detail/${ele.id}/`)} className="badge badge-pill btn badge-primary">read more</button>
                     </p>
                 </div>

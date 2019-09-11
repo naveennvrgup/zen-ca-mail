@@ -1,21 +1,9 @@
 import React, { Component } from 'react'
-import { Link, scroller } from "react-scroll";
+import { Link } from 'react-router-dom'
 
 export default class navbar extends Component {
     state = {
         smn_active: false
-    }
-
-    bnlink_sm = (to, name) => {
-
-        return <a onClick={e => {
-            e.preventDefault()
-            scroller.scrollTo(to, {
-                duration: 500,
-                smooth: true,
-                offset: -60
-            })
-        }} href='#this'>{name}</a>
     }
 
     toggle_sm_nav = (e) => {
@@ -27,15 +15,6 @@ export default class navbar extends Component {
         })// end of setstate
     }
 
-    bnlink = (section, link_name) => <Link
-        activeClass='active_link'
-        to={section}
-        spy={true}
-        smooth={true}
-        offset={-75}
-        duration={500}
-    >{link_name}</Link>
-
     bignav = () =>
         <div className='bignav'>
             <div className="brand hf wow fadeIn" data-wow-duration='2s'>
@@ -43,7 +22,7 @@ export default class navbar extends Component {
             </div>
             <ul>
                 <li className="nlink wow fadeInRight" data-wow-delay='0s'>
-                    {this.bnlink('cover', 'Home')}
+                    <Link to={'/'}>Homepage</Link>
                 </li>
             </ul>
 
@@ -95,25 +74,10 @@ export default class navbar extends Component {
                     smn_active: false
                 })} className="left">
                     <div className="smlink">
-                        {this.bnlink_sm('cover', 'Home')}
-                    </div>
-                    <div className="smlink">
-                        {this.bnlink_sm('aboutus', 'About')}
-                    </div>
-                    <div className="smlink">
-                        {this.bnlink_sm('values', 'Values')}
-                    </div>
-                    <div className="smlink">
-                        {this.bnlink_sm('services', 'Practices')}
-                    </div>
-                    <div className="smlink">
-                        {this.bnlink_sm('clients', 'Clients')}
-                    </div>
-                    <div className="smlink">
-                        {this.bnlink_sm('contactus', 'Contact')}
+                        <Link to={'/'}>Homepage</Link>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
