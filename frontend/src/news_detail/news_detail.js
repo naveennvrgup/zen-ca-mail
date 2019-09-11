@@ -40,7 +40,7 @@ export default class news_detail extends Component {
             news_detail = <Fragment>
                 <h2 className="text-center font-weight-bold">{this.state.selected_news.title}</h2>
                 <div className="text-center mt-4">
-                    <img src={burl + this.state.selected_news.img} alt="news_detail_img" />
+                    <img src={this.state.selected_news.img} alt="news_detail_img" />
                 </div>
                 <p className='mt-4 text-justify'>
                     {this.state.selected_news.brief}
