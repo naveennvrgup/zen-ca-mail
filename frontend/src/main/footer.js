@@ -19,8 +19,6 @@ export default class footer extends Component {
                         <div className="row">
                             <div className="col-md-3" id='fservices'>
                                 <h4>Our Expertise</h4>
-                                <div>Preventive Consultancy</div>
-                                <div>Curative Consultancy</div>
                                 <div>Service Tax, Excise, Customs </div>
                                 <div>Goods and Service tax </div>
                                 <div>Provident Fund </div>

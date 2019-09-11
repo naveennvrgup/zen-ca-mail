@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import {withRouter} from 'react-router-dom'
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import fuser, { burl } from '../axios'
 
 
-export default class CenterMode extends Component {
+class SlickNews extends Component {
     axios = fuser()
     state = {
         newss: []
@@ -17,15 +18,16 @@ export default class CenterMode extends Component {
     componentDidMount() {
         this.axios.get('/api/get_news/').then(d => {
             d = d.data
-            if(d.length===1){
+            d = d.sort((a, b) => b.id - a.id).slice(0, 15)
+            if (d.length === 1) {
                 d.push({
                     img: null,
                     title: 'Subscribe to our NewsLetter!',
                     brief: 'Stay tuned for important updates on Tax and Accounting via Email.'
                 })
             }
-            d = d.map(ele => this.html_news(ele))
             console.log(d)
+            d = d.map(ele => this.html_news(ele))
             this.setState({
                 ...this.state,
                 newss: d
@@ -63,7 +65,8 @@ export default class CenterMode extends Component {
                         <span>{ele.title}</span>
                     </h4>
                     <p className="mt-3 w-100">
-                        {ele.brief}
+                        {ele.brief.slice(0, 100)}...
+                            <button onClick={()=>this.props.history.push(`/news_detail/${ele.id}/`)} className="badge badge-pill btn badge-primary">read more</button>
                     </p>
                 </div>
             </div>
@@ -116,3 +119,5 @@ export default class CenterMode extends Component {
         );
     }
 }
+
+export default withRouter(SlickNews)

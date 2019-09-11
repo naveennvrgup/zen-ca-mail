@@ -26,7 +26,9 @@ export default class SimpleSlider extends Component {
         this.axios.get('/api/get_news/').then(d => {
             d = d.data
             d = d.map(ele => this.html_news(ele))
+            d.sort((a,b) => b.id-a.id).slice(0,15)
             console.log(d)
+            
             this.setState({
                 ...this.state,
                 news: d

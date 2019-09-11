@@ -7,6 +7,7 @@ import Admin from './admin/admin'
 import Login from './admin/auth/login'
 import Main from './main/main'
 import Recruitment from './main/recruitment'
+import NewsDetail from './news_detail/news_detail'
 import './assets/spinner.css'
 
 // app.scss is the single entry point for all the scss files
@@ -22,6 +23,7 @@ class App extends Component {
       <div id='app'>
         <Switch>
           <ProtectedRoute path='/admin' component={Admin} />
+          <Route path='/news_detail/:news_id/' component={NewsDetail} />
           <Route path='/user_login/' component={Login} />
           <Route path='/recruitment/' component={Recruitment} />
           <Route path='/' component={Main} />
