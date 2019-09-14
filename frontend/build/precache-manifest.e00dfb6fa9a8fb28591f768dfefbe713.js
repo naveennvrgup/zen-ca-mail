@@ -64,16 +64,16 @@ self.__precacheManifest = [
     "url": "/static/js/14.e00177e5.chunk.js"
   },
   {
-    "revision": "549304631a5f1ab69498e294543086e3",
-    "url": "/static/media/summernote.54930463.ttf"
+    "revision": "03f45d882ff3a80b719cfc0789c5eab9",
+    "url": "/static/media/summernote.03f45d88.woff"
   },
   {
     "revision": "cf63ab096ea2a3cf752b",
     "url": "/static/js/15.cf63ab09.chunk.js"
   },
   {
-    "revision": "03f45d882ff3a80b719cfc0789c5eab9",
-    "url": "/static/media/summernote.03f45d88.woff"
+    "revision": "7e263200d01fb5998c401b03ef3e6433",
+    "url": "/static/media/summernote.7e263200.eot"
   },
   {
     "revision": "869933ac8b97dbaf81de",
@@ -160,12 +160,12 @@ self.__precacheManifest = [
     "url": "/static/media/slick.ced611da.eot"
   },
   {
-    "revision": "d41f55a78e6f49a5512878df1737e58a",
-    "url": "/static/media/slick.d41f55a7.ttf"
-  },
-  {
     "revision": "b7c9e1e479de3b53f1e4e30ebac2403a",
     "url": "/static/media/slick.b7c9e1e4.woff"
+  },
+  {
+    "revision": "d41f55a78e6f49a5512878df1737e58a",
+    "url": "/static/media/slick.d41f55a7.ttf"
   },
   {
     "revision": "f97e3bbf73254b0112091d0192f17aec",
@@ -180,8 +180,8 @@ self.__precacheManifest = [
     "url": "/static/media/hiring.72e92f52.gif"
   },
   {
-    "revision": "7e263200d01fb5998c401b03ef3e6433",
-    "url": "/static/media/summernote.7e263200.eot"
+    "revision": "549304631a5f1ab69498e294543086e3",
+    "url": "/static/media/summernote.54930463.ttf"
   },
   {
     "revision": "869933ac8b97dbaf81de",
