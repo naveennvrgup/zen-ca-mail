@@ -99,6 +99,7 @@ def start_bulk_mail(draft, groups):
         subs.extend(filter_subs)
 
     subs = [x.email for x in subs]
+    subs = list(set(subs))
     print('sending to', len(subs))
     print(subs)
 
