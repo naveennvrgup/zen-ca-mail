@@ -41,6 +41,16 @@
     }
 }
 
+.sub-wrapper .backdrop{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 249;
+    background: rgba($color: #000000, $alpha: 0.5);
+}
+
 .sub-btn-div{
     bottom: 0;
     right: 0;

@@ -75,7 +75,8 @@ export default class subscribe extends Component {
 
     render() {
         return (
-            <div className='sub-wrapper'>
+            <div className='sub-wrapper' >
+                <div className={this.state.popup ? 'backdrop' : 'd-none'}></div>
                 <div ref={ele => this.subscribe = ele} className={this.state.popup ? 'subscribe py-3 py-md-5' : 'd-none'} id='subscribe'>
                     <div className="left text-center">
                         <h2 className='hf fadeInUp' data-wow-delay='0.2s'>Subscribe</h2>

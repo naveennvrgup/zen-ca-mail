@@ -59,10 +59,10 @@ export default class contactus extends Component {
           <div className="row">
             <div className="col-md-6 text-center left">
               <h2 className="hf wow fadeInUp" data-wow-delay='0.1s'>
-                Get in touch with us
+                Still having issues with GST?
               </h2>
               <p className='text-muted mt-2 wow fadeInUp' data-wow-delay='0.3s'>
-                Let us know what you are thinking
+                We will clear all your queries
               </p>
               <form className='mt-4 wow fadeIn' data-wow-delay='0.5s'>
                 {this.state.error ? <this.Error /> : ''}
