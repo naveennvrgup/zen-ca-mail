@@ -1,5 +1,5 @@
 from django.db.models import *
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from django.dispatch import receiver
 
 subscriber_status_choices = (
@@ -35,6 +35,11 @@ class Subscriber(Model):
 
 
 class SubscriberSerializer(ModelSerializer):
+    group = SerializerMethodField()
+    
+    def get_group(self,instance):
+        return instance.group.name
+
     class Meta:
         model = Subscriber
         fields = '__all__'

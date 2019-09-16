@@ -1,9 +1,12 @@
-
 import React, { Component } from 'react'
 import Toolbar from './toolbar'
-import faxios from '../../axios'; 
+import faxios from '../../axios';
 
-export default class group extends Component {
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from './actions'
+
+class group extends Component {
     axios = faxios()
     constructor(props) {
         super(props)
@@ -14,6 +17,10 @@ export default class group extends Component {
             page: 1,
             upload_subs: 0,
         }
+    }
+
+    static propTypes = {
+        subscribers: PropTypes.array.isRequired,
     }
 
     componentDidMount = () => {
@@ -208,3 +215,8 @@ export default class group extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => state.subscribers
+
+export default connect(mapStateToProps, actions)(group)

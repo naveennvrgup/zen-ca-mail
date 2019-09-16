@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.parsers import JSONParser
+from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 
 from decouple import config
@@ -23,7 +24,8 @@ def save_subscriber(data):
 class AllSubscribeViewset(ModelViewSet):
     queryset = Subscriber.objects.all()
     serializer_class = SubscriberSerializer
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter)
+    search_fields = ('email',)
  
 
 
