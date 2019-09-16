@@ -96,7 +96,7 @@ class Toolbar extends Component {
             <button
                 onClick={this._search}
                 className="btn btn-primary btn-sm">
-                <i className="fa fa-search"></i>
+                Search <i className="fa fa-search"></i>
             </button>
 
 
@@ -104,7 +104,7 @@ class Toolbar extends Component {
             <button
                 onClick={this._clear_search}
                 className="btn btn-danger btn-sm">
-                <i className="fa fa-times"></i>
+                Clear Search <i className="fa fa-times"></i>
             </button>
 
         let new_sub_input =

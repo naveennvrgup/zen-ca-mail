@@ -48,7 +48,7 @@ class Group extends Component {
         faxios().delete(`api/all_subs/${sub.id}/`)
             .then(d => {
                 console.log('flagged')
-                if (this.props.subscribers.length === 1 && this.props.page > 1) {
+                if (this.props.subscribers.length === 1 && this.props.page_no > 1) {
                     this.props.get_subs(null,this.props.page_no-1)
                 }else{
                     this.props.get_subs(null,this.props.page_no)
