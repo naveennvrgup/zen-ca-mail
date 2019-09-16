@@ -48,11 +48,7 @@ class AllSubscribeViewset(ModelViewSet):
     def list(self, req):
         subscribers = self.get_queryset()
 
-        try:
-            subscribers = subscribers.filter(group__id=int(self.request.query_params['group_id']))
-        except:
-            subscribers = subscribers.filter(group__name='Subscribers')
-
+        
         # get the groups of the subscribers
         groups = Group.objects.all()
         groups = sorted(groups, key=lambda x: x.id,reverse=True)
@@ -65,6 +61,12 @@ class AllSubscribeViewset(ModelViewSet):
 
         subscribers = self.filter_queryset(subscribers)
         for x in subscribers: groups[x.group.name]['result'] +=1
+
+
+        try:
+            subscribers = subscribers.filter(group__id=int(self.request.query_params['group_id']))
+        except:
+            subscribers = subscribers.filter(group__name='Subscribers')
 
 
         #paginate the subscribers

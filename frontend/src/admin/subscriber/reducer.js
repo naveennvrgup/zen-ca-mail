@@ -5,7 +5,8 @@ const initialState = {
     groups: {},
     selected_group_id: null,
     selected_group_name: 'Subscribers',
-    search_keyword: '',
+    state: 'normal',
+    search_keyword: null,
     loading: false,
 
     show_duplicates: false,

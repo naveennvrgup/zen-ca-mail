@@ -71,8 +71,42 @@ class Toolbar extends Component {
         anchor.click()
     }
 
+    _search = (e) => {
+        e.preventDefault()
+        this.props.update_state({
+            loading: true,
+            state: 'search',
+            search_keyword: this.search_box.value,
+        })
+        this.props.get_subs(null,null,this.search_box.value)
+    }
+
+    _clear_search = (e) => {
+        e.preventDefault()
+        this.props.update_state({
+            loading: true,
+            state: 'normal',
+            search_keyword: null,
+        })
+        this.props.get_subs()
+    }
 
     render() {
+        let search_btn =
+            <button
+                onClick={this._search}
+                className="btn btn-primary btn-sm">
+                <i className="fa fa-search"></i>
+            </button>
+
+
+        let clear_search_btn =
+            <button
+                onClick={this._clear_search}
+                className="btn btn-danger btn-sm">
+                <i className="fa fa-times"></i>
+            </button>
+
         let new_sub_input =
             <form autoComplete='false' className={'d-flex new_sub align-items-center px-1 py-2'} key={1}>
                 {/* <div className='sno px-2 font-weight-bold'>{1}</div> */}
@@ -143,7 +177,23 @@ class Toolbar extends Component {
                         </button>
                     </div>
                 </div>
-            </div>
+                {/* search for subs */}
+                <form>
+                    <div className="font-weight-bold mt-2">Search for subscribers:</div>
+                    <div className={'d-flex new_sub align-items-center px-1 py-2'}>
+                        <div>
+                            <input
+                                ref={ele => this.search_box = ele}
+                                type="mobile"
+                                className="new_sub_mobile tab_input tab_input_sm lg_input mt-2"
+                                placeholder="Search by email, name, phone no" />
+                        </div>
+                        <div className='create-sub create'>
+                            {this.props.state === 'search' ? clear_search_btn : search_btn}
+                        </div>
+                    </div>
+                </form>
+            </div >
         )
     }
 }

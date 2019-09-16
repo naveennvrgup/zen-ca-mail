@@ -58,7 +58,9 @@ class Groups extends Component {
                             this.props.get_subs(group.id, 1)
                         }}
                     >{group.name}</div>
-                    <div className="ml-2 badge badge-pill badge-secondary ">{group.total_subs}</div>
+                    <div className="ml-2 badge badge-pill badge-secondary ">
+                        {this.props.state==='normal'? group.total_subs: group.result}
+                    </div>
                 </div>
             )
 

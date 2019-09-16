@@ -16,10 +16,10 @@ export const update_state = payload => dispatch => {
     })
 }
 
-export const get_subs = (c_sgid, cpage_no) => dispatch => {
+export const get_subs = (c_sgid, cpage_no, csk) => dispatch => {
     let { page_no, selected_group_id, selected_group_name, search_keyword } = store.getState().subscribers
 
-    if(c_sgid){
+    if (c_sgid) {
         selected_group_id = c_sgid
     }
 
@@ -27,8 +27,12 @@ export const get_subs = (c_sgid, cpage_no) => dispatch => {
         page_no = cpage_no
     }
 
+    if (csk){
+        search_keyword = csk
+    }
 
-    faxios().get(`api/all_subs/?search=${search_keyword}&group_id=${selected_group_id}&page=${page_no}`)
+
+    faxios().get(`api/all_subs/?${search_keyword ? 'search=' + search_keyword : ''}&group_id=${selected_group_id}&page=${page_no}`)
         .then(d => {
             console.log(d.data)
             let groups = d.data.groups
@@ -37,11 +41,11 @@ export const get_subs = (c_sgid, cpage_no) => dispatch => {
 
             if (c_sgid) {
                 selected_group_name = groups.find(ele => ele.id === c_sgid).name
-            }if(!selected_group_id){
+            } if (!selected_group_id) {
                 selected_group_id = groups.find(ele => ele.name === 'Subscribers').id
             }
 
-            console.log({selected_group_name,selected_group_id})
+            console.log({ selected_group_name, selected_group_id })
 
             return dispatch({
                 type: atypes.UPDATE_STATE,
