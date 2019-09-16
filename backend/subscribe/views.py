@@ -7,6 +7,7 @@ from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.generics import ListAPIView
 from rest_framework.parsers import JSONParser
 from rest_framework.pagination import PageNumberPagination
 from rest_framework import filters
@@ -40,13 +41,16 @@ class AllSubscribeViewset(ModelViewSet):
     serializer_class = SubscriberSerializer
     pagination_class = AllSubscribePagination
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
-    filterset_fields = ('group__id',)
-    search_fields = ('email',)
+    search_fields = ('email', 'name', 'mobile')
 
 
     def list(self, req):
-        subscribers = self.filter_queryset(self.get_queryset())
-
+        subscribers = self.get_queryset()
+        
+        try:
+            subscribers = subscribers.filter(group__id=int(self.request.query_params['group_id']))
+        except:
+            subscribers = subscribers.filter(group__name='Subscribers')
 
         # get the groups of the subscribers
         groups = Group.objects.all()
@@ -55,8 +59,10 @@ class AllSubscribeViewset(ModelViewSet):
             'result': 0,
         } for x in groups}
 
+
+        subscribers = self.filter_queryset(subscribers)
         for x in subscribers: groups[x.group.name]['result'] +=1
-        
+
 
         #paginate the subscribers
         subscribers =  SubscriberSerializer(subscribers, many=True).data

@@ -11,7 +11,8 @@ import * as actions from './actions'
 
 class Groups extends Component {
     static propTypes = {
-        groups: PropTypes.array.isRequired,
+        groups: PropTypes.object.isRequired,
+        get_subs: PropTypes.func.isRequired,
     }
 
     state = {
@@ -19,23 +20,29 @@ class Groups extends Component {
     }
 
     componentDidMount = () => {
-        // this.get_groups()
+        this.props.get_subs()
+        console.log(this.props)
     }
 
 
     render() {
-        let groups = this.props.groups.map((group, i) =>
-            <div className={`d-flex tab align-items-center 
-                ${group.id === this.state.selected_group_id ?
-                    'active-tab' : ''}
+        let groups = Object.keys(this.props.groups)
+            .map(x => ({
+                name:x,
+                ...this.props.groups[x]
+            }))
+            .map((group, i) =>
+                <div className={`d-flex tab align-items-center 
+                ${group.id === this.props.selected_group_id ?
+                        'active-tab' : ''}
             `
-            } key={i + 2}>
-                <div className='group-name px-2 flex-grow-1'
-                    onClick={(e) => this.show_group(e, group)}
-                >{group.name}</div>
-                <div className="ml-2 badge badge-pill badge-secondary ">{group.subs}</div>
-            </div>
-        )
+                } key={i + 2}>
+                    <div className='group-name px-2 flex-grow-1'
+                        onClick={(e) => this.show_group(e, group)}
+                    >{group.name}</div>
+                    <div className="ml-2 badge badge-pill badge-secondary ">{group.total_subs}</div>
+                </div>
+            )
 
         let new_group =
             <form className={'d-flex tab align-items-center new-group'} key={1}>
@@ -62,15 +69,7 @@ class Groups extends Component {
             <div className='subscribers '>
                 <div className="subs row">
                     <div className="col-md-9 order-md-1 order-2">
-                        {
-                            this.state.selected_group_id ?
-                                <Group
-                                    set_groups_state={this.set_groups_state}
-                                    update_groups={this.get_groups}
-                                    selected_group_name={this.state.selected_group_name}
-                                    selected_group_id={this.state.selected_group_id} /> :
-                                ''
-                        }
+                        <Group/>
                     </div>
                     <div className="col-md-3 order-md-2 order-1 groups-container">
                         <div className='groups-list'>

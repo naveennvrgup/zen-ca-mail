@@ -68,8 +68,7 @@ class Group extends Component {
             </div>
 
 
-        let subs = this.state.results
-        let subs_list = subs.map((sub, i) => {
+        let subs_list = this.props.subscribers.map((sub, i) => {
             if (sub.onedit === true) {
                 return edit_subscriber_html(sub, i)
             } else {
@@ -102,12 +101,10 @@ class Group extends Component {
         return (
             <div>
                 <div className=''>
-                    <Toolbar
-                        {...this.props}
-                        get_subs={this.get_subs} />
+                    <Toolbar />
                     {pagination}
                     {subs_list}
-                    {this.state.results.length > 10 ? pagination : null}
+                    {/* {this.state.results.length > 10 ? pagination : null} */}
                 </div>
             </div>
         )

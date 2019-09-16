@@ -2,16 +2,16 @@ import faxios, { burl } from '../../axios';
 import * as atypes from './action_types'
 import { store } from '../../index'
 
-export const get_subs = () => {
-    this.axios.get(`api/group/${this.props.selected_group_id}/`)
+export const get_subs = () => dispatch => {
+    const {page_no, selected_group_id, search_keyword} = store.getState().subscribers
+
+    faxios().get(`api/all_subs/?search=${search_keyword}&group_id=${selected_group_id}&page=${page_no}`)
         .then(d => {
             console.log(d.data)
-            // this.setState({
-            //     ...this.state,
-            //     ...d.data,
-            //     page: 1,
-            //     group_id: this.props.selected_group_id,
-            // })
+            return dispatch({
+                type: atypes.UPDATE_STATE,
+                payload: d.data,
+            })
         })
 }
 
