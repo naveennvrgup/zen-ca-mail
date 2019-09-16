@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.parsers import JSONParser
+from rest_framework.pagination import PageNumberPagination
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -16,17 +17,57 @@ from django.shortcuts import get_object_or_404, render
 import json
 from .models import *
 from django.utils import timezone
+from collections import defaultdict
 
 
-def save_subscriber(data):
-    print(data)
+class AllSubscribePagination(PageNumberPagination):
+    page_size = 15
+
+
+    def get_paginated_response(self, data):
+        return {
+            'next': self.get_next_link(),
+            'previous': self.get_previous_link(),
+            'count': self.page.paginator.count,
+            'page_no': self.page.number,
+            'page_size': self.page_size,
+            'subscribers': data,
+        }
+
 
 class AllSubscribeViewset(ModelViewSet):
-    queryset = Subscriber.objects.all()
+    queryset = Subscriber.objects.all().reverse()
     serializer_class = SubscriberSerializer
+    pagination_class = AllSubscribePagination
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
+    filterset_fields = ('group__id',)
     search_fields = ('email',)
- 
+
+
+    def list(self, req):
+        subscribers = self.filter_queryset(self.get_queryset())
+
+
+        # get the groups of the subscribers
+        groups = Group.objects.all()
+        groups = {x.name:{
+            'total_subs': x.subs.count(),
+            'result': 0,
+        } for x in groups}
+
+        for x in subscribers: groups[x.group.name]['result'] +=1
+        
+
+        #paginate the subscribers
+        subscribers =  SubscriberSerializer(subscribers, many=True).data
+        subscribers = self.paginate_queryset(subscribers)
+        subscribers = self.get_paginated_response(subscribers)
+
+        #return the paginated stuff
+        return Response({
+            **subscribers,
+            'groups': groups
+        })
 
 
 class SubscribeViewset(ModelViewSet):

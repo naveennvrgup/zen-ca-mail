@@ -4,7 +4,9 @@ import faxios, { burl } from '../../axios';
 
 export default class toolbar extends Component {
     axios = faxios()
-    state = {}
+    state = {
+        upload_subs: 0,
+    }
 
     componentDidMount = () => {
 
@@ -15,52 +17,6 @@ export default class toolbar extends Component {
 
         console.log(this.props)
     }
-
-    add_sub_to_group_handler = (e) => {
-        e.preventDefault()
-        this.axios.post('api/add_sub_to_group/', {
-            groupId: this.props.selected_group_id,
-            name: this.new_sub_name.value,
-            email: this.new_sub_email.value,
-            mobile: this.new_sub_mobile.value
-        }).then(d => {
-            this.new_sub_name.value = ''
-            this.new_sub_email.value =  ''
-            this.new_sub_mobile.value =  ''
-            // update sub list
-            this.props.get_subs()
-            // update the groups badges
-            this.props.update_groups()
-        })
-    }
-
-    delete_group_handler = (e) => {
-        e.preventDefault()
-        if (this.props.selected_group_name === 'Subscribers') {
-            return
-        }
-
-        let group_2_delete = this.props.selected_group_id
-
-        this.props.set_groups_state({
-            selected_group_id: null,
-            selected_group_name: 'Subscribers'
-        })
-
-        this.axios.delete(`api/group/${group_2_delete}/`)
-            .then(d => {
-                console.log(d.data)
-                this.props.update_groups()
-                // this.props.get_subs()
-            })
-    }
-
-    download_group_csv_handler = () => {
-        let anchor = document.createElement('a')
-        anchor.href = burl + `api/download_group_as_csv/${this.props.selected_group_id}/`
-        anchor.click()
-    }
-
 
     render() {
         let new_sub_input =
