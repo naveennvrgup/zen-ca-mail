@@ -1,10 +1,19 @@
 import React, { Component } from 'react'
 import { burl } from '../../axios'; 
 
-export default class FileUpload extends Component {
+// redux
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from './actions'
+
+
+class FileUpload extends Component {
     state = {
         progress: 0,
         onprogress: false,
+    }
+
+    static propTypes = {
     }
 
     selectFilesHandler = e => {
@@ -34,8 +43,8 @@ export default class FileUpload extends Component {
             let res = e.target.response
             console.log(res);
 
+            this.props.set_loading(true)
             this.props.get_subs()
-            this.props.update_groups()
             this.setState({
                 ...this.state,
                 onprogress: false
@@ -89,3 +98,8 @@ export default class FileUpload extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => state.subscribers
+
+export default connect(mapStateToProps, actions)(FileUpload)

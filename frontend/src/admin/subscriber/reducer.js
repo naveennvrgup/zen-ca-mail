@@ -3,7 +3,8 @@ import * as atypes from './action_types'
 
 const initialState = {
     groups: {},
-    selected_group_id: 39,
+    selected_group_id: null,
+    selected_group_name: 'Subscribers',
     search_keyword: '',
     loading: false,
 

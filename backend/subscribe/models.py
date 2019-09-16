@@ -35,11 +35,6 @@ class Subscriber(Model):
 
 
 class SubscriberSerializer(ModelSerializer):
-    group = SerializerMethodField()
-    
-    def get_group(self,instance):
-        return instance.group.name
-
     class Meta:
         model = Subscriber
         fields = '__all__'

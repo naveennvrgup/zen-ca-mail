@@ -1,20 +1,76 @@
 import React, { Component } from 'react'
 import UploadCSV from './file_upload'
-import faxios, { burl } from '../../axios';
+import faxios, { burl } from '../../axios'
 
-export default class toolbar extends Component {
-    axios = faxios()
+// redux
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import * as actions from './actions'
+
+
+class Toolbar extends Component {
+    static propTypes = {
+        groups: PropTypes.object.isRequired,
+        get_subs: PropTypes.func.isRequired,
+    }
+
+
     state = {
         upload_subs: 0,
     }
 
-    componentDidMount = () => {
 
+    componentDidMount = () => {
         this.new_sub = document.querySelector('.new_sub');
         this.new_sub_name = this.new_sub.querySelector('.new_sub_name');
         this.new_sub_email = this.new_sub.querySelector('.new_sub_email');
         this.new_sub_mobile = this.new_sub.querySelector('.new_sub_mobile');
     }
+
+    add_sub_to_group_handler = (e) => {
+        e.preventDefault()
+
+        this.props.set_loading(true)
+        faxios().post('api/add_sub_to_group/', {
+            groupId: this.props.selected_group_id,
+            name: this.new_sub_name.value,
+            email: this.new_sub_email.value,
+            mobile: this.new_sub_mobile.value
+        }).then(d => {
+            this.new_sub_name.value = ''
+            this.new_sub_email.value = ''
+            this.new_sub_mobile.value = ''
+            // update sub list
+            this.props.get_subs()
+        })
+    }
+
+    delete_group_handler = (e) => {
+        e.preventDefault()
+        if (this.props.selected_group_name === 'Subscribers') {
+            return
+        }
+
+        let group_2_delete = this.props.selected_group_id
+
+        this.props.update_state({
+            selected_group_id: null,
+            selected_group_name: 'Subscribers'
+        })
+
+        faxios().delete(`api/group/${group_2_delete}/`)
+            .then(d => {
+                console.log(d.data)
+                this.props.get_subs()
+            })
+    }
+
+    download_group_csv_handler = () => {
+        let anchor = document.createElement('a')
+        anchor.href = burl + `api/download_group_as_csv/${this.props.selected_group_id}/`
+        anchor.click()
+    }
+
 
     render() {
         let new_sub_input =
@@ -56,7 +112,7 @@ export default class toolbar extends Component {
                 {/* upload csv */}
                 <div>
                     <div className="font-weight-bold mt-2">Upload subscribers as CSV:</div>
-                    <UploadCSV {...this.props} />
+                    <UploadCSV />
                 </div>
                 {/* download csv */}
                 <div>
@@ -91,3 +147,7 @@ export default class toolbar extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => state.subscribers
+
+export default connect(mapStateToProps, actions)(Toolbar)

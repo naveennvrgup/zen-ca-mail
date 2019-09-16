@@ -55,6 +55,7 @@ class AllSubscribeViewset(ModelViewSet):
 
         # get the groups of the subscribers
         groups = Group.objects.all()
+        groups = sorted(groups, key=lambda x: x.id,reverse=True)
         groups = {x.name:{
             'total_subs': x.subs.count(),
             'result': 0,

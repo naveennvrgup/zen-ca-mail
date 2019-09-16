@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Toolbar from './toolbar'
 import faxios from '../../axios';
-
+import { loader } from '../../spinner'
 
 // redux
 import PropTypes from 'prop-types'
@@ -10,22 +10,77 @@ import * as actions from './actions'
 
 class Group extends Component {
     axios = faxios()
-    
-    state = {
 
+    state = {
+        edit: {}
     }
 
     static propTypes = {
         subscribers: PropTypes.array.isRequired,
     }
 
-    componentDidMount = () => {
-        // this.get_subs()
+    _unblock_subscriber = (e, sub) => {
+        e.preventDefault()
+        
+        this.props.set_loading(true)
+        faxios().put(`api/all_subs/${sub.id}/`, {
+            status: 'available',
+            flag: false,
+            email: sub.email,
+            name: sub.name,
+            mobile: sub.mobile,
+            group: sub.group
+        }).then(d => {
+            this.setState({
+                edit: {
+                    ...this.state.edit,
+                    [sub.id]: null
+                }
+            })
+            this.props.get_subs()
+        })
+    }
+    
+    _delete_subscriber = (e, sub) => {
+        e.preventDefault()
+        
+        this.props.set_loading(true)
+        faxios().delete(`api/all_subs/${sub.id}/`)
+            .then(d => {
+                console.log('flagged')
+                if (this.props.subscribers.length === 1 && this.props.page > 1) {
+                    this.props.get_subs(null,this.props.page_no-1)
+                }else{
+                    this.props.get_subs(null,this.props.page_no)
+                }
+            })
+    }
+    
+    
+    _edit_subscriber = (e, sub) => {
+        e.preventDefault()
+    
+        this.setState({
+            edit: {
+                ...this.state.edit,
+                [sub.id]: sub
+            }
+        })
+
+        // console.log(subs)
+    }
+    
+    _edit_sub_change = (e, inputname, sub_id) => {
+        e.preventDefault()
+    
+        let edit = this.state.edit
+        edit[sub_id][inputname] = e.target.value
+        this.setState({edit})
     }
 
 
     render() {
-         let show_subscriber_html = (sub, i) =>
+        let show_subscriber_html = (sub, i) =>
             <div className={'d-flex  tab align-items-center '} key={i + 1}>
                 <div className='sub_sno px-2 font-weight-bold'>{i + 1}</div>
                 <div className='sub_phone px-2'>
@@ -40,7 +95,7 @@ class Group extends Component {
                     <i className='fa fa-check'></i>
                 </button> : null}
                 <button
-                    onClick={e => this._edit_subscriber(e, sub.id)}
+                    onClick={e => this._edit_subscriber(e, sub)}
                     className={`btn mx-1 nbtn blue`}>
                     <i className='fa fa-pen'></i>
                 </button>
@@ -69,8 +124,8 @@ class Group extends Component {
 
 
         let subs_list = this.props.subscribers.map((sub, i) => {
-            if (sub.onedit === true) {
-                return edit_subscriber_html(sub, i)
+            if (this.state.edit[sub.id]) {
+                return edit_subscriber_html(this.state.edit[sub.id], i)
             } else {
                 return show_subscriber_html(sub, i)
             }
@@ -85,13 +140,19 @@ class Group extends Component {
                     </span>
                     <button
                         disabled={this.props.previous ? false : true}
-                        onClick={e => this.props.get_subs(null, this.props.page_no-1)}
+                        onClick={e => {
+                            this.props.set_loading(true)
+                            this.props.get_subs(null, this.props.page_no - 1)
+                        }}
                         className="btn nbtn blue mx-1">
                         <i className="fa fa-angle-left"></i>
                     </button>
                     <button
                         disabled={this.props.next ? false : true}
-                        onClick={e => this.props.get_subs(null, this.props.page_no+1)}
+                        onClick={e => {
+                            this.props.set_loading(true)
+                            this.props.get_subs(null, this.props.page_no + 1)
+                        }}
                         className="btn nbtn blue mx-1">
                         <i className="fa fa-angle-right"></i>
                     </button>
@@ -102,9 +163,11 @@ class Group extends Component {
             <div>
                 <div className=''>
                     <Toolbar />
-                    {pagination}
-                    {subs_list}
-                    {this.props.subscribers.length > 10 ? pagination : null}
+                    {this.props.loading ? loader : <Fragment>
+                        {pagination}
+                        {subs_list}
+                        {this.props.subscribers.length > 10 ? pagination : null}
+                    </Fragment>}
                 </div>
             </div>
         )

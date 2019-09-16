@@ -5,3 +5,5 @@ export default function spinner() {
         <div className='sus-loader'><div className="lds-dual-ring"></div></div>
     )
 }
+
+export const loader = <div className="text-center my-5"><div className="lds-dual-ring"></div></div>
