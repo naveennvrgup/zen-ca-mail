@@ -6,6 +6,7 @@ import faxios, { burl } from '../../axios'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as actions from './actions'
+import axios from '../../axios'
 
 
 class Toolbar extends Component {
@@ -55,7 +56,8 @@ class Toolbar extends Component {
 
         this.props.update_state({
             selected_group_id: null,
-            selected_group_name: 'Subscribers'
+            selected_group_name: 'Subscribers',
+            loading: true
         })
 
         faxios().delete(`api/group/${group_2_delete}/`)
@@ -78,7 +80,7 @@ class Toolbar extends Component {
             state: 'search',
             search_keyword: this.search_box.value,
         })
-        this.props.get_subs(null,null,this.search_box.value)
+        this.props.get_subs(null, null, this.search_box.value)
     }
 
     _clear_search = (e) => {
@@ -89,6 +91,29 @@ class Toolbar extends Component {
             search_keyword: null,
         })
         this.props.get_subs()
+        this.search_box.value = ''
+    }
+
+    find_duplicates = e => {
+        e.preventDefault()
+
+        this.props.set_loading(true)
+        axios().get(`api/find_duplicates/${this.props.selected_group_id}/`)
+            .then(d => {
+                alert(d.data.msg)
+                this.props.set_loading(false)
+            })
+    }
+
+    delete_duplicates = e => {
+        e.preventDefault()
+
+        this.props.set_loading(true)
+        axios().get(`api/delete_duplicates/${this.props.selected_group_id}/`)
+            .then(d => {
+                alert(d.data.msg)
+                this.props.get_subs()
+            })
     }
 
     render() {
@@ -188,9 +213,19 @@ class Toolbar extends Component {
                                 className="new_sub_mobile tab_input tab_input_sm lg_input mt-2"
                                 placeholder="Search by email, name, phone no" />
                         </div>
-                        <div className='create-sub create'>
+                        <div className='create-sub create mx-2'>
                             {this.props.state === 'search' ? clear_search_btn : search_btn}
                         </div>
+                        <button
+                            onClick={this.find_duplicates}
+                            className="btn btn-success btn-sm mx-2">
+                            Find <i className="fa fa-clone"></i>
+                        </button>
+                        <button
+                            onClick={this.delete_duplicates}
+                            className="btn btn-danger btn-sm mx-2">
+                            Delete <i className="fa fa-clone"></i>
+                        </button>
                     </div>
                 </form>
             </div >

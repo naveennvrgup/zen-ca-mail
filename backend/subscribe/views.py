@@ -247,3 +247,42 @@ def unsubscribe_view(req):
         pass
     
     return render(req,'unsubscribe.html', {'email': email})
+
+
+@api_view(['get'])
+def find_duplicates(self,group_id):
+    group = Group.objects.get(pk=group_id)
+
+    dp = set()
+    for x in group.subs.all():
+        dp.add(x.email)
+    
+    return Response({
+        'msg': 'Group {} has {} duplicates'.format(
+            group.name,
+            group.subs.count()-len(dp),
+        )
+    })
+
+
+@api_view(['get'])
+def delete_duplicates(self,group_id):
+    group = Group.objects.get(pk=group_id)
+
+    dp = set()
+    to_delete = []
+    for x in group.subs.all():
+        if x.email not in dp:
+            dp.add(x.email)
+        else:
+            to_delete.append(x)
+
+    for x in to_delete:
+        x.delete()
+
+    return Response({
+        'msg': '{} duplicates of group {} have been deleted.'.format(
+            len(to_delete),
+            group.name
+        )
+    })

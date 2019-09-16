@@ -40,6 +40,8 @@ urlpatterns = [
     path('unsubscribe/', unsubscribe_view),
     path('api/bounced_mails/', get_bounces.as_view()),
     path('api/complaint_mails/', get_complaints.as_view()),
+    path('api/find_duplicates/<int:group_id>/', find_duplicates),
+    path('api/delete_duplicates/<int:group_id>/', delete_duplicates),
     # draft
     path('api/get_draft_categories_count/', get_draft_categories_count_view),
     path('api/send_bulk_mail/', send_bulk_mail_view),
