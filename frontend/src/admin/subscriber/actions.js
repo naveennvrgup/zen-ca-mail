@@ -2,18 +2,39 @@ import faxios, { burl } from '../../axios';
 import * as atypes from './action_types'
 import { store } from '../../index'
 
-export const get_subs = () => dispatch => {
-    const {page_no, selected_group_id, search_keyword} = store.getState().subscribers
+const set_loading = (dispatch, loading) => {
+    return dispatch({
+        type: atypes.UPDATE_STATE,
+        payload: { loading }
+    })
+}
+
+export const get_subs = (c_sgid, cpage_no) => dispatch => {
+    let { page_no, selected_group_id, search_keyword } = store.getState().subscribers
+
+    if (c_sgid) {
+        selected_group_id = c_sgid
+    }
+    if(cpage_no){
+        page_no = cpage_no
+    }
+
+    set_loading(dispatch,true)
 
     faxios().get(`api/all_subs/?search=${search_keyword}&group_id=${selected_group_id}&page=${page_no}`)
         .then(d => {
             console.log(d.data)
             return dispatch({
                 type: atypes.UPDATE_STATE,
-                payload: d.data,
+                payload: {
+                    ...d.data,
+                    selected_group_id,
+                    loading: false
+                },
             })
         })
 }
+
 
 export const unblock_subscriber = (e, sub) => {
     e.preventDefault()
@@ -157,8 +178,8 @@ export const add_sub_to_group_handler = (e) => {
         mobile: this.new_sub_mobile.value
     }).then(d => {
         this.new_sub_name.value = ''
-        this.new_sub_email.value =  ''
-        this.new_sub_mobile.value =  ''
+        this.new_sub_email.value = ''
+        this.new_sub_mobile.value = ''
         // update sub list
         this.props.get_subs()
         // update the groups badges

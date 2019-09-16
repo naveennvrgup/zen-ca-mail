@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Group from './group'
 import faxios from '../../axios';
+import Spinner from '../../spinner'
 
 
 // redux
@@ -21,11 +22,14 @@ class Groups extends Component {
 
     componentDidMount = () => {
         this.props.get_subs()
-        console.log(this.props)
     }
 
 
     render() {
+        if(this.props.loading){
+            return <Spinner />
+        }
+
         let groups = Object.keys(this.props.groups)
             .map(x => ({
                 name:x,
@@ -38,7 +42,7 @@ class Groups extends Component {
             `
                 } key={i + 2}>
                     <div className='group-name px-2 flex-grow-1'
-                        onClick={(e) => this.show_group(e, group)}
+                        onClick={(e) => this.props.get_subs(group.id)}
                     >{group.name}</div>
                     <div className="ml-2 badge badge-pill badge-secondary ">{group.total_subs}</div>
                 </div>

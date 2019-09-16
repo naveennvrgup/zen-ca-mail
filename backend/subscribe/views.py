@@ -23,6 +23,7 @@ from collections import defaultdict
 
 class AllSubscribePagination(PageNumberPagination):
     page_size = 15
+    # max_page_size = 15
 
 
     def get_paginated_response(self, data):
@@ -46,7 +47,7 @@ class AllSubscribeViewset(ModelViewSet):
 
     def list(self, req):
         subscribers = self.get_queryset()
-        
+
         try:
             subscribers = subscribers.filter(group__id=int(self.request.query_params['group_id']))
         except:
@@ -57,6 +58,7 @@ class AllSubscribeViewset(ModelViewSet):
         groups = {x.name:{
             'total_subs': x.subs.count(),
             'result': 0,
+            'id':x.id
         } for x in groups}
 
 

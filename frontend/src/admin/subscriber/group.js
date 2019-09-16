@@ -78,20 +78,20 @@ class Group extends Component {
 
         let pagination =
             <div className="d-flex justify-content-between align-items-center">
-                <div className="font-weight-bold p-3">Subscribers: {this.state.count}</div>
+                <div className="font-weight-bold p-3">Subscribers: {this.props.subscribers.length}</div>
                 <div className="sub-pagination pagination">
                     <span className='mx-1'>
-                        Page {this.state.page}
+                        Page {this.props.page_no}
                     </span>
                     <button
-                        disabled={this.state.previous ? false : true}
-                        onClick={e => this.change_page(e, 0)}
+                        disabled={this.props.previous ? false : true}
+                        onClick={e => this.props.get_subs(null, this.props.page_no-1)}
                         className="btn nbtn blue mx-1">
                         <i className="fa fa-angle-left"></i>
                     </button>
                     <button
-                        disabled={this.state.next ? false : true}
-                        onClick={e => this.change_page(e, 1)}
+                        disabled={this.props.next ? false : true}
+                        onClick={e => this.props.get_subs(null, this.props.page_no+1)}
                         className="btn nbtn blue mx-1">
                         <i className="fa fa-angle-right"></i>
                     </button>
@@ -104,7 +104,7 @@ class Group extends Component {
                     <Toolbar />
                     {pagination}
                     {subs_list}
-                    {/* {this.state.results.length > 10 ? pagination : null} */}
+                    {this.props.subscribers.length > 10 ? pagination : null}
                 </div>
             </div>
         )

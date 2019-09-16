@@ -14,8 +14,6 @@ export default class toolbar extends Component {
         this.new_sub_name = this.new_sub.querySelector('.new_sub_name');
         this.new_sub_email = this.new_sub.querySelector('.new_sub_email');
         this.new_sub_mobile = this.new_sub.querySelector('.new_sub_mobile');
-
-        console.log(this.props)
     }
 
     render() {
