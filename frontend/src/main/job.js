@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 export default class job extends Component {
     render() {
         return (
-            <div className='job container text-center font-weight-bold p-5'>
+            <div className='job hiring container text-center font-weight-bold p-5'>
                 <div className="row align-items-center">
                     <div className="col-md-6 d-none d-md-block">
                         <img id='hiring_img' src={require('../assets/hiring.gif')} alt="we are hiring image" />

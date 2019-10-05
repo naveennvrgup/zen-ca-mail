@@ -57,6 +57,9 @@ export default class navbar extends Component {
                 <li className="nlink wow fadeInRight" data-wow-delay='0.5s'>
                     {this.bnlink('clients', 'Clients')}
                 </li>
+                <li className="nlink wow fadeInRight" data-wow-delay='0.5s'>
+                    {this.bnlink('hiring', 'Hiring')}
+                </li>
                 <li className="nlink wow fadeInRight" data-wow-delay='0.6s'>
                     {this.bnlink('contactus', 'Contact')}
                 </li>
@@ -123,6 +126,9 @@ export default class navbar extends Component {
                     </div>
                     <div className="smlink">
                         {this.bnlink_sm('clients', 'Clients')}
+                    </div>
+                    <div className="smlink">
+                        {this.bnlink_sm('hiring', 'Hiring')}
                     </div>
                     <div className="smlink">
                         {this.bnlink_sm('contactus', 'Contact')}
