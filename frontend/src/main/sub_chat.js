@@ -3,7 +3,24 @@ import { ChatFeed, Message } from 'react-chat-ui'
 
 export default class Sub_chat extends Component {
   state = {
-    // messages: 
+    messages: [],
+    conditions: [
+      {
+        message: 'Can i know your good name',
+
+        api_call: false,
+      },
+      {
+        message: 'Please enter your mobile number',
+
+        api_call: false,
+      },
+      {
+        message: 'Please enter your email address',
+        regex: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        api_call: false,
+      },
+    ]
   };
 
   render() {
