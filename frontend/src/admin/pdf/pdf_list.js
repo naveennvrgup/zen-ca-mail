@@ -5,7 +5,9 @@ import { loader } from '../../spinner'
 export default class pdf extends Component {
     state = {
         loading: true,
-        results: []
+        results: [],
+        progress: 0,
+        uploading: false
     }
 
     componentDidMount() {
@@ -22,14 +24,14 @@ export default class pdf extends Component {
             case 'previous':
                 url = this.state.previous
                 break
-            default: 
+            default:
                 url = '/api/pdf/'
-                if(this.state.current_page){
+                if (this.state.current_page) {
                     url = `/api/pdf/?page=${this.state.current_page}`
                 }
         }
 
-        this.setState({loading: true})
+        this.setState({ loading: true })
         faxios().get(url).then(d => {
             this.setState({
                 ...d.data,
@@ -40,19 +42,19 @@ export default class pdf extends Component {
 
     _download = id => {
         pdf = this.state.results.find(ele => ele.id === id)
-        
+
         let link = document.createElement("a");
         link.href = pdf.document;
         link.target = '_blank'
         link.click();
-        
+
     }
 
     _delete = id => {
-        faxios().delete(`/api/delete/${id}/`).then(d=>{
-            if(this.state.results.length==1 && this.state.previous){
+        faxios().delete(`/api/pdf/${id}/`).then(d => {
+            if (this.state.results.length == 1 && this.state.previous) {
                 this.get_data('previous')
-            }else{
+            } else {
                 this.get_data()
             }
         })
@@ -64,7 +66,7 @@ export default class pdf extends Component {
             return loader
         }
 
-        const pdfs = this.state.results.map((ele,i) =>
+        const pdfs = this.state.results.map((ele, i) =>
             <div className='d-flex flex-wrap tab align-items-center justify-content-between news' key={ele.id}>
                 <div className='d-flex ml-auto flex-wrap align-items-center mx-2 flex-grow-1'>
                     <div className='srno mx-2 font-weight-bold'>{i + 1}</div>
@@ -108,10 +110,34 @@ export default class pdf extends Component {
 
         return (
             <div>
+                {/* search for subs */}
+                <div className="tab p-3">
+                    <form>
+                        <div className="font-weight-bold mt-2">Upload new documents:</div>
+                        <div className={'d-flex new_sub align-items-center px-1 py-2'}>
+                            <div className="p-2 flex-grow-1">
+                                <input
+                                    ref={ele => this.title = ele}
+                                    className="form-control"
+                                    placeholder="Title of document" />
+                            </div>
+                            <div className="p-2 flex-grow-1">
+                                <input className='form-control' type="file" ref={ele => this.document = ele} placeholder='document' />
+                            </div>
+                            <button
+                                disabled={this.state.uploading} 
+                                onClick={this._upload}
+                                className="btn btn-primary btn-sm mx-2">
+                                <i className="fa fa-arrow-up"></i> {this.state.uploading? ` Uploading % ${this.state.progress}`:' Upload'}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
                 {pagination}
                 {pdfs}
-                {pagination}
-            </div>
+                {this.state.results.length > 15 ? pagination : null}
+            </div >
         )
     }
 }
