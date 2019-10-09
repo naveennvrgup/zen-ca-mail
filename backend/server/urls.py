@@ -62,7 +62,7 @@ urlpatterns = [
     path('api/news_brief/', news_brief_view),
     path('api/server_cost/', server_cost_view),
     # pdfs
-    path('api/pdf5/', PDF5_view.as_view()),
+    path('api/pdf5/', PDF5_view),
     # enquiry
     path('api/send_enquiry/', send_enquiry_view),
     # router

@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react'
 
 export default function gstlinks() {
     return (
-        <div className="gst_links pt-4 pb-4">
+        <div className="gst_links">
             <div className="gstlink">
-                <a  disabled
+                <a disabled
                     target="_blank"
                     className="two"
                     rel="noopener noreferrer"
                 >
-                GST Resources
+                    GST Resources
                 </a>
             </div>
             <div className="gstlink">
@@ -53,5 +53,5 @@ export default function gstlinks() {
                 </a>
             </div>
         </div>
-    );
+    )
 }

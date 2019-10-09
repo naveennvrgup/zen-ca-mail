@@ -13,7 +13,7 @@ import Clients from './client'
 import Cookie from './cookie'
 import Snews from './slick_news'
 import Job from './job'
-import Gstlinks from './gstlinks'
+import Resources from './resources'
 import SubChat from './sub_chat'
 
 // it as the layout for the index page
@@ -29,7 +29,7 @@ export default class main extends Component {
             <div className='main'>
                 <Navbar />
                 <Cover />
-                <Gstlinks/>
+                <Resources/>
                 <Cookie />
                 <Snews />
                 <Subscribe />

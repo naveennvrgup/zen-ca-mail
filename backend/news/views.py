@@ -50,10 +50,11 @@ class PDFViewset(ModelViewSet):
     serializer_class = PDFSerializer
     pagination_class = PDFPagination
 
-class PDF5_view(ListAPIView):
+@api_view(['get'])
+@permission_classes([AllowAny])
+def PDF5_view(req):
     queryset = PDF.objects.filter(flag=False).reverse()
-    serializer_class = PDFSerializer
-    pagination_class = PDF5Pagination
+    return Response(PDFSerializer(queryset, many=True).data)
 
 
 @api_view(['get'])
