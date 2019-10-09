@@ -80,7 +80,7 @@ export default class navbar extends Component {
                     </a>
                 </div>
                 <div className="slink  wow zoomIn" data-wow-delay='0.3s'>
-                    <a href="https://in.linkedin.com/in/jeetu-gupta-74308440"
+                    <a href="https://www.linkedin.com/in/jk-gupta-74308440/?originalSubdomain=in"
                         target='_blank'
                         rel="noopener noreferrer"
                     >

@@ -46,6 +46,7 @@ export default class Sub_chat extends Component {
     const newchat = this.newchat.value
     const last_robot = messages[messages.length - 1]
 
+    if(newchat.length<1){return}
 
     // show the users msg
     messages.push({
@@ -113,6 +114,7 @@ export default class Sub_chat extends Component {
             name: 'done',
           })
 
+          localStorage['subscriber']=true
           // send the info to the backend
           faxios().post('/api/sub_from_main/', {
             'name': this.state.name,
@@ -121,7 +123,6 @@ export default class Sub_chat extends Component {
           }).then(d => {
             d = d.data
             console.log(d)
-            localStorage['subscriber']=true
           })
 
         } else {
