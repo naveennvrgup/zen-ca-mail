@@ -53,6 +53,7 @@
     "react": "^16.7.0",
     "react-app-polyfill": "^0.2.0",
     "react-chartjs-2": "^2.7.4",
+    "react-chat-ui": "^0.3.2",
     "react-dev-utils": "^7.0.1",
     "react-dom": "^16.7.0",
     "react-draft-wysiwyg": "^1.12.19",

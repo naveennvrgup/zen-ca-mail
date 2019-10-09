@@ -14,6 +14,7 @@ import Cookie from './cookie'
 import Snews from './slick_news'
 import Job from './job'
 import Gstlinks from './gstlinks'
+import SubChat from './sub_chat'
 
 // it as the layout for the index page
 export default class main extends Component {
