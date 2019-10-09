@@ -4,17 +4,37 @@ from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
+from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import *
-import json
+import json, math
 
+
+class PDFPagination(PageNumberPagination):
+    page_size = 2
+
+    def get_paginated_response(self, data):
+        return Response({
+            'next': self.get_next_link(),
+            'previous': self.get_previous_link(),
+            'count': self.page.paginator.count,
+            'current_page': int(self.request.GET.get('page','1')),
+            'total_pages': math.ceil(self.page.paginator.count / self.page_size),
+            'results': data
+        })
 
 class NewsViewset(ModelViewSet):
     queryset = News.objects.filter(flag=False).reverse()
     serializer_class = NewsSerializer
     filter_fields = ['show']
     filter_backends = (DjangoFilterBackend,)
+
+
+class PDFViewset(ModelViewSet):
+    queryset = PDF.objects.filter(flag=False).reverse()
+    serializer_class = PDFSerializer
+    pagination_class = PDFPagination
 
 
 @api_view(['get'])

@@ -14,6 +14,7 @@ const New_news = React.lazy(() => import('./news/new_news'))
 const Dashboard = React.lazy(() => import('./dashboard/dashboard'))
 const Complaint = React.lazy(() => import('./complaints/complaints'))
 const Bounces = React.lazy(() => import('./bounces/bounces'))
+const PDF = React.lazy(() => import('./pdf/pdf_list'))
 
 export default class admin extends Component {
     render() {
@@ -36,6 +37,8 @@ export default class admin extends Component {
 
                         <Route path='/admin/news/edit_news/:id/' component={New_news} />
                         <Route path='/admin/news' component={News} />
+
+                        <Route path='/admin/pdf/' component={PDF} />
 
                         <Route path='/admin/signout/' component={Signout} />
 

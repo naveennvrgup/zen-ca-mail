@@ -15,6 +15,22 @@ class News(Model):
     def __str__(self):
         return self.title
 
+class PDF(Model):
+    title = CharField(max_length=200)
+    document = FileField()
+    flag = BooleanField(blank=True,default=False)
+    created_on = DateTimeField(auto_now_add=True)
+    edited_on = DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+class PDFSerializer(ModelSerializer):
+    class Meta:
+        model = PDF
+        fields = '__all__'
+
 class NewsSerializer(ModelSerializer):
     class Meta:
         model = News

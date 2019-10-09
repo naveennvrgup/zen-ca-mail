@@ -27,6 +27,7 @@ router.register('draft', DraftViewset)
 router.register('attachment', AttachmentViewset)
 router.register('news', NewsViewset)
 router.register('recuritment', RecruitmentViewset)
+router.register('pdf', PDFViewset)
 
 
 urlpatterns = [
