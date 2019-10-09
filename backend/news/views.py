@@ -2,6 +2,7 @@ from rest_framework.decorators import permission_classes, api_view
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.generics import ListAPIView
 from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
 from rest_framework.pagination import PageNumberPagination
@@ -11,8 +12,21 @@ from .models import *
 import json, math
 
 
+class PDF5Pagination(PageNumberPagination):
+    page_size = 5
+
+    def get_paginated_response(self, data):
+        return Response({
+            'next': self.get_next_link(),
+            'previous': self.get_previous_link(),
+            'count': self.page.paginator.count,
+            'current_page': int(self.request.GET.get('page','1')),
+            'total_pages': math.ceil(self.page.paginator.count / self.page_size),
+            'results': data
+        })
+
 class PDFPagination(PageNumberPagination):
-    page_size = 2
+    page_size = 15
 
     def get_paginated_response(self, data):
         return Response({
@@ -35,6 +49,11 @@ class PDFViewset(ModelViewSet):
     queryset = PDF.objects.filter(flag=False).reverse()
     serializer_class = PDFSerializer
     pagination_class = PDFPagination
+
+class PDF5_view(ListAPIView):
+    queryset = PDF.objects.filter(flag=False).reverse()
+    serializer_class = PDFSerializer
+    pagination_class = PDF5Pagination
 
 
 @api_view(['get'])
