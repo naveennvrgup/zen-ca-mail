@@ -24,7 +24,7 @@ export default class subscribe extends Component {
                 <div className="sub-btn-div">
                     <div className="anim-holder">
                         <button onClick={this._show} className='sub-btn'>
-                            <i className="fa fa-newspaper"></i>
+                            <i style={{fontSize: '25px'}} className="far fa-comment-dots"></i>
                         </button>
                         <div className="at-anim"></div>
                     </div>
