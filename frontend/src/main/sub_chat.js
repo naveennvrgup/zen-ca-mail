@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ChatFeed, Message } from 'react-chat-ui'
+import faxios from '../axios'
 
 const check_email = text => {
   text = text.trim().toLowerCase()
@@ -43,19 +43,13 @@ export default class Sub_chat extends Component {
     e.preventDefault()
 
     let { messages } = this.state
-
-
-    // if he is subscriber then the conditions length will be 0
-    if (this.newchat.value.length < 1) {
-      this.newchat.value = ''
-      return
-    }
+    const newchat = this.newchat.value
     const last_robot = messages[messages.length - 1]
 
 
     // show the users msg
     messages.push({
-      message: this.newchat.value,
+      message: newchat,
       person: 'customer',
     })
     this.setState({
@@ -64,11 +58,10 @@ export default class Sub_chat extends Component {
     })
 
 
-
     // after the users msg in rendered scroll down to reveal the full msg
     this._scroll_down()
     // show the next robot msg
-    setTimeout(this.robot_msg(this.newchat.value, last_robot), 50)
+    setTimeout(()=>this.robot_msg(newchat, last_robot), 500)
     this.newchat.value = ''
   }
 
@@ -80,6 +73,7 @@ export default class Sub_chat extends Component {
 
     switch (name) {
       case 'name':
+        this.setState({ [name]: text.trim() })
         messages.push({
           message: 'Please enter your mobile number',
           person: 'bot',
@@ -89,6 +83,7 @@ export default class Sub_chat extends Component {
 
       case 'mobile':
         if (check_mobile(text)) {
+          this.setState({ [name]: text.trim() })
           messages.push({
             message: 'Please enter your email address',
             person: 'bot',
@@ -106,6 +101,7 @@ export default class Sub_chat extends Component {
 
       case 'email':
         if (check_email(text)) {
+          this.setState({ [name]: text.trim() })
           messages.push({
             message: 'Thank you for subscribing to us. Your information lie safe with us.',
             person: 'bot',
@@ -116,6 +112,18 @@ export default class Sub_chat extends Component {
             person: 'bot',
             name: 'done',
           })
+
+          // send the info to the backend
+          faxios().post('/api/sub_from_main/', {
+            'name': this.state.name,
+            'email': text.trim(),
+            'mobile': this.state.mobile
+          }).then(d => {
+            d = d.data
+            console.log(d)
+            localStorage['subscriber']=true
+          })
+
         } else {
           messages.push({
             message: 'Please enter a valid email address like "example@gmail.com"',
@@ -141,6 +149,10 @@ export default class Sub_chat extends Component {
     this._scroll_down()
   }
 
+  _close = () => {
+    document.querySelector('.sub_chat').classList.add('d-none')
+  }
+
   render() {
     const messages = this.state.messages.map((msg, i) => {
       if (msg.person === 'bot') {
@@ -152,7 +164,7 @@ export default class Sub_chat extends Component {
 
 
     return (
-      <div id="sub_chat">
+      <div className="sub_chat d-none">
         <div className="chat" >
           <div className="chat-title d-flex justify-content-between">
             <div>
@@ -162,7 +174,7 @@ export default class Sub_chat extends Component {
                 <i className="fa fa-user"></i>
               </figure>
             </div>
-            <div className='close-button'>
+            <div onClick={this._close} className='close-button'>
               close
             </div>
           </div>

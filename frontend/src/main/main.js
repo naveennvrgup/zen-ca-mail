@@ -36,9 +36,6 @@ export default class main extends Component {
                 <Aboutus />
                 <Values />
                 <Services />
-                <div className="text-center">
-                    <SubChat/>
-                </div>
                 <Clients />
                 <Job/>
                 <Contactus />

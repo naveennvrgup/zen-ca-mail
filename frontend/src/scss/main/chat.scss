@@ -1,5 +1,7 @@
-#sub_chat {
+.sub_chat {
     font-family: raleway;
+    transition: transform 1s ease;
+    // transform: scale(0);
 
     /*--------------------
 Mixins
@@ -114,7 +116,9 @@ Chat Title
             border-radius: 3px;
             padding: 3px 5px;
             font-size: 12px;
+            cursor: pointer;
         }
+
     }
 
 
