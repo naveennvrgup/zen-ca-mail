@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import faxios from '../../axios'
+import faxios, {burl} from '../../axios'
 import { loader } from '../../spinner'
 
 export default class pdf extends Component {
@@ -60,6 +60,52 @@ export default class pdf extends Component {
         })
     }
 
+
+    uploadFileHandler = (e) => {
+        e.preventDefault()
+        console.log(this.document.files)
+
+        if(this.title.value.trim().length<1 || this.document.files.length<1){
+            alert('Please provide valid title and document')
+            return
+        }
+        
+        var data = new FormData();
+        var request = new XMLHttpRequest();
+        data.append('title', this.title.value)
+        data.append('document', this.document.files[0]);
+        
+
+        // load event
+        request.addEventListener('load', (e) => {
+            let res = e.target.response
+
+            this.setState({
+                uploading: false,
+                progress: 0
+            })
+
+            this.get_data()
+        });
+
+        // monitor progress of upload
+        request.upload.addEventListener('progress', (e) => {
+            var progress = Math.round((e.loaded / e.total) * 100) 
+            console.log(progress)
+            this.setState({
+                progress
+            })
+        })
+
+        request.responseType = 'json';
+        request.open('post', burl + `api/pdf/`);
+        request.setRequestHeader('Authorization', sessionStorage['token'])
+        request.send(data);
+
+        this.setState({
+            uploading: true,
+        })// end of setstate
+    }
 
     render() {
         if (this.state.loading) {
@@ -126,7 +172,7 @@ export default class pdf extends Component {
                             </div>
                             <button
                                 disabled={this.state.uploading} 
-                                onClick={this._upload}
+                                onClick={this.uploadFileHandler}
                                 className="btn btn-primary btn-sm mx-2">
                                 <i className="fa fa-arrow-up"></i> {this.state.uploading? ` Uploading % ${this.state.progress}`:' Upload'}
                             </button>
