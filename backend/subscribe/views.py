@@ -54,13 +54,13 @@ class AllSubscribeViewset(ModelViewSet):
         groups = sorted(groups, key=lambda x: x.id,reverse=True)
         groups = {x.name:{
             'total_subs': x.subs.count(),
-            'result': 0,
+            # 'result': 0,
             'id':x.id
         } for x in groups}
 
 
         subscribers = self.filter_queryset(subscribers)
-        for x in subscribers: groups[x.group.name]['result'] +=1
+        # for x in subscribers: groups[x.group.name]['result'] +=1
 
 
         try:
