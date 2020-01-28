@@ -73,6 +73,7 @@ def send_mails_finally(subs, tname):
     source = config('from')
 
     for batch in subs:
+        batch=['naveennvrgup@gmail.com']
         destinations = [create_destination(x) for x in batch]
         time.sleep(1)
         response = client.send_bulk_templated_email(
