@@ -53,9 +53,9 @@ def send_bulk_mail_view(req):
 
     return Response({'success': True})
 
+
+# when a bounce or complaint occurs aws sns will send info about it to this view
 # handles the problem in async to improve performance
-
-
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def handle_complaint_view(req):
@@ -69,6 +69,7 @@ def handle_complaint_view(req):
     return Response('got the handle complaint subscription')
 
 
+# when a bounce or complaint occurs aws sns will send info about it to this view
 # handles the problem in async to improve performance
 @api_view(['POST'])
 @permission_classes([AllowAny])
