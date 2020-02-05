@@ -78,7 +78,7 @@ def news_brief_view(req):
         'noflag': news.filter(flag=False).count(),
     })
 
-
+# deprecated
 @api_view(['get'])
 def server_cost_view(req):
     cost = 0

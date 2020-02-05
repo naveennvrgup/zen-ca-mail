@@ -154,3 +154,6 @@ DBBACKUP_STORAGE_OPTIONS = {'location': '../backup'}
 # redis is used as broker
 # all the cron jobs can be setup with the help of default django admin
 # in the peridic tasks section
+
+
+# on the side of aws sns configuration have to be setup for bounce and complaint
