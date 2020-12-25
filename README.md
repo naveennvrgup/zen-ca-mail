@@ -7,8 +7,8 @@ This website is a combination of custom porfolio site and admin site for freelan
 
 - Hosted at  [http://34.87.155.79:5000/](http://34.87.155.79:5000/)
 - Admin site at [http://34.87.155.79:5000/admin](http://34.87.155.79:5000/admin)
-    * **username:** admin
-    * **password:** password
+    * **username:** admin (😜)
+    * **password:** admin (😉)
 - Email sending wont work as I dont pay for AWS SES anymore 😅
 - While uploading files will work you can't view them as static storage is not paid for 💸
 
