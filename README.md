@@ -23,6 +23,7 @@ This website is a combination of custom porfolio site and admin site for freelan
 ### Techstack:
 - Django with DRF on the backend 
 - React with bootstrap4 on the frontend
+- Token authentication used
 - Web servcies used are primarily AWS
     * AWS SES
     * AWS EC2
