@@ -5,8 +5,8 @@ This website is a combination of custom porfolio site and admin site for freelan
 
 ### Demo:
 
-- Hosted at  [http://34.87.155.79:5000/](http://34.87.155.79:5000/)
-- Admin site at [http://34.87.155.79:5000/admin](http://34.87.155.79:5000/admin)
+- Hosted at  [http://34.87.142.140:5000/](http://34.87.142.140:5000/)
+- Admin site at [http://34.87.142.140:5000/admin](http://34.87.142.140:5000/admin)
     * **username:** admin (😜)
     * **password:** admin (😉)
 - Email sending wont work as I dont pay for AWS SES anymore 😅
